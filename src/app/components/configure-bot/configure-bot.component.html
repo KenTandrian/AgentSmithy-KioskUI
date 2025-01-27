@@ -1,0 +1,77 @@
+<div class="outer-container">
+    <form [formGroup]="formGroup">
+        <mat-stepper formArrayName="formArray" #stepper>
+            <ng-container *ngFor="let step of stepperConfig; let index = index">
+                <mat-step [formGroupName]="index" [stepControl]="formGroup.get('formArray')?.get([index])!">
+                    <ng-template matStepLabel>{{ step.stepHeading }}</ng-template>
+                    <!-- <ng-template matStepHeader selected>{{ step.heading }}</ng-template> -->
+                    <div class="heading">{{ step.heading }}</div>
+
+                    <div *ngIf="step.contentType === 'form'" class="agent-container stepper-container">
+                        <ng-container *ngFor="let field of step.fields">
+                            <mat-label class="label">{{ field.label }}</mat-label>
+                            <mat-form-field appearance="outline" class="outline-border">
+                                <ng-container [ngSwitch]="field.type">
+                                    <input *ngSwitchCase="'input'" matInput [placeholder]="field.placeholder!"
+                                        [formControlName]="field.controlName" [required]="field.required!">
+                                    <mat-select *ngSwitchCase="'select'" [formControlName]="field.controlName">
+                                        <mat-option *ngFor="let option of field.options" [value]="option.value"
+                                            [disabled]="option.disabled">{{ option.label }}</mat-option>
+                                    </mat-select>
+                                </ng-container>
+                            </mat-form-field>
+                        </ng-container>
+                    </div>
+
+                    <div *ngIf="step.contentType === 'options'" class="stepper-container">
+                        <div class="runtime-container">
+                            <div class="option-selectors">
+                                <div class="example-radio-group">
+                                    <div *ngFor="let option of step.options" [ngClass]="{'selected': option.isSelected}"
+                                        (click)="onRadioChange(step, option)" class="option-card">
+                                        <span class="icon">
+                                            <span class="material-symbols-outlined">{{ option.isSelected ?
+                                                'check_circle' : 'radio_button_unchecked' }}</span>
+                                        </span>
+                                        <span class="text">{{ option.label }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div *ngIf="step.selectedOptionResponse" class="option-response">
+                                <span class="subtitle">{{ step.selectedOptionResponse.subtitle }}</span>
+                                <span class="caption">{{ step.selectedOptionResponse.caption }}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="footer-container">
+                        <div class="button-container">
+                            <button class="contrast" mat-fab (click)="toggleTheme()">
+                                <mat-icon>contrast</mat-icon>
+                            </button>
+                            <span class="border"></span>
+                            <button *ngIf="step.hasHome" class="backward" mat-fab extended (click)="goToHome()">
+                                <mat-icon>home</mat-icon>
+                                Home
+                            </button>
+                        </div>
+                        <div class="button-container">
+                            <button *ngIf="step.hasPrevious" class="backward" mat-fab extended matStepperPrevious>
+                                <mat-icon>arrow_back</mat-icon>
+                                Back
+                            </button>
+                            <button *ngIf="step.hasNext" class="next" mat-fab extended matStepperNext>
+                                <mat-icon>arrow_forward</mat-icon>
+                                Next
+                            </button>
+                            <button *ngIf="step.hasSubmit" mat-fab extended (click)="goToSpinnerComponent()">
+                                <mat-icon>arrow_forward</mat-icon>
+                                Submit
+                            </button>
+                        </div>
+                    </div>
+                </mat-step>
+            </ng-container>
+        </mat-stepper>
+    </form>
+</div>

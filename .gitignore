@@ -1,0 +1,6 @@
+public/
+dist/
+node_modules/
+.firebase/
+.angular/
+.DS_Store

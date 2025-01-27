@@ -1,0 +1,208 @@
+.outer-container {
+    margin: 2em;
+
+    .heading {
+        font-size: 2em;
+        margin-bottom: 1em;
+        margin-top: 0.5em;
+    }
+
+    .agent-container {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+    }
+
+    .stepper-container {
+        height: 50vh;
+        .label {
+            font-size: 1em;
+            margin-bottom: 0.5em;
+        }
+    }
+
+    .inner-container {
+        margin: 40px 30px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+
+        .headings {
+            border-bottom: 1px dotted #C4C7C5;
+        }
+
+        .border {
+            margin: 10px 0;
+        }
+    }
+
+    .runtime-container {
+        display: flex;
+
+        .option-selectors,
+        .option-response {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .option-response {
+            flex: 2;
+            margin-left: 2em;
+
+            .subtitle {
+                color: #1F1F1F;
+                font-size: 22px;
+                line-height: 24px;
+                margin: 1rem 2em 1rem 2rem;
+            }
+
+            .caption {
+                color: #747775;
+                font-size: 1em;
+                margin: 3rem 2em;
+            }
+        }
+
+        .option-card {
+            padding: .5em;
+            border: 1px solid #C4C7C5;
+            border-radius: 1em;
+            display: flex;
+            align-items: center;
+            margin-bottom: 1em;
+
+            &.selected{
+                border: 1px solid #0B57D0;
+                .icon {
+                    font-size: 3em;
+                    padding: 0.5em;
+                    color: #0B57D0;
+                }
+    
+                .text {
+                    font-size: 2em;
+                    padding: 0.5em;
+                    color: #0B57D0;
+    
+                }
+
+            }
+
+            .icon {
+                font-size: 3em;
+                padding: 0.5em;
+            }
+
+            .text {
+                font-size: 2em;
+                padding: 0.5em;
+
+            }
+        }
+
+    }
+
+    .footer-container {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .button-container {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+
+
+
+
+    .mat-mdc-fab.mat-accent,
+    .mat-mdc-mini-fab.mat-accent {
+        --mdc-fab-container-color: #0B57D0;
+        --mdc-fab-icon-color: white !important;
+        --mat-mdc-fab-color: #fff !important;
+        box-shadow: none;
+        color: white !important;
+        border-radius: 100px;
+
+        &.backward {
+            --mdc-fab-container-color: white;
+            --mdc-fab-icon-color: #C4C7C5;
+            --mat-mdc-fab-color: #C4C7C5;
+            border: 1px solid #C4C7C5;
+            margin-right: 1em;
+            color: #444746 !important;
+        }
+
+        &.home {
+            color: #0B57D0 !important;
+            --mdc-fab-container-color: white;
+            --mdc-fab-icon-color: #0B57D0;
+            --mat-mdc-fab-color: #0B57D0;
+        }
+    }
+
+    ::ng-deep.mat-step-header:hover:not([aria-disabled]) {
+        background-color: white;
+    }
+
+    ::ng-deep.mat-mdc-text-field-wrapper.mdc-text-field--outlined .mat-mdc-form-field-infix {
+        padding-top: 16px !important;
+        padding-bottom: 16px !important;
+    }
+
+    ::ng-deep.mat-stepper-horizontal {
+        --mat-stepper-container-color: white;
+    } 
+
+    ::ng-deep.mat-stepper-label-position-bottom .mat-horizontal-stepper-header {
+        padding: 0.5em;
+    }
+
+    ::ng-deep.mat-horizontal-stepper-header-container {
+        width: 100%;
+        justify-content: end;
+    }
+
+    ::ng-deep.mat-stepper-horizontal-line {
+        border: none;
+        flex: none
+    }
+
+    ::ng-deep.mat-step-icon-selected,
+    ::ng-deep.mat-step-icon-state-edit {
+        border: 2px solid #0B57D0 !important;
+        --mat-stepper-header-selected-state-icon-background-color: white;
+        --mat-stepper-header-icon-foreground-color: white;
+        --mat-stepper-header-icon-background-color: white;
+        --mat-stepper-header-edit-state-icon-background-color: white;
+        --mat-stepper-header-edit-state-icon-foreground-color: white;
+
+        color: #0B57D0;
+    }
+
+    ::ng-deep.mat-step-icon-state-done {
+        --mat-stepper-header-done-state-icon-background-color: white !important;
+        --mat-stepper-header-done-state-icon-foreground-color: white !important;
+        border: 2px solid #C4C7C5 !important;
+        color: #C4C7C5 !important;
+    }
+
+
+    ::ng-deep.mat-step-icon {
+        font-size: 24px;
+        height: 28px;
+        width: 28px;
+        --mat-stepper-header-icon-foreground-color: #C4C7C5;
+        border: 2px solid #C4C7C5;
+        --mat-stepper-header-icon-background-color: white;
+        --mat-stepper-header-selected-state-icon-foreground-color: rgba(188, 218, 255, 1);
+    }
+
+    ::ng-deep.mat-stepper-label-position-bottom .mat-horizontal-stepper-header:not(:last-child)::after,
+    ::ng-deep.mat-stepper-label-position-bottom .mat-horizontal-stepper-header:not(:first-child)::before {
+        width: 0px;
+        border: none
+    }
+}
+

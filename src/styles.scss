@@ -1,0 +1,78 @@
+
+@use '@angular/material' as mat;
+@include mat.core();
+
+$agent-smithy-kioskui-light-theme: mat.define-theme((
+  color: (
+    theme-type: light,
+    primary: mat.$azure-palette,
+    tertiary: mat.$blue-palette,
+  ),
+  density: (
+    scale: 0,
+  )
+));
+
+:root {
+  --body-background-color: #FFFFFF;
+  --primary-btn-color: #0B57D0;
+  --primary-btn-font-color: #FFFFFF; 
+  --secondary-btn-color: #C4C7C5;
+  --background-color: #FFFFFF;
+  --text-color: #1F1F1F;
+  --secondary-background-color: #00639B;
+  --stepper-container-color: #FFFFFF;
+
+  @include mat.all-component-themes($agent-smithy-kioskui-light-theme);
+}
+
+.dark-theme {
+  --body-background-color: #131314;
+  --primary-btn-color: #d7e3ff;
+  --primary-btn-font-color: #000000; 
+  --secondary-btn-color: #000000;
+  --background-color: #f5f5f5;
+  --text-color: #FFFFFF;
+  --secondary-background-color: #C2E7FF;
+  --stepper-container-color: #131314;
+
+  @include mat.all-component-themes($agent-smithy-kioskui-light-theme);
+}
+
+.light-theme {
+  --body-background-color: #FFFFFF;
+  --primary-btn-color: #0B57D0; 
+  --primary-btn-font-color: #FFFFFF;
+  --secondary-btn-color: #C4C7C5;
+  --background-color: #FFFFFF;
+  --text-color: #1F1F1F;
+  --secondary-background-color: #00639B;
+  --stepper-container-color: #FFFFFF;
+
+  @include mat.all-component-themes($agent-smithy-kioskui-light-theme);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 10px auto;
+  font-family: "Google Sans", Roboto, "Helvetica Neue", sans-serif;
+  background-color: var(--body-background-color);
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+input, button {
+  font-family: inherit;
+}
+

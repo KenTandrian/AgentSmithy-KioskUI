@@ -1,0 +1,124 @@
+.root-container {
+    display: grid;
+    max-width: 1280px;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin: 20px auto;
+    row-gap: 40%;
+    align-items: start;
+}
+
+.left-container {
+    width: 50%;
+}
+
+.image-container {
+
+    .logo-image {
+        background-image: url('./../../../assets/images/sample-qr.png');
+        background-size: 70%;
+        background-repeat: no-repeat;
+        height: 400px;
+        width: 100%;
+        margin-left: -40px;
+    }
+}
+
+.image-container h3 {
+    color: #000000;
+    font-weight: 400;
+    font-size: 2rem;
+    line-height: 1.5rem;
+}
+
+.header-container h3 {
+    color: #000000;
+    font-weight: 400;
+    font-size: 2rem;
+    line-height: 1.5rem;
+    margin-bottom: 10%;
+}
+
+.text-container {
+    color: #000000;
+    font-weight: 400;
+    font-size: 1.375rem;
+    line-height: 1.75rem;
+    margin-bottom: 1%;
+}
+
+.buttons-container {
+    width: 100%;
+    grid-column: 2 / span 2;
+}
+
+.buttons {
+    display: flex;
+}
+
+.buttons button {
+    font-family: 'Google Sans';
+    font-size: 1.2rem;
+    padding: 1.2rem 1.2rem;
+    border-radius: 100px;
+    cursor: pointer;
+    white-space: nowrap;
+    display: flex;
+    word-break: break-word;
+}
+
+@media (max-width: 768px) {
+    .buttons button {
+        width: 80%;
+        margin-bottom: 1rem;
+    }
+}
+
+.export-btn {
+    background-color: #444746;
+    border-color: #FFFFFF;
+    color: white;
+    margin: 0 1rem;
+    border-width: 0;
+}
+
+.export-btn .add {
+    margin: 0 .5rem 0 0;
+}
+
+.start-again-btn {
+    background-color: #0B57D0;
+    color: white;
+    border-color: #FFFFFF;
+    border-width: 0;
+}
+
+.start-again-btn .add {
+    margin: 0 .5rem 0 0;
+}
+
+@media (max-width: 1000px) {
+    .root-container {
+        row-gap: 20%;
+    }
+}
+
+@media (max-width: 1000px) {
+    .buttons {
+        flex-direction: column;
+        align-items: start;
+    }
+}
+
+
+@media (max-width: 1000px) {
+    .start-again-btn {
+        margin: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .export-btn {
+        margin: 0;
+    }
+}

@@ -1,0 +1,158 @@
+.root-container {
+    display: grid;
+    max-width: 1280px;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    margin: 20px auto;
+    padding: 20px 20px;
+    row-gap: 80%;
+}
+
+.left-container {
+    width: 60%;
+}
+
+.image-container {
+    .logo-image {
+        padding-bottom: 3%;
+        background-image: url('./../../../assets/images/next-25-logo.gif');
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 18.75rem;
+        width: 100%;
+    }
+}
+
+.header-container h3 {
+    color: var(--text-color);
+    font-weight: 400;
+    font-size: 2rem;
+    line-height: 1.5rem;
+    margin-bottom: 10%;
+}
+
+.text-container {
+    color: var(--text-color);
+    font-weight: 400;
+    font-size: 1.375rem;
+    line-height: 1.75rem;
+    margin-bottom: 1%;
+}
+
+.buttons-container {
+    margin: 2em;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+@media (max-width: 1000px) {
+    .root-container {
+        row-gap: 20%;
+    }
+}
+
+@media (max-width: 1000px) {
+    .buttons {
+        flex-direction: column;
+        align-items: start;
+    }
+}
+
+
+@media (max-width: 1180px) {
+    .root-container .spark {
+        margin: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .explore-btn {
+        margin: 0;
+    }
+}
+
+.root-container .spark, .root-container .spark-shine {
+    background-color: var(--primary-btn-color);
+    color: var(--primary-btn-font-color);
+    border-color: var(--background-color);
+    font-family: 'Google Sans';
+    font-size: 1.2rem;
+    padding: 1.2rem 1.2rem;
+    border-radius: 100px;
+    cursor: pointer;
+    white-space: nowrap;
+    word-break: break-word;
+    margin-right: 10px;
+}
+
+.root-container .contrast {
+    background-color: var(--primary-btn-color);
+    color: var(--primary-btn-font-color);
+    border-color: var(--background-color);
+    font-family: 'Google Sans';
+    border-radius: 100px;
+    cursor: pointer;
+}
+
+::ng-deep.mat-step-header:hover:not([aria-disabled]) {
+    background-color: white;
+}
+
+::ng-deep.mat-mdc-text-field-wrapper.mdc-text-field--outlined .mat-mdc-form-field-infix {
+    padding-top: 16px !important;
+    padding-bottom: 16px !important;
+}
+
+::ng-deep.mat-stepper-horizontal {
+    --mat-stepper-container-color: white;
+} 
+
+::ng-deep.mat-stepper-label-position-bottom .mat-horizontal-stepper-header {
+    padding: 0.5em;
+}
+
+::ng-deep.mat-horizontal-stepper-header-container {
+    width: 100%;
+    justify-content: end;
+}
+
+::ng-deep.mat-stepper-horizontal-line {
+    border: none;
+    flex: none
+}
+
+::ng-deep.mat-step-icon-selected,
+::ng-deep.mat-step-icon-state-edit {
+    border: 2px solid var(----primary-btn-color) !important;
+    --mat-stepper-header-selected-state-icon-background-color: white;
+    --mat-stepper-header-icon-foreground-color: white;
+    --mat-stepper-header-icon-background-color: white;
+    --mat-stepper-header-edit-state-icon-background-color: white;
+    --mat-stepper-header-edit-state-icon-foreground-color: white;
+
+    color: var(----primary-btn-color);
+}
+
+::ng-deep.mat-step-icon-state-done {
+    --mat-stepper-header-done-state-icon-background-color: white !important;
+    --mat-stepper-header-done-state-icon-foreground-color: white !important;
+    border: 2px solid #C4C7C5 !important;
+    color: #C4C7C5 !important;
+}
+
+
+::ng-deep.mat-step-icon {
+    font-size: 24px;
+    height: 28px;
+    width: 28px;
+    --mat-stepper-header-icon-foreground-color: #C4C7C5;
+    border: 2px solid #C4C7C5;
+    --mat-stepper-header-icon-background-color: white;
+    --mat-stepper-header-selected-state-icon-foreground-color: rgba(188, 218, 255, 1);
+}
+
+::ng-deep.mat-stepper-label-position-bottom .mat-horizontal-stepper-header:not(:last-child)::after,
+::ng-deep.mat-stepper-label-position-bottom .mat-horizontal-stepper-header:not(:first-child)::before {
+    width: 0px;
+    border: none
+}

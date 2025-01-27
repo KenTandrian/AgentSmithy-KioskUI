@@ -1,0 +1,152 @@
+<div class="outer-container">
+    <form [formGroup]="formGroup">
+                <div class="heading">Pre-defined agents</div>
+                <div class="stepper-container">
+                    <div class="runtime-container">
+                        <div class="option-selectors">
+                            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group">
+                                <div [ngClass]="{'selected':selectedRuntime==='resoningEngine'}"
+                                    (click)="selectRunTime('resoningEngine')" class="option-card">
+                                    <span class="icon">
+                                        <span class="material-symbols-outlined">
+                                            {{selectedRuntime==='resoningEngine'?
+                                            'task_alt': 'radio_button_unchecked'}}
+                                        </span>
+                                    </span>
+                                    <span class="text">
+                                        Intelligent Virtual Assistant
+                                    </span>
+                                </div>
+                                <div [ngClass]="{'selected':selectedRuntime==='cloudRun'}"
+                                    (click)="selectRunTime('cloudRun')" class="option-card">
+                                    <span class="icon">
+                                        <span class="material-symbols-outlined">
+                                            {{selectedRuntime==='cloudRun'?
+                                            'task_alt': 'radio_button_unchecked'}}
+                                        </span>
+                                    </span>
+                                    <span class="text">
+                                        InfoBot
+                                    </span>
+                                </div>
+                                <div [ngClass]="{'selected':selectedRuntime==='predefined-bot'}"
+                                    (click)="selectRunTime('predefined-bot')" class="option-card">
+                                    <span class="icon">
+                                        <span class="material-symbols-outlined">
+                                            {{selectedRuntime==='predefined-bot'?
+                                            'task_alt': 'radio_button_unchecked'}}
+                                        </span>
+                                    </span>
+                                    <span class="text">
+                                        Predefined Bot 1
+                                    </span>
+                                </div>
+                            </mat-radio-group>
+                        </div>
+                        <div *ngIf="selectedRuntime==='resoningEngine'" class="option-response">
+                            <span class="subtitle">This agent, deployed on Vertex AI's Reasoning Engine, utilizes the LangChain framework to connect the Gemini large language model with various APIs. This configuration enables the agent to understand user requests, retrieve and process information from external sources, and then perform tasks or provide comprehensive answers based on the retrieved data.</span>
+                            <div class="inner-container">
+                                <div class="tech-item">
+                                    <div class="headings">
+                                        Runtime
+                                    </div>
+                                    <div class="border"></div>
+                                    <div class="subheading">
+                                        Vertex AI Reasoning Engine
+                                    </div>
+                                </div>
+                                <div class="tech-item">
+                                    <div class="headings">
+                                        Orchestration Framework
+                                    </div>
+                                    <div class="border"></div>
+                                    <div class="subheading">
+                                        Langchain/Langgraph
+                                    </div>
+                                </div>
+                                <div class="tech-item">
+                                    <div class="headings">
+                                        Tools
+                                    </div>
+                                    <div class="border"></div>
+                                    <div class="subheading">
+                                        API
+                                    </div>
+                                </div>
+                                <div class="tech-item">
+                                    <div class="headings">
+                                        Model
+                                    </div>
+                                    <div class="border"></div>
+                                    <div class="subheading">
+                                        Gemini
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngIf="selectedRuntime==='cloudRun'" class="option-response">
+                            <span class="subtitle">This agent, deployed on Vertex AI's Reasoning Engine, utilizes the LangChain framework to connect the Gemini large language model with various APIs. This configuration enables the agent to understand user requests, retrieve and process information from external sources, and then perform tasks or provide comprehensive answers based on the retrieved data.</span>
+                            <div class="inner-container">
+                                <div class="tech-item">
+                                    <div class="headings">
+                                        Runtime
+                                    </div>
+                                    <div class="border"></div>
+                                    <div class="subheading">
+                                        Vertex AI Reasoning Engine
+                                    </div>
+                                </div>
+                                <div class="tech-item">
+                                    <div class="headings">
+                                        Orchestration Framework
+                                    </div>
+                                    <div class="border"></div>
+                                    <div class="subheading">
+                                        Langchain/Langgraph
+                                    </div>
+                                </div>
+                                <div class="tech-item">
+                                    <div class="headings">
+                                        Tools
+                                    </div>
+                                    <div class="border"></div>
+                                    <div class="subheading">
+                                        API
+                                    </div>
+                                </div>
+                                <div class="tech-item">
+                                    <div class="headings">
+                                        Model
+                                    </div>
+                                    <div class="border"></div>
+                                    <div class="subheading">
+                                        Gemini
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="footer-container">
+                    <button class="home" mat-fab extended (click)="goToHome()">
+                        <mat-icon>home</mat-icon>
+                        Home
+                    </button>
+                    <div class="button-container">
+                        <button class="backward" mat-fab extended (click)="goToHome()">
+                            <mat-icon>
+                                arrow_back
+                            </mat-icon>
+                            Back
+                        </button>
+                        <button mat-fab extended>
+                            <mat-icon>
+                                arrow_forward
+                            </mat-icon>
+                            Demo
+                        </button>
+                    </div>
+                </div>
+    </form>
+</div>
