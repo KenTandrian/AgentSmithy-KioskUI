@@ -29,6 +29,8 @@ import { MatRadioModule } from '@angular/material/radio';
 import { ConfigureBotComponent } from './components/configure-bot/configure-bot.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { ExportComponent } from './components/export/export.component';
+import { CodeDialogComponent } from './components/code-dialog/code-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,8 @@ import { ExportComponent } from './components/export/export.component';
     FooterComponent,
     ConfigureBotComponent,
     SpinnerComponent,
-    ExportComponent
+    ExportComponent,
+    CodeDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +59,8 @@ import { ExportComponent } from './components/export/export.component';
     MatProgressSpinnerModule,
     MatMenuModule,
     MatCheckboxModule,
-    MatRadioModule
+    MatRadioModule,
+    MatDialogModule,
   ],
   providers: [
     provideClientHydration(),

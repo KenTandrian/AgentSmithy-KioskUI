@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { Validators, FormBuilder, FormArray, FormGroup, AbstractControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ThemeService } from '../../services/theme.service';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-configure-bot',
@@ -14,21 +15,26 @@ export class ConfigureBotComponent {
   selectedFramework: string = 'langchain';
   selectedTools: string = 'api';
   selectedModel: string = 'gemini';
+  @ViewChild('viewCode', { static: true })
+  viewCode: TemplateRef<{}>;
+  viewCodeDialogRef?: MatDialogRef<{}>;
 
 
-  constructor(private _formBuilder: FormBuilder, private router: Router, private fb: FormBuilder, private themeService: ThemeService) { 
-    this.formGroup = this.fb.group({
-      formArray: this.fb.array([
-        this.fb.group({
-          agentName: [''],
-          description: [''],
-          agentType: [''],
-          industry: ['']
-        }),
-        this.fb.group({ /* runtime controls */ }),
-        this.fb.group({ /* other controls */ })
-      ])
-    });
+  constructor(private _formBuilder: FormBuilder, 
+    private router: Router, private fb: FormBuilder
+    , private themeService: ThemeService,private readonly dialog: MatDialog,) { 
+    // this.formGroup = this.fb.group({
+    //   formArray: this.fb.array([
+    //     this.fb.group({
+    //       agentName: [''],
+    //       description: [''],
+    //       agentType: [''],
+    //       industry: ['']
+    //     }),
+    //     this.fb.group({ /* runtime controls */ }),
+    //     this.fb.group({ /* other controls */ })
+    //   ])
+    // });
   }
 
   get formArray(): AbstractControl | null { return this.formGroup.get('formArray'); }
@@ -54,7 +60,9 @@ export class ConfigureBotComponent {
       ],
       hasNext: true,
       hasPrevious: false,
-      hasHome: true
+      hasHome: true,
+      hasCode: false,
+      hasBack: true
     },
     {
       heading: 'Runtime',
@@ -63,7 +71,7 @@ export class ConfigureBotComponent {
       options: [
         { 
           label: 'Vertex AI Reasoning Engine', 
-          isSelected: true, 
+          isSelected: false, 
           onClick: () => this.selectRunTime('Vertex AI Reasoning Engine'), 
           subtitle: 'Vertex AI Reasoning Engine is a specialized service for deploying and running machine learning models, with features such as model monitoring, versioning, and A/B testing.',
           caption: '# Initialize the Vertex AI client \naiplatform.init(project="your-project-id", location="your-region")\n\n# Deploy a model to the Vertex AI Reasoning Engine \nmodel = aiplatform.Model.upload( \n\tdisplay_name="your-model-name", \n\tartifact_uri="gs://your-bucket/your-model-path", \n\tserving_container_image_uri="us-docker.pkg.dev/vertex-ai/prediction/your-\ncontainer-image", ) endpoint = model.deploy( machine_type="n1-standard-4", )'
@@ -77,12 +85,13 @@ export class ConfigureBotComponent {
         }
       ],
       selectedOptionResponse: {
-        subtitle: 'Vertex AI Reasoning Engine is a specialized service for deploying and running machine learning models, with features such as model monitoring, versioning, and A/B testing.',
+        subtitle: 'An AI runtime provides the necessary environment to deploy and run machine learning models.\n\nVertex AI\n • Quick, easy solution for general reasoning tasks (QA, summarization).\n • Managed scaling and infrastructure.\n\nCloud Run\n • Fine-grained control and customization.\n • Cost optimization and portability.\n • Requires container expertise and infrastructure \n   management.deployments, and the resources to \n   develop and maintain the infrastructure. ',
         caption: '# Initialize the Vertex AI client \naiplatform.init(project="your-project-id", location="your-region")\n\n# Deploy a model to the Vertex AI Reasoning Engine \nmodel = aiplatform.Model.upload( \n\tdisplay_name="your-model-name", \n\tartifact_uri="gs://your-bucket/your-model-path", \n\tserving_container_image_uri="us-docker.pkg.dev/vertex-ai/prediction/your-\ncontainer-image", ) endpoint = model.deploy( machine_type="n1-standard-4", )'
       },
       hasNext: true,
       hasPrevious: true,
-      hasHome: true
+      hasHome: true,
+      hasCode: true
     },
     {
       heading: 'Orchestration Framework',
@@ -91,7 +100,7 @@ export class ConfigureBotComponent {
       options: [
         { 
           label: 'Langchain/Langgraph', 
-          isSelected: true, 
+          isSelected: false, 
           onClick: () => this.selectFramework('Langchain/Langgraph'), 
           subtitle: 'LangChain (with its visual counterpart LangGraph) is a framework for building applications with large language models (LLMs). It provides tools to chain together LLMs with other components, like prompts and external data sources, to create complex applications.',
           caption: 'from langchain.llms import Gemini \nfrom langchain.prompts import PromptTemplate \n\nllm = Gemini(model="gemini-pro", temperature=0.9) # Using Gemini Pro \nprompt = PromptTemplate( \n\tinput_variables=["product"], \n\ttemplate="What is a good name for a company that makes {product}?", \n) \nprint(llm(prompt.format(product="colorful socks")))'
@@ -112,12 +121,13 @@ export class ConfigureBotComponent {
         }
       ],
       selectedOptionResponse: {
-        subtitle: 'LangChain (with its visual counterpart LangGraph) is a framework for building applications with large language models (LLMs). It provides tools to chain together LLMs with other components, like prompts and external data sources, to create complex applications.',
+        subtitle: 'LangChain is best for orchestrating complex LLM workflows, LlamaIndex simplifies connecting LLMs to external data sources, and Vertex AI provides a comprehensive platform for building and deploying LLM-powered applications.  Choose LangChain for intricate agent behaviors, LlamaIndex for knowledge-based applications, and Vertex AI for production-ready deployments within the Google Cloud ecosystem.',
         caption: 'from langchain.llms import Gemini \nfrom langchain.prompts import PromptTemplate \n\nllm = Gemini(model="gemini-pro", temperature=0.9) # Using Gemini Pro \nprompt = PromptTemplate( \n\tinput_variables=["product"], \n\ttemplate="What is a good name for a company that makes {product}?", \n) \nprint(llm(prompt.format(product="colorful socks")))'
       },
       hasNext: true,
       hasPrevious: true,
-      hasHome: true
+      hasHome: true,
+      hasCode: true
     },
 
     {
@@ -127,7 +137,7 @@ export class ConfigureBotComponent {
       options: [
         { 
           label: 'API', 
-          isSelected: true, 
+          isSelected: false, 
           onClick: () => this.selectTools('API'), 
           subtitle: 'An API allows the LLM to interact with external services and retrieve information or perform actions. This expands the LLM\'s capabilities beyond just generating text, enabling it to access real-time data, interact with other applications, and perform a wider range of tasks.',
           caption: 'from langchain.agents import Tool \n\n# Define the tool (assuming \'get_weather\' function is already defined) \nweather_tool = Tool( \n\tname="Get Weather", \n\tfunc=get_weather, \n\tdescription="Get current weather for a location." \n)'
@@ -148,12 +158,13 @@ export class ConfigureBotComponent {
         }
       ],
       selectedOptionResponse: {
-        subtitle: 'An API allows the LLM to interact with external services and retrieve information or perform actions. This expands the LLM\'s capabilities beyond just generating text, enabling it to access real-time data, interact with other applications, and perform a wider range of tasks.',
+        subtitle: 'APIs offer flexibility and customization, allowing developers to tailor LLM interactions precisely to their needs and integrate them deeply within existing systems.  Pre-built tools, on the other hand, provide convenience and speed, offering ready-made solutions for common LLM use cases like chatbots, summarization, or question answering, often with user-friendly interfaces and requiring less coding.  Choose APIs when fine-grained control and deep integration are paramount, and pre-built tools when rapid development and ease of use are prioritized.',
         caption: 'from langchain.agents import Tool \n\n# Define the tool (assuming \'get_weather\' function is already defined) \nweather_tool = Tool( \n\tname="Get Weather", \n\tfunc=get_weather, \n\tdescription="Get current weather for a location." \n)'
       },
       hasNext: true,
       hasPrevious: true,
-      hasHome: true
+      hasHome: true,
+      hasCode: true
     },
     {
       heading: 'Model',
@@ -162,7 +173,7 @@ export class ConfigureBotComponent {
       options: [
         { 
           label: 'Gemini', 
-          isSelected: true, 
+          isSelected: false, 
           onClick: () => this.selectModel('Gemini'), 
           subtitle: 'Gemini is a family of large language models (LLMs) from Google AI, capable of text generation, code generation, translation, and question answering.',
           caption: 'from langchain.llms import Gemini \n\nllm = Gemini(model="gemini-pro") \nresponse = llm("Tell me a joke.") \nprint(response)'
@@ -176,13 +187,14 @@ export class ConfigureBotComponent {
         }
       ],
       selectedOptionResponse: {
-        subtitle: 'Gemini is a family of large language models (LLMs) from Google AI, capable of text generation, code generation, translation, and question answering.',
+        subtitle: 'Gemini is Google\'s multimodal LLM, excelling at tasks involving text, images, and code, and integrates well with Google services. Claude, from Anthropic, prioritizes safety and aims for less harmful outputs. Choose Gemini for multimodal needs and Google integration, Claude for a focus on safety.',
         caption: 'from langchain.llms import Gemini \n\nllm = Gemini(model="gemini-pro") \nresponse = llm("Tell me a joke.") \nprint(response)'
       },
       hasNext: false,
       hasPrevious: true,
       hasHome: true,
-      hasSubmit: true
+      hasSubmit: true,
+      hasCode: false
     }
   ];
 
@@ -196,7 +208,7 @@ export class ConfigureBotComponent {
           industry: ['', Validators.required],
         }),
         this._formBuilder.group({
-          runTime: ['', Validators.required]
+          runTime: ['', Validators.required] // Add validators for radio button groups
         }),
         this._formBuilder.group({
           framework: ['', Validators.required]
@@ -235,7 +247,7 @@ export class ConfigureBotComponent {
     this.router.navigate(['/']);
   }
 
-  onRadioChange(section: any, selectedOption: any) {
+  onRadioChange(section: any, selectedOption: any, stepIndex: number) {
     section.options.forEach((option: { isSelected: boolean; }) => {
       option.isSelected = option === selectedOption; 
     });
@@ -244,6 +256,17 @@ export class ConfigureBotComponent {
       caption: selectedOption.caption
     }
     selectedOption.onClick(); 
+
+    // Update form group value for radio button selection
+    const formArray = this.formGroup.get('formArray') as FormArray;
+    formArray.at(stepIndex).patchValue({  // Use stepIndex to target correct form group
+      runTime: this.selectedRuntime,       // Update with selected value
+      framework: this.selectedFramework,
+      tools: this.selectedTools,
+      model: this.selectedModel
+    });
+    console.log(formArray);
+    formArray.at(stepIndex).markAsDirty();
   }
 
   goToSpinnerComponent() {
@@ -258,4 +281,10 @@ export class ConfigureBotComponent {
   toggleTheme(): void {
     this.themeService.toggleTheme();
   }
+
+  openViewCodeModal(record: any) {
+    this.viewCodeDialogRef = this.dialog.open(this.viewCode, { width: '500px', data: record });
+
+  }
+  
 }
