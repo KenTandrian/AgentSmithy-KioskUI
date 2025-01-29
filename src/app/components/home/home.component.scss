@@ -1,6 +1,13 @@
+// .outer-container {
+//     background-image: url('./../../../../public/assets/images/hero.png');
+//     background-size: cover;
+//     // background-repeat: no-repeat;
+// }
+
 .root-container {
     display: grid;
     max-width: 1280px;
+    max-height: 720px;
     grid-template-columns: 1fr 1fr;
     gap: 50px;
     margin: 20px auto;
@@ -73,7 +80,7 @@
 
 .root-container .spark, .root-container .spark-shine {
     background-color: var(--primary-btn-color);
-    color: var(--primary-btn-font-color);
+    color: var(--primary-btn-text-color);
     border-color: var(--background-color);
     font-family: 'Google Sans';
     font-size: 1.2rem;
@@ -87,7 +94,7 @@
 
 .root-container .contrast {
     background-color: var(--primary-btn-color);
-    color: var(--primary-btn-font-color);
+    color: var(--primary-btn-text-color);
     border-color: var(--background-color);
     font-family: 'Google Sans';
     border-radius: 100px;

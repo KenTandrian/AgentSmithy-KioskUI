@@ -4,7 +4,6 @@
             <ng-container *ngFor="let step of stepperConfig; let index = index">
                 <mat-step [formGroupName]="index" [stepControl]="formGroup.get('formArray')?.get([index])!">
                     <ng-template matStepLabel>{{ step.stepHeading }}</ng-template>
-                    <!-- <ng-template matStepHeader selected>{{ step.heading }}</ng-template> -->
                     <div class="heading">{{ step.heading }}</div>
 
                     <div *ngIf="step.contentType === 'form'" class="agent-container stepper-container">
@@ -28,7 +27,7 @@
                             <div class="option-selectors">
                                 <div class="example-radio-group">
                                     <div *ngFor="let option of step.options" [ngClass]="{'selected': option.isSelected}"
-                                        (click)="onRadioChange(step, option)" class="option-card">
+                                    (click)="onRadioChange(step, option, index)" class="option-card">
                                         <span class="icon">
                                             <span class="material-symbols-outlined">{{ option.isSelected ?
                                                 'check_circle' : 'radio_button_unchecked' }}</span>
@@ -38,8 +37,18 @@
                                 </div>
                             </div>
                             <div *ngIf="step.selectedOptionResponse" class="option-response">
+
                                 <span class="subtitle">{{ step.selectedOptionResponse.subtitle }}</span>
-                                <span class="caption">{{ step.selectedOptionResponse.caption }}</span>
+                                <span *ngIf="step.contentType!=='options'" class="caption">{{
+                                    step.selectedOptionResponse.caption }}</span>
+                                    
+                                <button class="view-code-button" *ngIf="step.contentType==='options'" mat-button
+                                    (click)="openViewCodeModal(step.selectedOptionResponse)"><span
+                                        class="material-symbols-outlined">
+                                        code
+                                    </span><span>View code example</span></button>
+
+
                             </div>
                         </div>
                     </div>
@@ -56,6 +65,10 @@
                             </button>
                         </div>
                         <div class="button-container">
+                            <button *ngIf="step.hasBack" class="backward" mat-fab extended (click)="goToHome()">
+                                <mat-icon>arrow_back</mat-icon>
+                                Back
+                            </button>
                             <button *ngIf="step.hasPrevious" class="backward" mat-fab extended matStepperPrevious>
                                 <mat-icon>arrow_back</mat-icon>
                                 Back
@@ -64,7 +77,7 @@
                                 <mat-icon>arrow_forward</mat-icon>
                                 Next
                             </button>
-                            <button *ngIf="step.hasSubmit" mat-fab extended (click)="goToSpinnerComponent()">
+                            <button *ngIf="step.hasSubmit" class="next" mat-fab extended (click)="goToSpinnerComponent()">
                                 <mat-icon>arrow_forward</mat-icon>
                                 Submit
                             </button>
@@ -75,3 +88,9 @@
         </mat-stepper>
     </form>
 </div>
+
+<ng-template #viewCode let-data>
+    <div class="code-container">
+        {{data.caption}}
+    </div>
+</ng-template>
