@@ -5,29 +5,61 @@
 // }
 
 .root-container {
-    display: grid;
-    max-width: 1280px;
-    max-height: 720px;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-direction: column;
     gap: 50px;
-    margin: 20px auto;
-    padding: 20px 20px;
+    padding: 5% 10%;
     row-gap: 80%;
+    background-position: center;
+    background-size: inherit;
+    background-image: url('../../../assets/images/hero.png');
+    min-height: 100vh;
+}
+
+.row-container {
+    display: flex;
+    flex-direction: row;
+
+    .heading{
+        font-family: 'Google Sans';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 128px;
+        line-height: 96px;
+        color: #E3E3E3 !important;
+    }
+
+    .image-container {
+        width: 50%;
+    }
+
+    .header-container {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        gap: 25px
+    }
+}
+
+.second-row-container {
+    display: flex;
+    flex-direction: row;
+    padding-top: 5%;
+
+    .left-footer {
+        width: 50%;
+        display: flex;
+    }
+
+    .right-footer {
+        width: 50%;
+        display: flex;
+        justify-content: flex-end;
+    }
 }
 
 .left-container {
     width: 60%;
-}
-
-.image-container {
-    .logo-image {
-        padding-bottom: 3%;
-        background-image: url('./../../../assets/images/next-25-logo.gif');
-        background-size: cover;
-        background-repeat: no-repeat;
-        height: 18.75rem;
-        width: 100%;
-    }
 }
 
 .header-container h3 {
@@ -36,6 +68,7 @@
     font-size: 2rem;
     line-height: 1.5rem;
     margin-bottom: 10%;
+    
 }
 
 .text-container {
