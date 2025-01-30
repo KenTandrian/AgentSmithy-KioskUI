@@ -79,13 +79,16 @@ $agent-smithy-kioskui-light-theme: mat.define-theme((
 
   --background-color: #f5f5f5;
   --text-color: #E3E3E3;
-
-  --secondary-background-color: #C2E7FF;
   --stepper-container-color: #131314;
 
+  --selected-background-color: #003355;
+  --selected-step-background-color: #7FCFFF;
+
+  --secondary-background-color: #C2E7FF;
   --secondary-step-background-color: #004A77;
 
-  --selected-step-background-color: #7FCFFF;
+  // checkbox colors
+  --checkbox-color: #C4C7C5; 
 
   @include mat.all-component-themes($agent-smithy-kioskui-light-theme);
 }
