@@ -53,9 +53,9 @@ export class ConfigureBotComponent {
           { value: 'option3', label: 'Option 3' }
         ] },
         { label: 'Industry', type: 'select', controlName: 'industry', options: [
-          { value: 'option1', label: 'Option 1' },
-          { value: 'option2', label: 'Option 2', disabled: true },
-          { value: 'option3', label: 'Option 3' }
+          { value: 'Health', label: 'Health' },
+          { value: 'Financial', label: 'Financial' },
+          { value: 'Retail', label: 'Retail' }
         ] }
       ],
       hasNext: true,
