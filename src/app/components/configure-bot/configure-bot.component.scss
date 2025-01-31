@@ -95,8 +95,11 @@
                 padding: 1em;
                 border: 2px solid var(--secondary-background-color);
                 border-radius: 100px;
-                background-color: var(--secondary-background-color);
-
+                background-image: url('../../../assets/images/hero.png');
+                background-size: cover;
+                background-attachment: fixed;
+                background-position: 28% 96%;
+                background-size: cover;
                 .icon {
                     font-size: 2em;
                     padding: 0.5em 0 0.5em 0.5em;
