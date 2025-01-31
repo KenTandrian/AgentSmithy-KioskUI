@@ -100,13 +100,13 @@
                 .icon {
                     font-size: 2em;
                     padding: 0.5em 0 0.5em 0.5em;
-                    color: white;
+                    color: var(--primary-btn-text-color) !important;
                     border-color: 1px solid white;
                 }
 
                 .text {
                     padding: 0.5em;
-                    color: white;
+                    color: var(--primary-btn-text-color) !important;
                     font-size: 1.5em;
                 }
 
@@ -114,6 +114,7 @@
 
             .icon {
                 font-size: 3em;
+                color: var(--checkbox-color);
                 padding: 0.5em 0 0.5em 0.5em;
             }
 
@@ -295,10 +296,6 @@
         // }
     }
 
-    ::ng-deep.mat-step-text-label {
-        color: var(--secondary-background-color) !important;
-    }
-
     ::ng-deep.mat-step-header:hover {
         border-radius: 100px;
         height: 32px;
@@ -308,12 +305,16 @@
     }
 
     ::ng-deep.mat-step-header[aria-selected="true"] {
-        background-color: var(--selected-step-background-color) !important;
+        background-color: var(--secondary-background-color) !important;
         border-radius: 100px !important;
+    }
 
-        .mat-step-text-label {
-            color: var(--selected-background-color) !important;
-        }
+    ::ng-deep .mat-step-text-label {
+        color: var(--secondary-background-color) !important;
+    }
+
+    ::ng-deep .mat-step-label.mat-step-label-selected .mat-step-text-label {
+        color: var(--selected-step-tite) !important;
     }
 
     // ::ng-deep.material-symbols-outlined {
@@ -330,3 +331,21 @@
     white-space: pre-wrap;
     line-height: 200%;
 }
+
+  
+  ::ng-deep mat-form-field .mat-input-element {
+    caret-color: var(--text-color) !important;
+  }
+  
+  ::ng-deep mat-form-field .mat-form-field-ripple {
+    background-color: var(--text-color) !important;
+  }
+
+  ::ng-deep .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-text-field__input{
+    color: var(--text-color) !important;
+    caret-color: var(--text-color) !important;
+  }
+
+  ::ng-deep .mat-mdc-select  {
+    color: var(--text-color) !important;
+  }

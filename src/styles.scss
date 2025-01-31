@@ -31,6 +31,7 @@ $agent-smithy-kioskui-light-theme: mat.define-theme((
 
   --secondary-background-color: #C2E7FF;
   --secondary-step-background-color: #004A77;
+  --selected-step-tite: #00639B;
 
   // checkbox colors
   --checkbox-color: #C4C7C5; 
@@ -64,7 +65,8 @@ $agent-smithy-kioskui-light-theme: mat.define-theme((
 
   --secondary-step-background-color: #C2E7FF;
 
-  --selected-step-background-color: white;
+  --selected-step-background-color: #00639B;
+  --selected-step-tite: #C2E7FF;
 
   @include mat.all-component-themes($agent-smithy-kioskui-light-theme);
 }
@@ -87,6 +89,8 @@ $agent-smithy-kioskui-light-theme: mat.define-theme((
 
   --secondary-background-color: #C2E7FF;
   --secondary-step-background-color: #004A77;
+
+  --selected-step-tite: #00639B;
 
   // checkbox colors
   --checkbox-color: #C4C7C5; 
