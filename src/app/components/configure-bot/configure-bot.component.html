@@ -12,7 +12,7 @@
                             <mat-form-field appearance="outline" class="outline-border">
                                 <ng-container [ngSwitch]="field.type">
                                     <input *ngSwitchCase="'input'" matInput [placeholder]="field.placeholder!"
-                                        [formControlName]="field.controlName" [required]="field.required!">
+                                        [formControlName]="field.controlName" [required]="field.required!" class="input-text">
                                     <mat-select *ngSwitchCase="'select'" [formControlName]="field.controlName">
                                         <mat-option *ngFor="let option of field.options" [value]="option.value"
                                             [disabled]="option.disabled">{{ option.label }}</mat-option>
@@ -27,7 +27,7 @@
                             <div class="option-selectors">
                                 <div class="example-radio-group">
                                     <div *ngFor="let option of step.options" [ngClass]="{'selected': option.isSelected}"
-                                    (click)="onRadioChange(step, option, index)" class="option-card">
+                                        (click)="onRadioChange(step, option, index)" class="option-card">
                                         <span class="icon">
                                             <span class="material-symbols-outlined">{{ option.isSelected ?
                                                 'check_circle' : 'radio_button_unchecked' }}</span>
@@ -41,7 +41,7 @@
                                 <span class="subtitle">{{ step.selectedOptionResponse.subtitle }}</span>
                                 <span *ngIf="step.contentType!=='options'" class="caption">{{
                                     step.selectedOptionResponse.caption }}</span>
-                                    
+
                                 <button class="view-code-button" *ngIf="step.contentType==='options'" mat-button
                                     (click)="openViewCodeModal(step.selectedOptionResponse)"><span
                                         class="material-symbols-outlined">
@@ -77,7 +77,8 @@
                                 <mat-icon>arrow_forward</mat-icon>
                                 Next
                             </button>
-                            <button *ngIf="step.hasSubmit" class="next" mat-fab extended (click)="goToSpinnerComponent()">
+                            <button *ngIf="step.hasSubmit" class="next" mat-fab extended
+                                (click)="goToSpinnerComponent()">
                                 <mat-icon>arrow_forward</mat-icon>
                                 Submit
                             </button>

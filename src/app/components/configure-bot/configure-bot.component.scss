@@ -32,6 +32,10 @@
         .outline-border {
             border-color: var(--text-color);
         }
+
+        .input-text {
+            color: var(--text-color) !important;
+        }
     }
 
     .runtime-container {
@@ -60,6 +64,7 @@
 
                 width: fit-content;
                 margin: 3rem 2em;
+                color: var(--primary-btn-color);
 
                 ::ng-deep.mdc-button__label {
                     font-size: 14px;
@@ -320,8 +325,8 @@
 
 .code-container {
     padding: 2em;
-    background-color: #E3E3E3;
-    color: #444746;
+    background-color: var(--code-background-color);
+    color: #C4C7C5;
     white-space: pre-wrap;
     line-height: 200%;
 }
