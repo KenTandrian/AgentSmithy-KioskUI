@@ -37,6 +37,9 @@ $agent-smithy-kioskui-light-theme: mat.define-theme((
   --checkbox-color: #C4C7C5; 
   --code-background-color: #444746;
 
+  --dotted-border-color: #C4C7C5;
+  --caption-color: #747775;
+
   
 
   @include mat.all-component-themes($agent-smithy-kioskui-light-theme);
