@@ -47,11 +47,11 @@ export class ConfigureBotComponent {
       fields: [
         { label: 'Agent Name', type: 'input', controlName: 'agentName', placeholder: '', required: true },
         { label: 'Description', type: 'input', controlName: 'description', placeholder: '', required: true },
-        { label: 'Agent Type', type: 'select', controlName: 'agentType', options: [
-          { value: 'option1', label: 'Option 1' },
-          { value: 'option2', label: 'Option 2', disabled: true },
-          { value: 'option3', label: 'Option 3' }
-        ] },
+        // { label: 'Agent Type', type: 'select', controlName: 'agentType', options: [
+        //   { value: 'option1', label: 'Option 1' },
+        //   { value: 'option2', label: 'Option 2', disabled: true },
+        //   { value: 'option3', label: 'Option 3' }
+        // ] },
         { label: 'Industry', type: 'select', controlName: 'industry', options: [
           { value: 'Health', label: 'Health' },
           { value: 'Financial', label: 'Financial' },
@@ -149,13 +149,13 @@ export class ConfigureBotComponent {
           subtitle: '"Pre-built" tools for LLMs are ready-made components that provide easy access to common functionalities and services, like searching the web or accessing specific APIs. These tools are pre-configured and often come bundled with platforms like LangChain, allowing developers to quickly integrate them into their applications without building everything from scratch.',
           caption: 'from langchain.agents import load_tools \n\n# Load the pre-built Google Search tool \ntools = load_tools(["google-search"]) \n\n# Use the tool (e.g., within an agent) \ntools[0].run("What\'s the weather in Boston, MA?")' 
         },
-        { 
-          label: 'TBD', 
-          isSelected: false, 
-          onClick: () => this.selectTools('TBD'),
-          subtitle: 'Tempus interdum tincidunt suspendisse pulvinar. In habitant lorem quis viverra. Cum facilisi sit scelerisque mi sed porttitor mauris. Adipiscing pellentesque lobortis eget amet lectus. Nulla a et sit at id massa purus volutpat urna. Accumsan.',
-          caption: 'aiplatform.init(project="your-project-id", location="your-region") \nllm = VertexAI(model_name="text-bison@001") \nagent = "Agent description here" \nremote_agent = aiplatform.reasoning_engines.ReasoningEngine.create( \n\tagent=agent, \n\trequirements=[ "google-cloud-aiplatform[langchain,reasoningengine]", \n\t"cloudpickle==3.0.0", "pydantic==2.7.4", "langchain-google-community", "google-cloud-discoveryengine", ], \n)' 
-        }
+        // { 
+        //   label: 'TBD', 
+        //   isSelected: false, 
+        //   onClick: () => this.selectTools('TBD'),
+        //   subtitle: 'Tempus interdum tincidunt suspendisse pulvinar. In habitant lorem quis viverra. Cum facilisi sit scelerisque mi sed porttitor mauris. Adipiscing pellentesque lobortis eget amet lectus. Nulla a et sit at id massa purus volutpat urna. Accumsan.',
+        //   caption: 'aiplatform.init(project="your-project-id", location="your-region") \nllm = VertexAI(model_name="text-bison@001") \nagent = "Agent description here" \nremote_agent = aiplatform.reasoning_engines.ReasoningEngine.create( \n\tagent=agent, \n\trequirements=[ "google-cloud-aiplatform[langchain,reasoningengine]", \n\t"cloudpickle==3.0.0", "pydantic==2.7.4", "langchain-google-community", "google-cloud-discoveryengine", ], \n)' 
+        // }
       ],
       selectedOptionResponse: {
         subtitle: 'APIs offer flexibility and customization, allowing developers to tailor LLM interactions precisely to their needs and integrate them deeply within existing systems.  Pre-built tools, on the other hand, provide convenience and speed, offering ready-made solutions for common LLM use cases like chatbots, summarization, or question answering, often with user-friendly interfaces and requiring less coding.  Choose APIs when fine-grained control and deep integration are paramount, and pre-built tools when rapid development and ease of use are prioritized.',

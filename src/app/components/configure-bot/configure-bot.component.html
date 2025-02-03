@@ -14,8 +14,7 @@
                                     <input *ngSwitchCase="'input'" matInput [placeholder]="field.placeholder!"
                                         [formControlName]="field.controlName" [required]="field.required!" class="input-text">
                                     <mat-select *ngSwitchCase="'select'" [formControlName]="field.controlName">
-                                        <mat-option *ngFor="let option of field.options" [value]="option.value"
-                                            [disabled]="option.disabled">{{ option.label }}</mat-option>
+                                        <mat-option *ngFor="let option of field.options" [value]="option.value">{{ option.label }}</mat-option>
                                     </mat-select>
                                 </ng-container>
                             </mat-form-field>
@@ -47,18 +46,16 @@
                                         class="material-symbols-outlined">
                                         code
                                     </span><span>View code example</span></button>
-
-
                             </div>
                         </div>
                     </div>
 
                     <div class="footer-container">
                         <div class="button-container">
-                            <button class="contrast" mat-fab (click)="toggleTheme()">
+                            <!-- <button class="contrast" mat-fab (click)="toggleTheme()">
                                 <mat-icon>contrast</mat-icon>
-                            </button>
-                            <span class="border"></span>
+                            </button> -->
+                            <!-- <span class="border"></span> -->
                             <button *ngIf="step.hasHome" class="backward" mat-fab extended (click)="goToHome()">
                                 <mat-icon>home</mat-icon>
                                 Home
