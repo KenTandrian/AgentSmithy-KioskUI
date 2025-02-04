@@ -2,6 +2,10 @@
 @use '@angular/material' as mat;
 @include mat.core();
 
+html,body {
+ height: 100%;
+}
+
 $agent-smithy-kioskui-light-theme: mat.define-theme((
   color: (
     theme-type: light,

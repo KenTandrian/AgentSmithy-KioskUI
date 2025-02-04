@@ -1,3 +1,7 @@
+img, media {
+    max-width: 100%;
+}
+
 .root-container {
     display: flex;
     flex-direction: column;
@@ -8,8 +12,7 @@
     background-image: url('../../../assets/images/mono-purple.png');
     width: 100%;
     background-attachment: fixed;
-    min-height: 100vh;
-    background-size: inherit;
+    height: 100%;
 }
 
 .row-container{
