@@ -50,40 +50,45 @@
                         </div>
                     </div>
 
-                    <div class="footer-container">
-                        <div class="button-container">
-                            <!-- <button class="contrast" mat-fab (click)="toggleTheme()">
-                                <mat-icon>contrast</mat-icon>
-                            </button> -->
-                            <!-- <span class="border"></span> -->
-                            <button *ngIf="step.hasHome" class="backward" mat-fab extended (click)="goToHome()">
-                                <mat-icon>home</mat-icon>
-                                Home
-                            </button>
-                        </div>
-                        <div class="button-container">
-                            <button *ngIf="step.hasBack" class="backward" mat-fab extended (click)="goToHome()">
-                                <mat-icon>arrow_back</mat-icon>
-                                Back
-                            </button>
-                            <button *ngIf="step.hasPrevious" class="backward" mat-fab extended matStepperPrevious>
-                                <mat-icon>arrow_back</mat-icon>
-                                Back
-                            </button>
-                            <button *ngIf="step.hasNext" class="next" mat-fab extended matStepperNext>
-                                <mat-icon>arrow_forward</mat-icon>
-                                Next
-                            </button>
-                            <button *ngIf="step.hasSubmit" class="next" mat-fab extended
-                                (click)="goToSpinnerComponent()">
-                                <mat-icon>arrow_forward</mat-icon>
-                                Submit
-                            </button>
-                        </div>
-                    </div>
                 </mat-step>
+
             </ng-container>
         </mat-stepper>
+        <div class="footer-container">
+            <div class="button-container">
+                <!-- <button class="contrast" mat-fab (click)="toggleTheme()">
+                    <mat-icon>contrast</mat-icon>
+                </button> -->
+                <!-- <span class="border"></span> -->
+                <button class="backward" mat-fab extended (click)="goToHome()">
+                    <mat-icon>home</mat-icon>
+                    Home
+                </button>
+            </div>
+            <div class="button-container">
+                <button *ngIf="stepper.selectedIndex == 0" class="backward" mat-fab extended (click)="goToHome()">
+                    <mat-icon>arrow_back</mat-icon>
+                    Back
+                </button>
+                <button *ngIf="stepper.selectedIndex != 0" class="backward" mat-fab extended
+                    (click)="stepper.previous()"
+                >
+                    <mat-icon>arrow_back</mat-icon>
+                    Back
+                </button>
+                <button *ngIf="stepper.selectedIndex < stepperConfig.length-1" class="next" mat-fab extended
+                    (click)="stepper.next()"
+                >
+                    <mat-icon>arrow_forward</mat-icon>
+                    Next
+                </button>
+                <button *ngIf="stepper.selectedIndex === stepperConfig.length-1" class="next" mat-fab extended
+                    (click)="goToSpinnerComponent()">
+                    <mat-icon>arrow_forward</mat-icon>
+                    Submit
+                </button>
+            </div>
+        </div>
     </form>
 </div>
 
