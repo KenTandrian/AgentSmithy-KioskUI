@@ -3,6 +3,7 @@ import { Validators, FormBuilder, FormArray, FormGroup, AbstractControl } from '
 import { Router } from '@angular/router';
 import { ThemeService } from '../../services/theme.service';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { HowItWorksDialogComponent } from '../how-it-works-dialog/how-it-works-dialog.component';
 
 @Component({
   selector: 'app-configure-bot',
@@ -58,6 +59,7 @@ export class ConfigureBotComponent {
           { value: 'Retail', label: 'Retail' }
         ] }
       ],
+      caption:'Convallis non sollicitudin sit ut nibh nec facilisis. Nullam dui risus porttitor pellentesque enim mi porttitor vitae. Metus at pretium fermentum ac. Imperdiet eget neque adipiscing risus auctor id auctor nulla. A eget sit.',
       hasNext: true,
       hasPrevious: false,
       hasHome: true,
@@ -285,6 +287,10 @@ export class ConfigureBotComponent {
   openViewCodeModal(record: any) {
     this.viewCodeDialogRef = this.dialog.open(this.viewCode, { width: '500px', data: record });
 
+  }
+
+  openHelpModal() {
+    this.dialog.open(HowItWorksDialogComponent,{ width: '100%',maxWidth:'1000px' });
   }
   
 }

@@ -5,22 +5,28 @@
                 <mat-step [formGroupName]="index" [stepControl]="formGroup.get('formArray')?.get([index])!">
                     <ng-template matStepLabel>{{ step.stepHeading }}</ng-template>
                     <div class="heading">{{ step.heading }}</div>
-
-                    <div *ngIf="step.contentType === 'form'" class="agent-container stepper-container">
-                        <ng-container *ngFor="let field of step.fields">
-                            <mat-label class="label">{{ field.label }}</mat-label>
-                            <mat-form-field appearance="outline" class="outline-border">
-                                <ng-container [ngSwitch]="field.type">
-                                    <input *ngSwitchCase="'input'" matInput [placeholder]="field.placeholder!"
-                                        [formControlName]="field.controlName" [required]="field.required!" class="input-text">
-                                    <mat-select *ngSwitchCase="'select'" [formControlName]="field.controlName">
-                                        <mat-option *ngFor="let option of field.options" [value]="option.value">{{ option.label }}</mat-option>
-                                    </mat-select>
-                                </ng-container>
-                            </mat-form-field>
-                        </ng-container>
+                    <div *ngIf="step.contentType === 'form'" class="stepper-container">
+                        <div  class="agent-container">
+                            <ng-container *ngFor="let field of step.fields">
+                                <mat-label class="label">{{ field.label }}</mat-label>
+                                <mat-form-field appearance="outline" class="outline-border">
+                                    <ng-container [ngSwitch]="field.type">
+                                        <input *ngSwitchCase="'input'" matInput [placeholder]="field.placeholder!"
+                                            [formControlName]="field.controlName" [required]="field.required!"
+                                            class="input-text">
+                                        <mat-select *ngSwitchCase="'select'" [formControlName]="field.controlName">
+                                            <mat-option *ngFor="let option of field.options" [value]="option.value">{{
+                                                option.label }}</mat-option>
+                                        </mat-select>
+                                    </ng-container>
+                                </mat-form-field>
+                            </ng-container> 
+                        </div>
+                        <div *ngIf="step?.caption" class="option-response extra-margin">
+                            <span class="subtitle">{{
+                                step.caption }}</span>
+                        </div>
                     </div>
-
                     <div *ngIf="step.contentType === 'options'" class="stepper-container">
                         <div class="runtime-container">
                             <div class="option-selectors">
@@ -64,6 +70,11 @@
                     <mat-icon>home</mat-icon>
                     Home
                 </button>
+                <mat-divider [vertical]="true"></mat-divider>
+                <button class="help-button" mat-fab extended (click)="openHelpModal()">
+                    <mat-icon>add_circle</mat-icon>
+                    How it works
+                </button>
             </div>
             <div class="button-container">
                 <button *ngIf="stepper.selectedIndex == 0" class="backward" mat-fab extended (click)="goToHome()">
@@ -71,14 +82,12 @@
                     Back
                 </button>
                 <button *ngIf="stepper.selectedIndex != 0" class="backward" mat-fab extended
-                    (click)="stepper.previous()"
-                >
+                    (click)="stepper.previous()">
                     <mat-icon>arrow_back</mat-icon>
                     Back
                 </button>
                 <button *ngIf="stepper.selectedIndex < stepperConfig.length-1" class="next" mat-fab extended
-                    (click)="stepper.next()"
-                >
+                    (click)="stepper.next()">
                     <mat-icon>arrow_forward</mat-icon>
                     Next
                 </button>
@@ -94,6 +103,13 @@
 
 <ng-template #viewCode let-data>
     <div class="code-container">
-        {{data.caption}}
+        <div mat-dialog-actions>
+            <button mat-dialog-close mat-icon-button>
+                <mat-icon>close</mat-icon>
+            </button>
+        </div>
+        <div>
+            {{data.caption}}
+        </div>
     </div>
 </ng-template>

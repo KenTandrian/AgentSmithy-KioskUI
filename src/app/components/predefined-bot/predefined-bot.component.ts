@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { HowItWorksDialogComponent } from '../how-it-works-dialog/how-it-works-dialog.component';
 
 @Component({
   selector: 'app-predefined-bot',
@@ -14,7 +16,7 @@ export class PredefinedBotComponent {
     selectedTools: string = 'api';
     selectedModel: string = 'gemini';
 
-    constructor(private _formBuilder: FormBuilder, private router: Router) { }
+    constructor(private _formBuilder: FormBuilder, private router: Router,private readonly dialog: MatDialog,) { }
   
     get formArray(): AbstractControl | null { return this.formGroup.get('formArray'); }
   
@@ -65,5 +67,9 @@ export class PredefinedBotComponent {
   
     goToHome() {
       this.router.navigate(['/']);
+    }
+
+    openHelpModal() {
+      this.dialog.open(HowItWorksDialogComponent,{ width: '100%',maxWidth:'1000px' });
     }
 }

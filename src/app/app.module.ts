@@ -31,6 +31,8 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
 import { ExportComponent } from './components/export/export.component';
 import { CodeDialogComponent } from './components/code-dialog/code-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import {MatDividerModule} from '@angular/material/divider';
+import { HowItWorksDialogComponent } from './components/how-it-works-dialog/how-it-works-dialog.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     ConfigureBotComponent,
     SpinnerComponent,
     ExportComponent,
-    CodeDialogComponent
+    CodeDialogComponent,
+    HowItWorksDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -61,6 +64,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatCheckboxModule,
     MatRadioModule,
     MatDialogModule,
+    MatDividerModule
   ],
   providers: [
     provideClientHydration(),

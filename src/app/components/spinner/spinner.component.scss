@@ -1,33 +1,51 @@
 .spinner-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000; /* Ensure spinner is on top */
-  }
-  
-  .spinner {
-    /* White background for the spinner */
-    background-color: transparent; 
-  
-    /* Border with the specified color */
-    border: 5px solid #0B57D0;
-  
-    /* Create the 'incomplete circle' effect */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  /* Ensure spinner is on top */
+}
+
+.spinner {
+
+  animation: spin 1s linear infinite;
+  border: 10px solid transparent;
+  border-radius: 50%;
+  background:
+    linear-gradient(to bottom,
+      #131314,
+      #131314),
+    conic-gradient(from 65deg at 50% 50%, rgba(11, 87, 208, 0.5) 0deg, rgba(255, 255, 255, 0) 0.04deg, #0B57D0 360deg);
+  background-clip: padding-box, border-box;
+  background-origin: padding-box, border-box;
+  width: 120px;
+  height: 120px;
+  padding: 12px;
+
+  // background: conic-gradient(from 90deg at 50% 50%, rgba(11, 87, 208, 0.5) 0deg, rgba(255, 255, 255, 0) 0.04deg, #0B57D0 360deg);
+
+
+  .head {
+    width: 10px;
+    height: 10px;
+    background-color: #A8C7FA;
     border-radius: 50%;
-    border-bottom-color: transparent;
-    border-left-color: transparent;
-  
-    width: 80px;
-    height: 80px;
-    animation: spin 1s linear infinite;
+    margin-left: 5.2em;
+    margin-top: 0.5em;
   }
-  
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
   }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

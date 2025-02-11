@@ -129,10 +129,18 @@
 
                 </div>
                 <div class="footer-container">
+                    <div class="button-container">
                     <button class="home" mat-fab extended (click)="goToHome()">
                         <mat-icon>home</mat-icon>
                         Home
                     </button>
+                    <mat-divider [vertical]="true"></mat-divider>
+
+                    <button class="help-button" mat-fab extended (click)="openHelpModal()">
+                        <mat-icon>add_circle</mat-icon>
+                        How it works
+                    </button>
+                </div>
                     <div class="button-container">
                         <button class="backward" mat-fab extended (click)="goToHome()">
                             <mat-icon>

@@ -12,6 +12,7 @@
         top: .5em;
         color: var(--text-color);
     }
+ 
 
     .agent-container {
         display: flex;
@@ -22,7 +23,7 @@
     .stepper-container {
         margin-top: 30px;
         height: 60vh;
-
+        display: flex;
         .label {
             font-size: 1em;
             margin-bottom: 0.5em;
@@ -37,6 +38,45 @@
             color: var(--text-color) !important;
         }
     }
+    .option-response {
+        flex: 2;
+        margin-left: 2em;
+        text-align: justify;
+        &.extra-margin{
+            margin-left: 5em;
+        }
+
+        .subtitle {
+            color: var(--text-color);
+            font-size: 22px;
+            line-height: 1.75rem;
+            margin: 0rem 2em 1rem 2rem;
+            white-space: pre-wrap;
+            text-align: justify;
+        }
+
+        .view-code-button {
+
+            width: fit-content;
+            margin: 3rem 2em;
+            color: var(--primary-btn-color);
+
+            ::ng-deep.mdc-button__label {
+                font-size: 14px;
+                display: flex;
+                align-items: center;
+            }
+        }
+
+        .caption {
+            color: var(--caption-color);
+            font-size: 1em;
+            margin: 3rem 2em;
+            padding: 5px 10px;
+            white-space: pre-wrap;
+        }
+    }
+
 
     .runtime-container {
         display: flex;
@@ -48,40 +88,7 @@
             flex-direction: column;
         }
 
-        .option-response {
-            flex: 2;
-            margin-left: 2em;
-
-            .subtitle {
-                color: var(--text-color);
-                font-size: 22px;
-                line-height: 1.75rem;
-                margin: 0rem 2em 1rem 2rem;
-                white-space: pre-wrap;
-            }
-
-            .view-code-button {
-
-                width: fit-content;
-                margin: 3rem 2em;
-                color: var(--primary-btn-color);
-
-                ::ng-deep.mdc-button__label {
-                    font-size: 14px;
-                    display: flex;
-                    align-items: center;
-                }
-            }
-
-            .caption {
-                color: var(--caption-color);
-                font-size: 1em;
-                margin: 3rem 2em;
-                padding: 5px 10px;
-                white-space: pre-wrap;
-            }
-        }
-
+      
         .option-card {
 
             border: 2px solid #C4C7C5;
@@ -95,10 +102,10 @@
                 padding: 1em;
                 border: 2px solid var(--secondary-background-color);
                 border-radius: 100px;
-                background-image: url('../../../assets/images/hero.png');
+                background-image: url('../../../assets/images/hero2.png');
                 background-size: cover;
                 background-attachment: fixed;
-                background-position: 28% 96%;
+                background-position: 90% 13%;
                 background-size: cover;
                 .icon {
                     font-size: 2em;
@@ -138,6 +145,16 @@
     .button-container {
         display: flex;
         justify-content: flex-end;
+        .help-button{
+            --mdc-fab-container-color: none;
+            border: none;
+            margin-right: 1em;
+            color: var(--primary-btn-color) !important;
+            padding: 1rem 1.75rem;
+            line-height: 1.75rem;
+            font-weight: 500;
+            font-size: 1rem;
+        }
     }
 
     .footer-container .contrast {
@@ -328,9 +345,10 @@
 }
 
 .code-container {
-    padding: 2em;
+    padding:0em 0em 2em 2em;
     background-color: var(--code-background-color);
-    color: #C4C7C5;
+    color: #C4C7C5 !important;
+    --mdc-icon-button-icon-color: #C4C7C5 !important;
     white-space: pre-wrap;
     line-height: 200%;
 }
