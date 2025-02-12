@@ -102,11 +102,11 @@
                 padding: 1em;
                 border: 2px solid var(--secondary-background-color);
                 border-radius: 100px;
-                background-image: url('../../../assets/images/hero2.png');
-                background-size: cover;
+                background-image: url('../../../assets/images/hero.png');
+                background-size: contain;
                 background-attachment: fixed;
-                background-position: 90% 13%;
-                background-size: cover;
+                background-position: left;
+
                 .icon {
                     font-size: 2em;
                     padding: 0.5em 0 0.5em 0.5em;

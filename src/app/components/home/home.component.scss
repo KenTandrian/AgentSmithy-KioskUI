@@ -120,12 +120,13 @@
     border-color: var(--background-color);
     font-family: 'Google Sans';
     font-size: 1.2rem;
-    padding: 1.2rem 1.2rem;
+    padding: 1rem 1.2rem;
     border-radius: 100px;
     cursor: pointer;
     white-space: nowrap;
     word-break: break-word;
-    margin-right: 10px;
+    margin-right: 1rem;
+    font-weight: 500;
 }
 
 .root-container .contrast {
@@ -134,7 +135,9 @@
     border-color: var(--background-color);
     font-family: 'Google Sans';
     border-radius: 100px;
+    padding: 1rem 1.2rem;
     cursor: pointer;
+    font-weight: 500;
 }
 
 ::ng-deep.mat-step-header:hover:not([aria-disabled]) {
