@@ -23,7 +23,7 @@
     display: flex;
     flex-direction: row;
 
-    .heading{
+    .heading {
         font-family: 'Google Sans';
         font-style: normal;
         font-weight: 500;
@@ -48,10 +48,40 @@
     display: flex;
     flex-direction: row;
     padding-top: 5%;
+    .mat-divider.mat-divider-vertical {
+        border-right-style:dashed
+    }
 
     .left-footer {
         width: 50%;
         display: flex;
+        font-family: "Google Sans", sans-serif;
+        letter-spacing: 0.5px;
+        font-weight: 500;
+        align-items: center;
+        justify-content: flex-start;
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            margin-left: 0.5em;
+            justify-content: center;
+            .created-by{
+                color: var(--text-color);
+                font-size: 11px;
+                margin-bottom: 0.1em;
+            }
+            .google-cont{
+                display: flex;
+                align-items: center;
+                color: var(--background-color);
+                font-size: 16px;
+                .g-vector{
+                    margin-right: 0.3em;
+                }
+               
+            }
+        }
+      
     }
 
     .right-footer {

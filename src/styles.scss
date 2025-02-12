@@ -44,6 +44,9 @@ $agent-smithy-kioskui-light-theme: mat.define-theme((
   --dotted-border-color: #C4C7C5;
   --caption-color: #747775;
 
+  --dark-text-color: #5F6368;
+
+
   
 
   @include mat.all-component-themes($agent-smithy-kioskui-light-theme);

@@ -75,6 +75,16 @@
                     <mat-icon>add_circle</mat-icon>
                     How it works
                 </button>
+                <mat-divider [vertical]="true"></mat-divider>
+                <div class="logo-container">
+                    <div class="created-by">
+                        Created by
+                    </div>
+                    <div class="google-cont">
+                        <img class="g-vector" src="assets/images/google-color.svg">
+                        Cloud Consulting
+                    </div>
+                </div>
             </div>
             <div class="button-container">
                 <button *ngIf="stepper.selectedIndex == 0" class="backward" mat-fab extended (click)="goToHome()">
