@@ -5,6 +5,7 @@ import { HomeComponent } from './components/home/home.component';
 import { ConfigureBotComponent } from './components/configure-bot/configure-bot.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { ExportComponent } from './components/export/export.component';
+import { AgentBotComponent } from './components/agent-bot/agent-bot.component';
 
 
 const routes: Routes = [  
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'predefined-bot', component: PredefinedBotComponent },
   { path: 'spinner', component: SpinnerComponent },
   { path: 'export', component: ExportComponent },
+  { path: 'agent-bot', component: AgentBotComponent },
 ];
 
 @NgModule({

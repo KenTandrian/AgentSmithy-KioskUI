@@ -18,7 +18,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {MatStepperModule} from '@angular/material/stepper';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -33,6 +33,7 @@ import { CodeDialogComponent } from './components/code-dialog/code-dialog.compon
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatDividerModule} from '@angular/material/divider';
 import { HowItWorksDialogComponent } from './components/how-it-works-dialog/how-it-works-dialog.component';
+import { AgentBotComponent } from './components/agent-bot/agent-bot.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { HowItWorksDialogComponent } from './components/how-it-works-dialog/how-
     SpinnerComponent,
     ExportComponent,
     CodeDialogComponent,
-    HowItWorksDialogComponent
+    HowItWorksDialogComponent,
+    AgentBotComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +66,8 @@ import { HowItWorksDialogComponent } from './components/how-it-works-dialog/how-
     MatCheckboxModule,
     MatRadioModule,
     MatDialogModule,
-    MatDividerModule
+    MatDividerModule,
+    FormsModule
   ],
   providers: [
     provideClientHydration(),

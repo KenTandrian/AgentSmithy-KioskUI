@@ -273,6 +273,7 @@ export class ConfigureBotComponent {
 
   goToSpinnerComponent() {
     this.submitForm();
+    localStorage.setItem("agentData",JSON.stringify(this.formGroup.value.formArray));
     this.router.navigate(['/spinner']);
   }
 

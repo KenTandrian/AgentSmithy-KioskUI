@@ -12,7 +12,7 @@ export class SpinnerComponent implements OnInit {
 
   ngOnInit(): void {
     setTimeout(() => {
-      this.router.navigate(['/export']);
+      this.router.navigate(['/agent-bot']);
     }, 3000);
   }
 }

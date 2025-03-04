@@ -1,0 +1,147 @@
+<div class="outer-container">
+
+  <div class="heading">{{selectedAgentData?.agentName}}</div>
+  <div class="stepper-container">
+    <div class="runtime-container">
+      <div class="custom-outer-container">
+        <div class="chat-body-outer">
+          <div class="chat-container">
+            <div class="chat-body">
+              <!-- Chat section for the messages -->
+              <ng-container *ngFor="let message of conversation;index as i">
+                <div class="user-message" *ngIf="message.type == 'user'">
+                  <div class="user-message-wrapping-container">
+                    <div class="messageContent">
+                      {{message.body}}
+                    </div>
+                    <div class="user-circle"><img class="logo-icon" />
+                    </div>
+                  </div>
+                </div>
+                <div class="bot-message" *ngIf="message.type == 'bot'" id="{{message.botStartTime}}">
+                  <div class="bot-message-wrapping-container">
+                    <div class="bot-message-action">
+                      <div></div>
+                    </div>
+                    <div class="bot-message-content">
+                      <div *ngFor="let msg of message.botAnswer">
+                        <container-element [ngSwitch]="msg.type">
+                          <div *ngSwitchCase="'textData'" clipboard class="variable-binding">
+                            getStringData(msg.data.content)</div>
+
+
+                        </container-element>
+                      </div>
+
+
+                    </div>
+
+                  </div>
+                  <span class="generating-text" *ngIf="message.responseTime">Generated in
+                    {{message.responseTime}}s</span>
+                </div>
+              </ng-container>
+
+            </div>
+
+
+            <div class="chat-footer-outer">
+              <div [ngStyle]="{'opacity':this.isChatDisabled ? '30%' : '100%' }" class="chat-footer">
+                <div class="chat-textarea">
+                  <textarea [(ngModel)]="chatQuery" [disabled]="this.isChatDisabled"
+                    [placeholder]="!this.isChatDisabled ?  'Type your question here, make sure to add context' : ''"
+                    (keydown.enter)="submitMessage($event)"></textarea>
+                </div>
+                <div class="micIcon">
+                  <button mat-icon-button (click)="submitMessage($event)">
+                    <mat-icon class="send-icon">send</mat-icon>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="option-response">
+        <span class="subtitle">This agent, deployed on Vertex AI's Reasoning Engine, utilizes the LangChain framework to
+          connect the Gemini large language model with various APIs. This configuration enables the agent to understand
+          user requests, retrieve and process information from external sources, and then perform tasks or provide
+          comprehensive answers based on the retrieved data.</span>
+        <div class="inner-container">
+          <div class="tech-item">
+            <div class="headings">
+              Runtime
+            </div>
+            <div class="border"></div>
+            <div class="subheading">
+             {{selectedAgentData?.runTime}}
+            </div>
+          </div>
+          <div class="tech-item">
+            <div class="headings">
+              Orchestration Framework
+            </div>
+            <div class="border"></div>
+            <div class="subheading">
+              {{selectedAgentData?.frameWork}}
+            </div>
+          </div>
+          <div class="tech-item">
+            <div class="headings">
+              Tools
+            </div>
+            <div class="border"></div>
+            <div class="subheading">
+              {{selectedAgentData?.tools}}
+            </div>
+          </div>
+          <div class="tech-item">
+            <div class="headings">
+              Model
+            </div>
+            <div class="border"></div>
+            <div class="subheading">
+              {{selectedAgentData?.model}}
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  <div class="footer-container">
+    <div class="button-container">
+      <button class="home" mat-fab extended>
+        <mat-icon>home</mat-icon>
+        Home
+      </button>
+      <mat-divider [vertical]="true"></mat-divider>
+
+      <button class="help-button" mat-fab extended>
+        <mat-icon>add_circle</mat-icon>
+        How it works
+      </button>
+      <mat-divider [vertical]="true"></mat-divider>
+      <div class="logo-container">
+        <div class="created-by">
+          Created by
+        </div>
+        <div class="google-cont">
+          <img class="g-vector" src="assets/images/google-color.svg">
+          Cloud Consulting
+        </div>
+      </div>
+    </div>
+    <div class="button-container">
+
+      <button (click)="goToExport()" mat-fab extended>
+        <mat-icon>
+          arrow_forward
+        </mat-icon>
+        Finish
+      </button>
+    </div>
+  </div>
+
+</div>

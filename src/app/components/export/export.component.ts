@@ -9,15 +9,16 @@ import { Router } from '@angular/router';
   styleUrl: './export.component.scss'
 })
 export class ExportComponent {
-  constructor(public router: Router, private domSanitizer: DomSanitizer, private matIconRegistry: MatIconRegistry) { 
+  constructor(public router: Router, private domSanitizer: DomSanitizer, private matIconRegistry: MatIconRegistry) {
 
   }
-  
-    export() {
-      
-    }
-  
-    startAgain() {
-        this.router.navigate(["/"])
-    }
+
+  export() {
+
+  }
+
+  startAgain() {
+    localStorage.removeItem("agentData");
+    this.router.navigate(["/"])
+  }
 }

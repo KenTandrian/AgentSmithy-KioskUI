@@ -104,6 +104,7 @@ $agent-smithy-kioskui-light-theme: mat.define-theme((
 
   // checkbox colors
   --checkbox-color: #C4C7C5; 
+  --chat-background:#1B1C1D;
 
   @include mat.all-component-themes($agent-smithy-kioskui-light-theme);
 }
