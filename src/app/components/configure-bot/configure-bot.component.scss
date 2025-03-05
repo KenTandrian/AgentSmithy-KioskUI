@@ -41,8 +41,8 @@
     }
     .option-response {
         flex: 2;
-        margin-left: 6em;
-        text-align: justify;
+        margin-left: 5em;
+        text-align: start;
         &.extra-margin{
             margin-left: 5em;
         }
@@ -51,9 +51,9 @@
             color: var(--text-color);
             font-size: 22px;
             line-height: 1.75rem;
-            margin: 0rem 2em 1rem 2rem;
+            margin: 0rem 2em 1rem 0rem;
             white-space: pre-wrap;
-            text-align: justify;
+            text-align: start !important;
         }
 
         .view-code-button {
@@ -98,6 +98,7 @@
             align-items: center;
             margin-bottom: 1.5em;
             font-weight: 400;
+            cursor: pointer;
 
             &.selected {
                 padding: 1em;
@@ -152,7 +153,7 @@
         .help-button {
             --mdc-fab-container-color: none;
             border: none;
-            margin-right: 1em;
+            margin-right: .5em;
             color: var(--primary-btn-color) !important;
             padding: 1rem 1.75rem;
             line-height: 1.75rem;
@@ -162,7 +163,7 @@
         .logo-container {
             display: flex;
             flex-direction: column;
-            margin-left: 0.5em;
+            margin-left: 1em;
             justify-content: center;
 
             .created-by {

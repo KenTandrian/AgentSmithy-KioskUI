@@ -58,7 +58,7 @@ export class ConfigureBotComponent implements OnInit {
           { value: 'Retail', label: 'Retail' }
         ] }
       ],
-      caption:'Convallis non sollicitudin sit ut nibh nec facilisis. Nullam dui risus porttitor pellentesque enim mi porttitor vitae. Metus at pretium fermentum ac. Imperdiet eget neque adipiscing risus auctor id auctor nulla. A eget sit.',
+      caption:'Welcome to the agent builder! To begin, please provide a unique name for your agent, something that reflects its purpose or personality. Next, craft a concise description outlining the agent\'s intended function and how it will assist users. Finally, select the industry that best aligns with your agent\'s focus. This selection will help tailor the agent\'s capabilities and access relevant data, ensuring it\'s optimally configured for its intended environment.',
       hasNext: true,
       hasPrevious: false,
       hasHome: true,
