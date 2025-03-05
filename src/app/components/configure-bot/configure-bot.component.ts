@@ -1,4 +1,4 @@
-import { Component, TemplateRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2, TemplateRef, ViewChild } from '@angular/core';
 import { Validators, FormBuilder, FormArray, FormGroup, AbstractControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ThemeService } from '../../services/theme.service';
@@ -10,7 +10,7 @@ import { HowItWorksDialogComponent } from '../how-it-works-dialog/how-it-works-d
   templateUrl: './configure-bot.component.html',
   styleUrl: './configure-bot.component.scss'
 })
-export class ConfigureBotComponent {
+export class ConfigureBotComponent implements OnInit {
   formGroup: FormGroup;
   selectedRuntime: string = 'resoningEngine';
   selectedFramework: string = 'langchain';
@@ -20,10 +20,9 @@ export class ConfigureBotComponent {
   viewCode: TemplateRef<{}>;
   viewCodeDialogRef?: MatDialogRef<{}>;
 
-
   constructor(private _formBuilder: FormBuilder, 
     private router: Router, private fb: FormBuilder
-    , private themeService: ThemeService,private readonly dialog: MatDialog,) { 
+    , private themeService: ThemeService,private readonly dialog: MatDialog,private el: ElementRef, private renderer: Renderer2) { 
     // this.formGroup = this.fb.group({
     //   formArray: this.fb.array([
     //     this.fb.group({

@@ -5,11 +5,11 @@
                     <div class="runtime-container">
                         <div class="option-selectors">
                             <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group">
-                                <div [ngClass]="{'selected':selectedRuntime==='resoningEngine'}"
-                                    (click)="selectRunTime('resoningEngine')" class="option-card">
+                                <div [ngClass]="{'selected':selectedAgent==='intelligentVirtualAssistant'}"
+                                    (click)="selectAgent('intelligentVirtualAssistant')" class="option-card">
                                     <span class="icon">
                                         <span class="material-symbols-outlined">
-                                            {{selectedRuntime==='resoningEngine'?
+                                            {{selectedAgent==='intelligentVirtualAssistant'?
                                             'task_alt': 'radio_button_unchecked'}}
                                         </span>
                                     </span>
@@ -17,11 +17,11 @@
                                         Intelligent Virtual Assistant
                                     </span>
                                 </div>
-                                <div [ngClass]="{'selected':selectedRuntime==='cloudRun'}"
-                                    (click)="selectRunTime('cloudRun')" class="option-card">
+                                <div [ngClass]="{'selected':selectedAgent==='infoBot'}"
+                                    (click)="selectAgent('infoBot')" class="option-card">
                                     <span class="icon">
                                         <span class="material-symbols-outlined">
-                                            {{selectedRuntime==='cloudRun'?
+                                            {{selectedAgent==='infoBot'?
                                             'task_alt': 'radio_button_unchecked'}}
                                         </span>
                                     </span>
@@ -29,21 +29,62 @@
                                         InfoBot
                                     </span>
                                 </div>
-                                <div [ngClass]="{'selected':selectedRuntime==='predefined-bot'}"
-                                    (click)="selectRunTime('predefined-bot')" class="option-card">
+                                <div [ngClass]="{'selected':selectedAgent==='predefined-bot'}"
+                                    (click)="selectAgent('predefined-bot')" class="option-card">
                                     <span class="icon">
                                         <span class="material-symbols-outlined">
-                                            {{selectedRuntime==='predefined-bot'?
+                                            {{selectedAgent==='predefined-bot'?
                                             'task_alt': 'radio_button_unchecked'}}
                                         </span>
                                     </span>
                                     <span class="text">
-                                        Predefined Bot 1
+                                        Pre-defined agent three
                                     </span>
                                 </div>
                             </mat-radio-group>
                         </div>
-                        <div *ngIf="selectedRuntime==='resoningEngine'" class="option-response">
+                        <div *ngIf="selectedAgent===''" class="option-response">
+                            <span class="subtitle">A predefined AI agent is a pre-built, ready-to-use agent designed for a specific task or set of tasks. It comes with pre-configured tools, prompts, and workflows, eliminating the need for extensive customization. Think of it like a specialized robot designed to perform a particular job; it's not as flexible as a general-purpose agent, but it's highly efficient and easy to deploy for its intended purpose. Examples include agents designed specifically for customer service, data analysis, or social media management. They often offer a quick start and simplified setup, making them ideal for users who need a solution for a well-defined problem without the overhead of building a custom agent from scratch.</span>
+                            <!-- <div class="inner-container">
+                                <div class="tech-item">
+                                    <div class="headings">
+                                        Runtime
+                                    </div>
+                                    <div class="border"></div>
+                                    <div class="subheading">
+                                        Vertex AI Reasoning Engine
+                                    </div>
+                                </div>
+                                <div class="tech-item">
+                                    <div class="headings">
+                                        Orchestration Framework
+                                    </div>
+                                    <div class="border"></div>
+                                    <div class="subheading">
+                                        Langchain/Langgraph
+                                    </div>
+                                </div>
+                                <div class="tech-item">
+                                    <div class="headings">
+                                        Tools
+                                    </div>
+                                    <div class="border"></div>
+                                    <div class="subheading">
+                                        API
+                                    </div>
+                                </div>
+                                <div class="tech-item">
+                                    <div class="headings">
+                                        Model
+                                    </div>
+                                    <div class="border"></div>
+                                    <div class="subheading">
+                                        Gemini
+                                    </div>
+                                </div>
+                            </div> -->
+                        </div>
+                        <div *ngIf="selectedAgent==='intelligentVirtualAssistant'" class="option-response">
                             <span class="subtitle">This agent, deployed on Vertex AI's Reasoning Engine, utilizes the LangChain framework to connect the Gemini large language model with various APIs. This configuration enables the agent to understand user requests, retrieve and process information from external sources, and then perform tasks or provide comprehensive answers based on the retrieved data.</span>
                             <div class="inner-container">
                                 <div class="tech-item">
@@ -84,8 +125,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div *ngIf="selectedRuntime==='cloudRun'" class="option-response">
-                            <span class="subtitle">This agent, deployed on Vertex AI's Reasoning Engine, utilizes the LangChain framework to connect the Gemini large language model with various APIs. This configuration enables the agent to understand user requests, retrieve and process information from external sources, and then perform tasks or provide comprehensive answers based on the retrieved data.</span>
+                        <div *ngIf="selectedAgent==='infoBot'" class="option-response">
+                            <span class="subtitle">This Cloud Run-deployed agent uses LlamaIndex to connect Claude with a knowledge base and pre-built tools. This allows it to provide informed and safe answers, utilize web search, and perform other helpful tasks.</span>
                             <div class="inner-container">
                                 <div class="tech-item">
                                     <div class="headings">
