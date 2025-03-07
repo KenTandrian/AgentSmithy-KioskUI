@@ -9,6 +9,7 @@ import { UserService } from '../../services/user.service';
 import { SpeechToTextService } from '../../services/speech-to-text';
 import { HttpDownloadProgressEvent, HttpEvent, HttpEventType } from '@angular/common/http';
 import { Chat, ChatEvent } from '../../models/chat.model';
+import { HowItWorksDialogComponent } from '../how-it-works-dialog/how-it-works-dialog.component';
 
 
 export type DialogQuestion = {
@@ -383,6 +384,14 @@ export class AgentBotComponent implements OnInit, OnDestroy {
 
   goToExport() {
     this.router.navigate(['/export']);
+  }
+
+  openHelpModal() {
+    this.dialog.open(HowItWorksDialogComponent,{ width: '100%',maxWidth:'1000px' });
+  }
+
+  goToHome() {
+    this.router.navigate(['/']);
   }
 
 }

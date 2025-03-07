@@ -14,7 +14,9 @@
                     <div class="messageContent">
                       {{message.body}}
                     </div>
-                    <div class="user-circle"><img class="logo-icon" />
+                    <div class="user-circle"><span class="material-symbols-outlined icon">
+                      person
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -113,37 +115,43 @@
 
   </div>
   <div class="footer-container">
-    <div class="button-container">
-      <button class="home" mat-fab extended>
-        <mat-icon>home</mat-icon>
-        Home
-      </button>
-      <mat-divider [vertical]="true"></mat-divider>
-
-      <button class="help-button" mat-fab extended>
-        <mat-icon>add_circle</mat-icon>
-        How it works
-      </button>
-      <mat-divider [vertical]="true"></mat-divider>
-      <div class="logo-container">
-        <div class="created-by">
-          Created by
-        </div>
-        <div class="google-cont">
-          <img class="g-vector" src="assets/images/google-color.svg">
-          Cloud Consulting
-        </div>
+  
+      <div class="button-container">
+          <!-- <button class="contrast" mat-fab (click)="toggleTheme()">
+              <mat-icon>contrast</mat-icon>
+          </button> -->
+          <!-- <span class="border"></span> -->
+          <button class="backward" mat-fab extended (click)="goToHome()">
+              <mat-icon>home</mat-icon>
+              Home
+          </button>
+          <mat-divider [vertical]="true"></mat-divider>
+          <button class="help-button" mat-fab extended (click)="openHelpModal()">
+              <mat-icon>add_circle</mat-icon>
+              How it works
+          </button>
+          <mat-divider [vertical]="true"></mat-divider>
+          <div class="logo-container">
+              <div class="created-by">
+                  Created by
+              </div>
+              <div class="google-cont">
+                  <img class="g-vector" src="assets/images/google-color.svg">
+                  Cloud Consulting
+              </div>
+          </div>
       </div>
-    </div>
-    <div class="button-container">
+      <div class="button-container">
 
-      <button (click)="goToExport()" mat-fab extended>
-        <mat-icon>
-          arrow_forward
-        </mat-icon>
-        Finish
-      </button>
-    </div>
+        <button (click)="goToExport()" mat-fab extended>
+          <mat-icon>
+            arrow_forward
+          </mat-icon>
+          Finish
+        </button>
+      </div>
+  
+   
   </div>
 
 </div>
