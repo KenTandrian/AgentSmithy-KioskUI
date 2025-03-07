@@ -51,7 +51,7 @@
             color: var(--text-color);
             font-size: 22px;
             line-height: 1.75rem;
-            margin: 0rem 2em 1rem 0rem;
+            margin: 0em 2em 1rem 0rem;
             white-space: pre-wrap;
             text-align: start !important;
         }
@@ -59,7 +59,7 @@
         .view-code-button {
 
             width: fit-content;
-            margin: 3rem 2em;
+            margin: 2rem -1em;
             color: var(--primary-btn-color);
 
             ::ng-deep.mdc-button__label {

@@ -18,22 +18,24 @@
                     </div>
                   </div>
                 </div>
-                <div class="bot-message" *ngIf="message.type == 'bot'" id="{{message.botStartTime}}">
+                <div class="bot-message" *ngIf="message.type == 'bot' && (!message.suggestedQuestion?.length || 0 > 0)"
+                  id="{{message.botStartTime}}">
                   <div class="bot-message-wrapping-container">
                     <div class="bot-message-action">
-                      <div></div>
+                      <!-- <img src="../../../../../assets/images/user-logo.svg" /> -->
                     </div>
+
                     <div class="bot-message-content">
-                      <div *ngFor="let msg of message.botAnswer">
-                        <container-element [ngSwitch]="msg.type">
-                          <div *ngSwitchCase="'textData'" clipboard class="variable-binding">
-                            getStringData(msg.data.content)</div>
-
-
-                        </container-element>
+                      <div clipboard class="variable-binding">{{message.body}}</div>
+                      
+                      <div *ngIf="message.botAnswer" clipboard class="variable-binding">
+                        {{getStringData(message.botAnswer)}}
                       </div>
-
-
+                      <div class="action-content" *ngIf="message.shareable">
+                        <div class="action-message"></div>
+                        <div class="action-butons" *ngIf="message.chat_id">
+                        </div>
+                      </div>
                     </div>
 
                   </div>
@@ -74,7 +76,7 @@
             </div>
             <div class="border"></div>
             <div class="subheading">
-             {{selectedAgentData?.runTime}}
+              {{selectedAgentData?.runTime}}
             </div>
           </div>
           <div class="tech-item">

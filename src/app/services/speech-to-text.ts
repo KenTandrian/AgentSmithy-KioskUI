@@ -12,21 +12,22 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { Message } from '../models/messegeType.model';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from '../../environments/environment';
+
+// const audioChatUrl = `http://localhost:8080/api/audio_chat`;
+const audioChatUrl = `${environment.backendURL}/audio_chat`;
 
 @Injectable({
   providedIn: 'root'
 })
-export class BroadcastService {
-  initialChatQuery = '';
-  chatQuery$: BehaviorSubject<Message>;
-  
-  constructor() { 
-    this.chatQuery$  = new BehaviorSubject<Message>({'body':'Ask me anything ?','type':'bot', shareable: false,});
-  }
+export class SpeechToTextService {
 
-  nextChatQuery(chatQuery: Message) {
-    this.chatQuery$.next(chatQuery);
+  constructor(private http: HttpClient) {}
+
+  async transcribeAudio(audioBlob: Blob) {
+    const formData = new FormData();
+    formData.append('audio_file', audioBlob, 'audio.wav');
+    return this.http.post(audioChatUrl, formData);
   }
 }

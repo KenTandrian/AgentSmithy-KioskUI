@@ -1,7 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, timeout } from 'rxjs';
-import { Message, BroadcastService } from '../../services/broadcast.service';
+import { Observable, ReplaySubject, timeout } from 'rxjs';
+import { Message, SuggestionData } from '../../models/messegeType.model';
+import { ChatService } from '../../services/chat.service';
+import { BroadcastService } from '../../services/broadcast.service';
+import { MatDialog } from '@angular/material/dialog';
+import { UserService } from '../../services/user.service';
+import { SpeechToTextService } from '../../services/speech-to-text';
+import { HttpDownloadProgressEvent, HttpEvent, HttpEventType } from '@angular/common/http';
+import { Chat, ChatEvent } from '../../models/chat.model';
 
 
 export type DialogQuestion = {
@@ -18,45 +25,40 @@ export type DialogQuestion = {
   templateUrl: './agent-bot.component.html',
   styleUrl: './agent-bot.component.scss'
 })
-export class AgentBotComponent implements OnInit {
+export class AgentBotComponent implements OnInit, OnDestroy {
+  @Output() onSubmit: EventEmitter<any> = new EventEmitter();
+
+  isSuggestedQuestion: string = '';
   chatQuery: string
   chatQuery$: Observable<Message>;
   showLoader: boolean = false;
   startTimer: boolean = false;
   conversation: Message[] = [];
-
-  loaderTextArray = [""];
+  leftContainerClass = "";
+  rightContainerClass = "";
+  index = 2;
+  loaderTextArray: string[] = [
+    "I am a conversation bot built on Google Cloud's Vertex AI tools.",
+    "Tool Tip: You can reset the conversation anytime using the reset button next the the text input box.",
+    "Joke : Why did the robot go on a diet? Because it had too many bytes!",
+    "Joke : Why can't bicycles stand up by themselves? Because they are two-tired!",
+    "Joke : How does a computer get drunk? It takes screenshots."
+  ];
   loaderTextTimeout: undefined | ReturnType<typeof setTimeout>;
-  loaderText = this.loaderTextArray[Math.round(Math.random() * 10)];
+  loaderText = "";
   loaderTextIndex = 0;
   loaderIndex = 1;
-  followUpQuestions: DialogQuestion[] = [];
-  // ticketfollowUpQuestions: DialogQuestion[] = [];
-  ticketCreationFlow: boolean = false;
   isChatDisabled: boolean = false;
-  options: string[] = [];
   botStartTime: number;
-  currentFollowUpQuestion: DialogQuestion;
   initialQuestion: string;
   ticketId: string;
-  // categoryIntent: string = INTENT_DEFAULT_VALUE;
+  categoryIntent: string = "";
   changeImageInterval: undefined | ReturnType<typeof setTimeout>;
   panelOpenState = false;
   like = false;
   dislike = false;
   response: Response
-  email: string;
-  currentRole: string;
-  appRole: string;
-  generatingText: string = "Generating";
-
-  feedbackOptions = [{ name: "Inaccurate information", selected: false }, { name: "Insufficient information", selected: false }, { name: "Links not working", selected: false }, { name: "Suggested questions not relevant", selected: false }];
-  loaderFeedbackOptions = [...this.feedbackOptions];
-  feedbackOptionsArray: any[] = [];
-  feedback: any[] = [];
-  selectedFeedbackChip: any[] = [];
   loaderSelectedChip = '';
-  loaderFeedback = '';
   showLoaderLikeDislikeButtons = false;
   outOfContextAnswerResponseObject = {
     like: false,
@@ -70,50 +72,120 @@ export class AgentBotComponent implements OnInit {
   /** DEP accordion border colors */
   borderColors = ['#4285F4', '#0F9D58', '#F4B400', '#DB4437'];
 
-  depInitialQuestion = false;
-  leftContainerClass: string;
-  rightContainerClass: string;
+  private readonly destroyed = new ReplaySubject<void>(1);
+  isRecording = false;
+  transcribedText = '';
+  mediaRecorder: MediaRecorder;
+  audioChunks: Blob[] = [];
   selectedAgentData:any;
 
-
   constructor(
-    private router: Router,
+    public dialog: MatDialog,
+    private chatService: ChatService,
+    public userService: UserService,
     private broadcastService: BroadcastService,
+    private speechToTextService: SpeechToTextService,
+    private router: Router,
   ) {
     this.chatQuery$ = this.broadcastService.chatQuery$
     this.chatQuery$.subscribe((value: any) => {
       this.conversation.push(value);
     });
-    this.chatQuery = this.broadcastService.initialChatQuery?.body;
-    this.submitMessage(this.broadcastService.initialChatQuery);
-    this.broadcastService.createSession();
+    this.loaderText = this.loaderTextArray[Math.round(Math.random() * 10)];
+    this.checkIfMessege();
+  }
+
+  setupMediaRecorder(stream: MediaStream) {
+    this.mediaRecorder = new MediaRecorder(stream);
+    this.mediaRecorder.ondataavailable = event => this.audioChunks.push(event.data);
+    this.mediaRecorder.onstop = () => this.sendAudioToGCP();
+  }
+
+  async sendAudioToGCP() {
+    const audioBlob = new Blob(this.audioChunks);
+    (await this.speechToTextService.transcribeAudio(audioBlob)).subscribe(
+      (response: any) => {
+        this.chatQuery = response[0]
+      },
+      (error: any) => {
+      }
+    );
+  }
+
+  ngOnDestroy() {
+    this.destroyed.next();
+    this.destroyed.complete();
+  }
+
+  getStringData(obj: any): string {
+    let str = (obj as string);
+    if (str === "" || str.length === 0) {
+      return "Sorry! I don't have sufficient information to answer this question at the moment.";
+    }
+    return (obj as string);
   }
 
 
-  ngOnInit(): void {
-    let agentData = JSON.parse(localStorage.getItem('agentData') || '{}');
-    this.selectedAgentData = {
-      agentName: agentData[0].agentName ? agentData[0].agentName : '-',
-      runTime: agentData[1].runTime ? agentData[1].runTime : '',
-      frameWork: agentData[2].framework ? agentData[2].framework : '-',
-      model: agentData[4].model ? agentData[4].model : '-',
-      tools: agentData[3].tools ? agentData[3].tools : '-',
+  getSuggestionData(obj: any): SuggestionData {
+    return (obj as SuggestionData);
+  }
+
+  checkIfMessege() {
+    if (this.conversation.length == 1 && this.conversation[0].type == 'user') {
+      this.showLoader = true;
+      this.setTimeoutForLoaderText();
+      this.setCyclicBackgroundImages();
+      this.startTimer = true;
+      this.botStartTime = new Date().getTime()
+      this.initialQuestion = this.conversation[0].body;
+      this.pushQuestion(this.initialQuestion);
+      this.chatService.postChat(this.conversation[0].body).subscribe({
+        next: (event: HttpEvent<string>) => {
+          if (event.type === HttpEventType.DownloadProgress) {
+            this.handleBotResponse(
+              (event as HttpDownloadProgressEvent).partialText + "…",
+            );
+          } else if (event.type === HttpEventType.Response) {
+            this.handleBotResponse(event.body!);
+          }
+        },
+        error: () => {
+          console.log("Error getting stream events");
+        },
+      });
     }
   }
 
-  goToExport() {
-    this.router.navigate(['/export']);
+  pushQuestion(question: string, id?: any) {
+    this.questionArray.push({ question, id });
+  }
+
+  assignId(id: any) {
+    for (let i = 0; i < this.questionArray.length; i++) {
+      if (!this.questionArray[i].id) {
+        this.questionArray[i].id = id;
+        break;
+      }
+    };
+  }
+
+  getQuestion(id: any) {
+    const questionObj = this.questionArray.find(x => x.id === id);
+    return questionObj?.question || '';
   }
 
   async submitMessage(event: any) {
-
-    this.generatingText = "Generating";
+    this.outOfContextAnswerResponseObject = {
+      like: false,
+      dislike: false
+    };
+    this.removeSuggestionElement();
     this.pushQuestion(this.chatQuery);
 
     this.botStartTime = new Date().getTime();
     // keeps the scrollbar to the bottom
     const parentElement = document.getElementsByClassName('chat-body');
-    parentElement[0]?.scrollTo(0, parentElement[0].scrollHeight);
+    parentElement[0].scrollTo(0, parentElement[0].scrollHeight);
 
     if (event instanceof KeyboardEvent || event instanceof MouseEvent) {
       event.preventDefault();
@@ -125,99 +197,52 @@ export class AgentBotComponent implements OnInit {
 
     let singleMessage: Message = {
       body: this.chatQuery,
-      type: 'human',
+      type: 'user',
+      shareable: false,
     }
 
     this.conversation.unshift(singleMessage);
-
-    const answer = this.chatQuery;
     this.chatQuery = '';
-
-
     this.showLoader = true;
     this.setTimeoutForLoaderText();
     this.setCyclicBackgroundImages();
-    this.broadcastService.postChat(singleMessage.body).pipe(timeout(90000)).subscribe({
-      next: (response: any) => this.handleBotResponse(response),
-      error: (err) => {
-        this.setErrorMessage();
-      }
-    })
-  }
-
-
-  navigateToExport(){
-    this.router.navigate(["export"]);
-  }
-  assignId(id: any) {
-    for (let i = 0; i < this.questionArray.length; i++) {
-      if (!this.questionArray[i].id) {
-        this.questionArray[i].id = id;
-        break;
-      }
-    };
-  }
-
-  getStringData(obj: any): string {
-    let str = (obj as string);
-    if (str === "" || str.length === 0) {
-      return "Sorry! I don't have sufficient information to answer this question at the moment.";
-    }
-    return (obj as string);
-  }
-
-  handleBotResponse(response: any) {
-
-    let endTime = new Date().getTime();
-    let outOfContextQuestion = false;
-    this.assignId(response?.chat_id);
-    response?.botAnswer?.forEach((msg: { type: string; data: { content: any; }; }) => {
-      if (msg?.type === 'textData' && this.getStringData(msg?.data?.content) == ("I can only answer questions related to Google Cloud.")) {
-        this.outOfContextAnswerResponseObject.like = false;
-        this.outOfContextAnswerResponseObject.dislike = false;
-        this.clearTimeoutForLoaderText();
-        this.setAnswerNotFoundText(this.getStringData(msg?.data?.content));
-        outOfContextQuestion = true;
-        // this.setSuggestedQuestionInChat(response, endTime);
-        this.loader_chat_id = response.chat_id;
-      }
+    this.chatService.postChat(singleMessage.body).subscribe({
+      next: (event: HttpEvent<string>) => {
+        if (event.type === HttpEventType.DownloadProgress) {
+          this.handleBotResponse(
+            (event as HttpDownloadProgressEvent).partialText as string
+          );
+        } else if (event.type === HttpEventType.Response) {
+          this.handleBotResponse(event.body as string);
+        }
+      },
+      error: () => {
+        console.log("Error getting stream events");
+      },
     });
-
-    if (!outOfContextQuestion) {
-      let singleMesage: Message = {
-        body: "",
-        botAnswer: response.botAnswer,
-        type: 'bot',
-        responseTime: ((endTime - this.botStartTime) / 1000).toString(),
-
-        botStartTime: this.botStartTime.toString(),
-        chat_id: response.chat_id
-      };
-
-      this.followUpQuestions = response.followUpQuestions;
-
-
-
-      this.showLoader = false;
-      this.clearTimeoutForLoaderText();
-
-      this.followUpQuestions = this.followUpQuestions ?? [];
-      if (this.followUpQuestions.length === 0) {
-        return;
-      }
-      this.makeFollowUpQuestion();
-      if (!this.depInitialQuestion) {
-        this.depInitialQuestion = true;
-      }
-    }
   }
 
-
-  pushQuestion(question: string, id?: any) {
-    this.questionArray.push({ question, id });
+  setErrorMessage() {
+    this.clearTimeoutForLoaderText();
+    this.leftContainerClass = 'left-side-container-error';
+    this.loaderText = 'Oops something went wrong , please try again.';
+    this.rightContainerClass = 'right-side-container-error';
+    this.showLoaderLikeDislikeButtons = false;
   }
 
+  setAnswerNotFoundText(loaderText: string) {
+    this.clearTimeoutForLoaderText();
+    this.showLoader = true;
+    this.leftContainerClass = 'answer-not-found';
+    this.rightContainerClass = 'right-side-container-error';
+    this.loaderText = loaderText + " Please try asking something else";
+    this.showLoaderLikeDislikeButtons = true;
+  }
 
+  stopTicketCreationFlow() {
+    this.isChatDisabled = false;
+    this.chatQuery = '';
+  }
 
   setCyclicBackgroundImages() {
     if (this.loaderTextIndex == 3) {
@@ -243,38 +268,121 @@ export class AgentBotComponent implements OnInit {
     this.loaderIndex++;
   }
 
-  setErrorMessage() {
-    this.clearTimeoutForLoaderText();
-    this.leftContainerClass = 'left-side-container-error';
-    this.loaderText = 'Oops something went wrong , please try again and if the issue persists let us know the issue via the feedback button in the header.';
-    this.generatingText = "";
-    this.rightContainerClass = 'right-side-container-error';
-    this.showLoaderLikeDislikeButtons = false;
-  }
+  handleBotResponse(answer: string) {
+    let events: string[] = answer.split("\n");
+    events.pop();
+    let answerId = (JSON.parse(events[0]) as ChatEvent ).data.run_id
 
-  setAnswerNotFoundText(loaderText: string) {
-    this.clearTimeoutForLoaderText();
-    this.generatingText = "";
-    this.showLoader = true;
-    this.leftContainerClass = 'answer-not-found';
-    this.rightContainerClass = 'right-side-container-error';
-    this.loaderText = loaderText + " Please try asking something else";
-    this.showLoaderLikeDislikeButtons = true;
-  }
+    if ( answerId === this.conversation[0].chat_id) {
+      let lastEvent: ChatEvent = JSON.parse(events.slice(-1)[0]);
+      if(lastEvent.event == "on_chat_model_stream") {
+        this.conversation[0].botAnswer += lastEvent.data.chunk!.content
+      }
+      return;
+    } 
 
-  makeFollowUpQuestion() {
+    let response: Chat = {
+      id: answerId,
+      question: this.chatQuery,
+      answer: "",
+      suggested_questions: []
+    }
+    
+    let endTime = new Date().getTime();
+    this.assignId(response?.id);
 
-    this.ticketCreationFlow = true;
-    this.currentFollowUpQuestion = this.followUpQuestions?.shift()!;
-
-    let singleMessage: Message = {
-      body: this.currentFollowUpQuestion.questionText,
+    let singleMesage: Message = {
+      body: "",
+      botAnswer: response.answer,
       type: 'bot',
+      responseTime: ((endTime - this.botStartTime) / 1000).toString(),
+      shareable: true,
+      botStartTime: this.botStartTime.toString(),
+      extras: {
+        like: false,
+        dislike: false,
+        delete: false,
+      },
+      chat_id: response.id!
     };
-    this.conversation.unshift(singleMessage);
 
-    this.isChatDisabled = this.currentFollowUpQuestion?.hasChip!;
+    this.conversation.unshift(singleMesage);
+    this.setSuggestedQuestionInChat(response, endTime);
+    this.showLoader = false;
+    this.clearTimeoutForLoaderText();
+    this.isSuggestedQuestion = '';
+  }
 
+  // adds Suggested question as another message
+  setSuggestedQuestionInChat(response: Chat, endTime: number) {
+    if (response.suggested_questions?.length || 0 > 0) {
+      this.showSuggesstion = true;
+      this.suggestedQuestionMessage = {
+        body: "",
+        type: 'bot',
+        responseTime: ((endTime - this.botStartTime) / 1000).toString(),
+        shareable: true,
+        extras: {
+          like: false,
+          dislike: false
+        },
+        suggestedQuestion: response.suggested_questions
+      }
+      setTimeout(() => {
+        const botResponseElement = document.getElementById(this.botStartTime.toString());
+        const parentElement = document.getElementsByClassName('chat-body');
+        const y = botResponseElement?.offsetTop;
+        if (y) {
+          parentElement[0].scroll({
+            top: y - 30,
+            behavior: 'smooth'
+          })
+        }
+      }, 1000);
+    }
+  }
+
+  chipControlOnSelect(event: any) {
+    this.chatQuery = event.target.innerText;
+    this.submitMessage(event);
+  }
+
+  getResponseforSuggestionQuery(event: any) {
+    this.isSuggestedQuestion = event;
+    this.chatQuery = event;
+    document.querySelectorAll(".bot-suggestion-container").forEach(el => el.remove());
+    this.submitMessage(event);
+  }
+
+  removeSuggestionElement() {
+    this.showSuggesstion = false;
+    document.querySelectorAll(".bot-suggestion-container").forEach(el => el.remove());
+  }
+
+  startRecording() {
+    this.isRecording = true;
+    this.audioChunks = [];
+    this.mediaRecorder.start();
+  }
+
+  stopRecording() {
+    this.isRecording = false;
+    this.mediaRecorder.stop();
+  }
+
+  ngOnInit(): void {
+    let agentData = JSON.parse(localStorage.getItem('agentData') || '{}');
+    this.selectedAgentData = {
+      agentName: agentData[0].agentName ? agentData[0].agentName : '-',
+      runTime: agentData[1].runTime ? agentData[1].runTime : '',
+      frameWork: agentData[2].framework ? agentData[2].framework : '-',
+      model: agentData[4].model ? agentData[4].model : '-',
+      tools: agentData[3].tools ? agentData[3].tools : '-',
+    }
+  }
+
+  goToExport() {
+    this.router.navigate(['/export']);
   }
 
 }

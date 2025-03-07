@@ -11,22 +11,23 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { Message } from '../models/messegeType.model';
+export interface Message {
+  body: string,
+  botAnswer?: string,
+  type: string,
+  responseTime?: string
+  shareable: boolean,
+  extras?: Extras,
+  suggestedQuestion?: string[],
+  botStartTime?: string;
+  chat_id?:string
+}
+export type Extras = {
+  like:boolean,
+  dislike:boolean,
+  delete?: boolean
+}
 
-@Injectable({
-  providedIn: 'root'
-})
-export class BroadcastService {
-  initialChatQuery = '';
-  chatQuery$: BehaviorSubject<Message>;
-  
-  constructor() { 
-    this.chatQuery$  = new BehaviorSubject<Message>({'body':'Ask me anything ?','type':'bot', shareable: false,});
-  }
-
-  nextChatQuery(chatQuery: Message) {
-    this.chatQuery$.next(chatQuery);
-  }
+export interface SuggestionData {
+  suggestedQuestion: string[]
 }

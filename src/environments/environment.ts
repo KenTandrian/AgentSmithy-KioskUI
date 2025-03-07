@@ -8,4 +8,5 @@ export const environment = {
     appId: "1:299954354297:web:ecb957470479f951a03ca8"
   },
   production: true,
+  backendURL: "https://test-agent-runtime-599247973214.us-central1.run.app",
 };

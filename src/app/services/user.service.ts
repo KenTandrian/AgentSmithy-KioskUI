@@ -12,21 +12,40 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { Message } from '../models/messegeType.model';
+
+interface LooseObject {
+  [key:string]: any
+}
+
+type UserStored = {
+  uid?: string,
+  name?: string,
+  email?: string,
+  photoURL?: string,
+  displayName?: string,
+  domain?: string
+}
 
 @Injectable({
   providedIn: 'root'
 })
-export class BroadcastService {
-  initialChatQuery = '';
-  chatQuery$: BehaviorSubject<Message>;
-  
-  constructor() { 
-    this.chatQuery$  = new BehaviorSubject<Message>({'body':'Ask me anything ?','type':'bot', shareable: false,});
+export class UserService {
+
+  constructor() { }
+
+  setUserDetails(userStored: UserStored) {
+
   }
 
-  nextChatQuery(chatQuery: Message) {
-    this.chatQuery$.next(chatQuery);
+  getUserDetails(): UserStored{
+    if(localStorage.getItem('USER_DETAILS') != null){
+      let userObj = localStorage.getItem("USER_DETAILS")
+      return JSON.parse(userObj || '{}')
+    }
+    else{
+      let userDetails: UserStored = {}
+      return userDetails
+    }
   }
+
 }
