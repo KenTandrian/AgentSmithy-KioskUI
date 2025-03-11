@@ -79,6 +79,7 @@ export class AgentBotComponent implements OnInit, OnDestroy {
   mediaRecorder: MediaRecorder;
   audioChunks: Blob[] = [];
   selectedAgentData:any;
+  chatsUrl: string;
 
   constructor(
     public dialog: MatDialog,
@@ -380,6 +381,15 @@ export class AgentBotComponent implements OnInit, OnDestroy {
       model: agentData[4].model ? agentData[4].model : '-',
       tools: agentData[3].tools ? agentData[3].tools : '-',
     }
+
+    console.log(agentData);
+
+    const runtime = this.selectedAgentData.runTime;
+    const framework = this.selectedAgentData.framework;
+    const model = this.selectedAgentData.model;
+    const tools = this.selectedAgentData.tools;
+
+    const industry = agentData[0].industry;
   }
 
   goToExport() {
