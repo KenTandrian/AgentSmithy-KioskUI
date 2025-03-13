@@ -69,11 +69,12 @@ export class ConfigureBotComponent implements OnInit {
       heading: 'Runtime',
       stepHeading: 'Runtime',
       contentType: 'options',
+      subheading: 'An AI runtime provides the necessary environment to deploy and run machine learning models.',
       options: [
         { 
           label: 'Vertex AI Reasoning Engine', 
           isSelected: false, 
-          onClick: () => this.selectRunTime('Vertex AI Reasoning Engine'), 
+          onClick: () => this.selectRunTime('Vertex AI Reasoning Engine'),
           subtitle: 'Vertex AI Reasoning Engine is a specialized service for deploying and running machine learning models, with features such as model monitoring, versioning, and A/B testing.',
           caption: '# Initialize the Vertex AI client \naiplatform.init(project="your-project-id", location="your-region")\n\n# Deploy a model to the Vertex AI Reasoning Engine \nmodel = aiplatform.Model.upload( \n\tdisplay_name="your-model-name", \n\tartifact_uri="gs://your-bucket/your-model-path", \n\tserving_container_image_uri="us-docker.pkg.dev/vertex-ai/prediction/your-\ncontainer-image", ) endpoint = model.deploy( machine_type="n1-standard-4", )'
         },
@@ -86,7 +87,7 @@ export class ConfigureBotComponent implements OnInit {
         }
       ],
       selectedOptionResponse: {
-        subtitle: 'An AI runtime provides the necessary environment to deploy and run machine learning models.\n\nVertex AI\n • Quick, easy solution for general reasoning tasks (QA, summarization).\n • Managed scaling and infrastructure.\n\nCloud Run\n • Fine-grained control and customization.\n • Cost optimization and portability.\n • Requires container expertise and infrastructure \n   management.deployments, and the resources to \n   develop and maintain the infrastructure. ',
+        subtitle: '\nVertex AI\n • Quick, easy solution for general reasoning tasks (QA, summarization).\n • Managed scaling and infrastructure.\n\nCloud Run\n • Fine-grained control and customization.\n • Cost optimization and portability.\n • Requires container expertise and infrastructure \n   management.deployments, and the resources to \n   develop and maintain the infrastructure. ',
         caption: '# Initialize the Vertex AI client \naiplatform.init(project="your-project-id", location="your-region")\n\n# Deploy a model to the Vertex AI Reasoning Engine \nmodel = aiplatform.Model.upload( \n\tdisplay_name="your-model-name", \n\tartifact_uri="gs://your-bucket/your-model-path", \n\tserving_container_image_uri="us-docker.pkg.dev/vertex-ai/prediction/your-\ncontainer-image", ) endpoint = model.deploy( machine_type="n1-standard-4", )'
       },
       hasNext: true,
@@ -98,6 +99,7 @@ export class ConfigureBotComponent implements OnInit {
       heading: 'Orchestration Framework',
       stepHeading: 'Framework',
       contentType: 'options',
+      subheading: 'An AI orchestration framework coordinates and manages the interconnected workflows of various AI models, tools, and data sources to create cohesive and efficient AI systems.',
       options: [
         { 
           label: 'Langchain/Langgraph', 
@@ -122,7 +124,7 @@ export class ConfigureBotComponent implements OnInit {
         }
       ],
       selectedOptionResponse: {
-        subtitle: 'LangChain is best for orchestrating complex LLM workflows, LlamaIndex simplifies connecting LLMs to external data sources, and Vertex AI provides a comprehensive platform for building and deploying LLM-powered applications.  Choose LangChain for intricate agent behaviors, LlamaIndex for knowledge-based applications, and Vertex AI for production-ready deployments within the Google Cloud ecosystem.',
+        subtitle: '\nLangChain is best for orchestrating complex LLM workflows, LlamaIndex simplifies connecting LLMs to external data sources, and Vertex AI provides a comprehensive platform for building and deploying LLM-powered applications.  Choose LangChain for intricate agent behaviors, LlamaIndex for knowledge-based applications, and Vertex AI for production-ready deployments within the Google Cloud ecosystem.',
         caption: 'from langchain.llms import Gemini \nfrom langchain.prompts import PromptTemplate \n\nllm = Gemini(model="gemini-pro", temperature=0.9) # Using Gemini Pro \nprompt = PromptTemplate( \n\tinput_variables=["product"], \n\ttemplate="What is a good name for a company that makes {product}?", \n) \nprint(llm(prompt.format(product="colorful socks")))'
       },
       hasNext: true,
@@ -135,6 +137,7 @@ export class ConfigureBotComponent implements OnInit {
       heading: 'Tools',
       stepHeading: 'Tools',
       contentType: 'options',
+      subheading: 'AI tools are software applications or platforms that leverage artificial intelligence to automate tasks, analyze data, or generate outputs.',
       options: [
         { 
           label: 'API', 
@@ -159,7 +162,7 @@ export class ConfigureBotComponent implements OnInit {
         // }
       ],
       selectedOptionResponse: {
-        subtitle: 'APIs offer flexibility and customization, allowing developers to tailor LLM interactions precisely to their needs and integrate them deeply within existing systems.  Pre-built tools, on the other hand, provide convenience and speed, offering ready-made solutions for common LLM use cases like chatbots, summarization, or question answering, often with user-friendly interfaces and requiring less coding.  Choose APIs when fine-grained control and deep integration are paramount, and pre-built tools when rapid development and ease of use are prioritized.',
+        subtitle: '\nAPIs offer flexibility and customization, allowing developers to tailor LLM interactions precisely to their needs and integrate them deeply within existing systems.  Pre-built tools, on the other hand, provide convenience and speed, offering ready-made solutions for common LLM use cases like chatbots, summarization, or question answering, often with user-friendly interfaces and requiring less coding.  Choose APIs when fine-grained control and deep integration are paramount, and pre-built tools when rapid development and ease of use are prioritized.',
         caption: 'from langchain.agents import Tool \n\n# Define the tool (assuming \'get_weather\' function is already defined) \nweather_tool = Tool( \n\tname="Get Weather", \n\tfunc=get_weather, \n\tdescription="Get current weather for a location." \n)'
       },
       hasNext: true,
@@ -171,6 +174,7 @@ export class ConfigureBotComponent implements OnInit {
       heading: 'Model',
       stepHeading: 'Model',
       contentType: 'options',
+      subheading: 'AI models are algorithms trained on data to recognize patterns and make predictions or decisions without explicit programming.',
       options: [
         { 
           label: 'Gemini', 
@@ -188,7 +192,7 @@ export class ConfigureBotComponent implements OnInit {
         }
       ],
       selectedOptionResponse: {
-        subtitle: 'Gemini is Google\'s multimodal LLM, excelling at tasks involving text, images, and code, and integrates well with Google services. Claude, from Anthropic, prioritizes safety and aims for less harmful outputs. Choose Gemini for multimodal needs and Google integration, Claude for a focus on safety.',
+        subtitle: '\nGemini is Google\'s multimodal LLM, excelling at tasks involving text, images, and code, and integrates well with Google services. Claude, from Anthropic, prioritizes safety and aims for less harmful outputs. Choose Gemini for multimodal needs and Google integration, Claude for a focus on safety.',
         caption: 'from langchain.llms import Gemini \n\nllm = Gemini(model="gemini-pro") \nresponse = llm("Tell me a joke.") \nprint(response)'
       },
       hasNext: false,
@@ -205,7 +209,6 @@ export class ConfigureBotComponent implements OnInit {
         this._formBuilder.group({
           agentName: ['', Validators.required],
           description: ['', Validators.required],
-          agentType: ['', Validators.required],
           industry: ['', Validators.required],
         }),
         this._formBuilder.group({
@@ -222,6 +225,18 @@ export class ConfigureBotComponent implements OnInit {
         }),
       ])
     });
+  }
+
+  isStepValid(index: number): boolean {
+    const formArray = this.formGroup.get('formArray') as FormArray;
+    const stepFormGroup = formArray.at(index) as FormGroup;
+    console.log('Step Form Group:', stepFormGroup); // Log the form group
+    if (stepFormGroup) {
+      console.log('Step Form Group Validity:', stepFormGroup.valid); // Log the validity
+      return stepFormGroup.valid;
+    }
+    console.log('Step is not a form, returning true');
+    return true;
   }
   
   selectRunTime(value: string) {

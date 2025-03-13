@@ -8,9 +8,17 @@
     .heading {
         font-size: 2em;
         position: absolute;
-        left: 1.25em;
-        top: 0.5em !important;
+        // left: 1.25em;
+        // top: 0.5em;
         color: var(--text-color);
+        animation: moveHeading 1s ease-in-out forwards;
+        // transform: translate(100px, 100px);
+    }
+
+    @keyframes moveHeading {
+        to {
+            transform: translate(0px, -6rem);
+        }
     }
  
 
@@ -52,6 +60,15 @@
             font-size: 22px;
             line-height: 1.75rem;
             margin: 0em 2em 1rem 0rem;
+            white-space: pre-wrap;
+            text-align: start !important;
+        }
+
+        .subheading {
+            color: var(--primary-btn-color);
+            font-size: 22px;
+            line-height: 1.75rem;
+            // margin: 0em 2em 1rem 0rem;
             white-space: pre-wrap;
             text-align: start !important;
         }
@@ -398,4 +415,9 @@
 
   ::ng-deep .mat-mdc-select  {
     color: var(--text-color) !important;
+  }
+
+  .disabled-button {
+    border-radius: 100px;
+    color: #E3E3E3 !important;
   }
