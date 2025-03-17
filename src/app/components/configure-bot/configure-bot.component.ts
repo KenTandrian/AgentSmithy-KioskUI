@@ -264,6 +264,7 @@ export class ConfigureBotComponent implements OnInit {
   }
 
   onRadioChange(section: any, selectedOption: any, stepIndex: number) {
+    section.subheading = "";
     section.options.forEach((option: { isSelected: boolean; }) => {
       option.isSelected = option === selectedOption; 
     });
