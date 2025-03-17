@@ -33,10 +33,10 @@ img, media {
 
     .sub-container {
         display: flex;
-        gap: 30%;
+        gap: 25%;
 
         .child-container {
-            width: 40%;
+            // width: 40%;
             font-family: 'Google Sans';
             font-style: normal;
             font-weight: 400;
@@ -47,14 +47,14 @@ img, media {
             padding-bottom: 1%;
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 15px;
 
             ::ng-deep .input-container .mat-mdc-form-field{
                 width: 100%;
             }
 
             img {
-                width: 30%;
+                width: 100%;
             }
 
             .code-container {
@@ -125,9 +125,9 @@ img, media {
     width: 100%;
     display: flex;
     flex-direction: row;
-    gap: 10px;
+    gap: 100px;
     justify-content: flex-start;
-    margin-top: 15%;
+    margin-top: 25%;
 
     .left-footer {
         width: 80%;
