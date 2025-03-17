@@ -11,8 +11,8 @@ import { ThemeService } from '../../services/theme.service';
 })
 export class HomeComponent {
 
-constructor(public router: Router, private domSanitizer: DomSanitizer, private matIconRegistry: MatIconRegistry, private themeService: ThemeService) { 
-
+constructor(public router: Router, private domSanitizer: DomSanitizer, private matIconRegistry: MatIconRegistry, private themeService: ThemeService) {
+  localStorage.removeItem("agentData");
   this.matIconRegistry.addSvgIcon(
     'spark',
     this.domSanitizer.bypassSecurityTrustResourceUrl('/assets/images/spark.svg')

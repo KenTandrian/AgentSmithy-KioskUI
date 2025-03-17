@@ -72,4 +72,35 @@ export class PredefinedBotComponent {
   openHelpModal() {
     this.dialog.open(HowItWorksDialogComponent, { width: '100%', maxWidth: '1000px' });
   }
+
+  goToBuild() {
+    let agentData: any = [];
+    let agentName = "";
+    let runTime = "";
+    let framework = "";
+    let model = "";
+    let tools = "";
+
+    if(this.selectedAgent === "intelligentVirtualAssistant") {
+      agentName = "Intelligent Virtual Assistant";
+      runTime = "Vertex AI Reasoning Engine";
+      framework = "Langchain/Langgraph";
+      model = "Gemini";
+      tools = "API"
+    } else if(this.selectedAgent === "infoBot"){
+      agentName = "Info Bot";
+      runTime = "Cloud Run";
+      framework = "LlamaIndex";
+      tools = "Pre-build Tool";
+      model = "Claude (Model Garden)"
+    }
+    agentData.push({agentName});
+    agentData.push({runTime});
+    agentData.push({framework});
+    agentData.push({tools});
+    agentData.push({model});
+
+    localStorage.setItem("agentData", JSON.stringify(agentData));
+    this.router.navigate(['/spinner']);
+  }
 }
