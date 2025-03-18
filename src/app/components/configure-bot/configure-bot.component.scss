@@ -50,7 +50,7 @@
     .option-response {
         flex: 2;
         margin-left: 5em;
-        text-align: start;
+        text-align: left;
         &.extra-margin{
             margin-left: 5em;
         }
@@ -61,7 +61,7 @@
             line-height: 1.75rem;
             margin: 0em 2em 1rem 0rem;
             white-space: pre-wrap;
-            text-align: start !important;
+            text-align: left !important;
         }
 
         .subheading {
@@ -70,7 +70,7 @@
             line-height: 1.75rem;
             // margin: 0em 2em 1rem 0rem;
             white-space: pre-wrap;
-            text-align: start !important;
+            text-align: left !important;
         }
 
         .view-code-button {
@@ -125,6 +125,7 @@
                 background-size: cover;
                 // background-attachment: fixed;
                 background-position: center;
+                width: 100%;
 
                 .icon {
                     font-size: 2em;
@@ -227,7 +228,7 @@
 
         &.backward {
             --mdc-fab-container-color: var(--secondary-btn-color);
-            border: 1px solid var(--secondary-btn-text-color) !important;
+            border: 1px solid var(--outline-color) !important;
             margin-right: 1em;
             color: var(--secondary-btn-text-color) !important;
             padding: 1rem 1.75rem;
@@ -419,5 +420,5 @@
 
   .disabled-button {
     border-radius: 100px;
-    color: #E3E3E3 !important;
+    color: gray !important;
   }
