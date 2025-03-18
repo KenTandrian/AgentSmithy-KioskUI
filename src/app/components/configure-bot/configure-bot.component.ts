@@ -87,7 +87,7 @@ export class ConfigureBotComponent implements OnInit {
         }
       ],
       selectedOptionResponse: {
-        subtitle: '\nVertex AI\n • Quick, easy solution for general reasoning tasks (QA, summarization).\n • Managed scaling and infrastructure.\n\nCloud Run\n • Fine-grained control and customization.\n • Cost optimization and portability.\n • Requires container expertise and infrastructure \n   management.deployments, and the resources to \n   develop and maintain the infrastructure. ',
+        subtitle: '\nVertex AI Reasoning Engine\n • Quick, easy solution for general reasoning tasks (QA, \n   summarization).\n • Managed scaling and infrastructure.\n\nCloud Run\n • Fine-grained control and customization.\n • Cost optimization and portability.\n • Requires container expertise and infrastructure \n   management.deployments, and the resources to \n   develop and maintain the infrastructure. ',
         caption: '# Initialize the Vertex AI client \naiplatform.init(project="your-project-id", location="your-region")\n\n# Deploy a model to the Vertex AI Reasoning Engine \nmodel = aiplatform.Model.upload( \n\tdisplay_name="your-model-name", \n\tartifact_uri="gs://your-bucket/your-model-path", \n\tserving_container_image_uri="us-docker.pkg.dev/vertex-ai/prediction/your-\ncontainer-image", ) endpoint = model.deploy( machine_type="n1-standard-4", )'
       },
       hasNext: true,
