@@ -53,8 +53,8 @@ export class ConfigureBotComponent implements OnInit {
         //   { value: 'option3', label: 'Option 3' }
         // ] },
         { label: 'Industry', type: 'select', controlName: 'industry', options: [
-          { value: 'Health', label: 'Health' },
-          { value: 'Financial', label: 'Financial' },
+          { value: 'Healthcare', label: 'Healthcare' },
+          { value: 'Finance', label: 'Finance' },
           { value: 'Retail', label: 'Retail' }
         ] }
       ],
@@ -72,23 +72,25 @@ export class ConfigureBotComponent implements OnInit {
       subheading: 'An AI runtime provides the necessary environment to deploy and run machine learning models.',
       options: [
         { 
-          label: 'Vertex AI Reasoning Engine', 
+          label: 'Vertex AI Agent Engine', 
           isSelected: false, 
-          onClick: () => this.selectRunTime('Vertex AI Reasoning Engine'),
-          subtitle: 'Vertex AI Reasoning Engine is a specialized service for deploying and running machine learning models, with features such as model monitoring, versioning, and A/B testing.',
-          caption: '# Initialize the Vertex AI client \naiplatform.init(project="your-project-id", location="your-region")\n\n# Deploy a model to the Vertex AI Reasoning Engine \nmodel = aiplatform.Model.upload( \n\tdisplay_name="your-model-name", \n\tartifact_uri="gs://your-bucket/your-model-path", \n\tserving_container_image_uri="us-docker.pkg.dev/vertex-ai/prediction/your-\ncontainer-image", ) endpoint = model.deploy( machine_type="n1-standard-4", )'
+          isDisabled: false,
+          onClick: () => this.selectRunTime('Vertex AI Agent Engine'),
+          subtitle: 'Vertex AI Agent Engine is a specialized service for deploying and running machine learning models, with features such as model monitoring, versioning, and A/B testing.',
+          caption: '# Initialize the Vertex AI client \naiplatform.init(project="your-project-id", location="your-region")\n\n# Deploy a model to the Vertex AI Agent Engine \nmodel = aiplatform.Model.upload( \n\tdisplay_name="your-model-name", \n\tartifact_uri="gs://your-bucket/your-model-path", \n\tserving_container_image_uri="us-docker.pkg.dev/vertex-ai/prediction/your-\ncontainer-image", ) endpoint = model.deploy( machine_type="n1-standard-4", )'
         },
         { 
           label: 'Cloud Run', 
           isSelected: false, 
+          isDisabled: false,
           onClick: () => this.selectRunTime('Cloud Run'),
           subtitle: 'Cloud Run is a general-purpose service for deploying and running any containerized application, including web applications, APIs, and microservices.',
           caption: 'apiVersion: serving.knative.dev/v1 \nkind: Service \nmetadata: \n\tname: your-service-name \nspec: \n\ttemplate: \n\t\tspec: \n\t\t\tcontainers: \n\t\t\t\t-image: us-docker.pkg.dev/cloudrun/container/hello \n\t\t\tports: \n\t\t\t\t-containerPort: 8080' 
         }
       ],
       selectedOptionResponse: {
-        subtitle: '\nVertex AI Reasoning Engine\n • Quick, easy solution for general reasoning tasks (QA, \n   summarization).\n • Managed scaling and infrastructure.\n\nCloud Run\n • Fine-grained control and customization.\n • Cost optimization and portability.\n • Requires container expertise and infrastructure \n   management.deployments, and the resources to \n   develop and maintain the infrastructure. ',
-        caption: '# Initialize the Vertex AI client \naiplatform.init(project="your-project-id", location="your-region")\n\n# Deploy a model to the Vertex AI Reasoning Engine \nmodel = aiplatform.Model.upload( \n\tdisplay_name="your-model-name", \n\tartifact_uri="gs://your-bucket/your-model-path", \n\tserving_container_image_uri="us-docker.pkg.dev/vertex-ai/prediction/your-\ncontainer-image", ) endpoint = model.deploy( machine_type="n1-standard-4", )'
+        subtitle: '\nVertex AI Agent Engine\n • Quick, easy solution for general reasoning tasks (QA, \n   summarization).\n • Managed scaling and infrastructure.\n\nCloud Run\n • Fine-grained control and customization.\n • Cost optimization and portability.\n • Requires container expertise and infrastructure \n   management.deployments, and the resources to \n   develop and maintain the infrastructure. ',
+        caption: '# Initialize the Vertex AI client \naiplatform.init(project="your-project-id", location="your-region")\n\n# Deploy a model to the Vertex AI Agent Engine \nmodel = aiplatform.Model.upload( \n\tdisplay_name="your-model-name", \n\tartifact_uri="gs://your-bucket/your-model-path", \n\tserving_container_image_uri="us-docker.pkg.dev/vertex-ai/prediction/your-\ncontainer-image", ) endpoint = model.deploy( machine_type="n1-standard-4", )'
       },
       hasNext: true,
       hasPrevious: true,
@@ -102,22 +104,33 @@ export class ConfigureBotComponent implements OnInit {
       subheading: 'An AI orchestration framework coordinates and manages the interconnected workflows of various AI models, tools, and data sources to create cohesive and efficient AI systems.',
       options: [
         { 
-          label: 'Langchain/Langgraph', 
+          label: 'LangChain', 
           isSelected: false, 
-          onClick: () => this.selectFramework('Langchain/Langgraph'), 
+          isDisabled: false,
+          onClick: () => this.selectFramework('LangChain'), 
+          subtitle: 'LangChain (with its visual counterpart LangGraph) is a framework for building applications with large language models (LLMs). It provides tools to chain together LLMs with other components, like prompts and external data sources, to create complex applications.',
+          caption: 'from langchain.llms import Gemini \nfrom langchain.prompts import PromptTemplate \n\nllm = Gemini(model="gemini-pro", temperature=0.9) # Using Gemini Pro \nprompt = PromptTemplate( \n\tinput_variables=["product"], \n\ttemplate="What is a good name for a company that makes {product}?", \n) \nprint(llm(prompt.format(product="colorful socks")))'
+        },
+        { 
+          label: 'LangGraph', 
+          isSelected: false, 
+          isDisabled: false,
+          onClick: () => this.selectFramework('LangGraph'), 
           subtitle: 'LangChain (with its visual counterpart LangGraph) is a framework for building applications with large language models (LLMs). It provides tools to chain together LLMs with other components, like prompts and external data sources, to create complex applications.',
           caption: 'from langchain.llms import Gemini \nfrom langchain.prompts import PromptTemplate \n\nllm = Gemini(model="gemini-pro", temperature=0.9) # Using Gemini Pro \nprompt = PromptTemplate( \n\tinput_variables=["product"], \n\ttemplate="What is a good name for a company that makes {product}?", \n) \nprint(llm(prompt.format(product="colorful socks")))'
         },
         { 
           label: 'LlamaIndex', 
           isSelected: false, 
+          isDisabled: false,
           onClick: () => this.selectFramework('LlamaIndex'),
           subtitle: 'LlamaIndex (formerly GPT Index) is a data framework that helps you connect your external data to large language models (LLMs). It provides tools for structuring, indexing, and querying your data sources, allowing LLMs to access and utilize this information effectively.',
           caption: 'from llama_index import SimpleDirectoryReader, GPTListIndex, LLMPredictor, \nServiceContext \nfrom langchain.llms import Gemini \n\ndocuments = SimpleDirectoryReader(\'data\').load_data() \nindex = GPTListIndex.from_documents(documents) \n\n# Define LLM and service context using Gemini \nllm_predictor = LLMPredictor(llm=Gemini(model="gemini-pro", temperature=0)) \nservice_context = ServiceContext.from_defaults(llm_predictor=llm_predictor) \nquery_engine = index.as_query_engine(service_context=service_context) \nresponse = query_engine.query("What is the main topic?") \nprint(response)' 
         },
         { 
-          label: 'Vertex Agent Framework', 
-          isSelected: false, 
+          label: 'Vertex Agent Framework (Coming Soon)', 
+          isSelected: false,
+          isDisabled: true, 
           onClick: () => this.selectFramework('Vertex Agent Framework'),
           subtitle: 'The Vertex AI Agent Framework is a new tool (currently in preview) that allows developers to build and deploy agents that use LLMs to connect with APIs, data, and other applications. It simplifies the creation of agents that can automate tasks, retrieve information, and interact with the world.',
           caption: 'from google.cloud import aiplatform \n\n# Initialize the Vertex AI client \naiplatform.init(project="your-project-id", location="your-region") \n\n# Create an agent \nagent = aiplatform.Agent.create( \ndisplay_name="my-agent", llm_model="text-bison@001", tools=[aiplatform.Tool.from_python_package( \ndisplay_name="wikipedia", python_package_uri="gs://my-bucket/wikipedia.tar.gz", )] )' 
@@ -142,6 +155,7 @@ export class ConfigureBotComponent implements OnInit {
         { 
           label: 'API', 
           isSelected: false, 
+          isDisabled: false,
           onClick: () => this.selectTools('API'), 
           subtitle: 'An API allows the LLM to interact with external services and retrieve information or perform actions. This expands the LLM\'s capabilities beyond just generating text, enabling it to access real-time data, interact with other applications, and perform a wider range of tasks.',
           caption: 'from langchain.agents import Tool \n\n# Define the tool (assuming \'get_weather\' function is already defined) \nweather_tool = Tool( \n\tname="Get Weather", \n\tfunc=get_weather, \n\tdescription="Get current weather for a location." \n)'
@@ -149,6 +163,7 @@ export class ConfigureBotComponent implements OnInit {
         { 
           label: 'Pre-build Tool', 
           isSelected: false, 
+          isDisabled: false,
           onClick: () => this.selectTools('Pre-build Tool'),
           subtitle: '"Pre-built" tools for LLMs are ready-made components that provide easy access to common functionalities and services, like searching the web or accessing specific APIs. These tools are pre-configured and often come bundled with platforms like LangChain, allowing developers to quickly integrate them into their applications without building everything from scratch.',
           caption: 'from langchain.agents import load_tools \n\n# Load the pre-built Google Search tool \ntools = load_tools(["google-search"]) \n\n# Use the tool (e.g., within an agent) \ntools[0].run("What\'s the weather in Boston, MA?")' 
@@ -177,16 +192,50 @@ export class ConfigureBotComponent implements OnInit {
       subheading: 'AI models are algorithms trained on data to recognize patterns and make predictions or decisions without explicit programming.',
       options: [
         { 
-          label: 'Gemini', 
+          label: 'Gemini 2.0 Flash', 
           isSelected: false, 
-          onClick: () => this.selectModel('Gemini'), 
+          isDisabled: false,
+          onClick: () => this.selectModel('Gemini 2.0 Flash'), 
           subtitle: 'Gemini is a family of large language models (LLMs) from Google AI, capable of text generation, code generation, translation, and question answering.',
           caption: 'from langchain.llms import Gemini \n\nllm = Gemini(model="gemini-pro") \nresponse = llm("Tell me a joke.") \nprint(response)'
         },
         { 
-          label: 'Claude (Model Garden)', 
+          label: 'Gemini 1.5 Pro', 
           isSelected: false, 
-          onClick: () => this.selectModel('Claude (Model Garden)'),
+          isDisabled: false,
+          onClick: () => this.selectModel('Gemini 1.5 Pro'), 
+          subtitle: 'Gemini is a family of large language models (LLMs) from Google AI, capable of text generation, code generation, translation, and question answering.',
+          caption: 'from langchain.llms import Gemini \n\nllm = Gemini(model="gemini-pro") \nresponse = llm("Tell me a joke.") \nprint(response)'
+        },
+        { 
+          label: 'Claude 3.7 Sonnet (Model Garden)', 
+          isSelected: false, 
+          isDisabled: false,
+          onClick: () => this.selectModel('Claude 3.7 Sonnet (Model Garden)'),
+          subtitle: 'Claude is a large language model created by Anthropic, focused on being helpful, harmless, and honest. You can use Claude for tasks like summarizing articles or documents, engaging in natural-sounding conversations, generating different kinds of text formats, and providing informative answers to your questions.',
+          caption: 'import anthropic \n\nclient = anthropic.Anthropic() \nresponse = client.completions.create( \n\tmodel="claude-2", \n\tprompt="Write a short poem about the ocean." \n) \nprint(response.completion)' 
+        },
+        { 
+          label: 'Claude 3.5 Sonnet V2 (Model Garden)', 
+          isSelected: false, 
+          isDisabled: false,
+          onClick: () => this.selectModel('Claude 3.5 Sonnet V2 (Model Garden)'),
+          subtitle: 'Claude is a large language model created by Anthropic, focused on being helpful, harmless, and honest. You can use Claude for tasks like summarizing articles or documents, engaging in natural-sounding conversations, generating different kinds of text formats, and providing informative answers to your questions.',
+          caption: 'import anthropic \n\nclient = anthropic.Anthropic() \nresponse = client.completions.create( \n\tmodel="claude-2", \n\tprompt="Write a short poem about the ocean." \n) \nprint(response.completion)' 
+        },
+        { 
+          label: 'Llama 3.3 70B (Model Garden)', 
+          isSelected: false, 
+          isDisabled: false,
+          onClick: () => this.selectModel('Llama 3.3 70B (Model Garden)'),
+          subtitle: 'Claude is a large language model created by Anthropic, focused on being helpful, harmless, and honest. You can use Claude for tasks like summarizing articles or documents, engaging in natural-sounding conversations, generating different kinds of text formats, and providing informative answers to your questions.',
+          caption: 'import anthropic \n\nclient = anthropic.Anthropic() \nresponse = client.completions.create( \n\tmodel="claude-2", \n\tprompt="Write a short poem about the ocean." \n) \nprint(response.completion)' 
+        },
+        { 
+          label: 'Llama 3.1 405B (Model Garden)', 
+          isSelected: false, 
+          isDisabled: false,
+          onClick: () => this.selectModel('Llama 3.1 405B (Model Garden)'),
           subtitle: 'Claude is a large language model created by Anthropic, focused on being helpful, harmless, and honest. You can use Claude for tasks like summarizing articles or documents, engaging in natural-sounding conversations, generating different kinds of text formats, and providing informative answers to your questions.',
           caption: 'import anthropic \n\nclient = anthropic.Anthropic() \nresponse = client.completions.create( \n\tmodel="claude-2", \n\tprompt="Write a short poem about the ocean." \n) \nprint(response.completion)' 
         }

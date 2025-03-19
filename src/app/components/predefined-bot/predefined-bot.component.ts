@@ -83,7 +83,7 @@ export class PredefinedBotComponent {
 
     if(this.selectedAgent === "intelligentVirtualAssistant") {
       agentName = "Intelligent Virtual Assistant";
-      runTime = "Vertex AI Reasoning Engine";
+      runTime = "Vertex AI Agent Engine";
       framework = "Langchain/Langgraph";
       model = "Gemini";
       tools = "API"

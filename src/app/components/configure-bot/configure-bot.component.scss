@@ -422,3 +422,8 @@
     border-radius: 100px;
     color: gray !important;
   }
+
+  .disabled {
+    pointer-events: none;
+    opacity: 0.5;
+  }
