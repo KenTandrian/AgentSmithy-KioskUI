@@ -130,7 +130,7 @@
     .footer-container {
         display: flex;
         justify-content: space-between;
-        margin-top: 8rem;
+        margin-top: 7.3rem;
     }
 
     .button-container {
@@ -144,7 +144,7 @@
             border: none;
             margin-right: 1em;
             color: var(--primary-btn-color) !important;
-            padding: 1rem 1.75rem;
+            padding: 1rem 1rem 1rem 1.75rem;
             line-height: 1.75rem;
             font-weight: 500;
             font-size: 1rem;
@@ -152,7 +152,7 @@
         .logo-container {
             display: flex;
             flex-direction: column;
-            margin-left: 1em;
+            margin-left: 1.6rem;
             justify-content: center;
 
             .created-by {
@@ -200,7 +200,7 @@
 
         &.backward {
             --mdc-fab-container-color: var(--secondary-btn-color);
-            border: 1px solid var(--secondary-btn-text-color) !important;
+            border: 1px solid var(--outline-color) !important;
             margin-right: 1em;
             color: var(--secondary-btn-text-color) !important;
             padding: 1rem 1.75rem;
