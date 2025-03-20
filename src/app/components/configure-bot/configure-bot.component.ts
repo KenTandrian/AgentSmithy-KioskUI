@@ -47,11 +47,6 @@ export class ConfigureBotComponent implements OnInit {
       fields: [
         { label: 'Agent Name', type: 'input', controlName: 'agentName', placeholder: '', required: true },
         { label: 'Description', type: 'input', controlName: 'description', placeholder: '', required: true },
-        // { label: 'Agent Type', type: 'select', controlName: 'agentType', options: [
-        //   { value: 'option1', label: 'Option 1' },
-        //   { value: 'option2', label: 'Option 2', disabled: true },
-        //   { value: 'option3', label: 'Option 3' }
-        // ] },
         { label: 'Industry', type: 'select', controlName: 'industry', options: [
           { value: 'Healthcare', label: 'Healthcare' },
           { value: 'Finance', label: 'Finance' },

@@ -1,17 +1,18 @@
 .outer-container {
     max-width: 1280px;
     margin: 0 auto;
-    position: relative;
+    // position: relative;
     padding: 10px 20px;
     margin-top: 3%;
 
     .heading {
         font-size: 2em;
-        position: absolute;
+        // position: absolute;
         // left: 1.25em;
         // top: 0.5em;
+        margin-bottom: 1.5em;
         color: var(--text-color);
-        animation: moveHeading 1s ease-in-out forwards;
+        // animation: moveHeading 1s ease-in-out forwards;
         // transform: translate(100px, 100px);
     }
 
@@ -326,7 +327,7 @@
     }
 
     ::ng-deep.mat-horizontal-stepper-header-container {
-        margin-bottom: 2em;
+        // margin-bottom: 2em;
     }
 
     .example-radio-group ::ng-deep.mat-radio-button ::ng-deep.mat-radio-outer-circle {
