@@ -36,9 +36,7 @@ DATASTORE_INDUSTRY_SOURCES_MAP = {
     'healthcare': 'gs://cloud-samples-data/vertex-ai/medlm/primock57/transcripts/*.txt',
     'retail': 'gs://cloud-samples-data/dialogflow-cx/google-store/*.html',
 }
-# TODO: Uncomment this when creating a datastore from the script.
-# DATA_STORE_ID = 'agent_smithy_data_store_{}'.format(uuid4())
-DATA_STORE_ID = 'agent_smithy_data_store_45aed69c-e30f-4ba9-b334-74a9b7fd2b7b'
+DATA_STORE_ID = 'agent_smithy_data_store_{}'.format(uuid4())
 DATA_STORE_LOCATION = 'global'
 DATA_STORE_NAME = f"{PROJECT_ID.lower().replace(' ', '-')}-{AGENT_NAME.lower().replace(' ', '-')}-datastore"
 
