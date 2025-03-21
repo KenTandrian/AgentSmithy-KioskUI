@@ -11,9 +11,9 @@ REGION = ""
 AGENT_NAME = ""
 
 # User selection config
-AGENT_FOUNDATION_MODEL = "gemini-2.0-flash"
-AGENT_INDUSTRY_TYPE = "finance"
-AGENT_ORCHESTRATION_FRAMEWORK = "llamaindex_agent"
+AGENT_FOUNDATION_MODEL = ""
+AGENT_INDUSTRY_TYPE = ""
+AGENT_ORCHESTRATION_FRAMEWORK = ""
 
 # GitHub Constants.
 REPOSITORY_NAME = "AgentSmithy"
