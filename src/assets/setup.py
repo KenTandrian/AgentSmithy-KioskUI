@@ -6,9 +6,9 @@ import subprocess
 from google.cloud import discoveryengine
 from uuid import uuid4
 
-PROJECT_ID = "agentsmithy-sample-3"
-REGION = "us-central1"
-AGENT_NAME = "Ivan"
+PROJECT_ID = ""
+REGION = ""
+AGENT_NAME = ""
 
 # User selection config
 AGENT_FOUNDATION_MODEL = "gemini-2.0-flash"
@@ -209,11 +209,11 @@ if __name__ == "__main__":
     #    print("Usage: python3 local_deploy.py action (e.g action = (clone, run, redeploy))")
     #    exit(1)
     
-    # clone(REPOSITORY_URL, REPOSITORY_BRANCH)
-    # deploy_terraform_infrastructure(TERRAFORM_DIRECTORY, TERRAFORM_VAR_FILE)
+    clone(REPOSITORY_URL, REPOSITORY_BRANCH)
+    deploy_terraform_infrastructure(TERRAFORM_DIRECTORY, TERRAFORM_VAR_FILE)
 
-    # create_data_store()
-    # populate_data_store(AGENT_INDUSTRY_TYPE)
+    create_data_store()
+    populate_data_store(AGENT_INDUSTRY_TYPE)
 
     # Build and deploy BE Service.
     frontend_url = get_cloud_run_url(REGION, CLOUD_RUN_FRONTEND_SERVICE_NAME)
