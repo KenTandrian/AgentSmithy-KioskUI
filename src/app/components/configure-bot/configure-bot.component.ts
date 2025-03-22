@@ -14,7 +14,7 @@ export class ConfigureBotComponent implements OnInit {
   formGroup: FormGroup;
   selectedRuntime: string = 'resoningEngine';
   selectedFramework: string = 'langchain';
-  selectedTools: string = 'api';
+  selectedIndustry: string = 'Healthcare';
   selectedModel: string = 'gemini';
   @ViewChild('viewCode', { static: true })
   viewCode: TemplateRef<{}>;
@@ -47,11 +47,11 @@ export class ConfigureBotComponent implements OnInit {
       fields: [
         { label: 'Agent Name', type: 'input', controlName: 'agentName', placeholder: '', required: true },
         { label: 'Description', type: 'input', controlName: 'description', placeholder: '', required: true },
-        { label: 'Industry', type: 'select', controlName: 'industry', options: [
-          { value: 'Healthcare', label: 'Healthcare' },
-          { value: 'Finance', label: 'Finance' },
-          { value: 'Retail', label: 'Retail' }
-        ] }
+        // { label: 'Industry', type: 'select', controlName: 'industry', options: [
+        //   { value: 'Healthcare', label: 'Healthcare' },
+        //   { value: 'Finance', label: 'Finance' },
+        //   { value: 'Retail', label: 'Retail' }
+        // ] }
       ],
       caption:'Welcome to the agent builder! To begin, please provide a unique name for your agent, something that reflects its purpose or personality. Next, craft a concise description outlining the agent\'s intended function and how it will assist users. Finally, select the industry that best aligns with your agent\'s focus. This selection will help tailor the agent\'s capabilities and access relevant data, ensuring it\'s optimally configured for its intended environment.',
       hasNext: true,
@@ -70,7 +70,7 @@ export class ConfigureBotComponent implements OnInit {
           label: 'Vertex AI Agent Engine', 
           isSelected: false, 
           isDisabled: false,
-          onClick: () => this.selectRunTime('Vertex AI Agent Engine'),
+          onClick: () => this.selectRunTime('AgentEngine'),
           subtitle: 'Vertex AI Agent Engine is a specialized service for deploying and running machine learning models, with features such as model monitoring, versioning, and A/B testing.',
           caption: '# Initialize the Vertex AI client \naiplatform.init(project="your-project-id", location="your-region")\n\n# Deploy a model to the Vertex AI Agent Engine \nmodel = aiplatform.Model.upload( \n\tdisplay_name="your-model-name", \n\tartifact_uri="gs://your-bucket/your-model-path", \n\tserving_container_image_uri="us-docker.pkg.dev/vertex-ai/prediction/your-\ncontainer-image", ) endpoint = model.deploy( machine_type="n1-standard-4", )'
         },
@@ -78,7 +78,7 @@ export class ConfigureBotComponent implements OnInit {
           label: 'Cloud Run', 
           isSelected: false, 
           isDisabled: false,
-          onClick: () => this.selectRunTime('Cloud Run'),
+          onClick: () => this.selectRunTime('CloudRun/FastApi'),
           subtitle: 'Cloud Run is a general-purpose service for deploying and running any containerized application, including web applications, APIs, and microservices.',
           caption: 'apiVersion: serving.knative.dev/v1 \nkind: Service \nmetadata: \n\tname: your-service-name \nspec: \n\ttemplate: \n\t\tspec: \n\t\t\tcontainers: \n\t\t\t\t-image: us-docker.pkg.dev/cloudrun/container/hello \n\t\t\tports: \n\t\t\t\t-containerPort: 8080' 
         }
@@ -102,7 +102,7 @@ export class ConfigureBotComponent implements OnInit {
           label: 'LangChain', 
           isSelected: false, 
           isDisabled: false,
-          onClick: () => this.selectFramework('LangChain'), 
+          onClick: () => this.selectFramework('langchain_agent'), 
           subtitle: 'LangChain (with its visual counterpart LangGraph) is a framework for building applications with large language models (LLMs). It provides tools to chain together LLMs with other components, like prompts and external data sources, to create complex applications.',
           caption: 'from langchain.llms import Gemini \nfrom langchain.prompts import PromptTemplate \n\nllm = Gemini(model="gemini-pro", temperature=0.9) # Using Gemini Pro \nprompt = PromptTemplate( \n\tinput_variables=["product"], \n\ttemplate="What is a good name for a company that makes {product}?", \n) \nprint(llm(prompt.format(product="colorful socks")))'
         },
@@ -110,7 +110,7 @@ export class ConfigureBotComponent implements OnInit {
           label: 'LangGraph', 
           isSelected: false, 
           isDisabled: false,
-          onClick: () => this.selectFramework('LangGraph'), 
+          onClick: () => this.selectFramework('langgraph_agent'), 
           subtitle: 'LangChain (with its visual counterpart LangGraph) is a framework for building applications with large language models (LLMs). It provides tools to chain together LLMs with other components, like prompts and external data sources, to create complex applications.',
           caption: 'from langchain.llms import Gemini \nfrom langchain.prompts import PromptTemplate \n\nllm = Gemini(model="gemini-pro", temperature=0.9) # Using Gemini Pro \nprompt = PromptTemplate( \n\tinput_variables=["product"], \n\ttemplate="What is a good name for a company that makes {product}?", \n) \nprint(llm(prompt.format(product="colorful socks")))'
         },
@@ -118,7 +118,7 @@ export class ConfigureBotComponent implements OnInit {
           label: 'LlamaIndex', 
           isSelected: false, 
           isDisabled: false,
-          onClick: () => this.selectFramework('LlamaIndex'),
+          onClick: () => this.selectFramework('llamaindex_agent'),
           subtitle: 'LlamaIndex (formerly GPT Index) is a data framework that helps you connect your external data to large language models (LLMs). It provides tools for structuring, indexing, and querying your data sources, allowing LLMs to access and utilize this information effectively.',
           caption: 'from llama_index import SimpleDirectoryReader, GPTListIndex, LLMPredictor, \nServiceContext \nfrom langchain.llms import Gemini \n\ndocuments = SimpleDirectoryReader(\'data\').load_data() \nindex = GPTListIndex.from_documents(documents) \n\n# Define LLM and service context using Gemini \nllm_predictor = LLMPredictor(llm=Gemini(model="gemini-pro", temperature=0)) \nservice_context = ServiceContext.from_defaults(llm_predictor=llm_predictor) \nquery_engine = index.as_query_engine(service_context=service_context) \nresponse = query_engine.query("What is the main topic?") \nprint(response)' 
         },
@@ -142,34 +142,35 @@ export class ConfigureBotComponent implements OnInit {
     },
 
     {
-      heading: 'Tools',
-      stepHeading: 'Tools',
+      heading: 'Industry',
+      stepHeading: 'Industry',
       contentType: 'options',
       subheading: 'AI tools are software applications or platforms that leverage artificial intelligence to automate tasks, analyze data, or generate outputs.',
       options: [
         { 
-          label: 'API', 
+          label: 'Finance', 
           isSelected: false, 
           isDisabled: false,
-          onClick: () => this.selectTools('API'), 
+          onClick: () => this.selectIndustry('finance'), 
           subtitle: 'An API allows the LLM to interact with external services and retrieve information or perform actions. This expands the LLM\'s capabilities beyond just generating text, enabling it to access real-time data, interact with other applications, and perform a wider range of tasks.',
           caption: 'from langchain.agents import Tool \n\n# Define the tool (assuming \'get_weather\' function is already defined) \nweather_tool = Tool( \n\tname="Get Weather", \n\tfunc=get_weather, \n\tdescription="Get current weather for a location." \n)'
         },
         { 
-          label: 'Pre-build Tool', 
+          label: 'Healthcare', 
           isSelected: false, 
           isDisabled: false,
-          onClick: () => this.selectTools('Pre-build Tool'),
+          onClick: () => this.selectIndustry('healthcare'),
           subtitle: '"Pre-built" tools for LLMs are ready-made components that provide easy access to common functionalities and services, like searching the web or accessing specific APIs. These tools are pre-configured and often come bundled with platforms like LangChain, allowing developers to quickly integrate them into their applications without building everything from scratch.',
           caption: 'from langchain.agents import load_tools \n\n# Load the pre-built Google Search tool \ntools = load_tools(["google-search"]) \n\n# Use the tool (e.g., within an agent) \ntools[0].run("What\'s the weather in Boston, MA?")' 
         },
-        // { 
-        //   label: 'TBD', 
-        //   isSelected: false, 
-        //   onClick: () => this.selectTools('TBD'),
-        //   subtitle: 'Tempus interdum tincidunt suspendisse pulvinar. In habitant lorem quis viverra. Cum facilisi sit scelerisque mi sed porttitor mauris. Adipiscing pellentesque lobortis eget amet lectus. Nulla a et sit at id massa purus volutpat urna. Accumsan.',
-        //   caption: 'aiplatform.init(project="your-project-id", location="your-region") \nllm = VertexAI(model_name="text-bison@001") \nagent = "Agent description here" \nremote_agent = aiplatform.reasoning_engines.ReasoningEngine.create( \n\tagent=agent, \n\trequirements=[ "google-cloud-aiplatform[langchain,reasoningengine]", \n\t"cloudpickle==3.0.0", "pydantic==2.7.4", "langchain-google-community", "google-cloud-discoveryengine", ], \n)' 
-        // }
+        { 
+          label: 'Retail', 
+          isSelected: false, 
+          isDisabled: false,
+          onClick: () => this.selectIndustry('retail'),
+          subtitle: '"Pre-built" tools for LLMs are ready-made components that provide easy access to common functionalities and services, like searching the web or accessing specific APIs. These tools are pre-configured and often come bundled with platforms like LangChain, allowing developers to quickly integrate them into their applications without building everything from scratch.',
+          caption: 'from langchain.agents import load_tools \n\n# Load the pre-built Google Search tool \ntools = load_tools(["google-search"]) \n\n# Use the tool (e.g., within an agent) \ntools[0].run("What\'s the weather in Boston, MA?")' 
+        },
       ],
       selectedOptionResponse: {
         subtitle: '\nAPIs offer flexibility and customization, allowing developers to tailor LLM interactions precisely to their needs and integrate them deeply within existing systems.  Pre-built tools, on the other hand, provide convenience and speed, offering ready-made solutions for common LLM use cases like chatbots, summarization, or question answering, often with user-friendly interfaces and requiring less coding.  Choose APIs when fine-grained control and deep integration are paramount, and pre-built tools when rapid development and ease of use are prioritized.',
@@ -190,7 +191,7 @@ export class ConfigureBotComponent implements OnInit {
           label: 'Gemini 2.0 Flash', 
           isSelected: false, 
           isDisabled: false,
-          onClick: () => this.selectModel('Gemini 2.0 Flash'), 
+          onClick: () => this.selectModel('gemini-2.0-flash'), 
           subtitle: 'Gemini is a family of large language models (LLMs) from Google AI, capable of text generation, code generation, translation, and question answering.',
           caption: 'from langchain.llms import Gemini \n\nllm = Gemini(model="gemini-pro") \nresponse = llm("Tell me a joke.") \nprint(response)'
         },
@@ -198,7 +199,7 @@ export class ConfigureBotComponent implements OnInit {
           label: 'Gemini 1.5 Pro', 
           isSelected: false, 
           isDisabled: false,
-          onClick: () => this.selectModel('Gemini 1.5 Pro'), 
+          onClick: () => this.selectModel('gemini-1.5-pro'), 
           subtitle: 'Gemini is a family of large language models (LLMs) from Google AI, capable of text generation, code generation, translation, and question answering.',
           caption: 'from langchain.llms import Gemini \n\nllm = Gemini(model="gemini-pro") \nresponse = llm("Tell me a joke.") \nprint(response)'
         },
@@ -206,7 +207,7 @@ export class ConfigureBotComponent implements OnInit {
           label: 'Claude 3.7 Sonnet (Model Garden)', 
           isSelected: false, 
           isDisabled: false,
-          onClick: () => this.selectModel('Claude 3.7 Sonnet (Model Garden)'),
+          onClick: () => this.selectModel('claude-3-7-sonnet'),
           subtitle: 'Claude is a large language model created by Anthropic, focused on being helpful, harmless, and honest. You can use Claude for tasks like summarizing articles or documents, engaging in natural-sounding conversations, generating different kinds of text formats, and providing informative answers to your questions.',
           caption: 'import anthropic \n\nclient = anthropic.Anthropic() \nresponse = client.completions.create( \n\tmodel="claude-2", \n\tprompt="Write a short poem about the ocean." \n) \nprint(response.completion)' 
         },
@@ -214,7 +215,7 @@ export class ConfigureBotComponent implements OnInit {
           label: 'Claude 3.5 Sonnet V2 (Model Garden)', 
           isSelected: false, 
           isDisabled: false,
-          onClick: () => this.selectModel('Claude 3.5 Sonnet V2 (Model Garden)'),
+          onClick: () => this.selectModel('claude-3-5-sonnet-v2'),
           subtitle: 'Claude is a large language model created by Anthropic, focused on being helpful, harmless, and honest. You can use Claude for tasks like summarizing articles or documents, engaging in natural-sounding conversations, generating different kinds of text formats, and providing informative answers to your questions.',
           caption: 'import anthropic \n\nclient = anthropic.Anthropic() \nresponse = client.completions.create( \n\tmodel="claude-2", \n\tprompt="Write a short poem about the ocean." \n) \nprint(response.completion)' 
         },
@@ -222,7 +223,7 @@ export class ConfigureBotComponent implements OnInit {
           label: 'Llama 3.3 70B (Model Garden)', 
           isSelected: false, 
           isDisabled: false,
-          onClick: () => this.selectModel('Llama 3.3 70B (Model Garden)'),
+          onClick: () => this.selectModel('llama-3.3-70b-instruct-maas'),
           subtitle: 'Claude is a large language model created by Anthropic, focused on being helpful, harmless, and honest. You can use Claude for tasks like summarizing articles or documents, engaging in natural-sounding conversations, generating different kinds of text formats, and providing informative answers to your questions.',
           caption: 'import anthropic \n\nclient = anthropic.Anthropic() \nresponse = client.completions.create( \n\tmodel="claude-2", \n\tprompt="Write a short poem about the ocean." \n) \nprint(response.completion)' 
         },
@@ -230,7 +231,7 @@ export class ConfigureBotComponent implements OnInit {
           label: 'Llama 3.1 405B (Model Garden)', 
           isSelected: false, 
           isDisabled: false,
-          onClick: () => this.selectModel('Llama 3.1 405B (Model Garden)'),
+          onClick: () => this.selectModel('llama-3.1-405b-instruct-maas'),
           subtitle: 'Claude is a large language model created by Anthropic, focused on being helpful, harmless, and honest. You can use Claude for tasks like summarizing articles or documents, engaging in natural-sounding conversations, generating different kinds of text formats, and providing informative answers to your questions.',
           caption: 'import anthropic \n\nclient = anthropic.Anthropic() \nresponse = client.completions.create( \n\tmodel="claude-2", \n\tprompt="Write a short poem about the ocean." \n) \nprint(response.completion)' 
         }
@@ -253,7 +254,6 @@ export class ConfigureBotComponent implements OnInit {
         this._formBuilder.group({
           agentName: ['', Validators.required],
           description: ['', Validators.required],
-          industry: ['', Validators.required],
         }),
         this._formBuilder.group({
           runTime: ['', Validators.required] // Add validators for radio button groups
@@ -262,7 +262,7 @@ export class ConfigureBotComponent implements OnInit {
           framework: ['', Validators.required]
         }),
         this._formBuilder.group({
-          tools: ['', Validators.required]
+          industry: ['', Validators.required]
         }),
         this._formBuilder.group({
           model: ['', Validators.required]
@@ -293,9 +293,9 @@ export class ConfigureBotComponent implements OnInit {
     this.selectedFramework = value;
   }
 
-  selectTools(value: string) {
+  selectIndustry(value: string) {
     console.log(value);
-    this.selectedTools = value;
+    this.selectedIndustry = value;
   }
 
   selectModel(value: string) {
@@ -323,7 +323,7 @@ export class ConfigureBotComponent implements OnInit {
     formArray.at(stepIndex).patchValue({  // Use stepIndex to target correct form group
       runTime: this.selectedRuntime,       // Update with selected value
       framework: this.selectedFramework,
-      tools: this.selectedTools,
+      industry: this.selectedIndustry,
       model: this.selectedModel
     });
     console.log(formArray);

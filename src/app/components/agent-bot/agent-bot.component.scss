@@ -29,7 +29,7 @@
     }
 
     .inner-container {
-        margin: 40px 30px;
+        margin: 50px 30px;
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 20px;
@@ -603,7 +603,7 @@
             /* Firefox */
             font-size: 0.95rem;
             line-height: 1.1rem;
-            color: #9A9B9C;
+            color: #FFF;
             background: var(--chat-background);
   
             &::placeholder {

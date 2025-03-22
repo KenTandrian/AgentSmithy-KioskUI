@@ -15,10 +15,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpDownloadProgressEvent, HttpEvent, HttpEventType, HttpHeaders } from '@angular/common/http';
 import { Observable, Subject, tap } from 'rxjs';
 import { CreateChatRequest } from '../models/chat.model';
-import { environment } from '../../environments/environment';
 import { SessionService } from './session.service';
-
-const chatsUrl = `${environment.backendURL}/chats`;
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +24,7 @@ export class ChatService {
 
   constructor(private http: HttpClient, private sessionService: SessionService) {}
 
-  postChat(query: string): Observable<HttpEvent<string>> {
+  postChat(query: string, chatsUrl: string): Observable<HttpEvent<string>> {
     if (!this.sessionService.getSession()) {
       this.sessionService.createSession();
     }
@@ -37,14 +34,16 @@ export class ChatService {
     query = query.replace(/\s+/g, " ").trim();
     const body: CreateChatRequest = {
       input: {
-        messages: [
-          {
-            content: query,
-            type: "human",
-          }
-        ],
-        session_id: this.sessionService.getSession()!,
-      },
+        input: {
+          messages: [
+            {
+              content: query,
+              type: "human",
+            }
+          ],
+          session_id: this.sessionService.getSession()!,
+        }
+      }
     };
 
     return this.http

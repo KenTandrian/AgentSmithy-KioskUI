@@ -14,10 +14,10 @@
                                         <input *ngSwitchCase="'input'" matInput [placeholder]="field.placeholder!"
                                             [formControlName]="field.controlName" [required]="field.required!"
                                             class="input-text">
-                                        <mat-select *ngSwitchCase="'select'" [formControlName]="field.controlName">
+                                        <!-- <mat-select *ngSwitchCase="'select'" [formControlName]="field.controlName">
                                             <mat-option *ngFor="let option of field.options" [value]="option.value">{{
                                                 option.label }}</mat-option>
-                                        </mat-select>
+                                        </mat-select> -->
                                     </ng-container>
                                 </mat-form-field>
                             </ng-container> 

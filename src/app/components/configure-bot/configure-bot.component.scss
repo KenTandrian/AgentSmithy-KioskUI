@@ -101,13 +101,11 @@
         display: flex;
         gap: 5%;
 
-        .option-selectors,
-        .option-response {
+        .option-selectors, .option-response {
             display: flex;
             flex-direction: column;
         }
 
-      
         .option-card {
 
             border: 2px solid #C4C7C5;
