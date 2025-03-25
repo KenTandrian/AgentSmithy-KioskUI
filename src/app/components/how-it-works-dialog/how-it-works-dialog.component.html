@@ -8,23 +8,11 @@
         </div>
     </div>
     <div mat-dialog-content>
-        <p>Tortor libero massa maecenas lectus tortor. Odio ipsum nascetur et semper placerat volutpat eget
-            vehicula. Sit id augue aliquet tortor hac. Risus volutpat iaculis justo lacus a justo vitae in malesuada. Eu
-            id
-            maecenas amet velit laoreet. Ac diam arcu aliquam imperdiet arcu tristique. Sed lectus sit tincidunt etiam.
-            Egestas
-            tempor urna massa odio aliquam quisque lorem ut dignissim. Integer nulla sit eget sit ac duis pellentesque
-            morbi.
-            Iaculis pellentesque integer ultricies vel enim. Ultrices sit ligula semper massa nibh ut. Nunc dis ut eget
-            convallis vitae magna. Tortor eget id sed tincidunt massa eu.
-        </p>
-        <br/>
-        <p>
-            In pellentesque lectus metus imperdiet. Sagittis amet tristique tellus mi. Etiam cursus pharetra vulputate
-            vitae
-            malesuada id pulvinar. Porttitor nunc porttitor non volutpat. Vestibulum donec accumsan tristique
-            condimentum.
-            Pharetra condimentum iaculis vestibulum ullamcorper neque morbi. Egestas ipsum ullamcorper lacus diam.
-        </p>
-    </div>
+        <div *ngIf="isImage(); else textContent">
+          <img [src]="data.content" style="max-width: 100%; max-height: 80vh;" />
+        </div>
+        <ng-template #textContent>
+          <div>{{sanitizedContent}}</div>
+        </ng-template>
+      </div>
 </div>

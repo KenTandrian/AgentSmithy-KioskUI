@@ -33,6 +33,8 @@
         margin-top: 30px;
         height: 60vh;
         display: flex;
+
+
         .label {
             font-size: 1em;
             margin-bottom: 0.5em;
@@ -104,6 +106,19 @@
         .option-selectors, .option-response {
             display: flex;
             flex-direction: column;
+            flex: 1;
+            overflow-y: auto; /* Add vertical scrollbar */
+            max-height: 60vh;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .option-selectors::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .option-response::-webkit-scrollbar {
+            display: none;
         }
 
         .option-card {
@@ -112,19 +127,24 @@
             border-radius: 1em;
             display: flex;
             align-items: center;
-            margin-bottom: 1.5em;
+            margin-bottom: 1.25em;
             font-weight: 400;
             cursor: pointer;
+            width: 100%; /* Adjust width as needed */
+            height: 80px; /* Adjust height as needed */
+            padding: 0.5em 0 0.5em 0.5em; /* Add padding for consistent spacing */
+            box-sizing: border-box;
 
             &.selected {
-                padding: 1em;
+                // padding: 1em;
                 border: 2px solid var(--secondary-background-color);
                 border-radius: 100px;
                 background-image: url('../../../assets/images/hero.png');
                 background-size: cover;
-                // background-attachment: fixed;
                 background-position: center;
-                width: 100%;
+                width: 100%; /* Maintain same width when selected */
+                height: 80px; /* Maintain same height when selected */
+                padding: 1em; /* Maintain same padding when selected */
 
                 .icon {
                     font-size: 2em;
@@ -134,7 +154,7 @@
                 }
 
                 .text {
-                    padding: 0.5em;
+                    padding: 0.5em 0 0.5em 0.5em;
                     color: var(--primary-btn-text-color) !important;
                     font-size: 1.5em;
                 }
@@ -144,11 +164,11 @@
             .icon {
                 font-size: 3em;
                 color: var(--checkbox-color);
-                padding: 0.5em 0 0.5em 0.5em;
+                padding: 0.3em 0 0.5em 0.5em;
             }
 
             .text {
-                padding: .8em 2em 0.5em 0.5em;
+                padding: 0.5em 0 0.5em 0.5em;
                 font-size: 1.5em;
                 color: var(--checkbox-color) !important;
             }

@@ -409,7 +409,7 @@ export class AgentBotComponent implements OnInit, OnDestroy {
   }
 
   openHelpModal() {
-    this.dialog.open(HowItWorksDialogComponent,{ width: '100%',maxWidth:'1000px' });
+    this.dialog.open(HowItWorksDialogComponent,{ width: '100%',maxWidth:'1000px', data: { content: './assets/images/deployed_agent_diagram.png' }, });
   }
 
   goToHome() {
