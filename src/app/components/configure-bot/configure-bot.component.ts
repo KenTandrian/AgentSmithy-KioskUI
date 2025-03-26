@@ -115,7 +115,7 @@ export class ConfigureBotComponent implements OnInit, AfterViewInit {
         }
       ],
       selectedOptionResponse: {
-        subtitle: '\nVertex AI Agent Engine\n • Quick, easy solution for general reasoning tasks (QA, \n   summarization).\n • Managed scaling and infrastructure.\n\nCloud Run\n • Fine-grained control and customization.\n • Cost optimization and portability.\n • Requires container expertise and infrastructure \n   management.deployments, and the resources to \n   develop and maintain the infrastructure. ',
+        subtitle: '\nVertex AI Agent Engine\n • Quick, easy solution for general reasoning \n   tasks (QA, summarization).\n • Managed scaling and infrastructure.\n\nCloud Run\n • Fine-grained control and customization.\n • Cost optimization and portability.\n • Requires container expertise, infrastructure \n   management, deployments, and the resources \n   to develop and maintain the infrastructure. ',
         caption: ''
       },
       hasNext: true,
@@ -164,7 +164,7 @@ export class ConfigureBotComponent implements OnInit, AfterViewInit {
       ],
       selectedOptionResponse: {
         subtitle: '\n • LangChain: Versatile toolbox for building a wide range of LLM applications.\n • LangGraph: Build complex, stateful, multi-actor LLM workflows with a structured graph approach. \n • LlamaIndex: Connect LLMs to your private data for efficient indexing and retrieval.\n • Vertex AI Agent Framework: Streamlined Python SDK for developing generative AI agents (coming soon!) \n\nSelect the framework best suited to your project: LangChain for general use, LangGraph for complex workflows, and LlamaIndex for private data.',
-        caption: 'from langchain.llms import Gemini \nfrom langchain.prompts import PromptTemplate \n\nllm = Gemini(model="gemini-pro", temperature=0.9) # Using Gemini Pro \nprompt = PromptTemplate( \n\tinput_variables=["product"], \n\ttemplate="What is a good name for a company that makes {product}?", \n) \nprint(llm(prompt.format(product="colorful socks")))'
+        caption: ''
       },
       hasNext: true,
       hasPrevious: true,
@@ -205,7 +205,7 @@ export class ConfigureBotComponent implements OnInit, AfterViewInit {
       ],
       selectedOptionResponse: {
         subtitle: '\nAPIs offer flexibility and customization, allowing developers to tailor LLM interactions precisely to their needs and integrate them deeply within existing systems.  Pre-built tools, on the other hand, provide convenience and speed, offering ready-made solutions for common LLM use cases like chatbots, summarization, or question answering, often with user-friendly interfaces and requiring less coding.  Choose APIs when fine-grained control and deep integration are paramount, and pre-built tools when rapid development and ease of use are prioritized.',
-        caption: 'from langchain.agents import Tool \n\n# Define the tool (assuming \'get_weather\' function is already defined) \nweather_tool = Tool( \n\tname="Get Weather", \n\tfunc=get_weather, \n\tdescription="Get current weather for a location." \n)'
+        caption: ''
       },
       hasNext: true,
       hasPrevious: true,
@@ -269,7 +269,7 @@ export class ConfigureBotComponent implements OnInit, AfterViewInit {
       ],
       selectedOptionResponse: {
         subtitle: '\nThe foundation model is the core of your AI agent, interpreting information and driving its decisions and actions. Choosing the right one is crucial. \n\nConsider the tasks your agent will handle, required accuracy, budget, speed needs, and if you need customization. \n\nAlso, think about the model\'s context window for handling complex tasks and whether a faster, cheaper \"flash\" model suits your speed and cost requirements.',
-        caption: 'from langchain.llms import Gemini \n\nllm = Gemini(model="gemini-pro") \nresponse = llm("Tell me a joke.") \nprint(response)'
+        caption: ''
       },
       hasNext: false,
       hasPrevious: true,
