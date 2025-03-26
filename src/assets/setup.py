@@ -40,6 +40,8 @@ DATA_STORE_ID = 'agent_smithy_data_store_{}'.format(uuid4())
 DATA_STORE_LOCATION = 'global'
 DATA_STORE_NAME = f"{PROJECT_ID.lower().replace(' ', '-')}-{AGENT_NAME.lower().replace(' ', '-')}-datastore"
 
+ENGINE_ID = 'agent_smithy_app_engine_{}'.format(uuid4())
+
 GCS_STAGING_BUCKET = f"gs://{PROJECT_ID.lower().replace(' ', '-')}-{AGENT_NAME.lower().replace(' ', '-')}-vertexai-staging"
 
 # Cloud Run services config.
@@ -68,22 +70,22 @@ def deploy_terraform_infrastructure(directory: str, variables_file: str):
     subprocess.run(init_terraform_command, check=True)
     subprocess.run(apply_terraform_command, check=True)
 
-def create_data_store() -> str:
+def create_data_store(datastore_id: str, location: str, name: str, project_id: str) -> str:
     client = discoveryengine.DataStoreServiceClient()
     parent = client.collection_path(
-        project=PROJECT_ID,
-        location=DATA_STORE_LOCATION,
+        project=project_id,
+        location=location,
         collection="default_collection",
     )
     data_store = discoveryengine.DataStore(
-        display_name=DATA_STORE_NAME,
+        display_name=name,
         industry_vertical=discoveryengine.IndustryVertical.GENERIC,
         solution_types=[discoveryengine.SolutionType.SOLUTION_TYPE_SEARCH],
         content_config=discoveryengine.DataStore.ContentConfig.CONTENT_REQUIRED,
     )
     request = discoveryengine.CreateDataStoreRequest(
         parent=parent,
-        data_store_id=DATA_STORE_ID,
+        data_store_id=datastore_id,
         data_store=data_store,
     )
     operation = client.create_data_store(request=request)
@@ -91,12 +93,12 @@ def create_data_store() -> str:
     operation.result()
     return
 
-def populate_data_store(industry: str):    
+def populate_data_store(datastore_id: str, industry: str, location:str, project_id: str):
     client = discoveryengine.DocumentServiceClient()
     parent = client.branch_path(
-        project=PROJECT_ID,
-        location=DATA_STORE_LOCATION,
-        data_store=DATA_STORE_ID,
+        project=project_id,
+        location=location,
+        data_store=datastore_id,
         branch="default_branch",
     )
     request = discoveryengine.ImportDocumentsRequest(
@@ -109,6 +111,42 @@ def populate_data_store(industry: str):
     )
     operation = client.import_documents(request=request)
     print(f"Import operation will keep on running on the background: {operation.operation.name}")
+
+def create_app_engine(
+        agent_name: str,
+        datastore_id: str,
+        engine_id: str,
+        location: str,
+        project_id: str
+    ) -> str:
+    client = discoveryengine.EngineServiceClient()
+    parent = client.collection_path(
+        project=project_id,
+        location=location,
+        collection="default_collection",
+    )
+
+    engine = discoveryengine.Engine(
+        display_name=agent_name,
+        industry_vertical=discoveryengine.IndustryVertical.GENERIC,
+        solution_type=discoveryengine.SolutionType.SOLUTION_TYPE_SEARCH,
+        search_engine_config=discoveryengine.Engine.SearchEngineConfig(
+            search_tier=discoveryengine.SearchTier.SEARCH_TIER_ENTERPRISE,
+            search_add_ons=[discoveryengine.SearchAddOn.SEARCH_ADD_ON_LLM],
+        ),
+        data_store_ids=[datastore_id],
+    )
+
+    request = discoveryengine.CreateEngineRequest(
+        parent=parent,
+        engine=engine,
+        engine_id=engine_id,
+    )
+
+    # Make the request
+    operation = client.create_engine(request=request)
+    print(f"Waiting for operation to complete: {operation.operation.name}")
+    operation.result()
 
 def get_cloud_run_url(region: str, service_name: str) -> str:
     try:
@@ -141,6 +179,7 @@ def configure_backend(
         gcs_bucket: str,
         datastore_id: str,
         frontend_url: str,
+        agent_builder_location: str,
         agent_foundation_model: str,
         agent_industry_type: str,
         agent_orchestration_framework: str,
@@ -152,6 +191,7 @@ def configure_backend(
     search_and_replace_file(config_file, r"GCS_STAGING_BUCKET: \"(.*?)\"", f'GCS_STAGING_BUCKET: "{gcs_bucket}"')
     search_and_replace_file(config_file, r"DATA_STORE_ID: \"(.*?)\"", f'DATA_STORE_ID: "{datastore_id}"')
     search_and_replace_file(config_file, r"FRONTEND_URL: \"(.*?)\"", f'FRONTEND_URL: "{frontend_url}"')
+    search_and_replace_file(config_file, r"AGENT_BUILDER_LOCATION: \"(.*?)\"", f'AGENT_BUILDER_LOCATION: "{agent_builder_location}"')
     search_and_replace_file(config_file, r"AGENT_FOUNDATION_MODEL: \"(.*?)\"", f'AGENT_FOUNDATION_MODEL: "{agent_foundation_model}"')
     search_and_replace_file(config_file, r"AGENT_INDUSTRY_TYPE: \"(.*?)\"", f'AGENT_INDUSTRY_TYPE: "{agent_industry_type}"')
     search_and_replace_file(config_file, r"AGENT_ORCHESTRATION_FRAMEWORK: \"(.*?)\"", f'AGENT_ORCHESTRATION_FRAMEWORK: "{agent_orchestration_framework}"')
@@ -210,8 +250,25 @@ if __name__ == "__main__":
     clone(REPOSITORY_URL, REPOSITORY_BRANCH)
     deploy_terraform_infrastructure(TERRAFORM_DIRECTORY, TERRAFORM_VAR_FILE)
 
-    create_data_store()
-    populate_data_store(AGENT_INDUSTRY_TYPE)
+    create_data_store(
+        DATA_STORE_ID,
+        DATA_STORE_LOCATION,
+        DATA_STORE_NAME,
+        PROJECT_ID,
+    )
+    populate_data_store(
+        DATA_STORE_ID,
+        AGENT_INDUSTRY_TYPE,
+        DATA_STORE_LOCATION,
+        PROJECT_ID,
+    )
+    create_app_engine(
+        AGENT_NAME,
+        DATA_STORE_ID,
+        ENGINE_ID,
+        DATA_STORE_LOCATION,
+        PROJECT_ID,
+    )
 
     # Build and deploy BE Service.
     frontend_url = get_cloud_run_url(REGION, CLOUD_RUN_FRONTEND_SERVICE_NAME)
@@ -225,6 +282,7 @@ if __name__ == "__main__":
         GCS_STAGING_BUCKET,
         DATA_STORE_ID,
         frontend_url,
+        DATA_STORE_LOCATION,
         AGENT_FOUNDATION_MODEL,
         AGENT_INDUSTRY_TYPE,
         AGENT_ORCHESTRATION_FRAMEWORK,
