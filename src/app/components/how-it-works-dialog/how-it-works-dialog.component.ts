@@ -10,16 +10,16 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 export class HowItWorksDialogComponent {
   sanitizedContent: SafeHtml;
   
-    constructor(@Inject(MAT_DIALOG_DATA) public data: { content: string }, private sanitizer: DomSanitizer) {
+    constructor(@Inject(MAT_DIALOG_DATA) public data: { url: string, content: string }, private sanitizer: DomSanitizer) {
       this.sanitizedContent = data.content;
       // console.log(this.sanitizedContent);
     }
   
     isImage(): boolean {
       // console.log(this.data.content);
-      return this.data.content.toLowerCase().endsWith('.png') ||
-             this.data.content.toLowerCase().endsWith('.jpg') ||
-             this.data.content.toLowerCase().endsWith('.jpeg') ||
-             this.data.content.toLowerCase().endsWith('.gif');
+      return this.data.url.toLowerCase().endsWith('.png') ||
+             this.data.url.toLowerCase().endsWith('.jpg') ||
+             this.data.url.toLowerCase().endsWith('.jpeg') ||
+             this.data.url.toLowerCase().endsWith('.gif');
     }
 }

@@ -9,7 +9,6 @@
 
     .heading {
         font-size: 2em;
-        margin-bottom: 1em;
         margin-top: 0.5em;
         color: var(--text-color);
     }
@@ -29,7 +28,7 @@
     }
 
     .inner-container {
-        margin: 50px 30px;
+        margin: 30px 30px 30px 30px;
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 20px;
@@ -60,7 +59,7 @@
 
             .subtitle {
                 color: var(--text-color);
-                font-size: 22px;
+                font-size: 20px;
                 line-height: 1.75rem;
                 margin: 0rem 2em 1rem 2rem;
                 white-space: pre-wrap;

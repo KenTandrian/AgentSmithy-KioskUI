@@ -83,6 +83,10 @@ export class AgentBotComponent implements OnInit, OnDestroy {
   botsMappingData: any;
   botsMap = new Map();
   botUrl: string;
+  subtitle: string;
+  question1: string;
+  question2: string;
+  question3: string;
 
   constructor(
     public dialog: MatDialog,
@@ -443,6 +447,26 @@ export class AgentBotComponent implements OnInit, OnDestroy {
         const industry = this.selectedAgentData.industry;
 
         this.getBotUrl(industry, framework, model, runtime);
+
+        // this.subtitle = "Use Case: \nAI-Powered Investment Research Analyst for Alphabet: Provides financial insights on Alphabet by analyzing its financial reports, strategic initiatives, and management perspectives from its historical investor documents.";
+        // this.question1 = "How did Alphabet perform in their earnings reports in Q4 2024?";
+        if(industry === 'finance'){
+          this.subtitle = "Use Case - AI-Powered Investment Research Analyst for Alphabet: Provides financial insights on Alphabet by analyzing its financial reports, strategic initiatives, and management perspectives from its historical investor documents.";
+          this.question1 = "1. How did Alphabet perform in their earnings reports in Q4 2024?";
+          this.question2 = "2. What were Alphabet’s key strategic priorities for the 2024?";
+          this.question3 = "3. How does each Alphabet business segment contribute to overall revenue and profit?";
+        } else if(industry === 'healthcare') {
+          this.subtitle = "Use Case - Symptom Checker and Triage Assistant: \nAnalyzes general medical symptoms and acts as a virtual assistant to help triage patients to the appropriate level of care during consultations.";
+          this.question1 = "1. What could be causing lower back pain that radiates down my leg?";
+          this.question2 = "2. What red flag symptoms would indicate that my sore throat is something more serious than a cold?";
+          this.question3 = "3. Based on past consultations, are there specific symptoms that were particularly helpful in narrowing down a differential diagnosis?";
+        } else if(industry === 'retail'){
+          this.subtitle = "Use Case - Google Product Discovery Assistant: \nAnswers product-specific questions on Google Products available on the Google Store";
+          this.question1 = "1. What are the specs for the Pixel 6 camera?";
+          this.question2 = "2. What is the water resistance rating of the Pixel?";
+          this.question3 = "3. What kind of screen does the Google Nest Hub have?";
+        }
+        this.subtitle
       },
       (error) => {
         console.error('Error reading JSON file:', error);

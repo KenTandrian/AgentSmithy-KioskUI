@@ -8,8 +8,10 @@
         </div>
     </div>
     <div mat-dialog-content>
+        <p>{{data.content}}</p>
+        <br/>
         <div *ngIf="isImage(); else textContent">
-          <img [src]="data.content" style="max-width: 100%; max-height: 80vh;" />
+          <img [src]="data.url" style="max-width: 100%; max-height: 100%;" />
         </div>
         <ng-template #textContent>
           <div>{{sanitizedContent}}</div>

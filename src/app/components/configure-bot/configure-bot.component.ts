@@ -22,6 +22,7 @@ export class ConfigureBotComponent implements OnInit, AfterViewInit {
   viewCode: TemplateRef<{}>;
   viewCodeDialogRef?: MatDialogRef<{}>;
   @ViewChild('stepper') stepper: MatStepper;
+  howItWorksDescription: string;
   howItWorks: string;
 
   constructor(private _formBuilder: FormBuilder, private router: Router, private fb: FormBuilder,private themeService: ThemeService,private readonly dialog: MatDialog,private el: ElementRef, private renderer: Renderer2) {
@@ -55,23 +56,28 @@ export class ConfigureBotComponent implements OnInit, AfterViewInit {
   }
 
   handleStepZero() {
-    this.howItWorks = './assets/images/agent_properties_diagram.png'
+    this.howItWorks = './assets/images/agent_properties_diagram.png';
+    this.howItWorksDescription = "This demo will walk you through selecting and building each core element of an AI Agent. Here you are setting the Agent Name, Description, and Industry. These properties are used to populate the Instructions for the Agent Reasoning Loop. Your selection of Industry will also correspond to the different datasets and Tools you have available to you later on in this demo experience.";
   }
 
   handleStepOne() {
-    this.howItWorks = './assets/images/runtime_diagram.png'
+    this.howItWorks = './assets/images/runtime_diagram.png';
+    this.howItWorksDescription = "Here you are setting the Runtime Environment. There are two primary options available to you: Cloud Run / Fast API and Vertex AI Agent Engine. Agent Engine is a fully managed runtime offering which simplifies the process of deploying agents. The Cloud Run / Fast API option is more bespoke and will allow you to get under the hood and customize the server configurations, API setup, request and response structure, etc.";
   }
 
   handleStepTwo() {
-    this.howItWorks = './assets/images/orchestration_diagram.png'
+    this.howItWorks = './assets/images/orchestration_diagram.png';
+    this.howItWorksDescription = "Here you are setting the Orchestration Framework. AI Agent Orchestration Frameworks have control loops that intelligently route user queries or tasks to the most appropriate agents or tools based on their capabilities and context. They also maintain awareness of the current context and history of interactions, ensuring that agents have the necessary information to perform their tasks effectively.";
   }
 
   handleStepThree() {
-    this.howItWorks = './assets/images/tools_diagram.png'
+    this.howItWorks = './assets/images/tools_diagram.png';
+    this.howItWorksDescription = "Agent Tools are functions or interfaces that allow an AI agent to interact with and perform actions in the external world, such as accessing data, running code, or calling external APIs.\nHow they work:\n\n • Agents use a language model as a reasoning engine to determine which tools to use and in what sequence. \n • Tools provide the agent with the necessary information and functionality to perform specific tasks. \n • Agents can use tools in a loop, deciding how many times to use them.";
   }
 
   handleStepFour() {
-    this.howItWorks = './assets/images/models_diagram.png'
+    this.howItWorks = './assets/images/models_diagram.png';
+    this.howItWorksDescription = "AI agents leverage foundation models, to process information, reason, and interact with their environment, enabling them to perform tasks autonomously. How they work:\n\n • Reasoning and Planning: Foundation models can help AI agents reason about complex situations, plan actions, and make decisions based on their understanding of the environment. \n • Action Execution: AI agents can use foundation models to generate instructions or commands that control their actions. \n • Tool Calling: AI agents can leverage tool calling capabilities to access external tools and APIs to perform tasks that the foundation model alone cannot handle, such as accessing databases, performing calculations, or making web requests.";
   }
 
   stepperConfig = [
@@ -380,7 +386,7 @@ export class ConfigureBotComponent implements OnInit, AfterViewInit {
   }
 
   openHelpModal() {
-    this.dialog.open(HowItWorksDialogComponent,{ width: '100%',maxWidth:'1000px', data: { content: this.howItWorks }, });
+    this.dialog.open(HowItWorksDialogComponent,{ width: '100%',maxWidth:'1000px', data: { url: this.howItWorks, content: this.howItWorksDescription }, });
   }
   
 }
