@@ -413,7 +413,8 @@ export class AgentBotComponent implements OnInit, OnDestroy {
   }
 
   openHelpModal() {
-    this.dialog.open(HowItWorksDialogComponent,{ width: '100%',maxWidth:'1000px', data: { content: './assets/images/deployed_agent_diagram.png' }, });
+    // this.dialog.open(HowItWorksDialogComponent,{ width: '100%',maxWidth:'1000px', data: { content: './assets/images/deployed_agent_diagram.png' }, });
+    this.dialog.open(HowItWorksDialogComponent,{ width: '100%',maxWidth:'1000px', data: { url: './assets/images/deployed_agent_diagram.png', content: "You can now interact with your deployed AI Agent! On your screen is a description of your selected technologies for your deployed agent, as well as a list of sample prompts to ask. Embedded within this UI is the frontend chatbot code that is interacting with your backend AI agent service." }, });
   }
 
   goToHome() {
