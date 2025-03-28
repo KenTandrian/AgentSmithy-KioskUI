@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, TemplateRef, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, inject, OnInit, Renderer2, TemplateRef, ViewChild } from '@angular/core';
 import { Validators, FormBuilder, FormArray, FormGroup, AbstractControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ThemeService } from '../../services/theme.service';
@@ -6,6 +6,8 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { HowItWorksDialogComponent } from '../how-it-works-dialog/how-it-works-dialog.component';
 import { CodeDialogComponent } from '../code-dialog/code-dialog.component';
 import { MatStepper } from '@angular/material/stepper';
+import { AgentConfigurationService } from '../../services/agent-configuration.service';
+import { AgentConfiguration, Framework, Industry, Model, Runtime } from '../../models/agent';
 
 @Component({
   selector: 'app-configure-bot',
@@ -13,11 +15,12 @@ import { MatStepper } from '@angular/material/stepper';
   styleUrl: './configure-bot.component.scss'
 })
 export class ConfigureBotComponent implements OnInit, AfterViewInit {
+  agentConfigurationService: AgentConfigurationService = inject(AgentConfigurationService);
   formGroup: FormGroup;
-  selectedRuntime: string = 'resoningEngine';
-  selectedFramework: string = 'langchain';
-  selectedIndustry: string = 'Healthcare';
-  selectedModel: string = 'gemini';
+  selectedRuntime: Runtime = 'AgentEngine';
+  selectedFramework: Framework = 'langchain_agent';
+  selectedIndustry: Industry = 'finance';
+  selectedModel: Model = 'gemini-1.5-pro';
   @ViewChild('viewCode', { static: true })
   viewCode: TemplateRef<{}>;
   viewCodeDialogRef?: MatDialogRef<{}>;
@@ -350,19 +353,19 @@ export class ConfigureBotComponent implements OnInit, AfterViewInit {
   }
   
   selectRunTime(value: string) {
-    this.selectedRuntime = value;
+    this.selectedRuntime = value as Runtime;
   }
 
   selectFramework(value: string) {
-    this.selectedFramework = value;
+    this.selectedFramework = value as Framework;
   }
 
   selectIndustry(value: string) {
-    this.selectedIndustry = value;
+    this.selectedIndustry = value as Industry;
   }
 
   selectModel(value: string) {
-    this.selectedModel = value;
+    this.selectedModel = value as Model;
   }
 
   goToHome() {
@@ -393,13 +396,23 @@ export class ConfigureBotComponent implements OnInit, AfterViewInit {
   }
 
   goToSpinnerComponent() {
-    this.submitForm();
     localStorage.setItem("agentData",JSON.stringify(this.formGroup.value.formArray));
+    this.agentConfigurationService.save(this.getFormValues());
     this.router.navigate(['/spinner']);
   }
 
-  submitForm() {
-    console.log(this.formGroup.value);
+  getFormValues(): AgentConfiguration {
+    const formArray = this.formGroup.get('formArray') as FormArray;
+    const firstStepGroup = formArray.at(0) as FormGroup;
+
+    return {
+      name: firstStepGroup.get("agentName")!.value,
+      description: firstStepGroup.get("description")!.value,
+      runTime: this.selectedRuntime,
+      framework: this.selectedFramework,
+      industry: this.selectedIndustry,
+      model: this.selectedModel,
+    }
   }
 
   toggleTheme(): void {

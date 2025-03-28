@@ -35,7 +35,8 @@ import {MatDividerModule} from '@angular/material/divider';
 import { HowItWorksDialogComponent } from './components/how-it-works-dialog/how-it-works-dialog.component';
 import { AgentBotComponent } from './components/agent-bot/agent-bot.component';
 
-import { QrCodeComponent } from 'ng-qrcode';
+import { QrCodeComponent, QrCodeModule } from 'ng-qrcode';
+import { ScriptComponent } from './components/script/script.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { QrCodeComponent } from 'ng-qrcode';
     ExportComponent,
     CodeDialogComponent,
     HowItWorksDialogComponent,
-    AgentBotComponent
+    AgentBotComponent,
+    ScriptComponent
   ],
   imports: [
     BrowserModule,
@@ -70,7 +72,7 @@ import { QrCodeComponent } from 'ng-qrcode';
     MatDialogModule,
     MatDividerModule,
     FormsModule,
-    QrCodeComponent
+    QrCodeModule,
   ],
   providers: [
     provideClientHydration(),
