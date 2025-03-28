@@ -24,9 +24,9 @@ AGENT_DESCRIPTION = "{{AGENT_DESCRIPTION}}"
 DEPLOY_TO_AGENT_ENGINE = {{DEPLOY_TO_AGENT_ENGINE}}
 
 # Ask for vars during script run.
-PROJECT_ID = "{{PROJECT_ID}}"
-REGION = "{{REGION}}"
-DATA_STORE_LOCATION = "{{DATA_STORE_LOCATION}}"
+PROJECT_ID = ""
+REGION = ""
+DATA_STORE_LOCATION = ""
 
 # GitHub Constants.
 REPOSITORY_NAME = "AgentSmithy"
@@ -35,10 +35,10 @@ REPOSITORY_BRANCH = "dev"
 REPOSITORY_URL = "git@github.com:srastatter/AgentSmithy.git"
 
 # Cloud Run services config.
-BACKEND_PATH = "Agent_Templates/Runtime_env"
+BACKEND_PATH = "Runtime_env"
 BACKEND_CONFIG_FILE = f"{os.path.dirname(os.path.abspath(__file__))}/{REPOSITORY_NAME}/{BACKEND_PATH}/deployment/config/{ENV_TAG}.yaml"
 BACKEND_BUILD_FILE = f"{os.path.dirname(os.path.abspath(__file__))}/{REPOSITORY_NAME}/{BACKEND_PATH}/deployment/cd/{ENV_TAG}.yaml"
-FRONTEND_PATH = "Agent_Templates/ChatbotUI"
+FRONTEND_PATH = "ChatbotUI"
 FRONTEND_CONFIG_FILE = f"{os.path.dirname(os.path.abspath(__file__))}/{REPOSITORY_NAME}/{FRONTEND_PATH}/src/environments/environment.ts"
 FRONTEND_BUILD_FILE = f"{os.path.dirname(os.path.abspath(__file__))}/{REPOSITORY_NAME}/{FRONTEND_PATH}/deployment/cd/{ENV_TAG}.yaml"
 
@@ -47,10 +47,13 @@ TERRAFORM_DIRECTORY = f"{os.path.dirname(os.path.abspath(__file__))}/{REPOSITORY
 TERRAFORM_VAR_FILE = "vars/env.tfvars"
 
 # GCP resources constants.
-ARTIFACT_REGISTRY_REPOSITORY = f"{PROJECT_ID.lower().replace(' ', '-')}-{AGENT_NAME.lower().replace(' ', '-')}-repository"
+ARTIFACT_REGISTRY_REPOSITORY = ""
 
 CLOUD_RUN_BACKEND_SERVICE_NAME = AGENT_NAME.lower().replace(" ", "-") + "-backend"
 CLOUD_RUN_FRONTEND_SERVICE_NAME = AGENT_NAME.lower().replace(" ", "-") + "-frontend"
+
+CONFIGURATION_KEY_PROJECT = 'project'
+CONFIGURATION_KEY_REGION = 'compute/region'
 
 DATASTORE_INDUSTRY_SOURCES_MAP = {
     'finance': 'gs://cloud-samples-data/gen-app-builder/search/alphabet-investor-pdfs/*.pdf',
@@ -58,9 +61,126 @@ DATASTORE_INDUSTRY_SOURCES_MAP = {
     'retail': 'gs://cloud-samples-data/dialogflow-cx/google-store/*.html',
 }
 DATA_STORE_ID = 'agent_smithy_data_store_{}'.format(uuid4())
-DATA_STORE_NAME = f"{PROJECT_ID.lower().replace(' ', '-')}-{AGENT_NAME.lower().replace(' ', '-')}-datastore"
+DATA_STORE_NAME = ""
 SEARCH_APP_ENGINE_ID = 'agent_smithy_search_engine_{}'.format(uuid4())
-GCS_STAGING_BUCKET = f"gs://{PROJECT_ID.lower().replace(' ', '-')}-agents-staging"
+GCS_STAGING_BUCKET = ""
+
+def get_gcloud_default_configuration(config: str):
+    """Attempts to get the default region from gcloud configuration."""
+    try:
+        result = subprocess.run(
+            ["gcloud", "config", "get-value", config],
+            capture_output=True,
+            text=True,
+            check=True,
+        )
+        default_region = result.stdout.strip()
+        if default_region:
+            return default_region
+        else:
+            return None
+    except (subprocess.CalledProcessError, FileNotFoundError):
+        return None
+
+def get_user_input():
+    """Prompts the user for GCP project, region, and AgentBuilder scope."""
+
+    # 1. Project ID
+    default_project_id = get_gcloud_default_configuration(CONFIGURATION_KEY_PROJECT)
+    project_id_input = input(
+        f"Press Enter to use the default project ID: '{default_project_id}', "
+        "or enter a different project ID: "
+    ).strip()
+    project_id = project_id_input if project_id_input else default_project_id
+    print(f"Using project ID: {project_id}")
+
+    # 2. Region
+    regions = [
+        "africa-south1",
+        "asia-east1",
+        "asia-east2",
+        "asia-northeast1",
+        "asia-northeast2",
+        "asia-northeast3",
+        "asia-south1",
+        "asia-south2",
+        "asia-southeast1",
+        "asia-southeast2",
+        "australia-southeast1",
+        "australia-southeast2",
+        "europe-central2",
+        "europe-north1",
+        "europe-southwest1",
+        "europe-west1",
+        "europe-west10",
+        "europe-west12",
+        "europe-west2",
+        "europe-west3",
+        "europe-west4",
+        "europe-west6",
+        "europe-west8",
+        "europe-west9",
+        "me-central1",
+        "me-central2",
+        "me-west1",
+        "northamerica-northeast1",
+        "northamerica-northeast2",
+        "northamerica-south1",
+        "southamerica-east1",
+        "southamerica-west1",
+        "us-central1",
+        "us-central2",
+        "us-east1",
+        "us-east4",
+        "us-east5",
+        "us-east7",
+        "us-south1",
+        "us-west1",
+        "us-west2",
+        "us-west3",
+        "us-west4",
+        "us-west8",
+    ]
+
+    region = get_gcloud_default_configuration(CONFIGURATION_KEY_REGION)
+    print("\nAvailable GCP Regions:")
+    for i, reg in enumerate(regions):
+        print(f"{i+1}. {reg}")
+    
+    while True:
+        try:
+            default_region_choice = input(
+                f"\nPress Enter to accept the default region ({region}), "
+                "otherwise enter a number to choose from the available regions above."
+            ).strip()
+            if not default_region_choice: break
+            retry_choice = int(default_region_choice) - 1
+            if 0 <= retry_choice < len(regions):
+                region = regions[retry_choice]
+                print(f"Selected region: {region}")
+                break
+            else:
+                print("Invalid choice.")
+        except ValueError:
+            print("Invalid input. Please enter a number.")
+                    
+
+    if region is None:
+        print("No valid region selected. Exiting.")
+        return None, None, None
+
+    # 3. AgentBuilder Scope
+    while True:
+        agent_scope = input(
+            "\nChoose the location for AgentBuilder resources (global, us, eu): "
+        ).lower().strip()
+        if agent_scope in ["global", "us", "eu"]:
+            print(f"Using AgentBuilder location: {agent_scope}")
+            break
+        else:
+            print("Invalid location. Please choose from 'global', 'us', or 'eu'.")
+
+    return project_id, region, agent_scope
 
 
 def clone(repo_url: str, branch: str):
@@ -356,66 +476,77 @@ def search_and_replace_file(file_path: str, search_pattern: str, new_line: str):
         print(f"`{file_path}` file not found.")
 
 if __name__ == "__main__":
-    # TODO: Set arguments for calling the script
-    #if len(sys.argv) < 2:
-    #    print("Usage: python3 local_deploy.py action (e.g action = (clone, run, redeploy))")
-    #    exit(1)
+    project_id, region, datastore_location = get_user_input()
 
-    clone(REPOSITORY_URL, REPOSITORY_BRANCH)
-    install_poetry_dependencies(f"{REPOSITORY_NAME}/{BACKEND_PATH}")
+    if project_id and region and datastore_location:
+        print("\n--- Configuration Summary ---")
+        print(f"Project ID: {project_id}")
+        print(f"Region: {region}")
+        print(f"AgentBuilder location: {datastore_location}")
 
-    from google.cloud import discoveryengine
-    from google.api_core.client_options import ClientOptions
-    import vertexai
+        PROJECT_ID = project_id
+        REGION = region
+        DATA_STORE_LOCATION = datastore_location
+        
+        ARTIFACT_REGISTRY_REPOSITORY = f"{PROJECT_ID.lower().replace(' ', '-')}-{AGENT_NAME.lower().replace(' ', '-')}-repository"
+        DATA_STORE_NAME = f"{PROJECT_ID.lower().replace(' ', '-')}-{AGENT_NAME.lower().replace(' ', '-')}-datastore"
+        GCS_STAGING_BUCKET = f"gs://{PROJECT_ID.lower().replace(' ', '-')}-agents-staging"
 
-    vertexai.init(
-        project=PROJECT_ID,
-        location=REGION,
-        staging_bucket=GCS_STAGING_BUCKET
-    )
-    deploy_terraform_infrastructure(TERRAFORM_DIRECTORY, TERRAFORM_VAR_FILE)
-    create_data_store()
-    populate_data_store(AGENT_INDUSTRY_TYPE)
-    create_search_app()
+        # clone(REPOSITORY_URL, REPOSITORY_BRANCH)
+        install_poetry_dependencies(f"{REPOSITORY_NAME}/{BACKEND_PATH}")
 
-    # Build and deploy BE Service.
-    frontend_url = get_cloud_run_url(REGION, CLOUD_RUN_FRONTEND_SERVICE_NAME)
-    configure_backend(
-        GCS_STAGING_BUCKET,
-        DATA_STORE_ID,
-        frontend_url,
-        BACKEND_CONFIG_FILE,
-        PROJECT_ID,
-        REGION,
-        AGENT_FOUNDATION_MODEL,
-        AGENT_INDUSTRY_TYPE,
-        AGENT_ORCHESTRATION_FRAMEWORK,
-        AGENT_NAME,
-        AGENT_DESCRIPTION,
-        DATA_STORE_LOCATION,
-    )
-    if DEPLOY_TO_AGENT_ENGINE:
-        run_agent_engine_deployment()
+        from google.cloud import discoveryengine
+        from google.api_core.client_options import ClientOptions
+        import vertexai
 
-    build_and_deploy_cloud_run(
-        PROJECT_ID,
-        REGION,
-        "agent_runtime",
-        ARTIFACT_REGISTRY_REPOSITORY,
-        CLOUD_RUN_BACKEND_SERVICE_NAME,
-        BACKEND_BUILD_FILE,
-        True
-    )
+        vertexai.init(
+            project=PROJECT_ID,
+            location=REGION,
+            staging_bucket=GCS_STAGING_BUCKET
+        )
+        deploy_terraform_infrastructure(TERRAFORM_DIRECTORY, TERRAFORM_VAR_FILE)
+        create_data_store()
+        populate_data_store(AGENT_INDUSTRY_TYPE)
+        create_search_app()
 
-    # Build and deploy FE Service.
-    backend_url = get_cloud_run_url(REGION, CLOUD_RUN_BACKEND_SERVICE_NAME)
-    configure_frontend(AGENT_NAME, backend_url, ENV_TAG, FRONTEND_CONFIG_FILE)
-    build_and_deploy_cloud_run(
-        PROJECT_ID,
-        REGION,
-        "chatbot_ui",
-        ARTIFACT_REGISTRY_REPOSITORY,
-        CLOUD_RUN_FRONTEND_SERVICE_NAME,
-        FRONTEND_BUILD_FILE,
-        False
-    )
+        # Build and deploy BE Service.
+        frontend_url = get_cloud_run_url(REGION, CLOUD_RUN_FRONTEND_SERVICE_NAME)
+        configure_backend(
+            GCS_STAGING_BUCKET,
+            DATA_STORE_ID,
+            frontend_url,
+            BACKEND_CONFIG_FILE,
+            PROJECT_ID,
+            REGION,
+            AGENT_FOUNDATION_MODEL,
+            AGENT_INDUSTRY_TYPE,
+            AGENT_ORCHESTRATION_FRAMEWORK,
+            AGENT_NAME,
+            AGENT_DESCRIPTION,
+            DATA_STORE_LOCATION,
+        )
+        if DEPLOY_TO_AGENT_ENGINE:
+            run_agent_engine_deployment()
+
+        build_and_deploy_cloud_run(
+            PROJECT_ID,
+            REGION,
+            "agent_runtime",
+            ARTIFACT_REGISTRY_REPOSITORY,
+            CLOUD_RUN_BACKEND_SERVICE_NAME,
+            BACKEND_BUILD_FILE,
+            True
+        )
+
+        # Build and deploy FE Service.
+        backend_url = get_cloud_run_url(REGION, CLOUD_RUN_BACKEND_SERVICE_NAME)
+        configure_frontend(AGENT_NAME, backend_url, ENV_TAG, FRONTEND_CONFIG_FILE)
+        build_and_deploy_cloud_run(
+            PROJECT_ID,
+            REGION,
+            "chatbot_ui",
+            ARTIFACT_REGISTRY_REPOSITORY,
+            CLOUD_RUN_FRONTEND_SERVICE_NAME,
+            FRONTEND_BUILD_FILE,
+            False
+        )
