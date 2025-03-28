@@ -40,7 +40,16 @@ export class ConfigureBotComponent implements OnInit, AfterViewInit {
     const currentStepIndex = event;
     this.callMethodBasedOnStep(currentStepIndex);
     if(event === 4){
-      const formArray = this.formGroup.get('formArray') as FormArray;
+      let formArray = this.formGroup.get('formArray') as FormArray;
+      formArray.at(event).patchValue({  // Use stepIndex to target correct form group
+        runTime: this.selectedRuntime,       // Update with selected value
+        framework: this.selectedFramework,
+        industry: this.selectedIndustry,
+        model: ''
+      });
+      // console.log(formArray);
+      formArray.at(event).markAsDirty();
+      formArray = this.formGroup.get('formArray') as FormArray;
       const stepFormGroup = formArray.at(event - 3) as FormGroup;
       if(stepFormGroup.value.runTime === 'AgentEngine'){
         this.stepperConfig[event].options!.forEach(opt => {
