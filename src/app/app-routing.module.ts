@@ -6,6 +6,7 @@ import { ConfigureBotComponent } from './components/configure-bot/configure-bot.
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { ExportComponent } from './components/export/export.component';
 import { AgentBotComponent } from './components/agent-bot/agent-bot.component';
+import { ScriptComponent } from './components/script/script.component';
 
 
 const routes: Routes = [  
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'predefined-bot', component: PredefinedBotComponent },
   { path: 'spinner', component: SpinnerComponent },
   { path: 'export', component: ExportComponent },
+  { path: 'script', component: ScriptComponent },
   { path: 'agent-bot', component: AgentBotComponent },
 ];
 

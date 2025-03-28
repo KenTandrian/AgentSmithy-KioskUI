@@ -1,41 +1,4 @@
 <div class="root-container">
-    <!-- <div class="row-container">
-        <div class="title-container">
-            Continue the journey...
-        </div>
-        <div class="sub-container">
-            <div class="child-container">
-                <div class="sub-title">
-                    Pulvinar senectus nunc purus nibh leo proin. Eget pretium id eu leo felis donec est neque. Magna nunc gravida.
-                </div>
-                <div class="input-container">
-                    <mat-form-field appearance="fill" class="fld">
-                        <input
-                          matInput
-                          placeholder="Github account ID"
-                          class="inp"
-                        >
-                        <mat-icon matSuffix class="my-icon">send</mat-icon>
-                      </mat-form-field>
-                </div>
-            </div>
-            <div class="child-container">
-                <div class="sub-title">
-                    Want to learn more? Enter your email address and we’ll send you the latest information about building agents.
-                </div>
-                <div class="input-container">
-                    <mat-form-field appearance="fill" class="fld">
-                        <input
-                          matInput
-                          placeholder="Email address"
-                          class="inp"
-                        >
-                        <mat-icon matSuffix class="my-icon">send</mat-icon>
-                      </mat-form-field>
-                </div>
-            </div>
-        </div>
-    </div> -->
     <div class="row-container">
         <div class="title-container">
             Agent activated!
@@ -59,7 +22,7 @@
             </div> -->
             <div class="child-container">
                 <!-- Update qr code value to be dynamic -->
-                <qr-code value="https://agent-smithy-kiosk.web.app/download_init_script?AGENT_NAME=<agent_name>&AGENT_DESCRIPTION=<agent_description>&AGENT_INDUSTRY_TYPE=<agent_industry_type>&AGENT_FOUNDATION_MODEL==<agent_foundation_model>" size="300" errorCorrectionLevel="M" />
+                <qr-code [value]="this.downloadUrl" size="300" errorCorrectionLevel="M" />
             </div>
         </div>
     </div>

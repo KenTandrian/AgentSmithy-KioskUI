@@ -2,11 +2,6 @@
 @use '@angular/material' as mat;
 @include mat.core();
 
-html,body {
- height: 100%;
- overflow-y: hidden;
-}
-
 $agent-smithy-kioskui-light-theme: mat.define-theme((
   color: (
     theme-type: light,
@@ -54,64 +49,6 @@ $agent-smithy-kioskui-light-theme: mat.define-theme((
   @include mat.all-component-themes($agent-smithy-kioskui-light-theme);
 }
 
-// Black
-  // selected
-  // text color - #003355
-  // background color - #7FCFFF
-
-  // Not Selected
-  // text color - #C2E7FF
-  // background color - #004A77
-
-.light-theme {
-  --body-background-color: #FFFFFF;
-  --primary-btn-color: #0B57D0;
-  --primary-btn-text-color: #FFFFFF;
-  --secondary-btn-color:   #FFFFFF;
-  --secondary-btn-text-color: #C4C7C5;
-  --background-color: #FFFFFF;
-  --text-color: #1F1F1F;
-
-  --secondary-background-color: #00639B;
-  --stepper-container-color: #FFFFFF;
-
-  --secondary-step-background-color: #C2E7FF;
-
-  --selected-step-background-color: #00639B;
-  --selected-step-tite: #C2E7FF;
-
-  @include mat.all-component-themes($agent-smithy-kioskui-light-theme);
-}
-
-.dark-theme {
-  --body-background-color: #131314;
-
-  --primary-btn-color: #D3E3FD;
-  --primary-btn-text-color: #062E6F; 
-
-  --secondary-btn-color: #131314;
-  --secondary-btn-text-color: #C4C7C5;
-
-  --background-color: #f5f5f5;
-  --text-color: #E3E3E3;
-  --stepper-container-color: #131314;
-
-  --selected-background-color: #003355;
-  --selected-step-background-color: #7FCFFF;
-
-  --secondary-background-color: #C2E7FF;
-  --secondary-step-background-color: #004A77;
-
-  --selected-step-tite: #00639B;
-  --outline-color:#444746;
-
-  // checkbox colors
-  --checkbox-color: #C4C7C5; 
-  --chat-background:#1B1C1D;
-
-  @include mat.all-component-themes($agent-smithy-kioskui-light-theme);
-}
-
 * {
   margin: 0;
   padding: 0;
@@ -119,6 +56,8 @@ $agent-smithy-kioskui-light-theme: mat.define-theme((
 }
 
 html, body {
+  height: 100%;
+  overflow-y: hidden;
   font-family: "Google Sans", Roboto, "Helvetica Neue", sans-serif;
   background-color: var(--body-background-color);
 }
