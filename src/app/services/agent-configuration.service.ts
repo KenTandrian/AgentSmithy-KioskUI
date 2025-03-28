@@ -11,9 +11,7 @@ export class AgentConfigurationService {
   constructor() { }
 
   get(): AgentConfiguration {
-    const agentConfiguration = JSON.parse(localStorage.getItem(AGENT_CONFIGURATION_KEY) || '{}');
-
-    return agentConfiguration;
+    return JSON.parse(localStorage.getItem(AGENT_CONFIGURATION_KEY) || '{}');
   }
 
   save(agentConfiguration: AgentConfiguration) {

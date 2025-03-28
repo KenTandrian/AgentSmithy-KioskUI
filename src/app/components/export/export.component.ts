@@ -14,7 +14,7 @@ export class ExportComponent implements OnInit {
 
   ngOnInit() {
     const agentConfiguration = this.agetConfigurationService.get();
-    this.downloadUrl = `http://localhost:4200/script?${this.jsonToUrlParams(agentConfiguration)}`;
+    this.downloadUrl = `https://agent-smithy-kiosk.web.app//script?${this.jsonToUrlParams(agentConfiguration)}`;
   }
 
   startAgain() {
