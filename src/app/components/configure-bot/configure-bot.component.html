@@ -1,6 +1,6 @@
 <div class="outer-container">
     <form [formGroup]="formGroup">
-        <mat-stepper formArrayName="formArray" #stepper>
+        <mat-stepper formArrayName="formArray" #stepper (selectedIndexChange)="onStepChange($event)">
             <ng-container *ngFor="let step of stepperConfig; let index = index">
                 <mat-step [formGroupName]="index" [stepControl]="formGroup.get('formArray')?.get([index])!">
                     <ng-template matStepLabel>{{ step.stepHeading }}</ng-template>
@@ -14,10 +14,10 @@
                                         <input *ngSwitchCase="'input'" matInput [placeholder]="field.placeholder!"
                                             [formControlName]="field.controlName" [required]="field.required!"
                                             class="input-text">
-                                        <mat-select *ngSwitchCase="'select'" [formControlName]="field.controlName">
+                                        <!-- <mat-select *ngSwitchCase="'select'" [formControlName]="field.controlName">
                                             <mat-option *ngFor="let option of field.options" [value]="option.value">{{
                                                 option.label }}</mat-option>
-                                        </mat-select>
+                                        </mat-select> -->
                                     </ng-container>
                                 </mat-form-field>
                             </ng-container> 
@@ -46,11 +46,11 @@
                                 <span *ngIf="step.contentType!=='options'" class="caption">{{
                                     step.selectedOptionResponse.caption }}</span>
 
-                                <button class="view-code-button" *ngIf="step.contentType==='options'" mat-button
+                                <button class="view-code-button" *ngIf="step.contentType==='options' && step.selectedOptionResponse.caption.length !== 0" mat-button
                                     (click)="openViewCodeModal(step.selectedOptionResponse)"><span
                                         class="material-symbols-outlined">
                                         code
-                                    </span><span>View code example</span></button>
+                                    </span><span>View code/diagram example</span></button>
                             </div>
                         </div>
                     </div>

@@ -4,6 +4,7 @@
 
 html,body {
  height: 100%;
+ overflow-y: hidden;
 }
 
 $agent-smithy-kioskui-light-theme: mat.define-theme((

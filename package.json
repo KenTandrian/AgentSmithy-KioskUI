@@ -25,6 +25,7 @@
     "@angular/router": "^18.1.0",
     "@angular/ssr": "^18.1.2",
     "file-saver": "^2.0.5",
+    "ng-qrcode": "^19.0.1",
     "rxfire": "^6.0.5",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

@@ -7,7 +7,7 @@ import { BroadcastService } from '../../services/broadcast.service';
 import { MatDialog } from '@angular/material/dialog';
 import { UserService } from '../../services/user.service';
 import { SpeechToTextService } from '../../services/speech-to-text';
-import { HttpDownloadProgressEvent, HttpEvent, HttpEventType } from '@angular/common/http';
+import { HttpClient, HttpDownloadProgressEvent, HttpEvent, HttpEventType } from '@angular/common/http';
 import { Chat, ChatEvent } from '../../models/chat.model';
 import { HowItWorksDialogComponent } from '../how-it-works-dialog/how-it-works-dialog.component';
 
@@ -80,6 +80,13 @@ export class AgentBotComponent implements OnInit, OnDestroy {
   audioChunks: Blob[] = [];
   selectedAgentData:any;
   chatsUrl: string;
+  botsMappingData: any;
+  botsMap = new Map();
+  botUrl: string;
+  subtitle: string;
+  question1: string;
+  question2: string;
+  question3: string;
 
   constructor(
     public dialog: MatDialog,
@@ -88,6 +95,7 @@ export class AgentBotComponent implements OnInit, OnDestroy {
     private broadcastService: BroadcastService,
     private speechToTextService: SpeechToTextService,
     private router: Router,
+    private httpClient: HttpClient
   ) {
     this.chatQuery$ = this.broadcastService.chatQuery$
     this.chatQuery$.subscribe((value: any) => {
@@ -141,7 +149,7 @@ export class AgentBotComponent implements OnInit, OnDestroy {
       this.botStartTime = new Date().getTime()
       this.initialQuestion = this.conversation[0].body;
       this.pushQuestion(this.initialQuestion);
-      this.chatService.postChat(this.conversation[0].body).subscribe({
+      this.chatService.postChat(this.conversation[0].body, this.botUrl).subscribe({
         next: (event: HttpEvent<string>) => {
           if (event.type === HttpEventType.DownloadProgress) {
             this.handleBotResponse(
@@ -208,7 +216,7 @@ export class AgentBotComponent implements OnInit, OnDestroy {
     this.showLoader = true;
     this.setTimeoutForLoaderText();
     this.setCyclicBackgroundImages();
-    this.chatService.postChat(singleMessage.body).subscribe({
+    this.chatService.postChat(singleMessage.body, this.botUrl).subscribe({
       next: (event: HttpEvent<string>) => {
         if (event.type === HttpEventType.DownloadProgress) {
           this.handleBotResponse(
@@ -272,47 +280,71 @@ export class AgentBotComponent implements OnInit, OnDestroy {
 
   handleBotResponse(answer: string) {
     let events: string[] = answer.split("\n");
-    events.pop();
-    let answerId = (JSON.parse(events[0]) as ChatEvent ).data.run_id
 
-    if ( answerId === this.conversation[0].chat_id) {
-      let lastEvent: ChatEvent = JSON.parse(events.slice(-1)[0]);
-      if(lastEvent.event == "on_chat_model_stream") {
-        this.conversation[0].botAnswer += lastEvent.data.chunk!.content
-      }
-      return;
-    } 
+    // Filter out empty strings that might result from extra newlines.
+    events = events.filter(event => event.trim() !== "");
 
-    let response: Chat = {
-      id: answerId,
-      question: this.chatQuery,
-      answer: "",
-      suggested_questions: []
+    if (events.length === 0) {
+        return;
     }
     
-    let endTime = new Date().getTime();
-    this.assignId(response?.id);
+    try {
+        let parsedEvent = JSON.parse(events[0]);
+        let answerId = parsedEvent.agent.messages[0].kwargs.id; // Access the "id" from the kwargs
 
-    let singleMesage: Message = {
-      body: "",
-      botAnswer: response.answer,
-      type: 'bot',
-      responseTime: ((endTime - this.botStartTime) / 1000).toString(),
-      shareable: true,
-      botStartTime: this.botStartTime.toString(),
-      extras: {
-        like: false,
-        dislike: false,
-        delete: false,
-      },
-      chat_id: response.id!
-    };
+        if (answerId === this.conversation[0].chat_id) {
+            // Process the *last* event.  Use .at(-1) for clarity and safety.
+            const lastEventString = events.at(-1);
+            if (!lastEventString) {
+                console.warn("No last event found after splitting.");
+                return; // Or handle the error appropriately
+            }
 
-    this.conversation.unshift(singleMesage);
-    this.setSuggestedQuestionInChat(response, endTime);
-    this.showLoader = false;
-    this.clearTimeoutForLoaderText();
-    this.isSuggestedQuestion = '';
+            const lastEventParsed = JSON.parse(lastEventString);
+            const lastMessage = lastEventParsed.agent.messages.at(-1);
+
+            if (lastMessage && lastMessage.kwargs.type === "ai") {
+                this.conversation[0].botAnswer += lastMessage.kwargs.content;
+            }
+            return;
+        }
+
+        let response: Chat = {
+          id: answerId,
+          question: this.chatQuery,
+          answer: "",
+          suggested_questions: []
+        }
+        
+        let endTime = new Date().getTime();
+        this.assignId(response?.id);
+    
+        let singleMesage: Message = {
+          body: "",
+          botAnswer: response.answer,
+          type: 'bot',
+          responseTime: ((endTime - this.botStartTime) / 1000).toString(),
+          shareable: true,
+          botStartTime: this.botStartTime.toString(),
+          extras: {
+            like: false,
+            dislike: false,
+            delete: false,
+          },
+          chat_id: response.id!
+        };
+    
+        this.conversation.unshift(singleMesage);
+        this.setSuggestedQuestionInChat(response, endTime);
+        this.showLoader = false;
+        this.clearTimeoutForLoaderText();
+        this.isSuggestedQuestion = '';
+
+    } catch (error) {
+        console.error("Error parsing JSON:", error);
+        console.error("Problematic event data:", answer); // Log the raw event data
+        // Consider adding error handling here, such as retrying or logging.
+    }
   }
 
   // adds Suggested question as another message
@@ -373,23 +405,7 @@ export class AgentBotComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    let agentData = JSON.parse(localStorage.getItem('agentData') || '{}');
-    this.selectedAgentData = {
-      agentName: agentData[0].agentName ? agentData[0].agentName : '-',
-      runTime: agentData[1].runTime ? agentData[1].runTime : '',
-      frameWork: agentData[2].framework ? agentData[2].framework : '-',
-      model: agentData[4].model ? agentData[4].model : '-',
-      tools: agentData[3].tools ? agentData[3].tools : '-',
-    }
-
-    console.log(agentData);
-
-    const runtime = this.selectedAgentData.runTime;
-    const framework = this.selectedAgentData.framework;
-    const model = this.selectedAgentData.model;
-    const tools = this.selectedAgentData.tools;
-
-    const industry = agentData[0].industry;
+    this.getJsonData();
   }
 
   goToExport() {
@@ -397,11 +413,75 @@ export class AgentBotComponent implements OnInit, OnDestroy {
   }
 
   openHelpModal() {
-    this.dialog.open(HowItWorksDialogComponent,{ width: '100%',maxWidth:'1000px' });
+    // this.dialog.open(HowItWorksDialogComponent,{ width: '100%',maxWidth:'1000px', data: { content: './assets/images/deployed_agent_diagram.png' }, });
+    this.dialog.open(HowItWorksDialogComponent,{ width: '100%',maxWidth:'1000px', data: { url: './assets/images/deployed_agent_diagram.png', content: "You can now interact with your deployed AI Agent! On your screen is a description of your selected technologies for your deployed agent, as well as a list of sample prompts to ask. Embedded within this UI is the frontend chatbot code that is interacting with your backend AI agent service." }, });
   }
 
   goToHome() {
     this.router.navigate(['/']);
+  }
+
+  getJsonData() {
+    this.httpClient.get<any>('assets/bots-mapping.json').subscribe(
+      (data) => {
+        this.botsMappingData = data;
+        console.log(this.botsMappingData);
+        this.botsMappingData.forEach((item: { AGENT_INDUSTRY_TYPE: any; AGENT_ORCHESTRATION_FRAMEWORK: any; AGENT_FOUNDATION_MODEL: any; RUNTIME_ENV_SELECTION: any; }) => {
+          const key = `${item.AGENT_INDUSTRY_TYPE}-${item.AGENT_ORCHESTRATION_FRAMEWORK}-${item.AGENT_FOUNDATION_MODEL}-${item.RUNTIME_ENV_SELECTION}`;
+          this.botsMap.set(key, item);
+        });
+
+        let agentData = JSON.parse(localStorage.getItem('agentData') || '{}');
+        this.selectedAgentData = {
+          agentName: agentData[0].agentName ? agentData[0].agentName : '-',
+          runTime: agentData[1].runTime ? agentData[1].runTime : '',
+          frameWork: agentData[2].framework ? agentData[2].framework : '-',
+          model: agentData[4].model ? agentData[4].model : '-',
+          industry: agentData[3].industry ? agentData[3].industry : '-',
+        }
+
+        console.log(agentData);
+
+        const runtime = this.selectedAgentData.runTime;
+        const framework = this.selectedAgentData.frameWork;
+        const model = this.selectedAgentData.model;
+        const industry = this.selectedAgentData.industry;
+
+        this.getBotUrl(industry, framework, model, runtime);
+
+        // this.subtitle = "Use Case: \nAI-Powered Investment Research Analyst for Alphabet: Provides financial insights on Alphabet by analyzing its financial reports, strategic initiatives, and management perspectives from its historical investor documents.";
+        // this.question1 = "How did Alphabet perform in their earnings reports in Q4 2024?";
+        if(industry === 'finance'){
+          this.subtitle = "Use Case - AI-Powered Investment Research Analyst for Alphabet: Provides financial insights on Alphabet by analyzing its financial reports, strategic initiatives, and management perspectives from its historical investor documents.";
+          this.question1 = "1. How did Alphabet perform in their earnings reports in Q4 2024?";
+          this.question2 = "2. What were Alphabet’s key strategic priorities for the 2024?";
+          this.question3 = "3. How does each Alphabet business segment contribute to overall revenue and profit?";
+        } else if(industry === 'healthcare') {
+          this.subtitle = "Use Case - Symptom Checker and Triage Assistant: \nAnalyzes general medical symptoms and acts as a virtual assistant to help triage patients to the appropriate level of care during consultations.";
+          this.question1 = "1. What could be causing lower back pain that radiates down my leg?";
+          this.question2 = "2. What red flag symptoms would indicate that my sore throat is something more serious than a cold?";
+          this.question3 = "3. Based on past consultations, are there specific symptoms that were particularly helpful in narrowing down a differential diagnosis?";
+        } else if(industry === 'retail'){
+          this.subtitle = "Use Case - Google Product Discovery Assistant: \nAnswers product-specific questions on Google Products available on the Google Store";
+          this.question1 = "1. What are the specs for the Pixel 6 camera?";
+          this.question2 = "2. What is the water resistance rating of the Pixel?";
+          this.question3 = "3. What kind of screen does the Google Nest Hub have?";
+        }
+        this.subtitle
+      },
+      (error) => {
+        console.error('Error reading JSON file:', error);
+      }
+    );
+  }
+
+  getBotUrl(industry: string, framework: string, model: string, runtime: string) {
+    const key = `${industry}-${framework}-${model}-${runtime}`;
+    const bot_config = this.botsMap.get(key);
+    console.log(bot_config.CLOUD_RUN_URL);
+    console.log(key);
+    console.log(this.botsMap);
+    this.botUrl = bot_config.CLOUD_RUN_URL + "/streamQuery";
   }
 
 }

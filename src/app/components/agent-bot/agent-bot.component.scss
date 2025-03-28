@@ -9,7 +9,6 @@
 
     .heading {
         font-size: 2em;
-        margin-bottom: 1em;
         margin-top: 0.5em;
         color: var(--text-color);
     }
@@ -21,7 +20,6 @@
     }
 
     .stepper-container {
-      //  height: 50vh;
         .label {
             font-size: 1em;
             margin-bottom: 0.5em;
@@ -29,7 +27,7 @@
     }
 
     .inner-container {
-        margin: 40px 30px;
+        margin: 30px 30px 30px 30px;
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 20px;
@@ -47,6 +45,7 @@
 
     .runtime-container {
         display: flex;
+        height: 70vh;
 
         .option-selectors,
         .option-response {
@@ -60,7 +59,7 @@
 
             .subtitle {
                 color: var(--text-color);
-                font-size: 22px;
+                font-size: 20px;
                 line-height: 1.75rem;
                 margin: 0rem 2em 1rem 2rem;
                 white-space: pre-wrap;
@@ -133,7 +132,7 @@
     .footer-container {
       display: flex;
       justify-content: space-between;
-      margin-top: 6.3rem;
+      // margin-top: 6.3rem;
   }
 
   .button-container {
@@ -603,7 +602,7 @@
             /* Firefox */
             font-size: 0.95rem;
             line-height: 1.1rem;
-            color: #9A9B9C;
+            color: #FFF;
             background: var(--chat-background);
   
             &::placeholder {

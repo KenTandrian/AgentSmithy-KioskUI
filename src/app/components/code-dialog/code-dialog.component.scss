@@ -1,9 +1,20 @@
-.code-dialog {
-    background-color: #e1e3e1;
+.dialog-container {
+    background-color: var(--code-background-color) !important;
+    --mdc-dialog-subhead-color: var(--text-color) !important;
+    --mdc-dialog-supporting-text-color: var(--text-color) !important;
+    --mdc-dialog-supporting-text-size: 1em !important;
+    --mdc-dialog-supporting-text-line-height: 1.5em !important;
+    --mdc-dialog-subhead-size:31.2px;
+    --mdc-icon-button-icon-color:var(--text-color) !important;
+    --mdc-dialog-subhead-weight:500;
+    padding: 1em;
+    padding-bottom: 3em;
+    white-space: pre-wrap;
+    text-align: left !important;
 }
 
-.code {
-    color: #747775;
-    font-size: 1em;
-    white-space: pre-wrap;
+.dialog-header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

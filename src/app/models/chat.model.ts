@@ -16,8 +16,10 @@ export type CreateChatRequest = {
 }
 
 type Input = {
-    messages: Message[],
-    session_id: string,
+    input: {
+        messages: Message[],
+        session_id: string,
+    }
 }
 
 type Message = {
