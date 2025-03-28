@@ -39,6 +39,27 @@ export class ConfigureBotComponent implements OnInit, AfterViewInit {
   onStepChange(event: any) {
     const currentStepIndex = event;
     this.callMethodBasedOnStep(currentStepIndex);
+    if(event === 4){
+      const formArray = this.formGroup.get('formArray') as FormArray;
+      const stepFormGroup = formArray.at(event - 3) as FormGroup;
+      if(stepFormGroup.value.runTime === 'AgentEngine'){
+        this.stepperConfig[event].options!.forEach(opt => {
+          opt.isSelected = false;
+          if(opt.label.startsWith("Claude")){
+            opt.isDisabled = true;
+          }
+        });
+      } else {
+        this.stepperConfig[event].options!.forEach(opt => {
+          opt.isSelected = false;
+          if(opt.label.startsWith("Claude")){
+            if(opt.isDisabled){
+              opt.isDisabled = false;
+            }
+          }
+        });
+      }
+    }
   }
 
   callMethodBasedOnStep(stepIndex: number) {
@@ -321,22 +342,18 @@ export class ConfigureBotComponent implements OnInit, AfterViewInit {
   }
   
   selectRunTime(value: string) {
-    console.log(value);
     this.selectedRuntime = value;
   }
 
   selectFramework(value: string) {
-    console.log(value);
     this.selectedFramework = value;
   }
 
   selectIndustry(value: string) {
-    console.log(value);
     this.selectedIndustry = value;
   }
 
   selectModel(value: string) {
-    console.log(value);
     this.selectedModel = value;
   }
 
@@ -363,7 +380,7 @@ export class ConfigureBotComponent implements OnInit, AfterViewInit {
       industry: this.selectedIndustry,
       model: this.selectedModel
     });
-    console.log(formArray);
+    // console.log(formArray);
     formArray.at(stepIndex).markAsDirty();
   }
 
