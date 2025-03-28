@@ -47,7 +47,6 @@ export class ConfigureBotComponent implements OnInit, AfterViewInit {
         industry: this.selectedIndustry,
         model: ''
       });
-      // console.log(formArray);
       formArray.at(event).markAsDirty();
       formArray = this.formGroup.get('formArray') as FormArray;
       const stepFormGroup = formArray.at(event - 3) as FormGroup;

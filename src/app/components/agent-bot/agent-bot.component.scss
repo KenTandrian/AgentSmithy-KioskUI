@@ -20,7 +20,6 @@
     }
 
     .stepper-container {
-      //  height: 50vh;
         .label {
             font-size: 1em;
             margin-bottom: 0.5em;
@@ -46,6 +45,7 @@
 
     .runtime-container {
         display: flex;
+        height: 70vh;
 
         .option-selectors,
         .option-response {
@@ -132,7 +132,7 @@
     .footer-container {
       display: flex;
       justify-content: space-between;
-      margin-top: 6.3rem;
+      // margin-top: 6.3rem;
   }
 
   .button-container {
