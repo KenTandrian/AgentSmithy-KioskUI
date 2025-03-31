@@ -387,9 +387,9 @@ def run_agent_engine_deployment() -> str:
     return remote_agent.resource_name
 
 
-def get_cloud_run_url(region: str, service_name: str) -> str:
+def get_cloud_run_url(project_id: str, region: str, service_name: str) -> str:
     try:
-        describe = subprocess.run(["gcloud", "run", "services", "describe", service_name, "--region", region], capture_output=True, text=True)
+        describe = subprocess.run(["gcloud", "run", "services", "describe", service_name, "--project", project_id,"--region", region], capture_output=True, text=True)
         if describe.returncode == 0:
             url_match = re.search(r"\s+URL:\s+(.*?)\n", describe.stdout)
 
@@ -455,6 +455,8 @@ def build_and_deploy_cloud_run(
         "submit",
         "--config",
         build_file_location,
+        "--project",
+        project_id,
         "--substitutions",
         f"_PROJECT_ID={project_id},_REGION={region},_CONTAINER_NAME={container_name},_ARTIFACT_REGISTRY_REPO_NAME={artifact_registry_name},_SERVICE_NAME={service_name}",
         f"{os.path.dirname(os.path.abspath(__file__))}/{REPOSITORY_NAME}/{BACKEND_PATH}" if is_backend else f"{os.path.dirname(os.path.abspath(__file__))}/{REPOSITORY_NAME}/{FRONTEND_PATH}"
@@ -510,7 +512,7 @@ if __name__ == "__main__":
         create_search_app()
 
         # Build and deploy BE Service.
-        frontend_url = get_cloud_run_url(REGION, CLOUD_RUN_FRONTEND_SERVICE_NAME)
+        frontend_url = get_cloud_run_url(PROJECT_ID, REGION, CLOUD_RUN_FRONTEND_SERVICE_NAME)
         configure_backend(
             GCS_STAGING_BUCKET,
             DATA_STORE_ID,
@@ -539,7 +541,7 @@ if __name__ == "__main__":
         )
 
         # Build and deploy FE Service.
-        backend_url = get_cloud_run_url(REGION, CLOUD_RUN_BACKEND_SERVICE_NAME)
+        backend_url = get_cloud_run_url(PROJECT_ID, REGION, CLOUD_RUN_BACKEND_SERVICE_NAME)
         configure_frontend(AGENT_NAME, backend_url, ENV_TAG, FRONTEND_CONFIG_FILE)
         build_and_deploy_cloud_run(
             PROJECT_ID,
