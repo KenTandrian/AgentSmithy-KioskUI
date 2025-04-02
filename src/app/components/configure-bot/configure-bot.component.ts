@@ -123,7 +123,7 @@ export class ConfigureBotComponent implements OnInit, AfterViewInit {
         { label: 'Agent Name', type: 'input', controlName: 'agentName', placeholder: '', required: true },
         { label: 'Description', type: 'text', controlName: 'description', placeholder: '', required: true },
       ],
-      caption:'Welcome to the Agent Bar! To begin, please provide a unique name for your agent, something that reflects its purpose or personality. Next, craft a concise description outlining the agent\'s intended function and how it will assist users. Finally, select the industry that best aligns with your agent\'s focus. This selection will help tailor the agent\'s capabilities and access relevant data, ensuring it\'s optimally configured for its intended environment.',
+      caption:'Welcome to the Agent Bar! To begin, please provide a unique name for your agent, something that reflects its purpose or personality. Then, craft a concise description outlining the agent\'s intended function and how it will assist users. This selection will help tailor the agent\'s capabilities and access relevant data, ensuring it\'s optimally configured for its intended environment.',
       howItWorks: '',
       hasNext: true,
       hasPrevious: false,
