@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, ReplaySubject, timeout } from 'rxjs';
+import { Observable, ReplaySubject } from 'rxjs';
 import { Message, SuggestionData } from '../../models/messegeType.model';
 import { ChatService } from '../../services/chat.service';
 import { BroadcastService } from '../../services/broadcast.service';
@@ -8,7 +8,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { UserService } from '../../services/user.service';
 import { SpeechToTextService } from '../../services/speech-to-text';
 import { HttpClient, HttpDownloadProgressEvent, HttpEvent, HttpEventType } from '@angular/common/http';
-import { Chat, ChatEvent } from '../../models/chat.model';
+import { Chat } from '../../models/chat.model';
 import { HowItWorksDialogComponent } from '../how-it-works-dialog/how-it-works-dialog.component';
 
 
@@ -149,7 +149,7 @@ export class AgentBotComponent implements OnInit, OnDestroy {
       this.botStartTime = new Date().getTime()
       this.initialQuestion = this.conversation[0].body;
       this.pushQuestion(this.initialQuestion);
-      this.chatService.postChat(this.conversation[0].body, this.botUrl).subscribe({
+      this.chatService.postChat([...this.conversation], this.botUrl).subscribe({
         next: (event: HttpEvent<string>) => {
           if (event.type === HttpEventType.DownloadProgress) {
             this.handleBotResponse(
@@ -208,7 +208,7 @@ export class AgentBotComponent implements OnInit, OnDestroy {
     let singleMessage: Message = {
       body: this.chatQuery,
       type: 'user',
-      shareable: false,
+      shareable: true,
     }
 
     this.conversation.unshift(singleMessage);
@@ -216,7 +216,7 @@ export class AgentBotComponent implements OnInit, OnDestroy {
     this.showLoader = true;
     this.setTimeoutForLoaderText();
     this.setCyclicBackgroundImages();
-    this.chatService.postChat(singleMessage.body, this.botUrl).subscribe({
+    this.chatService.postChat([...this.conversation], this.botUrl).subscribe({
       next: (event: HttpEvent<string>) => {
         if (event.type === HttpEventType.DownloadProgress) {
           this.handleBotResponse(

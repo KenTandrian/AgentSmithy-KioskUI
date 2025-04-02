@@ -23,6 +23,9 @@
                                         <input *ngSwitchCase="'input'" matInput [placeholder]="field.placeholder!"
                                             [formControlName]="field.controlName" [required]="field.required!"
                                             class="input-text">
+                                        <textarea *ngSwitchCase="'text'" matInput [placeholder]="field.placeholder!"
+                                            [formControlName]="field.controlName" [required]="field.required!"
+                                            class="input-text" rows="3"></textarea>    
                                         <!-- <mat-select *ngSwitchCase="'select'" [formControlName]="field.controlName">
                                             <mat-option *ngFor="let option of field.options" [value]="option.value">{{
                                                 option.label }}</mat-option>

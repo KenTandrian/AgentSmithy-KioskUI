@@ -27,6 +27,7 @@ export class ConfigureBotComponent implements OnInit, AfterViewInit {
   @ViewChild('stepper') stepper: MatStepper;
   howItWorksDescription: string;
   howItWorks: string;
+  step: string;
 
   constructor(private _formBuilder: FormBuilder, private router: Router, private fb: FormBuilder,private themeService: ThemeService,private readonly dialog: MatDialog,private el: ElementRef, private renderer: Renderer2) {
   }
@@ -90,6 +91,7 @@ export class ConfigureBotComponent implements OnInit, AfterViewInit {
   handleStepZero() {
     this.howItWorks = './assets/images/agent_properties_diagram.png';
     this.howItWorksDescription = "This demo will walk you through selecting and building each core element of an AI Agent. Here you are setting the Agent Name, Description, and Industry. These properties are used to populate the Instructions for the Agent Reasoning Loop. Your selection of Industry will also correspond to the different datasets and Tools you have available to you later on in this demo experience.";
+    this.step = "agent_properties"
   }
 
   handleStepOne() {
@@ -119,7 +121,7 @@ export class ConfigureBotComponent implements OnInit, AfterViewInit {
       contentType: 'form',
       fields: [
         { label: 'Agent Name', type: 'input', controlName: 'agentName', placeholder: '', required: true },
-        { label: 'Description', type: 'input', controlName: 'description', placeholder: '', required: true },
+        { label: 'Description', type: 'text', controlName: 'description', placeholder: '', required: true },
       ],
       caption:'Welcome to the Agent Bar! To begin, please provide a unique name for your agent, something that reflects its purpose or personality. Next, craft a concise description outlining the agent\'s intended function and how it will assist users. Finally, select the industry that best aligns with your agent\'s focus. This selection will help tailor the agent\'s capabilities and access relevant data, ensuring it\'s optimally configured for its intended environment.',
       howItWorks: '',
@@ -457,7 +459,7 @@ export class ConfigureBotComponent implements OnInit, AfterViewInit {
   }
 
   openHelpModal() {
-    this.dialog.open(HowItWorksDialogComponent,{ width: '100%',maxWidth:'1000px', data: { url: this.howItWorks, content: this.howItWorksDescription }, });
+    this.dialog.open(HowItWorksDialogComponent,{ width: '100%',maxWidth:'1200px', data: { url: this.howItWorks, content: this.howItWorksDescription }, });
   }
   
 }

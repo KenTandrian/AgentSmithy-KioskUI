@@ -22,7 +22,7 @@ type Input = {
     }
 }
 
-type Message = {
+export type Message = {
     content: string,
     type: string,
 }

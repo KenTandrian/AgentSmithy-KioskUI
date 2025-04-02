@@ -456,6 +456,10 @@
       padding-right: 2%;
       width: 100%;
       scrollbar-width: none;
+      border: 1px solid #4A5050;
+      background: var(--chat-background);
+      border-radius: 20px 20px 20px 20px;
+      margin-bottom: 10px;
   
       .user-message {
         display: flex;
