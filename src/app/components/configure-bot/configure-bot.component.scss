@@ -67,6 +67,33 @@
             text-align: left !important;
         }
 
+        .usecase, .tool {
+            color: var(--primary-btn-color);
+            font-size: 16px;
+            line-height: 1.75rem;
+            margin: 0em 2em 0rem 0rem;
+            white-space: pre-wrap;
+            text-align: left !important;
+        }
+
+        .usecaseHeading, .toolHeading {
+            color: var(--text-color);
+            font-size: 26px;
+            line-height: 1.75rem;
+            margin: 0em 2em 1rem 0rem;
+            white-space: pre-wrap;
+            text-align: left !important;
+        }
+
+        .usecaseSubheading, .toolSubheading {
+            color: #8F8F8F;
+            font-size: 22px;
+            line-height: 1.75rem;
+            margin: 0em 2em 1rem 0rem;
+            white-space: pre-wrap;
+            text-align: left !important;
+        }
+
         .subheading {
             color: var(--primary-btn-color);
             font-size: 22px;
@@ -306,8 +333,7 @@
         margin: 0px -15px;
     }
 
-    ::ng-deep.mat-step-icon-selected,
-    ::ng-deep.mat-step-icon-state-edit {
+    ::ng-deep.mat-step-icon-selected {
         // border: 2px solid var(red) !important;
         --mat-stepper-header-selected-state-icon-background-color: var(--secondary-step-background-color);
         // --mat-stepper-header-icon-foreground-color: red;
@@ -335,6 +361,16 @@
         border: 2px solid var(--selected-step-background-color);
         --mat-stepper-header-icon-background-color: var(--secondary-step-background-color);
         // --mat-stepper-header-selected-state-icon-foreground-color: rgba(188, 218, 255, 1);
+    }
+
+    ::ng-deep.mat-step-icon-state-edit {
+        font-size: 14px;
+        height: 20px;
+        width: 20px;
+        //  color: ;
+        --mat-stepper-header-edit-state-icon-foreground-color: var(--secondary-background-color);
+        border: 2px solid var(--selected-step-background-color);
+        --mat-stepper-header-edit-state-icon-background-color: var(--secondary-step-background-color) !important;
     }
 
     ::ng-deep.mat-stepper-label-position-bottom .mat-horizontal-stepper-header:not(:last-child)::after,

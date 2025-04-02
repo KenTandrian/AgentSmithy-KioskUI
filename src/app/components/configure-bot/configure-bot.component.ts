@@ -121,7 +121,7 @@ export class ConfigureBotComponent implements OnInit, AfterViewInit {
         { label: 'Agent Name', type: 'input', controlName: 'agentName', placeholder: '', required: true },
         { label: 'Description', type: 'input', controlName: 'description', placeholder: '', required: true },
       ],
-      caption:'Welcome to the agent builder! To begin, please provide a unique name for your agent, something that reflects its purpose or personality. Next, craft a concise description outlining the agent\'s intended function and how it will assist users. Finally, select the industry that best aligns with your agent\'s focus. This selection will help tailor the agent\'s capabilities and access relevant data, ensuring it\'s optimally configured for its intended environment.',
+      caption:'Welcome to the Agent Bar! To begin, please provide a unique name for your agent, something that reflects its purpose or personality. Next, craft a concise description outlining the agent\'s intended function and how it will assist users. Finally, select the industry that best aligns with your agent\'s focus. This selection will help tailor the agent\'s capabilities and access relevant data, ensuring it\'s optimally configured for its intended environment.',
       howItWorks: '',
       hasNext: true,
       hasPrevious: false,
@@ -201,7 +201,7 @@ export class ConfigureBotComponent implements OnInit, AfterViewInit {
         }
       ],
       selectedOptionResponse: {
-        subtitle: '\n • LangChain: Versatile toolbox for building a wide range of LLM applications.\n • LangGraph: Build complex, stateful, multi-actor LLM workflows with a structured graph approach. \n • LlamaIndex: Connect LLMs to your private data for efficient indexing and retrieval.\n • Vertex AI Agent Framework: Streamlined Python SDK for developing generative AI agents (coming soon!) \n\nSelect the framework best suited to your project: LangChain for general use, LangGraph for complex workflows, and LlamaIndex for private data.',
+        subtitle: '\n • LangChain: Versatile toolbox for building a wide \n   range of LLM applications.\n • LangGraph: Build complex, stateful, multi-actor \n   LLM workflows with a structured graph \n   approach. \n • LlamaIndex: Connect LLMs to your private data \n   for efficient indexing and retrieval.\n • Vertex AI Agent Framework: Streamlined \n   Python SDK for developing generative AI agents \n   (coming soon!) \n\nSelect the framework best suited to your project: LangChain for general use, LangGraph for complex workflows, and LlamaIndex for private data.',
         caption: ''
       },
       hasNext: true,
@@ -213,7 +213,7 @@ export class ConfigureBotComponent implements OnInit, AfterViewInit {
     {
       heading: 'Industry',
       stepHeading: 'Industry',
-      contentType: 'options',
+      contentType: 'industry',
       subheading: 'AI tools are software applications or platforms that leverage artificial intelligence to automate tasks, analyze data, or generate outputs.',
       options: [
         { 
@@ -221,7 +221,15 @@ export class ConfigureBotComponent implements OnInit, AfterViewInit {
           isSelected: false, 
           isDisabled: false,
           onClick: () => this.selectIndustry('finance'), 
-          subtitle: 'Based on your selection of finance, your agent has been configured with the following use case and tools:\n\nUse Case:\nAI-Powered Investment Research Analyst for Alphabet: Provides financial insights on Alphabet by analyzing its financial reports, strategic initiatives, and management perspectives from its historical investor documents. (Disclaimer: This Agent is for demonstration purposes only)\n\nAvailable Tool(s):\n\nretrieve_info: This tool uses Vertex AI Search to perform Retrieval Augmented Generation (RAG) on a given dataset. This agent has access to the following dataset:\n\n`Alphabet Investor PDFs`: This dataset contains PDFs of quarterly earnings releases and annual reports for Alphabet for every quarter since 2004. The Annual reports include  financial statements (balance sheet, income statement, cash flow statement), a letter to shareholders, management discussion and analysis (MD&A), and information on corporate governance. The quarterly earnings releases also contain key financial statements like the income statement, balance sheet, and cash flow statement, along with management commentary and analysis of quarterly performance.',
+          subtitle: 'Your finance agent has been configured with the following use case and tools:',
+          metadata: {
+            usecase: "Use case",
+            usecaseHeading: "AI-Powered Investment Research Analyst for Alphabet",
+            usecaseSubheading: "Provides financial insights on Alphabet by analyzing its financial reports, strategic initiatives, and management perspectives from its historical investor documents. (Disclaimer: This Agent is for demonstration purposes only)",
+            tool: "Tool",
+            toolHeading: "retrieve_info",
+            toolSubheading: "This tool uses Vertex AI Search to perform Retrieval Augmented Generation (RAG) on a given dataset. This agent has access to the following dataset:\n\n`Alphabet Investor PDFs`: This dataset contains PDFs of quarterly earnings releases and annual reports for Alphabet for every quarter since 2004. The Annual reports include  financial statements (balance sheet, income statement, cash flow statement), a letter to shareholders, management discussion and analysis (MD&A), and information on corporate governance. The quarterly earnings releases also contain key financial statements like the income statement, balance sheet, and cash flow statement, along with management commentary and analysis of quarterly performance.",
+          },
           caption: 'from langchain.agents import Tool \n\n# Define the tool (assuming \'get_weather\' function is already defined) \nweather_tool = Tool( \n\tname="Get Weather", \n\tfunc=get_weather, \n\tdescription="Get current weather for a location." \n)'
         },
         { 
@@ -229,7 +237,15 @@ export class ConfigureBotComponent implements OnInit, AfterViewInit {
           isSelected: false, 
           isDisabled: false,
           onClick: () => this.selectIndustry('healthcare'),
-          subtitle: 'Based on your selection of healthcare, your agent has been configured with the following use case and tools:\n\nUse Case:\nSymptom Checker and Triage Assistant: Analyzes general medical symptoms and acts as a virtual assistant to help triage patients to the appropriate level of care during consultations. (Disclaimer: This Agent is for demonstration purposes only and is NOT a substitute for professional medical advice)\n\nAvailable Tool(s):\n\nmedical_publications_tool: Utilizes the PubMed API to pull data from the PubMed database, which is a free, searchable database developed and maintained by the National Center for Biotechnology Information (NCBI) and provides access to citations and abstracts of biomedical literature.\n\nretrieve_info: This tool uses Vertex AI Search to perform Retrieval Augmented Generation (RAG) on a given dataset. This agent has access to the following dataset:\n\n`PriMock57 Healthcare consultations`: This dataset consists of 57 mock medical primary care consultations held over 5 days by 7 clinicians and 57 fake patients, using case cards that present complaints, symptoms, medical & general history etc.',
+          subtitle: 'Your healthcare agent has been configured with the following use case and tools:',
+          metadata: {
+            usecase: "Use case",
+            usecaseHeading: "Symptom Checker and Triage Assistant",
+            usecaseSubheading: "Analyzes general medical symptoms and acts as a virtual assistant to help triage patients to the appropriate level of care during consultations. (Disclaimer: This Agent is for demonstration purposes only and is NOT a substitute for professional medical advice)",
+            tool: "Tool",
+            toolHeading: "medical_publications_tool",
+            toolSubheading: "Utilizes the PubMed API to pull data from the PubMed database, which is a free, searchable database developed and maintained by the National Center for Biotechnology Information (NCBI) and provides access to citations and abstracts of biomedical literature.\n\nretrieve_info: This tool uses Vertex AI Search to perform Retrieval Augmented Generation (RAG) on a given dataset. This agent has access to the following dataset:\n\n`PriMock57 Healthcare consultations`: This dataset consists of 57 mock medical primary care consultations held over 5 days by 7 clinicians and 57 fake patients, using case cards that present complaints, symptoms, medical & general history etc.",
+          },
           caption: 'from langchain.agents import load_tools \n\n# Load the pre-built Google Search tool \ntools = load_tools(["google-search"]) \n\n# Use the tool (e.g., within an agent) \ntools[0].run("What\'s the weather in Boston, MA?")' 
         },
         { 
@@ -237,13 +253,29 @@ export class ConfigureBotComponent implements OnInit, AfterViewInit {
           isSelected: false, 
           isDisabled: false,
           onClick: () => this.selectIndustry('retail'),
-          subtitle: 'Based on your selection of healthcare, your agent has been configured with the following use case and tools:\n\nUse Case:\nGoogle Product Discovery Assistant: Answers product-specific questions on Google Products available on the Google Store (Disclaimer: This Agent is for demonstration purposes only)\n\nAvailable Tool(s):\n\nretrieve_info: This tool uses Vertex AI Search to perform Retrieval Augmented Generation (RAG) on a given dataset. This agent has access to the following dataset:\n\n`Google Store`: This data is a list of html web pages from the Google Store from\n2023. It represents a listing of products, details, prices, etc related to\nGoogle products.',
+          subtitle: 'Your retail agent has been configured with the following use case and tools:',
+          metadata: {
+            usecase: "Use case",
+            usecaseHeading: "Google Product Discovery Assistant",
+            usecaseSubheading: "Answers product-specific questions on Google Products available on the Google Store (Disclaimer: This Agent is for demonstration purposes only)",
+            tool: "Tool",
+            toolHeading: "retrieve_info",
+            toolSubheading: "This tool uses Vertex AI Search to perform Retrieval Augmented Generation (RAG) on a given dataset. This agent has access to the following dataset:\n\n`Google Store`: This data is a list of html web pages from the Google Store from\n2023. It represents a listing of products, details, prices, etc related to\nGoogle products.",
+          },
           caption: 'from langchain.agents import load_tools \n\n# Load the pre-built Google Search tool \ntools = load_tools(["google-search"]) \n\n# Use the tool (e.g., within an agent) \ntools[0].run("What\'s the weather in Boston, MA?")' 
         },
       ],
       selectedOptionResponse: {
         subtitle: '\nAPIs offer flexibility and customization, allowing developers to tailor LLM interactions precisely to their needs and integrate them deeply within existing systems.  Pre-built tools, on the other hand, provide convenience and speed, offering ready-made solutions for common LLM use cases like chatbots, summarization, or question answering, often with user-friendly interfaces and requiring less coding.  Choose APIs when fine-grained control and deep integration are paramount, and pre-built tools when rapid development and ease of use are prioritized.',
-        caption: ''
+        caption: '',
+        metadata: {
+          usecase: "",
+          usecaseHeading: "",
+          usecaseSubheading: "",
+          tool: "",
+          toolHeading: "",
+          toolSubheading: "",
+        },
       },
       hasNext: true,
       hasPrevious: true,
@@ -379,7 +411,8 @@ export class ConfigureBotComponent implements OnInit, AfterViewInit {
     });
     section.selectedOptionResponse = {
       subtitle : selectedOption.subtitle,
-      caption: selectedOption.caption
+      caption: selectedOption.caption,
+      metadata: selectedOption.metadata
     }
     selectedOption.onClick(); 
 
