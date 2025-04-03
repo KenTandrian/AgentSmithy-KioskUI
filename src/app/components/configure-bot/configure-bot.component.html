@@ -67,6 +67,104 @@
                         </div>
                     </div>
 
+                    <div *ngIf="step.contentType === 'runtime'" class="stepper-container">
+                        <div class="runtime-container">
+                            <div class="option-selectors">
+                                <div class="example-radio-group">
+                                    <div *ngFor="let option of step.options" [ngClass]="{'selected': option.isSelected}"
+                                        (click)="onRadioChange(step, option, index)" class="option-card" [class.disabled]="option.isDisabled === true" >
+                                        <span class="icon">
+                                            <span class="material-symbols-outlined">{{ option.isSelected ?
+                                                'check_circle' : 'radio_button_unchecked' }}</span>
+                                        </span>
+                                        <span class="text">{{ option.label }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div *ngIf="step.selectedOptionResponse" class="option-response">
+                                <span *ngIf="step.subheading" class="subheading">{{ step.subheading }}</span>
+                                <span class="subtitle">{{ step.selectedOptionResponse.subtitle }}</span>
+
+                                <span *ngIf="step?.selectedOptionResponse?.metadata?.vertexAiHeading" class="optionsHeading">{{ step.selectedOptionResponse.metadata?.vertexAiHeading }}</span>
+                                <ul *ngIf="step?.selectedOptionResponse?.metadata?.vertexAiSubheading" class="optionsSubheading">
+                                    <li *ngFor="let item of step?.selectedOptionResponse?.metadata?.vertexAiSubheading">
+                                      {{ item }}
+                                    </li>
+                                </ul>
+                                <span *ngIf="step?.selectedOptionResponse?.metadata?.cloudRunHeading" class="optionsHeading">{{ step.selectedOptionResponse.metadata?.cloudRunHeading }}</span>
+                                <ul *ngIf="step?.selectedOptionResponse?.metadata?.cloudRunSubheading" class="optionsSubheading">
+                                    <li *ngFor="let item of step?.selectedOptionResponse?.metadata?.cloudRunSubheading">
+                                      {{ item }}
+                                    </li>
+                                </ul>
+
+                                <span *ngIf="step?.selectedOptionResponse?.metadata?.prosHeading" class="optionsHeading">{{ step.selectedOptionResponse.metadata?.prosHeading }}<span class="prosconsSubheading">{{ step.selectedOptionResponse.metadata?.prosSubheading }}</span></span>
+                                <span *ngIf="step?.selectedOptionResponse?.metadata?.consHeading" class="optionsHeading">{{ step.selectedOptionResponse.metadata?.consHeading }}<span class="prosconsSubheading">{{ step.selectedOptionResponse.metadata?.consSubheading }}</span></span>
+
+                                <span *ngIf="step.contentType!=='runtime'" class="caption">{{
+                                    step.selectedOptionResponse.caption }}</span>
+
+                                <button class="view-code-button" *ngIf="step.contentType==='runtime' && step.selectedOptionResponse.caption.length !== 0" mat-button
+                                    (click)="openViewCodeModal(step.selectedOptionResponse)"><span
+                                        class="material-symbols-outlined">
+                                        code
+                                    </span><span>View code/diagram example</span></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div *ngIf="step.contentType === 'framework'" class="stepper-container">
+                        <div class="runtime-container">
+                            <div class="option-selectors">
+                                <div class="example-radio-group">
+                                    <div *ngFor="let option of step.options" [ngClass]="{'selected': option.isSelected}"
+                                        (click)="onRadioChange(step, option, index)" class="option-card" [class.disabled]="option.isDisabled === true" >
+                                        <span class="icon">
+                                            <span class="material-symbols-outlined">{{ option.isSelected ?
+                                                'check_circle' : 'radio_button_unchecked' }}</span>
+                                        </span>
+                                        <span class="text">{{ option.label }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div *ngIf="step.selectedOptionResponse" class="option-response">
+                                <span *ngIf="step.subheading" class="subheading">{{ step.subheading }}</span>
+                                <span class="subtitle">{{ step.selectedOptionResponse.subtitle }}</span>
+
+                                <!-- <ul *ngIf="step?.selectedOptionResponse?.metadata?.langchainHeading" class="frameworkSubheading">
+                                    <li *ngFor="let item of step?.selectedOptionResponse?.metadata?.langchainSubheading">
+                                      {{ item }} <span *ngIf="step?.selectedOptionResponse?.metadata?.langchainHeading" class="optionsSubheading">{{ step.selectedOptionResponse.metadata?.langchainSubheading }}</span>
+                                    </li>
+                                </ul> -->
+
+                                <span *ngIf="step?.selectedOptionResponse?.metadata?.langchainHeading" class="optionsHeading">{{ step.selectedOptionResponse.metadata?.langchainHeading }}<span class="prosconsSubheading">{{ step.selectedOptionResponse.metadata?.langchainSubheading }}</span></span>
+                                <span *ngIf="step?.selectedOptionResponse?.metadata?.langgraphHeading" class="optionsHeading">{{ step.selectedOptionResponse.metadata?.langgraphHeading }}<span class="prosconsSubheading">{{ step.selectedOptionResponse.metadata?.langgraphSubheading }}</span></span>
+                                <span *ngIf="step?.selectedOptionResponse?.metadata?.llamaindexHeading" class="optionsHeading">{{ step.selectedOptionResponse.metadata?.llamaindexHeading }}<span class="prosconsSubheading">{{ step.selectedOptionResponse.metadata?.llamaindexSubheading }}</span></span>
+                                <span *ngIf="step?.selectedOptionResponse?.metadata?.vertexagentframeworkHeading" class="optionsHeading">{{ step.selectedOptionResponse.metadata?.vertexagentframeworkHeading }}<span class="prosconsSubheading">{{ step.selectedOptionResponse.metadata?.vertexagentframeworkSubheading }}</span></span>
+
+                                <span *ngIf="step?.selectedOptionResponse?.metadata?.footer" class="optionsHeading">{{ step.selectedOptionResponse.metadata?.footer }}</span>
+                                <!-- <span *ngIf="step?.selectedOptionResponse?.metadata?.cloudRunHeading" class="optionsHeading">{{ step.selectedOptionResponse.metadata?.cloudRunHeading }}</span>
+                                <ul *ngIf="step?.selectedOptionResponse?.metadata?.cloudRunSubheading" class="optionsSubheading">
+                                    <li *ngFor="let item of step?.selectedOptionResponse?.metadata?.cloudRunSubheading">
+                                      {{ item }}
+                                    </li>
+                                </ul> -->
+
+                                <span *ngIf="step?.selectedOptionResponse?.metadata?.prosHeading" class="optionsHeading">{{ step.selectedOptionResponse.metadata?.prosHeading }}<span class="prosconsSubheading">{{ step.selectedOptionResponse.metadata?.prosSubheading }}</span></span>
+                                <span *ngIf="step?.selectedOptionResponse?.metadata?.consHeading" class="optionsHeading">{{ step.selectedOptionResponse.metadata?.consHeading }}<span class="prosconsSubheading">{{ step.selectedOptionResponse.metadata?.consSubheading }}</span></span>
+
+                                <span *ngIf="step.contentType!=='framework'" class="caption">{{
+                                    step.selectedOptionResponse.caption }}</span>
+
+                                <button class="view-code-button" *ngIf="step.contentType==='framework' && step.selectedOptionResponse.caption.length !== 0" mat-button
+                                    (click)="openViewCodeModal(step.selectedOptionResponse)"><span
+                                        class="material-symbols-outlined">
+                                        code
+                                    </span><span>View code/diagram example</span></button>
+                            </div>
+                        </div>
+                    </div>
+
                     <div *ngIf="step.contentType === 'industry'" class="stepper-container">
                         <div class="runtime-container">
                             <div class="option-selectors">
@@ -104,8 +202,52 @@
                         </div>
                     </div>
 
-                </mat-step>
+                    <div *ngIf="step.contentType === 'model'" class="stepper-container">
+                        <div class="runtime-container">
+                            <div class="option-selectors">
+                                <div class="example-radio-group">
+                                    <div *ngFor="let option of step.options" [ngClass]="{'selected': option.isSelected}"
+                                        (click)="onRadioChange(step, option, index)" class="option-card" [class.disabled]="option.isDisabled === true" >
+                                        <span class="icon">
+                                            <span class="material-symbols-outlined">{{ option.isSelected ?
+                                                'check_circle' : 'radio_button_unchecked' }}</span>
+                                        </span>
+                                        <span class="text">{{ option.label }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div *ngIf="step.selectedOptionResponse" class="option-response">
+                                <span *ngIf="step.subheading" class="subheading">{{ step.subheading }}</span>
+                                <span class="subtitle">{{ step.selectedOptionResponse.subtitle }}</span>
 
+                                <!-- <span *ngIf="step?.selectedOptionResponse?.metadata?.vertexAiHeading" class="optionsHeading">{{ step.selectedOptionResponse.metadata?.vertexAiHeading }}</span>
+                                <ul *ngIf="step?.selectedOptionResponse?.metadata?.vertexAiSubheading" class="optionsSubheading">
+                                    <li *ngFor="let item of step?.selectedOptionResponse?.metadata?.vertexAiSubheading">
+                                      {{ item }}
+                                    </li>
+                                </ul>
+                                <span *ngIf="step?.selectedOptionResponse?.metadata?.cloudRunHeading" class="optionsHeading">{{ step.selectedOptionResponse.metadata?.cloudRunHeading }}</span>
+                                <ul *ngIf="step?.selectedOptionResponse?.metadata?.cloudRunSubheading" class="optionsSubheading">
+                                    <li *ngFor="let item of step?.selectedOptionResponse?.metadata?.cloudRunSubheading">
+                                      {{ item }}
+                                    </li>
+                                </ul> -->
+
+                                <span *ngIf="step?.selectedOptionResponse?.metadata?.prosHeading" class="optionsHeading">{{ step.selectedOptionResponse.metadata?.prosHeading }}<span class="prosconsSubheading">{{ step.selectedOptionResponse.metadata?.prosSubheading }}</span></span>
+                                <span *ngIf="step?.selectedOptionResponse?.metadata?.consHeading" class="optionsHeading">{{ step.selectedOptionResponse.metadata?.consHeading }}<span class="prosconsSubheading">{{ step.selectedOptionResponse.metadata?.consSubheading }}</span></span>
+
+                                <span *ngIf="step.contentType!=='model'" class="caption">{{
+                                    step.selectedOptionResponse.caption }}</span>
+
+                                <button class="view-code-button" *ngIf="step.contentType==='model' && step.selectedOptionResponse.caption.length !== 0" mat-button
+                                    (click)="openViewCodeModal(step.selectedOptionResponse)"><span
+                                        class="material-symbols-outlined">
+                                        code
+                                    </span><span>View code/diagram example</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </mat-step>
             </ng-container>
         </mat-stepper>
         <div class="footer-container">
