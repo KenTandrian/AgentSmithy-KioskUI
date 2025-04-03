@@ -62,16 +62,73 @@
             color: var(--text-color);
             font-size: 22px;
             line-height: 1.75rem;
-            margin: 0em 2em 1rem 0rem;
+            // margin: 0em 2em 1rem 0rem;
             white-space: pre-wrap;
             text-align: left !important;
+        }
+
+        .optionsHeading {
+            color: var(--text-color);
+            font-size: 24px;
+            line-height: 1.75rem;
+            margin: 1em 0em 0rem 0rem;
+            white-space: pre-wrap;
+            text-align: left !important;
+        }
+
+        .prosconsSubheading {
+            color: #8F8F8F;
+            font-size: 22px;
+            line-height: 1.75rem;
+            // margin: 0em 2em 1rem 0rem;
+            white-space: pre-wrap;
+            text-align: left !important;
+            margin-top: 0.5em;
+        }
+
+        .optionsSubheading {
+            color: #8F8F8F;
+            font-size: 22px;
+            line-height: 1.75rem;
+            // margin: 0em 2em 1rem 0rem;
+            white-space: pre-wrap;
+            text-align: left !important;
+            list-style-type: disc; /* Add bullet points */
+            padding-left: 20px; /* Indent the list items */
+            margin-top: 0.5em;
+        }
+
+        .optionsSubheading li {
+            list-style-type: disc; /* Or any other list-style-type you prefer */
+            margin-bottom: 0.25em;
+            padding-left: 10px; /* Indentation for the text after the initial line */
+            text-indent: -8px;
+        }
+
+        .frameworkSubheading {
+            color: var(--text-color);
+            font-size: 22px;
+            line-height: 1.75rem;
+            // margin: 0em 2em 1rem 0rem;
+            white-space: pre-wrap;
+            text-align: left !important;
+            list-style-type: disc; /* Add bullet points */
+            padding-left: 20px; /* Indent the list items */
+            margin-top: 0.5em;
+        }
+
+        .frameworkSubheading li {
+            list-style-type: disc; /* Or any other list-style-type you prefer */
+            margin-bottom: 0.25em;
+            padding-left: 10px; /* Indentation for the text after the initial line */
+            text-indent: -8px;
         }
 
         .usecase, .tool {
             color: var(--primary-btn-color);
             font-size: 16px;
             line-height: 1.75rem;
-            margin: 0em 2em 0rem 0rem;
+            margin: .5em 2em 0rem 0rem;
             white-space: pre-wrap;
             text-align: left !important;
         }
