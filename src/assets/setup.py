@@ -1,3 +1,19 @@
+# Copyright 2025 Google LLC. All Rights Reserved.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+# pylint: disable=C0301, R1714, R0917, W0719, W0718, W0621, W1510, C0103, E1143, E0601
+"""Clones the repo, installs the required packages, and builds
+and deploys a custom agent based on the user configuration"""
 import os
 import re
 import subprocess
@@ -29,10 +45,9 @@ REGION = ""
 DATA_STORE_LOCATION = ""
 
 # GitHub Constants.
-REPOSITORY_NAME = "AgentSmithy"
-# TODO: Set branch to release
-REPOSITORY_BRANCH = "dev"
-REPOSITORY_URL = "git@github.com:srastatter/AgentSmithy.git"
+REPOSITORY_NAME = "agentsmithy"
+REPOSITORY_BRANCH = "main"
+REPOSITORY_URL = "git@github.com:GoogleCloudPlatform/agentsmithy.git"
 
 # Cloud Run services config.
 BACKEND_PATH = "Runtime_env"
@@ -52,18 +67,19 @@ ARTIFACT_REGISTRY_REPOSITORY = ""
 CLOUD_RUN_BACKEND_SERVICE_NAME = AGENT_NAME.lower().replace(" ", "-") + "-backend"
 CLOUD_RUN_FRONTEND_SERVICE_NAME = AGENT_NAME.lower().replace(" ", "-") + "-frontend"
 
-CONFIGURATION_KEY_PROJECT = 'project'
-CONFIGURATION_KEY_REGION = 'compute/region'
+CONFIGURATION_KEY_PROJECT = "project"
+CONFIGURATION_KEY_REGION = "compute/region"
 
 DATASTORE_INDUSTRY_SOURCES_MAP = {
-    'finance': 'gs://cloud-samples-data/gen-app-builder/search/alphabet-investor-pdfs/*.pdf',
-    'healthcare': 'gs://cloud-samples-data/vertex-ai/medlm/primock57/transcripts/*.txt',
-    'retail': 'gs://cloud-samples-data/dialogflow-cx/google-store/*.html',
+    "finance": "gs://cloud-samples-data/gen-app-builder/search/alphabet-investor-pdfs/*.pdf",
+    "healthcare": "gs://cloud-samples-data/vertex-ai/medlm/primock57/transcripts/*.txt",
+    "retail": "gs://cloud-samples-data/dialogflow-cx/google-store/*.html",
 }
-DATA_STORE_ID = 'agent_smithy_data_store_{}'.format(uuid4())
+DATA_STORE_ID = f"agent_smithy_data_store_{uuid4()}"
 DATA_STORE_NAME = ""
-SEARCH_APP_ENGINE_ID = 'agent_smithy_search_engine_{}'.format(uuid4())
+SEARCH_APP_ENGINE_ID = f"agent_smithy_search_engine_{uuid4()}"
 GCS_STAGING_BUCKET = ""
+
 
 def get_gcloud_default_configuration(config: str):
     """Attempts to get the default region from gcloud configuration."""
@@ -81,6 +97,7 @@ def get_gcloud_default_configuration(config: str):
             return None
     except (subprocess.CalledProcessError, FileNotFoundError):
         return None
+
 
 def get_user_input():
     """Prompts the user for GCP project, region, and AgentBuilder scope."""
@@ -146,7 +163,7 @@ def get_user_input():
     print("\nAvailable GCP Regions:")
     for i, reg in enumerate(regions):
         print(f"{i+1}. {reg}")
-    
+
     while True:
         try:
             default_region_choice = input(
@@ -163,7 +180,6 @@ def get_user_input():
                 print("Invalid choice.")
         except ValueError:
             print("Invalid input. Please enter a number.")
-                    
 
     if region is None:
         print("No valid region selected. Exiting.")
@@ -189,6 +205,7 @@ def clone(repo_url: str, branch: str):
 
     clone_command = ["git", "clone", "-b", branch, repo_url]
     subprocess.run(clone_command, check=True)
+
 
 def install_poetry_dependencies(pyproject_path_rel: str):
     """
@@ -219,6 +236,7 @@ def install_poetry_dependencies(pyproject_path_rel: str):
         print("Poetry is not installed. Please install Poetry first.")
         sys.exit(1)
 
+
 def deploy_terraform_infrastructure(directory: str, variables_file: str):
     init_terraform_command = ["terraform", f"-chdir={directory}", "init"]
     apply_terraform_command = ["terraform", f"-chdir={directory}", "apply", "--var-file", variables_file]
@@ -233,6 +251,7 @@ def deploy_terraform_infrastructure(directory: str, variables_file: str):
 
     subprocess.run(init_terraform_command, check=True)
     subprocess.run(apply_terraform_command, check=True)
+
 
 def create_data_store() -> str:
     client_options = (
@@ -262,7 +281,7 @@ def create_data_store() -> str:
     operation = client.create_data_store(request=request)
     print(f"Waiting for operation to complete: {operation.operation.name}")
     operation.result()
-    return
+
 
 def populate_data_store(industry: str):
     client_options = (
@@ -289,6 +308,7 @@ def populate_data_store(industry: str):
     )
     operation = client.import_documents(request=request)
     print(f"Import operation will keep on running on the background: {operation.operation.name}")
+
 
 def create_search_app() -> str:
     client_options = (
@@ -320,10 +340,9 @@ def create_search_app() -> str:
     operation = client.create_engine(request=request)
     print(f"Waiting for operation to complete: {operation.operation.name}")
     operation.result()
-    return
+
 
 def run_agent_engine_deployment() -> str:
-    # TODO figure out a better way to dynamically get these env after they are written
     navigate_to_directory(f"{REPOSITORY_NAME}/{BACKEND_PATH}")
     sys.path.insert(0, os.getcwd())
 
@@ -356,7 +375,7 @@ def run_agent_engine_deployment() -> str:
 
     try:
         # If AGENT_ENGINE_RESOURCE_ID is set, then the agent will query the remote agent
-        with open(BACKEND_CONFIG_FILE.replace(f"{os.path.dirname(os.path.abspath(__file__))}/{REPOSITORY_NAME}/{BACKEND_PATH}/", ""), "a") as f:
+        with open(BACKEND_CONFIG_FILE.replace(f"{os.path.dirname(os.path.abspath(__file__))}/{REPOSITORY_NAME}/{BACKEND_PATH}/", ""), "a", encoding="utf-8") as f:
             f.write(f"\nAGENT_ENGINE_RESOURCE_ID: {remote_agent.resource_name}\n")
         f.close()
     except FileNotFoundError:
@@ -366,7 +385,7 @@ def run_agent_engine_deployment() -> str:
 
     # Retrieve the project number associated with your project ID
     project_number = subprocess.run(
-        ["gcloud", "projects", "describe", PROJECT_ID, '--format=value(projectNumber)'],
+        ["gcloud", "projects", "describe", PROJECT_ID, "--format=value(projectNumber)"],
         check=True,
         capture_output=True,
         text=True
@@ -401,13 +420,14 @@ def get_cloud_run_url(project_id: str, region: str, service_name: str) -> str:
                 return ""
         else:
             print("Cloud run service does not exist.")
-            print(f"Error describing service (non-zero exit code):")
+            print("Error describing service (non-zero exit code):")
             print(f"Stdout: {describe.stdout}")
             print(f"Stderr: {describe.stderr}")
             return ""
     except Exception as e:  # Catch any other potential errors
         print(f"An unexpected error occurred: {e}")
         return ""
+
 
 def configure_backend(
         gcs_bucket: str,
@@ -423,22 +443,24 @@ def configure_backend(
         agent_description: str,
         data_store_location: str
 ):
-    search_and_replace_file(config_file, r"GCS_STAGING_BUCKET:\s(.*?)*\n", f'GCS_STAGING_BUCKET: {gcs_bucket}\n')
-    search_and_replace_file(config_file, r"DATA_STORE_ID:\s(.*?)*\n", f'DATA_STORE_ID: {datastore_id}\n')
-    search_and_replace_file(config_file, r"FRONTEND_URL:\s(.*?)*\n", f'FRONTEND_URL: {frontend_url}\n')
-    search_and_replace_file(config_file, r"PROJECT_ID:\s(.*?)*\n", f'PROJECT_ID: {project_id}\n')
-    search_and_replace_file(config_file, r"VERTEX_AI_LOCATION:\s(.*?)*\n", f'VERTEX_AI_LOCATION: {region}\n')
-    search_and_replace_file(config_file, r"AGENT_BUILDER_LOCATION:\s(.*?)*\n", f'AGENT_BUILDER_LOCATION: {data_store_location}\n')
-    search_and_replace_file(config_file, r"AGENT_INDUSTRY_TYPE:\s(.*?)*\n", f'AGENT_INDUSTRY_TYPE: {agent_industry_type}\n')
-    search_and_replace_file(config_file, r"AGENT_ORCHESTRATION_FRAMEWORK:\s(.*?)*\n", f'AGENT_ORCHESTRATION_FRAMEWORK: {agent_orchestration_framework}\n')
-    search_and_replace_file(config_file, r"AGENT_FOUNDATION_MODEL:\s(.*?)*\n", f'AGENT_FOUNDATION_MODEL: {agent_foundation_model}\n')
-    search_and_replace_file(config_file, r"USER_AGENT:\s(.*?)*\n", f'USER_AGENT: {agent_name}\n')
-    search_and_replace_file(config_file, r"AGENT_DESCRIPTION:\s(.*?)*\n", f'AGENT_DESCRIPTION: {agent_description}\n')
+    search_and_replace_file(config_file, r"GCS_STAGING_BUCKET:\s(.*?)*\n", f"GCS_STAGING_BUCKET: {gcs_bucket}\n")
+    search_and_replace_file(config_file, r"DATA_STORE_ID:\s(.*?)*\n", f"DATA_STORE_ID: {datastore_id}\n")
+    search_and_replace_file(config_file, r"FRONTEND_URL:\s(.*?)*\n", f"FRONTEND_URL: {frontend_url}\n")
+    search_and_replace_file(config_file, r"PROJECT_ID:\s(.*?)*\n", f"PROJECT_ID: {project_id}\n")
+    search_and_replace_file(config_file, r"VERTEX_AI_LOCATION:\s(.*?)*\n", f"VERTEX_AI_LOCATION: {region}\n")
+    search_and_replace_file(config_file, r"AGENT_BUILDER_LOCATION:\s(.*?)*\n", f"AGENT_BUILDER_LOCATION: {data_store_location}\n")
+    search_and_replace_file(config_file, r"AGENT_INDUSTRY_TYPE:\s(.*?)*\n", f"AGENT_INDUSTRY_TYPE: {agent_industry_type}\n")
+    search_and_replace_file(config_file, r"AGENT_ORCHESTRATION_FRAMEWORK:\s(.*?)*\n", f"AGENT_ORCHESTRATION_FRAMEWORK: {agent_orchestration_framework}\n")
+    search_and_replace_file(config_file, r"AGENT_FOUNDATION_MODEL:\s(.*?)*\n", f"AGENT_FOUNDATION_MODEL: {agent_foundation_model}\n")
+    search_and_replace_file(config_file, r"USER_AGENT:\s(.*?)*\n", f"USER_AGENT: {agent_name}\n")
+    search_and_replace_file(config_file, r"AGENT_DESCRIPTION:\s(.*?)*\n", f"AGENT_DESCRIPTION: {agent_description}\n")
+
 
 def configure_frontend(agent_name: str, backend_url: str, env_tag: str, config_file: str):
     search_and_replace_file(config_file, r"const env: string = \"(.*?)\"", f'const env: string = "{env_tag}"')
     search_and_replace_file(config_file, r"backendURL = \"(.*?)\"", f'backendURL = "{backend_url}/"')
     search_and_replace_file(config_file, r"chatbotName = \"(.*?)\"", f'chatbotName = "{agent_name}"')
+
 
 def build_and_deploy_cloud_run(
         project_id: str,
@@ -463,19 +485,22 @@ def build_and_deploy_cloud_run(
     ]
     subprocess.run(push_command, check=True)
 
+
 def navigate_to_directory(directory: str):
     os.chdir(os.path.dirname(os.path.abspath(__file__)) + f"/{directory}")
 
+
 def search_and_replace_file(file_path: str, search_pattern: str, new_line: str):
     try:
-        with open(file_path, "r") as f:
+        with open(file_path, "r", encoding="utf-8") as f:
             file_content = f.read()
             updated_content = re.sub(search_pattern, new_line, file_content)
-        with open(file_path, "w") as f:
+        with open(file_path, "w", encoding="utf-8") as f:
             f.write(updated_content)
         f.close()
     except FileNotFoundError:
         print(f"`{file_path}` file not found.")
+
 
 if __name__ == "__main__":
     project_id, region, datastore_location = get_user_input()
@@ -489,12 +514,12 @@ if __name__ == "__main__":
         PROJECT_ID = project_id
         REGION = region
         DATA_STORE_LOCATION = datastore_location
-        
+
         ARTIFACT_REGISTRY_REPOSITORY = f"{PROJECT_ID.lower().replace(' ', '-')}-{AGENT_NAME.lower().replace(' ', '-')}-repository"
         DATA_STORE_NAME = f"{PROJECT_ID.lower().replace(' ', '-')}-{AGENT_NAME.lower().replace(' ', '-')}-datastore"
         GCS_STAGING_BUCKET = f"gs://{PROJECT_ID.lower().replace(' ', '-')}-agents-staging"
 
-        # clone(REPOSITORY_URL, REPOSITORY_BRANCH)
+        clone(REPOSITORY_URL, REPOSITORY_BRANCH)
         install_poetry_dependencies(f"{REPOSITORY_NAME}/{BACKEND_PATH}")
 
         from google.cloud import discoveryengine
