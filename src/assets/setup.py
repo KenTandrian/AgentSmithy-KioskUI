@@ -47,7 +47,7 @@ DATA_STORE_LOCATION = ""
 # GitHub Constants.
 REPOSITORY_NAME = "agentsmithy"
 REPOSITORY_BRANCH = "main"
-REPOSITORY_URL = "git@github.com:GoogleCloudPlatform/agentsmithy.git"
+REPOSITORY_URL = "https://github.com/GoogleCloudPlatform/agentsmithy.git"
 
 # Cloud Run services config.
 BACKEND_PATH = "Runtime_env"
