@@ -37,6 +37,7 @@ import { AgentBotComponent } from './components/agent-bot/agent-bot.component';
 
 import { QrCodeComponent, QrCodeModule } from 'ng-qrcode';
 import { ScriptComponent } from './components/script/script.component';
+import { IdlePopupComponent } from './components/idle-popup/idle-popup.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { ScriptComponent } from './components/script/script.component';
     CodeDialogComponent,
     HowItWorksDialogComponent,
     AgentBotComponent,
-    ScriptComponent
+    ScriptComponent,
+    IdlePopupComponent
   ],
   imports: [
     BrowserModule,
