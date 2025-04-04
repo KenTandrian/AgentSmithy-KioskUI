@@ -5,6 +5,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { provideAnalytics, getAnalytics } from "@angular/fire/analytics";
 import { environment } from '../environments/environment';
 import { provideHttpClient } from "@angular/common/http";
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -83,6 +84,7 @@ import { IdlePopupComponent } from './components/idle-popup/idle-popup.component
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
     provideAnimationsAsync(),
+    provideAnalytics(() => getAnalytics())
   ],
   bootstrap: [AppComponent]
 })

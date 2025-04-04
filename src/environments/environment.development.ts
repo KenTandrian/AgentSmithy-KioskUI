@@ -5,7 +5,8 @@ export const environment = {
     projectId: "agent-smithy-kiosk",
     storageBucket: "agent-smithy-kiosk.firebasestorage.app",
     messagingSenderId: "299954354297",
-    appId: "1:299954354297:web:ecb957470479f951a03ca8"
+    appId: "1:299954354297:web:ecb957470479f951a03ca8",
+    measurementId: "G-N3CERCVFY8",
   },
   production: false,
   backendURL: "https://test-agent-runtime-599247973214.us-central1.run.app",
