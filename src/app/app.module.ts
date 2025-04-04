@@ -36,7 +36,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import { HowItWorksDialogComponent } from './components/how-it-works-dialog/how-it-works-dialog.component';
 import { AgentBotComponent } from './components/agent-bot/agent-bot.component';
 
-import { QrCodeComponent, QrCodeModule } from 'ng-qrcode';
+import { QrCodeModule } from 'ng-qrcode';
 import { ScriptComponent } from './components/script/script.component';
 import { IdlePopupComponent } from './components/idle-popup/idle-popup.component';
 
@@ -53,7 +53,7 @@ import { IdlePopupComponent } from './components/idle-popup/idle-popup.component
     HowItWorksDialogComponent,
     AgentBotComponent,
     ScriptComponent,
-    IdlePopupComponent
+    IdlePopupComponent,
   ],
   imports: [
     BrowserModule,
@@ -81,10 +81,10 @@ import { IdlePopupComponent } from './components/idle-popup/idle-popup.component
     provideClientHydration(),
     provideHttpClient(),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAnalytics(() => getAnalytics()),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
     provideAnimationsAsync(),
-    provideAnalytics(() => getAnalytics()),
     ScreenTrackingService,
     UserTrackingService,
   ],

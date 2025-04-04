@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, inject, OnDestroy, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, ReplaySubject } from 'rxjs';
 import { Message, SuggestionData } from '../../models/messegeType.model';
@@ -10,6 +10,9 @@ import { SpeechToTextService } from '../../services/speech-to-text';
 import { HttpClient, HttpDownloadProgressEvent, HttpEvent, HttpEventType } from '@angular/common/http';
 import { Chat } from '../../models/chat.model';
 import { HowItWorksDialogComponent } from '../how-it-works-dialog/how-it-works-dialog.component';
+import { Analytics, logEvent } from '@angular/fire/analytics';
+import { AgentConfigurationService } from '../../services/agent-configuration.service';
+import { AgentConfiguration } from '../../models/agent';
 
 
 export type DialogQuestion = {
@@ -29,6 +32,10 @@ export type DialogQuestion = {
 export class AgentBotComponent implements OnInit, OnDestroy {
   @Output() onSubmit: EventEmitter<any> = new EventEmitter();
 
+  private analytics = inject(Analytics);
+  private agentConfigurationService = inject(AgentConfigurationService);
+
+  agentConfiguration: AgentConfiguration;
   isSuggestedQuestion: string = '';
   chatQuery: string
   chatQuery$: Observable<Message>;
@@ -97,6 +104,13 @@ export class AgentBotComponent implements OnInit, OnDestroy {
     private router: Router,
     private httpClient: HttpClient
   ) {
+    this.agentConfiguration = this.agentConfigurationService.get();
+    logEvent(
+      this.analytics, "/chat_preview",
+      {
+        ...this.getAgentConfigurationDefinitions()
+      },
+    );
     this.chatQuery$ = this.broadcastService.chatQuery$
     this.chatQuery$.subscribe((value: any) => {
       this.conversation.push(value);
@@ -185,6 +199,12 @@ export class AgentBotComponent implements OnInit, OnDestroy {
   }
 
   async submitMessage(event: any) {
+    logEvent(
+      this.analytics, "/chat_preview/chat",
+      {
+        ...this.getAgentConfigurationDefinitions()
+      },
+    );
     this.outOfContextAnswerResponseObject = {
       like: false,
       dislike: false
@@ -413,11 +433,12 @@ export class AgentBotComponent implements OnInit, OnDestroy {
   }
 
   openHelpModal() {
-    // this.dialog.open(HowItWorksDialogComponent,{ width: '100%',maxWidth:'1000px', data: { content: './assets/images/deployed_agent_diagram.png' }, });
+    logEvent(this.analytics, `/how_it_works`, {page: "chat_preview"});
     this.dialog.open(HowItWorksDialogComponent,{ width: '100%',maxWidth:'1200px', data: { url: './assets/images/agent_properties_diagram.png', content: "You can now interact with your deployed AI Agent! On your screen is a description of your selected technologies for your deployed agent, as well as a list of sample prompts to ask. Embedded within this UI is the frontend chatbot code that is interacting with your backend AI agent service." }, });
   }
 
   goToHome() {
+    logEvent(this.analytics, "/return_to_home", {page: "chat_preview"});
     this.router.navigate(['/']);
   }
 
@@ -496,4 +517,12 @@ export class AgentBotComponent implements OnInit, OnDestroy {
     return text;
   }
 
+  getAgentConfigurationDefinitions() {
+    return {
+      runtime: this.agentConfiguration.runTime.toLowerCase().replaceAll(" ", "_"),
+      orchestration_framework: this.agentConfiguration.framework.toLowerCase(),
+      industry: this.agentConfiguration.industry.toLowerCase(),
+      model: this.agentConfiguration.model.toLowerCase().replaceAll(" ", "_").replaceAll("_(model_garden)", ""),
+    }
+  }
 }

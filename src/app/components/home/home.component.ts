@@ -1,17 +1,20 @@
-import { Component, OnInit, SecurityContext } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { ThemeService } from '../../services/theme.service';
+import { Analytics, logEvent } from "@angular/fire/analytics";
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  styleUrl: './home.component.scss',
 })
 export class HomeComponent {
+  private analytics = inject(Analytics);
 
 constructor(public router: Router, private domSanitizer: DomSanitizer, private matIconRegistry: MatIconRegistry, private themeService: ThemeService) {
+  logEvent(this.analytics, "/home");
   localStorage.removeItem("agentData");
   this.matIconRegistry.addSvgIcon(
     'spark',
@@ -36,6 +39,7 @@ constructor(public router: Router, private domSanitizer: DomSanitizer, private m
 }
 
   routeToCreateBot(templateId?: string) {
+    logEvent(this.analytics, '/home/build_an_agent');
     if (templateId)
       this.router.navigate(["create-bot/" + templateId]);
     else

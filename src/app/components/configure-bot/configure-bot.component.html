@@ -85,21 +85,21 @@
                                 <span *ngIf="step.subheading" class="subheading">{{ step.subheading }}</span>
                                 <span class="subtitle">{{ step.selectedOptionResponse.subtitle }}</span>
 
-                                <span *ngIf="step?.selectedOptionResponse?.metadata?.vertexAiHeading" class="optionsHeading">{{ step.selectedOptionResponse.metadata?.vertexAiHeading }}</span>
+                                <span *ngIf="step?.selectedOptionResponse?.metadata?.vertexAiHeading" class="optionsHeading">{{ step.selectedOptionResponse.metadata.vertexAiHeading }}</span>
                                 <ul *ngIf="step?.selectedOptionResponse?.metadata?.vertexAiSubheading" class="optionsSubheading">
                                     <li *ngFor="let item of step?.selectedOptionResponse?.metadata?.vertexAiSubheading">
                                       {{ item }}
                                     </li>
                                 </ul>
-                                <span *ngIf="step?.selectedOptionResponse?.metadata?.cloudRunHeading" class="optionsHeading">{{ step.selectedOptionResponse.metadata?.cloudRunHeading }}</span>
+                                <span *ngIf="step?.selectedOptionResponse?.metadata?.cloudRunHeading" class="optionsHeading">{{ step.selectedOptionResponse.metadata.cloudRunHeading }}</span>
                                 <ul *ngIf="step?.selectedOptionResponse?.metadata?.cloudRunSubheading" class="optionsSubheading">
                                     <li *ngFor="let item of step?.selectedOptionResponse?.metadata?.cloudRunSubheading">
                                       {{ item }}
                                     </li>
                                 </ul>
 
-                                <span *ngIf="step?.selectedOptionResponse?.metadata?.prosHeading" class="optionsHeading">{{ step.selectedOptionResponse.metadata?.prosHeading }}<span class="prosconsSubheading">{{ step.selectedOptionResponse.metadata?.prosSubheading }}</span></span>
-                                <span *ngIf="step?.selectedOptionResponse?.metadata?.consHeading" class="optionsHeading">{{ step.selectedOptionResponse.metadata?.consHeading }}<span class="prosconsSubheading">{{ step.selectedOptionResponse.metadata?.consSubheading }}</span></span>
+                                <span *ngIf="step?.selectedOptionResponse?.metadata?.prosHeading" class="optionsHeading">{{ step.selectedOptionResponse.metadata.prosHeading }}<span class="prosconsSubheading">{{ step.selectedOptionResponse.metadata.prosSubheading }}</span></span>
+                                <span *ngIf="step?.selectedOptionResponse?.metadata?.consHeading" class="optionsHeading">{{ step.selectedOptionResponse.metadata.consHeading }}<span class="prosconsSubheading">{{ step.selectedOptionResponse.metadata.consSubheading }}</span></span>
 
                                 <span *ngIf="step.contentType!=='runtime'" class="caption">{{
                                     step.selectedOptionResponse.caption }}</span>
@@ -137,12 +137,12 @@
                                     </li>
                                 </ul> -->
 
-                                <span *ngIf="step?.selectedOptionResponse?.metadata?.langchainHeading" class="optionsHeading">{{ step.selectedOptionResponse.metadata?.langchainHeading }}<span class="prosconsSubheading">{{ step.selectedOptionResponse.metadata?.langchainSubheading }}</span></span>
-                                <span *ngIf="step?.selectedOptionResponse?.metadata?.langgraphHeading" class="optionsHeading">{{ step.selectedOptionResponse.metadata?.langgraphHeading }}<span class="prosconsSubheading">{{ step.selectedOptionResponse.metadata?.langgraphSubheading }}</span></span>
-                                <span *ngIf="step?.selectedOptionResponse?.metadata?.llamaindexHeading" class="optionsHeading">{{ step.selectedOptionResponse.metadata?.llamaindexHeading }}<span class="prosconsSubheading">{{ step.selectedOptionResponse.metadata?.llamaindexSubheading }}</span></span>
-                                <span *ngIf="step?.selectedOptionResponse?.metadata?.vertexagentframeworkHeading" class="optionsHeading">{{ step.selectedOptionResponse.metadata?.vertexagentframeworkHeading }}<span class="prosconsSubheading">{{ step.selectedOptionResponse.metadata?.vertexagentframeworkSubheading }}</span></span>
+                                <span *ngIf="step?.selectedOptionResponse?.metadata?.langchainHeading" class="optionsHeading">{{ step.selectedOptionResponse.metadata.langchainHeading }}<span class="prosconsSubheading">{{ step.selectedOptionResponse.metadata.langchainSubheading }}</span></span>
+                                <span *ngIf="step?.selectedOptionResponse?.metadata?.langgraphHeading" class="optionsHeading">{{ step.selectedOptionResponse.metadata.langgraphHeading }}<span class="prosconsSubheading">{{ step.selectedOptionResponse.metadata.langgraphSubheading }}</span></span>
+                                <span *ngIf="step?.selectedOptionResponse?.metadata?.llamaindexHeading" class="optionsHeading">{{ step.selectedOptionResponse.metadata.llamaindexHeading }}<span class="prosconsSubheading">{{ step.selectedOptionResponse.metadata.llamaindexSubheading }}</span></span>
+                                <span *ngIf="step?.selectedOptionResponse?.metadata?.vertexagentframeworkHeading" class="optionsHeading">{{ step.selectedOptionResponse.metadata.vertexagentframeworkHeading }}<span class="prosconsSubheading">{{ step.selectedOptionResponse.metadata.vertexagentframeworkSubheading }}</span></span>
 
-                                <span *ngIf="step?.selectedOptionResponse?.metadata?.footer" class="optionsHeading">{{ step.selectedOptionResponse.metadata?.footer }}</span>
+                                <span *ngIf="step?.selectedOptionResponse?.metadata?.footer" class="optionsHeading">{{ step.selectedOptionResponse.metadata.footer }}</span>
                                 <!-- <span *ngIf="step?.selectedOptionResponse?.metadata?.cloudRunHeading" class="optionsHeading">{{ step.selectedOptionResponse.metadata?.cloudRunHeading }}</span>
                                 <ul *ngIf="step?.selectedOptionResponse?.metadata?.cloudRunSubheading" class="optionsSubheading">
                                     <li *ngFor="let item of step?.selectedOptionResponse?.metadata?.cloudRunSubheading">
@@ -150,8 +150,8 @@
                                     </li>
                                 </ul> -->
 
-                                <span *ngIf="step?.selectedOptionResponse?.metadata?.prosHeading" class="optionsHeading">{{ step.selectedOptionResponse.metadata?.prosHeading }}<span class="prosconsSubheading">{{ step.selectedOptionResponse.metadata?.prosSubheading }}</span></span>
-                                <span *ngIf="step?.selectedOptionResponse?.metadata?.consHeading" class="optionsHeading">{{ step.selectedOptionResponse.metadata?.consHeading }}<span class="prosconsSubheading">{{ step.selectedOptionResponse.metadata?.consSubheading }}</span></span>
+                                <span *ngIf="step?.selectedOptionResponse?.metadata?.prosHeading" class="optionsHeading">{{ step.selectedOptionResponse.metadata.prosHeading }}<span class="prosconsSubheading">{{ step.selectedOptionResponse.metadata.prosSubheading }}</span></span>
+                                <span *ngIf="step?.selectedOptionResponse?.metadata?.consHeading" class="optionsHeading">{{ step.selectedOptionResponse.metadata.consHeading }}<span class="prosconsSubheading">{{ step.selectedOptionResponse.metadata.consSubheading }}</span></span>
 
                                 <span *ngIf="step.contentType!=='framework'" class="caption">{{
                                     step.selectedOptionResponse.caption }}</span>
@@ -183,12 +183,12 @@
                                 <span *ngIf="step.subheading" class="subheading">{{ step.subheading }}</span>
                                 <span class="subtitle">{{ step.selectedOptionResponse.subtitle }}</span>
 
-                                <span *ngIf="step?.selectedOptionResponse?.metadata?.usecase" class="usecase">{{ step.selectedOptionResponse.metadata?.usecase }}</span>
-                                <span *ngIf="step?.selectedOptionResponse?.metadata?.usecaseHeading" class="usecaseHeading">{{ step.selectedOptionResponse.metadata?.usecaseHeading }}</span>
-                                <span *ngIf="step?.selectedOptionResponse?.metadata?.usecaseSubheading" class="usecaseSubheading">{{ step.selectedOptionResponse.metadata?.usecaseSubheading }}</span>
-                                <span *ngIf="step?.selectedOptionResponse?.metadata?.tool" class="tool">{{ step.selectedOptionResponse.metadata?.tool }}</span>
-                                <span *ngIf="step?.selectedOptionResponse?.metadata?.toolHeading" class="toolHeading">{{ step.selectedOptionResponse.metadata?.toolHeading }}</span>
-                                <span *ngIf="step?.selectedOptionResponse?.metadata?.toolSubheading" class="toolSubheading">{{ step.selectedOptionResponse.metadata?.toolSubheading }}</span>
+                                <span *ngIf="step?.selectedOptionResponse?.metadata?.usecase" class="usecase">{{ step.selectedOptionResponse.metadata.usecase }}</span>
+                                <span *ngIf="step?.selectedOptionResponse?.metadata?.usecaseHeading" class="usecaseHeading">{{ step.selectedOptionResponse.metadata.usecaseHeading }}</span>
+                                <span *ngIf="step?.selectedOptionResponse?.metadata?.usecaseSubheading" class="usecaseSubheading">{{ step.selectedOptionResponse.metadata.usecaseSubheading }}</span>
+                                <span *ngIf="step?.selectedOptionResponse?.metadata?.tool" class="tool">{{ step.selectedOptionResponse.metadata.tool }}</span>
+                                <span *ngIf="step?.selectedOptionResponse?.metadata?.toolHeading" class="toolHeading">{{ step.selectedOptionResponse.metadata.toolHeading }}</span>
+                                <span *ngIf="step?.selectedOptionResponse?.metadata?.toolSubheading" class="toolSubheading">{{ step.selectedOptionResponse.metadata.toolSubheading }}</span>
 
                                 <span *ngIf="step.contentType!=='industry'" class="caption">{{
                                     step.selectedOptionResponse.caption }}</span>
@@ -233,8 +233,8 @@
                                     </li>
                                 </ul> -->
 
-                                <span *ngIf="step?.selectedOptionResponse?.metadata?.prosHeading" class="optionsHeading">{{ step.selectedOptionResponse.metadata?.prosHeading }}<span class="prosconsSubheading">{{ step.selectedOptionResponse.metadata?.prosSubheading }}</span></span>
-                                <span *ngIf="step?.selectedOptionResponse?.metadata?.consHeading" class="optionsHeading">{{ step.selectedOptionResponse.metadata?.consHeading }}<span class="prosconsSubheading">{{ step.selectedOptionResponse.metadata?.consSubheading }}</span></span>
+                                <span *ngIf="step?.selectedOptionResponse?.metadata?.prosHeading" class="optionsHeading">{{ step.selectedOptionResponse.metadata.prosHeading }}<span class="prosconsSubheading">{{ step.selectedOptionResponse.metadata.prosSubheading }}</span></span>
+                                <span *ngIf="step?.selectedOptionResponse?.metadata?.consHeading" class="optionsHeading">{{ step.selectedOptionResponse.metadata.consHeading }}<span class="prosconsSubheading">{{ step.selectedOptionResponse.metadata.consSubheading }}</span></span>
 
                                 <span *ngIf="step.contentType!=='model'" class="caption">{{
                                     step.selectedOptionResponse.caption }}</span>

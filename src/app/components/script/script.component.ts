@@ -3,6 +3,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import * as FileSaver from 'file-saver';
 import { AgentConfiguration } from '../../models/agent';
+import { Analytics, logEvent } from '@angular/fire/analytics';
 
 @Component({
   selector: 'app-script',
@@ -11,6 +12,7 @@ import { AgentConfiguration } from '../../models/agent';
 })
 export class ScriptComponent implements OnInit {
 
+  private analytics = inject(Analytics);
   agentConfiguration: AgentConfiguration | null;
   deployScript: string = '';
   http: HttpClient = inject(HttpClient);
@@ -19,6 +21,7 @@ export class ScriptComponent implements OnInit {
   ngOnInit() {
     this.route.queryParamMap.subscribe( queryParams => {
       this.agentConfiguration = this.urlParamsToJson(queryParams) as AgentConfiguration;
+      logEvent(this.analytics, "/export/download", {...this.getAgentConfigurationDefinitions()})
       this.http.get('assets/setup.py', { responseType: 'text' })
         .subscribe(pythonScript => {
           this.deployScript = this.replacePlaceholders(pythonScript, this.agentConfiguration!);
@@ -84,5 +87,14 @@ export class ScriptComponent implements OnInit {
     }
   
     return jsonObject;
+  }
+
+  getAgentConfigurationDefinitions() {
+    return {
+      runtime: this.agentConfiguration!.runTime.toLowerCase().replaceAll(" ", "_"),
+      orchestration_framework: this.agentConfiguration!.framework.toLowerCase(),
+      industry: this.agentConfiguration!.industry.toLowerCase(),
+      model: this.agentConfiguration!.model.toLowerCase().replaceAll(" ", "_").replaceAll("_(model_garden)", ""),
+    }
   }
 }
