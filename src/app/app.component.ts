@@ -1,8 +1,9 @@
-import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
+import { Component, OnInit, OnDestroy, HostListener, PLATFORM_ID, Inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { IdlePopupComponent } from './components/idle-popup/idle-popup.component';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -19,82 +20,97 @@ export class AppComponent implements OnInit, OnDestroy {
   isOnHomepage = false;
 
   constructor(
+    private router: Router,
     private dialog: MatDialog,
-    private router: Router
+    @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
   ngOnInit() {
-    this.router.events
-      .pipe(filter((event) => event instanceof NavigationEnd))
-      .subscribe((event: NavigationEnd) => {
-        this.isOnHomepage = event.urlAfterRedirects === '/' || event.urlAfterRedirects === '';
-        this.resetIdleTimer();
-      });
+    if (isPlatformBrowser(this.platformId)) {
+      this.router.events
+        .pipe(filter((event) => event instanceof NavigationEnd))
+        .subscribe((event: NavigationEnd) => {
+          this.isOnHomepage = event.urlAfterRedirects === '/' || event.urlAfterRedirects === '';
+          this.resetIdleTimer();
+        });
 
-    this.resetIdleTimer();
+      this.resetIdleTimer();
+    }
   }
 
   ngOnDestroy() {
-    this.clearTimers();
+    if (isPlatformBrowser(this.platformId)) {
+      this.clearTimers();
+    }
   }
 
   @HostListener('document:mousemove')
   @HostListener('document:keydown')
   resetIdleTimer() {
-    this.isIdle = false;
-    clearTimeout(this.idleTimer);
+    if (isPlatformBrowser(this.platformId)) {
+      this.isIdle = false;
+      clearTimeout(this.idleTimer);
 
-    if (!this.dialogRef && !this.isOnHomepage) {
-      this.idleTimer = setTimeout(() => {
-        this.isIdle = true;
-        this.openIdlePopup();
-      }, this.idleTime);
+      if (!this.dialogRef && !this.isOnHomepage) {
+        this.idleTimer = setTimeout(() => {
+          this.isIdle = true;
+          this.openIdlePopup();
+        }, this.idleTime);
+      }
     }
   }
 
   @HostListener('document:wheel')
   resetIdleTimerOnWheel() {
-    if (this.dialogRef) {
-      return; // Ignore activity if the dialog is open
+    if (isPlatformBrowser(this.platformId)) {
+      if (this.dialogRef) {
+        return; // Ignore activity if the dialog is open
+      }
+      this.resetIdleTimer(); // Call the main reset logic for consistency
     }
-    this.resetIdleTimer(); // Call the main reset logic for consistency
   }
 
   openIdlePopup() {
-    this.dialogRef = this.dialog.open(IdlePopupComponent, {
-      width: '300px',
-      disableClose: true
-    });
+    if (isPlatformBrowser(this.platformId)) {
+      this.dialogRef = this.dialog.open(IdlePopupComponent, {
+        width: '300px',
+        disableClose: true
+      });
 
-    this.popupTimeoutTimer = setTimeout(() => {
-      if (this.dialogRef) {
-        this.dialogRef.close(false);
-        this.redirectToHomepage();
-      }
-    }, this.popupTimeoutTime);
+      this.popupTimeoutTimer = setTimeout(() => {
+        if (this.dialogRef) {
+          this.dialogRef.close(false);
+          this.redirectToHomepage();
+        }
+      }, this.popupTimeoutTime);
 
-    this.dialogRef.afterClosed().subscribe((result: boolean) => {
-      clearTimeout(this.popupTimeoutTimer);
-      this.dialogRef = null; // Clear dialogRef after it's closed
-      if (result) {
-        this.resetIdleTimer();
-      } else {
-        this.redirectToHomepage();
-      }
-    });
+      this.dialogRef.afterClosed().subscribe((result: boolean) => {
+        clearTimeout(this.popupTimeoutTimer);
+        this.dialogRef = null; // Clear dialogRef after it's closed
+        if (result) {
+          this.resetIdleTimer();
+        } else {
+          this.redirectToHomepage();
+        }
+      });
+    }
   }
 
   redirectToHomepage() {
-    this.router.navigate(['/']);
-    // window.location.reload();
+    if (isPlatformBrowser(this.platformId)) {
+      this.router.navigate(['/']);
+      // window.location.reload();
+    }
   }
 
   clearTimers() {
-    clearTimeout(this.idleTimer);
-    clearTimeout(this.popupTimeoutTimer);
-    if (this.dialogRef) {
-      this.dialogRef.close();
-      this.dialogRef = null;
+    if (isPlatformBrowser(this.platformId)) {
+      clearTimeout(this.idleTimer);
+      clearTimeout(this.popupTimeoutTimer);
+      if (this.dialogRef) {
+        this.dialogRef.close();
+        this.dialogRef = null;
+      }
     }
   }
 }
