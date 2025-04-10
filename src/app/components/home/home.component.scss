@@ -4,19 +4,23 @@
 //     // background-repeat: no-repeat;
 // }
 
-.root-container {
-    display: flex;
-    flex-direction: column;
-    gap: 50px;
-    padding: 5% 10%;
-    // row-gap: 80%;
-    background-position: center;
+.container {
     background-image: url('../../../assets/images/home-cover.png');
-    width: 100%;
+    background-position: center;
     background-attachment: fixed;
-    height: 100%;
     background-size: cover;
     background-position: center;
+}
+
+.root-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    padding: 2% 5% 10% 5%;
+    width: 100%;
+    height: 100%;
 }
 
 .row-container {
@@ -47,7 +51,7 @@
 .second-row-container {
     display: flex;
     flex-direction: row;
-    padding-top: 6%;
+    padding-top: 5%;
     .mat-divider.mat-divider-vertical {
         border-right-style:dashed
     }

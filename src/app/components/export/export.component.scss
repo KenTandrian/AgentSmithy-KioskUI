@@ -2,18 +2,23 @@ img, media {
     max-width: 100%;
 }
 
+.container {
+    background-image: url('../../../assets/images/mono-purple2.png');
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+}
+
 .root-container {
+    max-width: 1280px;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     gap: 30px;
-    padding: 3% 10%;
-    // row-gap: 80%;
-    background-position: center;
-    background-image: url('../../../assets/images/mono-purple2.png');
+    padding: 5% 5% 10% 5%;
     width: 100%;
-    background-attachment: fixed;
     height: 100%;
-    background-size: cover;
 }
 
 .row-container{
@@ -33,7 +38,7 @@ img, media {
 
     .sub-container {
         display: flex;
-        gap: 25%;
+        gap: 10%;
 
         .child-container {
             // width: 40%;
@@ -127,7 +132,7 @@ img, media {
     flex-direction: row;
     gap: 100px;
     justify-content: flex-start;
-    margin-top: 22%;
+    margin-top: 12%;
 
     .left-footer {
         width: 80%;

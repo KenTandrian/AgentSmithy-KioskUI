@@ -1,49 +1,52 @@
-<div class="root-container">
-    <div class="row-container">
-        <div class="title-container">
-            Agent activated!
-        </div>
-        <div class="sub-container">
-            <div class="child-container">
-                <p>
-                    You've just activated a brand new AI Agent into the world!  High fives all around! Ready to unleash its potential? Scan the QR code to grab your code and take it for a spin. Feeling ambitious? Our expert squad is nearby, itching to show you how to launch this agent into orbit! Let's turn that code into a production-ready powerhouse!
-                </p>
-                <p>
-                    If you’re participating in the Skills Challenge, use this code:
-                </p>
-                <p class="code-container">
-                    AIAgent
-                </p>
+<div class="container">
+    <div class="root-container">
+        <div class="row-container">
+            <div class="title-container">
+                Agent activated!
             </div>
-            <!-- <div class="child-container">
-                <p>
-                    To delve deeper into the capabilities of AI orchestration frameworks, explore advanced model integration, and discover how to optimize your agent's performance, simply scan the QR code. This will provide access to comprehensive resources, tutorials, and community support, empowering you to unlock the full potential of your AI agent.
-                </p>
-            </div> -->
-            <div class="child-container">
-                <!-- Update qr code value to be dynamic -->
-                <qr-code [value]="this.downloadUrl" size="300" errorCorrectionLevel="M" />
+            <div class="sub-container">
+                <div class="child-container">
+                    <p>
+                        You've just activated a brand new AI Agent into the world!  High fives all around! Ready to unleash its potential? Scan the QR code to grab your code and take it for a spin. Feeling ambitious? Our expert squad is nearby, itching to show you how to launch this agent into orbit! Let's turn that code into a production-ready powerhouse!
+                    </p>
+                    <p>
+                        If you’re participating in the Skills Challenge, use this code:
+                    </p>
+                    <p class="code-container">
+                        AIAgent
+                    </p>
+                </div>
+                <!-- <div class="child-container">
+                    <p>
+                        To delve deeper into the capabilities of AI orchestration frameworks, explore advanced model integration, and discover how to optimize your agent's performance, simply scan the QR code. This will provide access to comprehensive resources, tutorials, and community support, empowering you to unlock the full potential of your AI agent.
+                    </p>
+                </div> -->
+                <div class="child-container">
+                    <!-- Update qr code value to be dynamic -->
+                    <qr-code [value]="this.downloadUrl" size="300" errorCorrectionLevel="M" />
+                </div>
             </div>
         </div>
-    </div>
-    <div class="row-container">
-        <div class="sub-container">
-            <div class="buttons-container">
-                <div class="left-footer">
-                    <div class="logo-container">
-                        <div class="created-by">
-                            Created by
-                        </div>
-                        <div class="google-cont">
-                            <img class="g-vector" src="assets/images/google-white.svg">
-                            Cloud Consulting
+        <div class="row-container">
+            <div class="sub-container">
+                <div class="buttons-container">
+                    <div class="left-footer">
+                        <div class="logo-container">
+                            <div class="created-by">
+                                Created by
+                            </div>
+                            <div class="google-cont">
+                                <img class="g-vector" src="assets/images/google-white.svg">
+                                Cloud Consulting
+                            </div>
                         </div>
                     </div>
+                    <!-- <button class="export-btn" mat-fab extended  (click)="export()"><mat-icon class="add">file_copy</mat-icon> Export</button> -->
+                    <button class="start-again-btn" mat-fab extended  (click)="startAgain()"><mat-icon class="add">settings_backup_restore</mat-icon> Start Again!</button>    
                 </div>
-                <!-- <button class="export-btn" mat-fab extended  (click)="export()"><mat-icon class="add">file_copy</mat-icon> Export</button> -->
-                <button class="start-again-btn" mat-fab extended  (click)="startAgain()"><mat-icon class="add">settings_backup_restore</mat-icon> Start Again!</button>    
             </div>
         </div>
     </div>
+    
+    
 </div>
-
