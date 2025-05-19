@@ -100,24 +100,24 @@ export class ConfigureBotComponent implements OnInit, AfterViewInit {
   }
 
   handleStepOne() {
+    logEvent(this.analytics, "/create_bot/industry");
+    this.howItWorks = './assets/images/tools_diagram.png';
+    this.howItWorksDescription = "Agent Tools are functions or interfaces that allow an AI agent to interact with and perform actions in the external world, such as accessing data, running code, or calling external APIs.\nHow they work:\n\n • Agents use a language model as a reasoning engine to determine which tools to use and in what sequence. \n • Tools provide the agent with the necessary information and functionality to perform specific tasks. \n • Agents can use tools in a loop, deciding how many times to use them.";
+    this.step = "industry"
+  }
+
+  handleStepTwo() {
     logEvent(this.analytics, "/create_bot/runtime");
     this.howItWorks = './assets/images/runtime_diagram.png';
     this.howItWorksDescription = "Here you are setting the Runtime Environment. There are two primary options available to you: Cloud Run / Fast API and Vertex AI Agent Engine. Agent Engine is a fully managed runtime offering which simplifies the process of deploying agents. The Cloud Run / Fast API option is more bespoke and will allow you to get under the hood and customize the server configurations, API setup, request and response structure, etc.";
     this.step = "runtime"
   }
 
-  handleStepTwo() {
+  handleStepThree() {
     logEvent(this.analytics, "/create_bot/orchestration_framework");
     this.howItWorks = './assets/images/orchestration_diagram.png';
     this.howItWorksDescription = "Here you are setting the Orchestration Framework. AI Agent Orchestration Frameworks have control loops that intelligently route user queries or tasks to the most appropriate agents or tools based on their capabilities and context. They also maintain awareness of the current context and history of interactions, ensuring that agents have the necessary information to perform their tasks effectively.";
     this.step = "orchestration_framework"
-  }
-
-  handleStepThree() {
-    logEvent(this.analytics, "/create_bot/industry");
-    this.howItWorks = './assets/images/tools_diagram.png';
-    this.howItWorksDescription = "Agent Tools are functions or interfaces that allow an AI agent to interact with and perform actions in the external world, such as accessing data, running code, or calling external APIs.\nHow they work:\n\n • Agents use a language model as a reasoning engine to determine which tools to use and in what sequence. \n • Tools provide the agent with the necessary information and functionality to perform specific tasks. \n • Agents can use tools in a loop, deciding how many times to use them.";
-    this.step = "industry"
   }
 
   handleStepFour() {
