@@ -254,11 +254,11 @@ export class ConfigureBotComponent implements OnInit, AfterViewInit {
           }, 
         },
         { 
-          label: 'Vertex Agent Framework (Coming Soon)', 
+          label: 'Agent Development Kit (ADK)', 
           isSelected: false,
           isDisabled: true, 
-          onClick: () => this.selectFramework('Vertex Agent Framework'),
-          subtitle: 'The Vertex AI Agent Framework is a new tool (currently in preview) that allows developers to build and deploy agents that use LLMs to connect with APIs, data, and other applications. It simplifies the creation of agents that can automate tasks, retrieve information, and interact with the world.',
+          onClick: () => this.selectFramework('Agent Development Kit'),
+          subtitle: 'Agent Development Kit (ADK) is a flexible and modular framework for developing and deploying AI agents. While optimized for Gemini and the Google ecosystem, ADK is model-agnostic, deployment-agnostic, and is built for compatibility with other frameworks.',
           caption: 'from google.cloud import aiplatform \n\n# Initialize the Vertex AI client \naiplatform.init(project="your-project-id", location="your-region") \n\n# Create an agent \nagent = aiplatform.Agent.create( \ndisplay_name="my-agent", llm_model="text-bison@001", tools=[aiplatform.Tool.from_python_package( \ndisplay_name="wikipedia", python_package_uri="gs://my-bucket/wikipedia.tar.gz", )] )',
           metadata: {
             prosHeading: "",
@@ -282,8 +282,8 @@ export class ConfigureBotComponent implements OnInit, AfterViewInit {
           langgraphSubheading: "Build complex, stateful, multi-actor LLM workflows with a structured graph approach.",
           llamaindexHeading: "LlamaIndex: ",
           llamaindexSubheading: "Connect LLMs to your private data for efficient indexing and retrieval.",
-          vertexagentframeworkHeading: "Vertex AI Agent Framework: ",
-          vertexagentframeworkSubheading: "Streamlined Python SDK for developing generative AI agents (coming soon!)",
+          vertexagentframeworkHeading: "Agent Development Kit (ADK): ",
+          vertexagentframeworkSubheading: "A flexible and modular framework for developing and deploying AI agents (coming soon!)",
           footer: "Select the framework best suited to your project: LangChain for general use, LangGraph for complex workflows, and LlamaIndex for private data."
         },
       },
