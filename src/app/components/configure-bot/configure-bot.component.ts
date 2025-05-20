@@ -50,14 +50,14 @@ export class ConfigureBotComponent implements OnInit, AfterViewInit {
     if(event === 4){
       let formArray = this.formGroup.get('formArray') as FormArray;
       formArray.at(event).patchValue({  // Use stepIndex to target correct form group
-        runTime: this.selectedRuntime,       // Update with selected value
+        industry: this.selectedIndustry,       // Update with selected value
+        runTime: this.selectedRuntime,
         framework: this.selectedFramework,
-        industry: this.selectedIndustry,
         model: ''
       });
       formArray.at(event).markAsDirty();
       formArray = this.formGroup.get('formArray') as FormArray;
-      const stepFormGroup = formArray.at(event - 3) as FormGroup;
+      const stepFormGroup = formArray.at(event - 2) as FormGroup;
       if(stepFormGroup.value.runTime === 'AgentEngine'){
         this.stepperConfig[event].options!.forEach(opt => {
           opt.isSelected = false;
@@ -143,6 +143,94 @@ export class ConfigureBotComponent implements OnInit, AfterViewInit {
       hasHome: true,
       hasCode: false,
       hasBack: true
+    },
+    {
+      heading: 'Industry',
+      stepHeading: 'Industry',
+      contentType: 'industry',
+      subheading: 'AI tools are software applications or platforms that leverage artificial intelligence to automate tasks, analyze data, or generate outputs.',
+      options: [
+        { 
+          label: 'Finance', 
+          isSelected: false, 
+          isDisabled: false,
+          onClick: () => this.selectIndustry('finance'), 
+          subtitle: 'Your finance agent has been configured with the following use case and tools:',
+          metadata: {
+            prosHeading: '',
+          prosSubheading: '',
+          consHeading: '',
+          consSubheading: '',
+            usecase: "Use case",
+            usecaseHeading: "AI-Powered Investment Research Analyst for Alphabet",
+            usecaseSubheading: "Provides financial insights on Alphabet by analyzing its financial reports, strategic initiatives, and management perspectives from its historical investor documents. (Disclaimer: This Agent is for demonstration purposes only)",
+            tool: "Tool",
+            toolHeading: "retrieve_info",
+            toolSubheading: "This tool uses Vertex AI Search to perform Retrieval Augmented Generation (RAG) on a given dataset. This agent has access to the following dataset:\n\n`Alphabet Investor PDFs`: This dataset contains PDFs of quarterly earnings releases and annual reports for Alphabet for every quarter since 2004. The Annual reports include  financial statements (balance sheet, income statement, cash flow statement), a letter to shareholders, management discussion and analysis (MD&A), and information on corporate governance. The quarterly earnings releases also contain key financial statements like the income statement, balance sheet, and cash flow statement, along with management commentary and analysis of quarterly performance.",
+          },
+          caption: 'from langchain.agents import Tool \n\n# Define the tool (assuming \'get_weather\' function is already defined) \nweather_tool = Tool( \n\tname="Get Weather", \n\tfunc=get_weather, \n\tdescription="Get current weather for a location." \n)'
+        },
+        { 
+          label: 'Healthcare', 
+          isSelected: false, 
+          isDisabled: false,
+          onClick: () => this.selectIndustry('healthcare'),
+          subtitle: 'Your healthcare agent has been configured with the following use case and tools:',
+          metadata: {
+            prosHeading: '',
+          prosSubheading: '',
+          consHeading: '',
+          consSubheading: '',
+            usecase: "Use case",
+            usecaseHeading: "Symptom Checker and Triage Assistant",
+            usecaseSubheading: "Analyzes general medical symptoms and acts as a virtual assistant to help triage patients to the appropriate level of care during consultations. (Disclaimer: This Agent is for demonstration purposes only and is NOT a substitute for professional medical advice)",
+            tool: "Tool",
+            toolHeading: "medical_publications_tool",
+            toolSubheading: "Utilizes the PubMed API to pull data from the PubMed database, which is a free, searchable database developed and maintained by the National Center for Biotechnology Information (NCBI) and provides access to citations and abstracts of biomedical literature.\n\nretrieve_info: This tool uses Vertex AI Search to perform Retrieval Augmented Generation (RAG) on a given dataset. This agent has access to the following dataset:\n\n`PriMock57 Healthcare consultations`: This dataset consists of 57 mock medical primary care consultations held over 5 days by 7 clinicians and 57 fake patients, using case cards that present complaints, symptoms, medical & general history etc.",
+          },
+          caption: 'from langchain.agents import load_tools \n\n# Load the pre-built Google Search tool \ntools = load_tools(["google-search"]) \n\n# Use the tool (e.g., within an agent) \ntools[0].run("What\'s the weather in Boston, MA?")' 
+        },
+        { 
+          label: 'Retail', 
+          isSelected: false, 
+          isDisabled: false,
+          onClick: () => this.selectIndustry('retail'),
+          subtitle: 'Your retail agent has been configured with the following use case and tools:',
+          metadata: {
+            prosHeading: '',
+          prosSubheading: '',
+          consHeading: '',
+          consSubheading: '',
+            usecase: "Use case",
+            usecaseHeading: "Google Product Discovery Assistant",
+            usecaseSubheading: "Answers product-specific questions on Google Products available on the Google Store (Disclaimer: This Agent is for demonstration purposes only)",
+            tool: "Tool",
+            toolHeading: "retrieve_info",
+            toolSubheading: "This tool uses Vertex AI Search to perform Retrieval Augmented Generation (RAG) on a given dataset. This agent has access to the following dataset:\n\n`Google Store`: This data is a list of html web pages from the Google Store from\n2023. It represents a listing of products, details, prices, etc related to\nGoogle products.",
+          },
+          caption: 'from langchain.agents import load_tools \n\n# Load the pre-built Google Search tool \ntools = load_tools(["google-search"]) \n\n# Use the tool (e.g., within an agent) \ntools[0].run("What\'s the weather in Boston, MA?")' 
+        },
+      ],
+      selectedOptionResponse: {
+        subtitle: '\nAPIs offer flexibility and customization, allowing developers to tailor LLM interactions precisely to their needs and integrate them deeply within existing systems.  Pre-built tools, on the other hand, provide convenience and speed, offering ready-made solutions for common LLM use cases like chatbots, summarization, or question answering, often with user-friendly interfaces and requiring less coding.  Choose APIs when fine-grained control and deep integration are paramount, and pre-built tools when rapid development and ease of use are prioritized.',
+        caption: '',
+        metadata: {
+          prosHeading: '',
+          prosSubheading: '',
+          consHeading: '',
+          consSubheading: '',
+          usecase: "",
+          usecaseHeading: "",
+          usecaseSubheading: "",
+          tool: "",
+          toolHeading: "",
+          toolSubheading: "",
+        },
+      },
+      hasNext: true,
+      hasPrevious: true,
+      hasHome: true,
+      hasCode: true
     },
     {
       heading: 'Runtime',
@@ -292,95 +380,6 @@ export class ConfigureBotComponent implements OnInit, AfterViewInit {
       hasHome: true,
       hasCode: true
     },
-
-    {
-      heading: 'Industry',
-      stepHeading: 'Industry',
-      contentType: 'industry',
-      subheading: 'AI tools are software applications or platforms that leverage artificial intelligence to automate tasks, analyze data, or generate outputs.',
-      options: [
-        { 
-          label: 'Finance', 
-          isSelected: false, 
-          isDisabled: false,
-          onClick: () => this.selectIndustry('finance'), 
-          subtitle: 'Your finance agent has been configured with the following use case and tools:',
-          metadata: {
-            prosHeading: '',
-          prosSubheading: '',
-          consHeading: '',
-          consSubheading: '',
-            usecase: "Use case",
-            usecaseHeading: "AI-Powered Investment Research Analyst for Alphabet",
-            usecaseSubheading: "Provides financial insights on Alphabet by analyzing its financial reports, strategic initiatives, and management perspectives from its historical investor documents. (Disclaimer: This Agent is for demonstration purposes only)",
-            tool: "Tool",
-            toolHeading: "retrieve_info",
-            toolSubheading: "This tool uses Vertex AI Search to perform Retrieval Augmented Generation (RAG) on a given dataset. This agent has access to the following dataset:\n\n`Alphabet Investor PDFs`: This dataset contains PDFs of quarterly earnings releases and annual reports for Alphabet for every quarter since 2004. The Annual reports include  financial statements (balance sheet, income statement, cash flow statement), a letter to shareholders, management discussion and analysis (MD&A), and information on corporate governance. The quarterly earnings releases also contain key financial statements like the income statement, balance sheet, and cash flow statement, along with management commentary and analysis of quarterly performance.",
-          },
-          caption: 'from langchain.agents import Tool \n\n# Define the tool (assuming \'get_weather\' function is already defined) \nweather_tool = Tool( \n\tname="Get Weather", \n\tfunc=get_weather, \n\tdescription="Get current weather for a location." \n)'
-        },
-        { 
-          label: 'Healthcare', 
-          isSelected: false, 
-          isDisabled: false,
-          onClick: () => this.selectIndustry('healthcare'),
-          subtitle: 'Your healthcare agent has been configured with the following use case and tools:',
-          metadata: {
-            prosHeading: '',
-          prosSubheading: '',
-          consHeading: '',
-          consSubheading: '',
-            usecase: "Use case",
-            usecaseHeading: "Symptom Checker and Triage Assistant",
-            usecaseSubheading: "Analyzes general medical symptoms and acts as a virtual assistant to help triage patients to the appropriate level of care during consultations. (Disclaimer: This Agent is for demonstration purposes only and is NOT a substitute for professional medical advice)",
-            tool: "Tool",
-            toolHeading: "medical_publications_tool",
-            toolSubheading: "Utilizes the PubMed API to pull data from the PubMed database, which is a free, searchable database developed and maintained by the National Center for Biotechnology Information (NCBI) and provides access to citations and abstracts of biomedical literature.\n\nretrieve_info: This tool uses Vertex AI Search to perform Retrieval Augmented Generation (RAG) on a given dataset. This agent has access to the following dataset:\n\n`PriMock57 Healthcare consultations`: This dataset consists of 57 mock medical primary care consultations held over 5 days by 7 clinicians and 57 fake patients, using case cards that present complaints, symptoms, medical & general history etc.",
-          },
-          caption: 'from langchain.agents import load_tools \n\n# Load the pre-built Google Search tool \ntools = load_tools(["google-search"]) \n\n# Use the tool (e.g., within an agent) \ntools[0].run("What\'s the weather in Boston, MA?")' 
-        },
-        { 
-          label: 'Retail', 
-          isSelected: false, 
-          isDisabled: false,
-          onClick: () => this.selectIndustry('retail'),
-          subtitle: 'Your retail agent has been configured with the following use case and tools:',
-          metadata: {
-            prosHeading: '',
-          prosSubheading: '',
-          consHeading: '',
-          consSubheading: '',
-            usecase: "Use case",
-            usecaseHeading: "Google Product Discovery Assistant",
-            usecaseSubheading: "Answers product-specific questions on Google Products available on the Google Store (Disclaimer: This Agent is for demonstration purposes only)",
-            tool: "Tool",
-            toolHeading: "retrieve_info",
-            toolSubheading: "This tool uses Vertex AI Search to perform Retrieval Augmented Generation (RAG) on a given dataset. This agent has access to the following dataset:\n\n`Google Store`: This data is a list of html web pages from the Google Store from\n2023. It represents a listing of products, details, prices, etc related to\nGoogle products.",
-          },
-          caption: 'from langchain.agents import load_tools \n\n# Load the pre-built Google Search tool \ntools = load_tools(["google-search"]) \n\n# Use the tool (e.g., within an agent) \ntools[0].run("What\'s the weather in Boston, MA?")' 
-        },
-      ],
-      selectedOptionResponse: {
-        subtitle: '\nAPIs offer flexibility and customization, allowing developers to tailor LLM interactions precisely to their needs and integrate them deeply within existing systems.  Pre-built tools, on the other hand, provide convenience and speed, offering ready-made solutions for common LLM use cases like chatbots, summarization, or question answering, often with user-friendly interfaces and requiring less coding.  Choose APIs when fine-grained control and deep integration are paramount, and pre-built tools when rapid development and ease of use are prioritized.',
-        caption: '',
-        metadata: {
-          prosHeading: '',
-          prosSubheading: '',
-          consHeading: '',
-          consSubheading: '',
-          usecase: "",
-          usecaseHeading: "",
-          usecaseSubheading: "",
-          tool: "",
-          toolHeading: "",
-          toolSubheading: "",
-        },
-      },
-      hasNext: true,
-      hasPrevious: true,
-      hasHome: true,
-      hasCode: true
-    },
     {
       heading: 'Model',
       stepHeading: 'Model',
@@ -498,13 +497,13 @@ export class ConfigureBotComponent implements OnInit, AfterViewInit {
           description: ['', Validators.required],
         }),
         this._formBuilder.group({
+          industry: ['', Validators.required]
+        }),
+        this._formBuilder.group({
           runTime: ['', Validators.required] // Add validators for radio button groups
         }),
         this._formBuilder.group({
           framework: ['', Validators.required]
-        }),
-        this._formBuilder.group({
-          industry: ['', Validators.required]
         }),
         this._formBuilder.group({
           model: ['', Validators.required]
@@ -563,9 +562,9 @@ export class ConfigureBotComponent implements OnInit, AfterViewInit {
     // Update form group value for radio button selection
     const formArray = this.formGroup.get('formArray') as FormArray;
     formArray.at(stepIndex).patchValue({  // Use stepIndex to target correct form group
-      runTime: this.selectedRuntime,       // Update with selected value
+      industry: this.selectedIndustry,       // Update with selected value
+      runTime: this.selectedRuntime,
       framework: this.selectedFramework,
-      industry: this.selectedIndustry,
       model: this.selectedModel
     });
     // console.log(formArray);
@@ -585,9 +584,9 @@ export class ConfigureBotComponent implements OnInit, AfterViewInit {
     return {
       name: firstStepGroup.get("agentName")!.value,
       description: firstStepGroup.get("description")!.value,
+      industry: this.selectedIndustry,
       runTime: this.selectedRuntime,
       framework: this.selectedFramework,
-      industry: this.selectedIndustry,
       model: this.selectedModel,
     }
   }

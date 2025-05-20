@@ -67,6 +67,43 @@
                         </div>
                     </div>
 
+                    <div *ngIf="step.contentType === 'industry'" class="stepper-container">
+                        <div class="runtime-container">
+                            <div class="option-selectors">
+                                <div class="example-radio-group">
+                                    <div *ngFor="let option of step.options" [ngClass]="{'selected': option.isSelected}"
+                                        (click)="onRadioChange(step, option, index)" class="option-card" [class.disabled]="option.isDisabled === true" >
+                                        <span class="icon">
+                                            <span class="material-symbols-outlined">{{ option.isSelected ?
+                                                'check_circle' : 'radio_button_unchecked' }}</span>
+                                        </span>
+                                        <span class="text">{{ option.label }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div *ngIf="step.selectedOptionResponse" class="option-response">
+                                <span *ngIf="step.subheading" class="subheading">{{ step.subheading }}</span>
+                                <span class="subtitle">{{ step.selectedOptionResponse.subtitle }}</span>
+
+                                <span *ngIf="step?.selectedOptionResponse?.metadata?.usecase" class="usecase">{{ step.selectedOptionResponse.metadata.usecase }}</span>
+                                <span *ngIf="step?.selectedOptionResponse?.metadata?.usecaseHeading" class="usecaseHeading">{{ step.selectedOptionResponse.metadata.usecaseHeading }}</span>
+                                <span *ngIf="step?.selectedOptionResponse?.metadata?.usecaseSubheading" class="usecaseSubheading">{{ step.selectedOptionResponse.metadata.usecaseSubheading }}</span>
+                                <span *ngIf="step?.selectedOptionResponse?.metadata?.tool" class="tool">{{ step.selectedOptionResponse.metadata.tool }}</span>
+                                <span *ngIf="step?.selectedOptionResponse?.metadata?.toolHeading" class="toolHeading">{{ step.selectedOptionResponse.metadata.toolHeading }}</span>
+                                <span *ngIf="step?.selectedOptionResponse?.metadata?.toolSubheading" class="toolSubheading">{{ step.selectedOptionResponse.metadata.toolSubheading }}</span>
+
+                                <span *ngIf="step.contentType!=='industry'" class="caption">{{
+                                    step.selectedOptionResponse.caption }}</span>
+
+                                <button class="view-code-button" *ngIf="step.contentType==='industry' && step.selectedOptionResponse.caption.length !== 0" mat-button
+                                    (click)="openViewCodeModal(step.selectedOptionResponse)"><span
+                                        class="material-symbols-outlined">
+                                        code
+                                    </span><span>View code/diagram example</span></button>
+                            </div>
+                        </div>
+                    </div>
+
                     <div *ngIf="step.contentType === 'runtime'" class="stepper-container">
                         <div class="runtime-container">
                             <div class="option-selectors">
@@ -157,43 +194,6 @@
                                     step.selectedOptionResponse.caption }}</span>
 
                                 <button class="view-code-button" *ngIf="step.contentType==='framework' && step.selectedOptionResponse.caption.length !== 0" mat-button
-                                    (click)="openViewCodeModal(step.selectedOptionResponse)"><span
-                                        class="material-symbols-outlined">
-                                        code
-                                    </span><span>View code/diagram example</span></button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div *ngIf="step.contentType === 'industry'" class="stepper-container">
-                        <div class="runtime-container">
-                            <div class="option-selectors">
-                                <div class="example-radio-group">
-                                    <div *ngFor="let option of step.options" [ngClass]="{'selected': option.isSelected}"
-                                        (click)="onRadioChange(step, option, index)" class="option-card" [class.disabled]="option.isDisabled === true" >
-                                        <span class="icon">
-                                            <span class="material-symbols-outlined">{{ option.isSelected ?
-                                                'check_circle' : 'radio_button_unchecked' }}</span>
-                                        </span>
-                                        <span class="text">{{ option.label }}</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div *ngIf="step.selectedOptionResponse" class="option-response">
-                                <span *ngIf="step.subheading" class="subheading">{{ step.subheading }}</span>
-                                <span class="subtitle">{{ step.selectedOptionResponse.subtitle }}</span>
-
-                                <span *ngIf="step?.selectedOptionResponse?.metadata?.usecase" class="usecase">{{ step.selectedOptionResponse.metadata.usecase }}</span>
-                                <span *ngIf="step?.selectedOptionResponse?.metadata?.usecaseHeading" class="usecaseHeading">{{ step.selectedOptionResponse.metadata.usecaseHeading }}</span>
-                                <span *ngIf="step?.selectedOptionResponse?.metadata?.usecaseSubheading" class="usecaseSubheading">{{ step.selectedOptionResponse.metadata.usecaseSubheading }}</span>
-                                <span *ngIf="step?.selectedOptionResponse?.metadata?.tool" class="tool">{{ step.selectedOptionResponse.metadata.tool }}</span>
-                                <span *ngIf="step?.selectedOptionResponse?.metadata?.toolHeading" class="toolHeading">{{ step.selectedOptionResponse.metadata.toolHeading }}</span>
-                                <span *ngIf="step?.selectedOptionResponse?.metadata?.toolSubheading" class="toolSubheading">{{ step.selectedOptionResponse.metadata.toolSubheading }}</span>
-
-                                <span *ngIf="step.contentType!=='industry'" class="caption">{{
-                                    step.selectedOptionResponse.caption }}</span>
-
-                                <button class="view-code-button" *ngIf="step.contentType==='industry' && step.selectedOptionResponse.caption.length !== 0" mat-button
                                     (click)="openViewCodeModal(step.selectedOptionResponse)"><span
                                         class="material-symbols-outlined">
                                         code
