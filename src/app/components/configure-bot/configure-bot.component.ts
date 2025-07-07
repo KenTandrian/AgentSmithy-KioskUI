@@ -442,34 +442,34 @@ export class ConfigureBotComponent implements OnInit, AfterViewInit {
             consSubheading: "Might not match the very highest reasoning capabilities of newer models for the most demanding challenges, and users should weigh its performance against specific cost and speed requirements.",
           }, 
         },
-        { 
-          label: 'Llama 3.3 70B (Model Garden)', 
-          isSelected: false, 
-          isDisabled: false,
-          onClick: () => this.selectModel('llama-3.3-70b-instruct-maas'),
-          subtitle: 'Llama 3.3 70B, available in the Vertex AI Model Garden, is a powerful open-source model known for its strong performance and broad applicability, offering the key advantage of being fine-tunable for specific needs. Its open nature and customizability make it an excellent choice when you need control over the model and are targeting specialized tasks.',
-          caption: 'import os\nfrom langchain_core.prompts import ChatPromptTemplate\nfrom langchain_core.output_parsers import StrOutputParser\nfrom langchain_google_vertexai import ChatVertexAI\n\nos.environ["GOOGLE_CLOUD_PROJECT"] = "your-project-id"\n\ngemini_pro = ChatVertexAI(\n\tmodel_name="llama-3.3-70b-instruct-maas",# requires the model to be enabled\n\ttemperature=0.7, # Adjust for creativity\n\tmax_output_tokens=1024, # Larger limit for complex tasks\n\tlocation="us-central1"\n)\n\nprompt = ChatPromptTemplate.from_template("Translate the following text to Spanish: {text}")\nchain = prompt | llama_model | StrOutputParser()\nprint("Llama Translation: ", chain.invoke({"text": "Hello, how are you?"}))',
-          metadata: {
-            prosHeading: "Pros: ",
-            prosSubheading: "Open source, highly customizable via fine-tuning, strong general performance, good for resource-constrained environments, excellent for prototyping.",
-            consHeading: "Cons: ",
-            consSubheading: "Requires time and data to fine-tune for optimal performance on specific tasks, and ongoing maintenance is needed.",
-          }, 
-        },
-        { 
-          label: 'Llama 3.1 405B (Model Garden)', 
-          isSelected: false, 
-          isDisabled: false,
-          onClick: () => this.selectModel('llama-3.1-405b-instruct-maas'),
-          subtitle: 'Llama 3.1 405B is a massive, open-source AI model designed for tackling the most demanding problems that require an exceptional depth of understanding and highly complex reasoning. Its immense capacity and open nature make it ideal for pushing the boundaries of AI research and creating extremely specialized agents, though fine-tuning is typically essential.',
-          caption: 'import os\nfrom langchain_core.prompts import ChatPromptTemplate\nfrom langchain_core.output_parsers import StrOutputParser\nfrom langchain_google_vertexai import ChatVertexAI\n\nos.environ["GOOGLE_CLOUD_PROJECT"] = "your-project-id"\n\ngemini_pro = ChatVertexAI(\n\tmodel_name="llama-3.1-405b-instruct-maas",# requires the model to be enabled\n\ttemperature=0.2, # Adjust for creativity\n\tmax_output_tokens=1024, # Larger limit for complex tasks \n\tlocation="us-central1"\n)\n\nprompt = ChatPromptTemplate.from_template("Translate the following text to Spanish: {text}")\nchain = prompt | llama_model | StrOutputParser()\nprint("Llama Translation: ", chain.invoke({"text": "Hello, how are you?"}))',
-          metadata: {
-            prosHeading: "Pros: ",
-            prosSubheading: "Unrivaled capacity for extremely complex reasoning, profound potential for deep understanding, open source, customizable, ideal for cutting-edge research and highly specialized, demanding tasks.",
-            consHeading: "Cons: ",
-            consSubheading: "Will be very slow and extremely resource-intensive (very high cost/latency), requires substantial investment and expertise for deployment and fine-tuning for optimal performance.",
-          },
-        }
+        // { 
+        //   label: 'Llama 3.3 70B (Model Garden)', 
+        //   isSelected: false, 
+        //   isDisabled: false,
+        //   onClick: () => this.selectModel('llama-3.3-70b-instruct-maas'),
+        //   subtitle: 'Llama 3.3 70B, available in the Vertex AI Model Garden, is a powerful open-source model known for its strong performance and broad applicability, offering the key advantage of being fine-tunable for specific needs. Its open nature and customizability make it an excellent choice when you need control over the model and are targeting specialized tasks.',
+        //   caption: 'import os\nfrom langchain_core.prompts import ChatPromptTemplate\nfrom langchain_core.output_parsers import StrOutputParser\nfrom langchain_google_vertexai import ChatVertexAI\n\nos.environ["GOOGLE_CLOUD_PROJECT"] = "your-project-id"\n\ngemini_pro = ChatVertexAI(\n\tmodel_name="llama-3.3-70b-instruct-maas",# requires the model to be enabled\n\ttemperature=0.7, # Adjust for creativity\n\tmax_output_tokens=1024, # Larger limit for complex tasks\n\tlocation="us-central1"\n)\n\nprompt = ChatPromptTemplate.from_template("Translate the following text to Spanish: {text}")\nchain = prompt | llama_model | StrOutputParser()\nprint("Llama Translation: ", chain.invoke({"text": "Hello, how are you?"}))',
+        //   metadata: {
+        //     prosHeading: "Pros: ",
+        //     prosSubheading: "Open source, highly customizable via fine-tuning, strong general performance, good for resource-constrained environments, excellent for prototyping.",
+        //     consHeading: "Cons: ",
+        //     consSubheading: "Requires time and data to fine-tune for optimal performance on specific tasks, and ongoing maintenance is needed.",
+        //   }, 
+        // },
+        // { 
+        //   label: 'Llama 3.1 405B (Model Garden)', 
+        //   isSelected: false, 
+        //   isDisabled: false,
+        //   onClick: () => this.selectModel('llama-3.1-405b-instruct-maas'),
+        //   subtitle: 'Llama 3.1 405B is a massive, open-source AI model designed for tackling the most demanding problems that require an exceptional depth of understanding and highly complex reasoning. Its immense capacity and open nature make it ideal for pushing the boundaries of AI research and creating extremely specialized agents, though fine-tuning is typically essential.',
+        //   caption: 'import os\nfrom langchain_core.prompts import ChatPromptTemplate\nfrom langchain_core.output_parsers import StrOutputParser\nfrom langchain_google_vertexai import ChatVertexAI\n\nos.environ["GOOGLE_CLOUD_PROJECT"] = "your-project-id"\n\ngemini_pro = ChatVertexAI(\n\tmodel_name="llama-3.1-405b-instruct-maas",# requires the model to be enabled\n\ttemperature=0.2, # Adjust for creativity\n\tmax_output_tokens=1024, # Larger limit for complex tasks \n\tlocation="us-central1"\n)\n\nprompt = ChatPromptTemplate.from_template("Translate the following text to Spanish: {text}")\nchain = prompt | llama_model | StrOutputParser()\nprint("Llama Translation: ", chain.invoke({"text": "Hello, how are you?"}))',
+        //   metadata: {
+        //     prosHeading: "Pros: ",
+        //     prosSubheading: "Unrivaled capacity for extremely complex reasoning, profound potential for deep understanding, open source, customizable, ideal for cutting-edge research and highly specialized, demanding tasks.",
+        //     consHeading: "Cons: ",
+        //     consSubheading: "Will be very slow and extremely resource-intensive (very high cost/latency), requires substantial investment and expertise for deployment and fine-tuning for optimal performance.",
+        //   },
+        // }
       ],
       selectedOptionResponse: {
         subtitle: '\nThe foundation model is the core of your AI agent, interpreting information and driving its decisions and actions. Choosing the right one is crucial. \n\nConsider the tasks your agent will handle, required accuracy, budget, speed needs, and if you need customization. \n\nAlso, think about the model\'s context window for handling complex tasks and whether a faster, cheaper \"flash\" model suits your speed and cost requirements.',
