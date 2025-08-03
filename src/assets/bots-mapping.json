@@ -1,632 +1,548 @@
 [
-    {
-        "AGENT_INDUSTRY_TYPE": "finance",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "langchain_agent",
-        "AGENT_FOUNDATION_MODEL": "gemini-2.0-flash",
-        "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
-        "CLOUD_RUN_URL": "https://agent-runtime-finance-langchain-pre-gem20-f-fasta-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "finance",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "langchain_agent",
-        "AGENT_FOUNDATION_MODEL": "gemini-1.5-pro",
-        "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
-        "CLOUD_RUN_URL": "https://agent-runtime-finance-langchain-pre-gem15-p-fasta-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "finance",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "langchain_agent",
-        "AGENT_FOUNDATION_MODEL": "claude-3-7-sonnet",
-        "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
-        "CLOUD_RUN_URL": "https://agent-runtime-finance-langchain-pre-cla37-so-fast-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "finance",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "langchain_agent",
-        "AGENT_FOUNDATION_MODEL": "claude-3-5-sonnet-v2",
-        "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
-        "CLOUD_RUN_URL": "https://agent-runtime-finance-langchain-pre-cla35-so-v2-f-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "finance",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "langchain_agent",
-        "AGENT_FOUNDATION_MODEL": "llama-3.3-70b-instruct-maas",
-        "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
-        "CLOUD_RUN_URL": "https://agent-runtime-finance-langchain-pre-lla33-70b-fas-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "finance",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "langchain_agent",
-        "AGENT_FOUNDATION_MODEL": "llama-3.1-405b-instruct-maas",
-        "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
-        "CLOUD_RUN_URL": "https://agent-runtime-finance-langchain-pre-lla31-405b-fa-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "finance",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "langgraph_agent",
-        "AGENT_FOUNDATION_MODEL": "gemini-2.0-flash",
-        "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
-        "CLOUD_RUN_URL": "https://agent-runtime-finance-langgraph-pre-gem20-f-fasta-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "finance",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "langgraph_agent",
-        "AGENT_FOUNDATION_MODEL": "gemini-1.5-pro",
-        "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
-        "CLOUD_RUN_URL": "https://agent-runtime-finance-langgraph-pre-gem15-p-fasta-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "finance",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "langgraph_agent",
-        "AGENT_FOUNDATION_MODEL": "claude-3-7-sonnet",
-        "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
-        "CLOUD_RUN_URL": "https://agent-runtime-finance-langgraph-pre-cla37-so-fast-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "finance",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "langgraph_agent",
-        "AGENT_FOUNDATION_MODEL": "claude-3-5-sonnet-v2",
-        "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
-        "CLOUD_RUN_URL": "https://agent-runtime-finance-langgraph-pre-cla35-so-v2-f-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "finance",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "langgraph_agent",
-        "AGENT_FOUNDATION_MODEL": "llama-3.3-70b-instruct-maas",
-        "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
-        "CLOUD_RUN_URL": "https://agent-runtime-finance-langgraph-pre-lla33-70b-fas-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "finance",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "langgraph_agent",
-        "AGENT_FOUNDATION_MODEL": "llama-3.1-405b-instruct-maas",
-        "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
-        "CLOUD_RUN_URL": "https://agent-runtime-finance-langgraph-pre-lla31-405b-fa-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "finance",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "llamaindex_agent",
-        "AGENT_FOUNDATION_MODEL": "gemini-2.0-flash",
-        "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
-        "CLOUD_RUN_URL": "https://agent-runtime-finance-llamaindex-gem20-f-fastapi-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "finance",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "llamaindex_agent",
-        "AGENT_FOUNDATION_MODEL": "gemini-1.5-pro",
-        "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
-        "CLOUD_RUN_URL": "https://agent-runtime-finance-llamaindex-gem15-p-fastapi-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "finance",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "llamaindex_agent",
-        "AGENT_FOUNDATION_MODEL": "claude-3-7-sonnet",
-        "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
-        "CLOUD_RUN_URL": "https://agent-runtime-finance-llamaindex-cla37-so-fastapi-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "finance",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "llamaindex_agent",
-        "AGENT_FOUNDATION_MODEL": "claude-3-5-sonnet-v2",
-        "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
-        "CLOUD_RUN_URL": "https://agent-runtime-finance-llamaindex-cla35-so-v2-fast-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "finance",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "llamaindex_agent",
-        "AGENT_FOUNDATION_MODEL": "llama-3.3-70b-instruct-maas",
-        "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
-        "CLOUD_RUN_URL": "https://agent-runtime-finance-llamaindex-lla33-70b-fastap-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "finance",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "llamaindex_agent",
-        "AGENT_FOUNDATION_MODEL": "llama-3.1-405b-instruct-maas",
-        "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
-        "CLOUD_RUN_URL": "https://agent-runtime-finance-llamaindex-lla31-405b-fasta-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "healthcare",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "langchain_agent",
-        "AGENT_FOUNDATION_MODEL": "gemini-2.0-flash",
-        "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
-        "CLOUD_RUN_URL": "https://agent-runtime-healthcare-langchain-pre-gem20-f-fa-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "healthcare",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "langchain_agent",
-        "AGENT_FOUNDATION_MODEL": "gemini-1.5-pro",
-        "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
-        "CLOUD_RUN_URL": "https://agent-runtime-healthcare-langchain-pre-gem15-p-fa-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "healthcare",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "langchain_agent",
-        "AGENT_FOUNDATION_MODEL": "claude-3-7-sonnet",
-        "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
-        "CLOUD_RUN_URL": "https://agent-runtime-healthcare-langchain-pre-cla37-so-f-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "healthcare",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "langchain_agent",
-        "AGENT_FOUNDATION_MODEL": "claude-3-5-sonnet-v2",
-        "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
-        "CLOUD_RUN_URL": "https://agent-runtime-healthcare-langchain-pre-cla35-so-v-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "healthcare",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "langchain_agent",
-        "AGENT_FOUNDATION_MODEL": "llama-3.3-70b-instruct-maas",
-        "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
-        "CLOUD_RUN_URL": "https://agent-runtime-healthcare-langchain-pre-lla33-70b--6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "healthcare",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "langchain_agent",
-        "AGENT_FOUNDATION_MODEL": "llama-3.1-405b-instruct-maas",
-        "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
-        "CLOUD_RUN_URL": "https://agent-runtime-healthcare-langchain-pre-lla31-405b-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "healthcare",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "langgraph_agent",
-        "AGENT_FOUNDATION_MODEL": "gemini-2.0-flash",
-        "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
-        "CLOUD_RUN_URL": "https://agent-runtime-healthcare-langgraph-pre-gem20-f-fa-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "healthcare",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "langgraph_agent",
-        "AGENT_FOUNDATION_MODEL": "gemini-1.5-pro",
-        "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
-        "CLOUD_RUN_URL": "https://agent-runtime-healthcare-langgraph-pre-gem15-p-fa-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "healthcare",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "langgraph_agent",
-        "AGENT_FOUNDATION_MODEL": "claude-3-7-sonnet",
-        "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
-        "CLOUD_RUN_URL": "https://agent-runtime-healthcare-langgraph-pre-cla37-so-f-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "healthcare",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "langgraph_agent",
-        "AGENT_FOUNDATION_MODEL": "claude-3-5-sonnet-v2",
-        "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
-        "CLOUD_RUN_URL": "https://agent-runtime-healthcare-langgraph-pre-cla35-so-v-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "healthcare",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "langgraph_agent",
-        "AGENT_FOUNDATION_MODEL": "llama-3.3-70b-instruct-maas",
-        "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
-        "CLOUD_RUN_URL": "https://agent-runtime-healthcare-langgraph-pre-lla33-70b--6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "healthcare",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "langgraph_agent",
-        "AGENT_FOUNDATION_MODEL": "llama-3.1-405b-instruct-maas",
-        "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
-        "CLOUD_RUN_URL": "https://agent-runtime-healthcare-langgraph-pre-lla31-405b-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "healthcare",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "llamaindex_agent",
-        "AGENT_FOUNDATION_MODEL": "gemini-2.0-flash",
-        "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
-        "CLOUD_RUN_URL": "https://agent-runtime-healthcare-llamaindex-gem20-f-fasta-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "healthcare",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "llamaindex_agent",
-        "AGENT_FOUNDATION_MODEL": "gemini-1.5-pro",
-        "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
-        "CLOUD_RUN_URL": "https://agent-runtime-healthcare-llamaindex-gem15-p-fasta-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "healthcare",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "llamaindex_agent",
-        "AGENT_FOUNDATION_MODEL": "claude-3-7-sonnet",
-        "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
-        "CLOUD_RUN_URL": "https://agent-runtime-healthcare-llamaindex-cla37-so-fast-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "healthcare",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "llamaindex_agent",
-        "AGENT_FOUNDATION_MODEL": "claude-3-5-sonnet-v2",
-        "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
-        "CLOUD_RUN_URL": "https://agent-runtime-healthcare-llamaindex-cla35-so-v2-f-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "healthcare",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "llamaindex_agent",
-        "AGENT_FOUNDATION_MODEL": "llama-3.3-70b-instruct-maas",
-        "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
-        "CLOUD_RUN_URL": "https://agent-runtime-healthcare-llamaindex-lla33-70b-fas-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "healthcare",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "llamaindex_agent",
-        "AGENT_FOUNDATION_MODEL": "llama-3.1-405b-instruct-maas",
-        "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
-        "CLOUD_RUN_URL": "https://agent-runtime-healthcare-llamaindex-lla31-405b-fa-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "retail",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "langchain_agent",
-        "AGENT_FOUNDATION_MODEL": "gemini-2.0-flash",
-        "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
-        "CLOUD_RUN_URL": "https://agent-runtime-retail-langchain-pre-gem20-f-fastap-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "retail",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "langchain_agent",
-        "AGENT_FOUNDATION_MODEL": "gemini-1.5-pro",
-        "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
-        "CLOUD_RUN_URL": "https://agent-runtime-retail-langchain-pre-gem15-p-fastap-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "retail",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "langchain_agent",
-        "AGENT_FOUNDATION_MODEL": "claude-3-7-sonnet",
-        "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
-        "CLOUD_RUN_URL": "https://agent-runtime-retail-langchain-pre-cla37-so-fasta-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "retail",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "langchain_agent",
-        "AGENT_FOUNDATION_MODEL": "claude-3-5-sonnet-v2",
-        "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
-        "CLOUD_RUN_URL": "https://agent-runtime-retail-langchain-pre-cla35-so-v2-fa-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "retail",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "langchain_agent",
-        "AGENT_FOUNDATION_MODEL": "llama-3.3-70b-instruct-maas",
-        "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
-        "CLOUD_RUN_URL": "https://agent-runtime-retail-langchain-pre-lla33-70b-fast-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "retail",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "langchain_agent",
-        "AGENT_FOUNDATION_MODEL": "llama-3.1-405b-instruct-maas",
-        "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
-        "CLOUD_RUN_URL": "https://agent-runtime-retail-langchain-pre-lla31-405b-fas-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "retail",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "langgraph_agent",
-        "AGENT_FOUNDATION_MODEL": "gemini-2.0-flash",
-        "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
-        "CLOUD_RUN_URL": "https://agent-runtime-retail-langgraph-pre-gem20-f-fastap-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "retail",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "langgraph_agent",
-        "AGENT_FOUNDATION_MODEL": "gemini-1.5-pro",
-        "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
-        "CLOUD_RUN_URL": "https://agent-runtime-retail-langgraph-pre-gem15-p-fastap-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "retail",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "langgraph_agent",
-        "AGENT_FOUNDATION_MODEL": "claude-3-7-sonnet",
-        "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
-        "CLOUD_RUN_URL": "https://agent-runtime-retail-langgraph-pre-cla37-so-fasta-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "retail",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "langgraph_agent",
-        "AGENT_FOUNDATION_MODEL": "claude-3-5-sonnet-v2",
-        "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
-        "CLOUD_RUN_URL": "https://agent-runtime-retail-langgraph-pre-cla35-so-v2-fa-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "retail",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "langgraph_agent",
-        "AGENT_FOUNDATION_MODEL": "llama-3.3-70b-instruct-maas",
-        "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
-        "CLOUD_RUN_URL": "https://agent-runtime-retail-langgraph-pre-lla33-70b-fast-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "retail",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "langgraph_agent",
-        "AGENT_FOUNDATION_MODEL": "llama-3.1-405b-instruct-maas",
-        "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
-        "CLOUD_RUN_URL": "https://agent-runtime-retail-langgraph-pre-lla31-405b-fas-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "retail",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "llamaindex_agent",
-        "AGENT_FOUNDATION_MODEL": "gemini-2.0-flash",
-        "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
-        "CLOUD_RUN_URL": "https://agent-runtime-retail-llamaindex-gem20-f-fastapi-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "retail",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "llamaindex_agent",
-        "AGENT_FOUNDATION_MODEL": "gemini-1.5-pro",
-        "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
-        "CLOUD_RUN_URL": "https://agent-runtime-retail-llamaindex-gem15-p-fastapi-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "retail",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "llamaindex_agent",
-        "AGENT_FOUNDATION_MODEL": "claude-3-7-sonnet",
-        "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
-        "CLOUD_RUN_URL": "https://agent-runtime-retail-llamaindex-cla37-so-fastapi-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "retail",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "llamaindex_agent",
-        "AGENT_FOUNDATION_MODEL": "claude-3-5-sonnet-v2",
-        "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
-        "CLOUD_RUN_URL": "https://agent-runtime-retail-llamaindex-cla35-so-v2-fasta-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "retail",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "llamaindex_agent",
-        "AGENT_FOUNDATION_MODEL": "llama-3.3-70b-instruct-maas",
-        "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
-        "CLOUD_RUN_URL": "https://agent-runtime-retail-llamaindex-lla33-70b-fastapi-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "retail",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "llamaindex_agent",
-        "AGENT_FOUNDATION_MODEL": "llama-3.1-405b-instruct-maas",
-        "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
-        "CLOUD_RUN_URL": "https://agent-runtime-retail-llamaindex-lla31-405b-fastap-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "finance",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "langchain_agent",
-        "AGENT_FOUNDATION_MODEL": "gemini-2.0-flash",
-        "RUNTIME_ENV_SELECTION": "AgentEngine",
-        "CLOUD_RUN_URL": "https://agent-runtime-finance-langchain-ae-gem20-f-ae-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "finance",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "langchain_agent",
-        "AGENT_FOUNDATION_MODEL": "gemini-1.5-pro",
-        "RUNTIME_ENV_SELECTION": "AgentEngine",
-        "CLOUD_RUN_URL": "https://agent-runtime-finance-langchain-ae-gem15-p-ae-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "finance",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "langchain_agent",
-        "AGENT_FOUNDATION_MODEL": "llama-3.3-70b-instruct-maas",
-        "RUNTIME_ENV_SELECTION": "AgentEngine",
-        "CLOUD_RUN_URL": "https://agent-runtime-finance-langchain-ae-lla33-70b-ae-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "finance",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "langchain_agent",
-        "AGENT_FOUNDATION_MODEL": "llama-3.1-405b-instruct-maas",
-        "RUNTIME_ENV_SELECTION": "AgentEngine",
-        "CLOUD_RUN_URL": "https://agent-runtime-finance-langchain-ae-lla31-405b-ae-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "finance",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "langgraph_agent",
-        "AGENT_FOUNDATION_MODEL": "gemini-2.0-flash",
-        "RUNTIME_ENV_SELECTION": "AgentEngine",
-        "CLOUD_RUN_URL": "https://agent-runtime-finance-langgraph-ae-gem20-f-ae-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "finance",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "langgraph_agent",
-        "AGENT_FOUNDATION_MODEL": "gemini-1.5-pro",
-        "RUNTIME_ENV_SELECTION": "AgentEngine",
-        "CLOUD_RUN_URL": "https://agent-runtime-finance-langgraph-ae-gem15-p-ae-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "finance",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "langgraph_agent",
-        "AGENT_FOUNDATION_MODEL": "llama-3.3-70b-instruct-maas",
-        "RUNTIME_ENV_SELECTION": "AgentEngine",
-        "CLOUD_RUN_URL": "https://agent-runtime-finance-langgraph-ae-lla33-70b-ae-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "finance",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "langgraph_agent",
-        "AGENT_FOUNDATION_MODEL": "llama-3.1-405b-instruct-maas",
-        "RUNTIME_ENV_SELECTION": "AgentEngine",
-        "CLOUD_RUN_URL": "https://agent-runtime-finance-langgraph-ae-lla31-405b-ae-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "finance",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "llamaindex_agent",
-        "AGENT_FOUNDATION_MODEL": "gemini-2.0-flash",
-        "RUNTIME_ENV_SELECTION": "AgentEngine",
-        "CLOUD_RUN_URL": "https://agent-runtime-finance-llamaindex-gem20-f-ae-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "finance",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "llamaindex_agent",
-        "AGENT_FOUNDATION_MODEL": "gemini-1.5-pro",
-        "RUNTIME_ENV_SELECTION": "AgentEngine",
-        "CLOUD_RUN_URL": "https://agent-runtime-finance-llamaindex-gem15-p-ae-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "finance",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "llamaindex_agent",
-        "AGENT_FOUNDATION_MODEL": "llama-3.3-70b-instruct-maas",
-        "RUNTIME_ENV_SELECTION": "AgentEngine",
-        "CLOUD_RUN_URL": "https://agent-runtime-finance-llamaindex-lla33-70b-ae-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "finance",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "llamaindex_agent",
-        "AGENT_FOUNDATION_MODEL": "llama-3.1-405b-instruct-maas",
-        "RUNTIME_ENV_SELECTION": "AgentEngine",
-        "CLOUD_RUN_URL": "https://agent-runtime-finance-llamaindex-lla31-405b-ae-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "healthcare",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "langchain_agent",
-        "AGENT_FOUNDATION_MODEL": "gemini-2.0-flash",
-        "RUNTIME_ENV_SELECTION": "AgentEngine",
-        "CLOUD_RUN_URL": "https://agent-runtime-healthcare-langchain-ae-gem20-f-ae-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "healthcare",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "langchain_agent",
-        "AGENT_FOUNDATION_MODEL": "gemini-1.5-pro",
-        "RUNTIME_ENV_SELECTION": "AgentEngine",
-        "CLOUD_RUN_URL": "https://agent-runtime-healthcare-langchain-ae-gem15-p-ae-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "healthcare",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "langchain_agent",
-        "AGENT_FOUNDATION_MODEL": "llama-3.3-70b-instruct-maas",
-        "RUNTIME_ENV_SELECTION": "AgentEngine",
-        "CLOUD_RUN_URL": "https://agent-runtime-healthcare-langchain-ae-lla33-70b-a-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "healthcare",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "langchain_agent",
-        "AGENT_FOUNDATION_MODEL": "llama-3.1-405b-instruct-maas",
-        "RUNTIME_ENV_SELECTION": "AgentEngine",
-        "CLOUD_RUN_URL": "https://agent-runtime-healthcare-langchain-ae-lla31-405b--6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "healthcare",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "langgraph_agent",
-        "AGENT_FOUNDATION_MODEL": "gemini-2.0-flash",
-        "RUNTIME_ENV_SELECTION": "AgentEngine",
-        "CLOUD_RUN_URL": "https://agent-runtime-healthcare-langgraph-ae-gem20-f-ae-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "healthcare",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "langgraph_agent",
-        "AGENT_FOUNDATION_MODEL": "gemini-1.5-pro",
-        "RUNTIME_ENV_SELECTION": "AgentEngine",
-        "CLOUD_RUN_URL": "https://agent-runtime-healthcare-langgraph-ae-gem15-p-ae-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "healthcare",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "langgraph_agent",
-        "AGENT_FOUNDATION_MODEL": "llama-3.3-70b-instruct-maas",
-        "RUNTIME_ENV_SELECTION": "AgentEngine",
-        "CLOUD_RUN_URL": "https://agent-runtime-healthcare-langgraph-ae-lla33-70b-a-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "healthcare",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "langgraph_agent",
-        "AGENT_FOUNDATION_MODEL": "llama-3.1-405b-instruct-maas",
-        "RUNTIME_ENV_SELECTION": "AgentEngine",
-        "CLOUD_RUN_URL": "https://agent-runtime-healthcare-langgraph-ae-lla31-405b--6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "healthcare",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "llamaindex_agent",
-        "AGENT_FOUNDATION_MODEL": "gemini-2.0-flash",
-        "RUNTIME_ENV_SELECTION": "AgentEngine",
-        "CLOUD_RUN_URL": "https://agent-runtime-healthcare-llamaindex-gem20-f-ae-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "healthcare",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "llamaindex_agent",
-        "AGENT_FOUNDATION_MODEL": "gemini-1.5-pro",
-        "RUNTIME_ENV_SELECTION": "AgentEngine",
-        "CLOUD_RUN_URL": "https://agent-runtime-healthcare-llamaindex-gem15-p-ae-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "healthcare",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "llamaindex_agent",
-        "AGENT_FOUNDATION_MODEL": "llama-3.3-70b-instruct-maas",
-        "RUNTIME_ENV_SELECTION": "AgentEngine",
-        "CLOUD_RUN_URL": "https://agent-runtime-healthcare-llamaindex-lla33-70b-ae-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "healthcare",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "llamaindex_agent",
-        "AGENT_FOUNDATION_MODEL": "llama-3.1-405b-instruct-maas",
-        "RUNTIME_ENV_SELECTION": "AgentEngine",
-        "CLOUD_RUN_URL": "https://agent-runtime-healthcare-llamaindex-lla31-405b-ae-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "retail",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "langchain_agent",
-        "AGENT_FOUNDATION_MODEL": "gemini-2.0-flash",
-        "RUNTIME_ENV_SELECTION": "AgentEngine",
-        "CLOUD_RUN_URL": "https://agent-runtime-retail-langchain-ae-gem20-f-ae-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "retail",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "langchain_agent",
-        "AGENT_FOUNDATION_MODEL": "gemini-1.5-pro",
-        "RUNTIME_ENV_SELECTION": "AgentEngine",
-        "CLOUD_RUN_URL": "https://agent-runtime-retail-langchain-ae-gem15-p-ae-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "retail",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "langchain_agent",
-        "AGENT_FOUNDATION_MODEL": "llama-3.3-70b-instruct-maas",
-        "RUNTIME_ENV_SELECTION": "AgentEngine",
-        "CLOUD_RUN_URL": "https://agent-runtime-retail-langchain-ae-lla33-70b-ae-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "retail",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "langchain_agent",
-        "AGENT_FOUNDATION_MODEL": "llama-3.1-405b-instruct-maas",
-        "RUNTIME_ENV_SELECTION": "AgentEngine",
-        "CLOUD_RUN_URL": "https://agent-runtime-retail-langchain-ae-lla31-405b-ae-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "retail",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "langgraph_agent",
-        "AGENT_FOUNDATION_MODEL": "gemini-2.0-flash",
-        "RUNTIME_ENV_SELECTION": "AgentEngine",
-        "CLOUD_RUN_URL": "https://agent-runtime-retail-langgraph-ae-gem20-f-ae-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "retail",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "langgraph_agent",
-        "AGENT_FOUNDATION_MODEL": "gemini-1.5-pro",
-        "RUNTIME_ENV_SELECTION": "AgentEngine",
-        "CLOUD_RUN_URL": "https://agent-runtime-retail-langgraph-ae-gem15-p-ae-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "retail",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "langgraph_agent",
-        "AGENT_FOUNDATION_MODEL": "llama-3.3-70b-instruct-maas",
-        "RUNTIME_ENV_SELECTION": "AgentEngine",
-        "CLOUD_RUN_URL": "https://agent-runtime-retail-langgraph-ae-lla33-70b-ae-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "retail",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "langgraph_agent",
-        "AGENT_FOUNDATION_MODEL": "llama-3.1-405b-instruct-maas",
-        "RUNTIME_ENV_SELECTION": "AgentEngine",
-        "CLOUD_RUN_URL": "https://agent-runtime-retail-langgraph-ae-lla31-405b-ae-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "retail",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "llamaindex_agent",
-        "AGENT_FOUNDATION_MODEL": "gemini-2.0-flash",
-        "RUNTIME_ENV_SELECTION": "AgentEngine",
-        "CLOUD_RUN_URL": "https://agent-runtime-retail-llamaindex-gem20-f-ae-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "retail",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "llamaindex_agent",
-        "AGENT_FOUNDATION_MODEL": "gemini-1.5-pro",
-        "RUNTIME_ENV_SELECTION": "AgentEngine",
-        "CLOUD_RUN_URL": "https://agent-runtime-retail-llamaindex-gem15-p-ae-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "retail",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "llamaindex_agent",
-        "AGENT_FOUNDATION_MODEL": "llama-3.3-70b-instruct-maas",
-        "RUNTIME_ENV_SELECTION": "AgentEngine",
-        "CLOUD_RUN_URL": "https://agent-runtime-retail-llamaindex-lla33-70b-ae-6ftym2xfea-uc.a.run.app"
-    },
-    {
-        "AGENT_INDUSTRY_TYPE": "retail",
-        "AGENT_ORCHESTRATION_FRAMEWORK": "llamaindex_agent",
-        "AGENT_FOUNDATION_MODEL": "llama-3.1-405b-instruct-maas",
-        "RUNTIME_ENV_SELECTION": "AgentEngine",
-        "CLOUD_RUN_URL": "https://agent-runtime-retail-llamaindex-lla31-405b-ae-6ftym2xfea-uc.a.run.app"
-    }
+ {
+   "AGENT_INDUSTRY_TYPE": "finance",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "langchain_agent",
+   "AGENT_FOUNDATION_MODEL": "gemini-2.5-pro",
+   "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
+   "CLOUD_RUN_URL": "https://agent-runtime-finance-langchain-pre-gem25-p-fasta-6ftym2xfea-uc.a.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "finance",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "langchain_agent",
+   "AGENT_FOUNDATION_MODEL": "gemini-2.5-flash",
+   "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
+   "CLOUD_RUN_URL": "https://agent-runtime-finance-langchain-pre-gem25-f-fasta-6ftym2xfea-uc.a.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "finance",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "langchain_agent",
+   "AGENT_FOUNDATION_MODEL": "gemini-2.5-flash-lite",
+   "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
+   "CLOUD_RUN_URL": "https://agent-runtime-finance-langchain-pre-gem25-f-l-fas-6ftym2xfea-uc.a.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "finance",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "langchain_agent",
+   "AGENT_FOUNDATION_MODEL": "gemini-2.0-flash",
+   "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
+   "CLOUD_RUN_URL": "https://agent-runtime-finance-langchain-pre-gem20-f-fasta-6ftym2xfea-uc.a.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "finance",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "langchain_agent",
+   "AGENT_FOUNDATION_MODEL": "claude-3-7-sonnet",
+   "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
+   "CLOUD_RUN_URL": "https://agent-runtime-finance-langchain-pre-cla37-so-fast-6ftym2xfea-uc.a.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "finance",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "langchain_agent",
+   "AGENT_FOUNDATION_MODEL": "claude-3-5-sonnet-v2",
+   "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
+   "CLOUD_RUN_URL": "https://agent-runtime-finance-langchain-pre-cla35-so-v2-f-6ftym2xfea-uc.a.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "finance",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "langgraph_agent",
+   "AGENT_FOUNDATION_MODEL": "gemini-2.5-pro",
+   "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
+   "CLOUD_RUN_URL": "https://agent-runtime-finance-langgraph-pre-gem25-p-fasta-6ftym2xfea-uc.a.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "finance",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "langgraph_agent",
+   "AGENT_FOUNDATION_MODEL": "gemini-2.5-flash",
+   "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
+   "CLOUD_RUN_URL": "https://agent-runtime-finance-langgraph-pre-gem25-f-fasta-6ftym2xfea-uc.a.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "finance",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "langgraph_agent",
+   "AGENT_FOUNDATION_MODEL": "gemini-2.5-flash-lite",
+   "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
+   "CLOUD_RUN_URL": "https://agent-runtime-finance-langgraph-pre-gem25-f-l-fas-6ftym2xfea-uc.a.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "finance",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "langgraph_agent",
+   "AGENT_FOUNDATION_MODEL": "gemini-2.0-flash",
+   "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
+   "CLOUD_RUN_URL": "https://agent-runtime-finance-langgraph-pre-gem20-f-fasta-6ftym2xfea-uc.a.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "finance",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "langgraph_agent",
+   "AGENT_FOUNDATION_MODEL": "claude-3-7-sonnet",
+   "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
+   "CLOUD_RUN_URL": "https://agent-runtime-finance-langgraph-pre-cla37-so-fast-6ftym2xfea-uc.a.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "finance",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "langgraph_agent",
+   "AGENT_FOUNDATION_MODEL": "claude-3-5-sonnet-v2",
+   "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
+   "CLOUD_RUN_URL": "https://agent-runtime-finance-langgraph-pre-cla35-so-v2-f-6ftym2xfea-uc.a.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "finance",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "llamaindex_agent",
+   "AGENT_FOUNDATION_MODEL": "gemini-2.5-pro",
+   "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
+   "CLOUD_RUN_URL": "https://agent-runtime-finance-llamaindex-gem25-p-fastapi-599247973214.us-central1.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "finance",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "llamaindex_agent",
+   "AGENT_FOUNDATION_MODEL": "gemini-2.5-flash",
+   "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
+   "CLOUD_RUN_URL": "https://agent-runtime-finance-llamaindex-gem25-f-fastapi-599247973214.us-central1.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "finance",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "llamaindex_agent",
+   "AGENT_FOUNDATION_MODEL": "gemini-2.5-flash-lite",
+   "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
+   "CLOUD_RUN_URL": "https://agent-runtime-finance-llamaindex-gem25-f-l-fastapi-599247973214.us-central1.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "finance",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "llamaindex_agent",
+   "AGENT_FOUNDATION_MODEL": "gemini-2.0-flash",
+   "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
+   "CLOUD_RUN_URL": "https://agent-runtime-finance-llamaindex-gem20-f-fastapi-599247973214.us-central1.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "finance",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "llamaindex_agent",
+   "AGENT_FOUNDATION_MODEL": "claude-3-7-sonnet",
+   "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
+   "CLOUD_RUN_URL": "https://agent-runtime-finance-llamaindex-cla37-so-fastapi-599247973214.us-central1.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "finance",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "llamaindex_agent",
+   "AGENT_FOUNDATION_MODEL": "claude-3-5-sonnet-v2",
+   "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
+   "CLOUD_RUN_URL": "https://agent-runtime-finance-llamaindex-cla35-so-v2-fast-6ftym2xfea-uc.a.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "healthcare",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "langchain_agent",
+   "AGENT_FOUNDATION_MODEL": "gemini-2.5-pro",
+   "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
+   "CLOUD_RUN_URL": "https://agent-runtime-healthcare-langchain-pre-gem25-p-fa-6ftym2xfea-uc.a.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "healthcare",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "langchain_agent",
+   "AGENT_FOUNDATION_MODEL": "gemini-2.5-flash",
+   "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
+   "CLOUD_RUN_URL": "https://agent-runtime-healthcare-langchain-pre-gem25-f-fa-6ftym2xfea-uc.a.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "healthcare",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "langchain_agent",
+   "AGENT_FOUNDATION_MODEL": "gemini-2.5-flash-lite",
+   "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
+   "CLOUD_RUN_URL": "https://agent-runtime-healthcare-langchain-pre-gem25-f-l--6ftym2xfea-uc.a.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "healthcare",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "langchain_agent",
+   "AGENT_FOUNDATION_MODEL": "gemini-2.0-flash",
+   "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
+   "CLOUD_RUN_URL": "https://agent-runtime-healthcare-langchain-pre-gem20-f-fa-6ftym2xfea-uc.a.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "healthcare",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "langchain_agent",
+   "AGENT_FOUNDATION_MODEL": "claude-3-7-sonnet",
+   "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
+   "CLOUD_RUN_URL": "https://agent-runtime-healthcare-langchain-pre-cla37-so-f-6ftym2xfea-uc.a.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "healthcare",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "langchain_agent",
+   "AGENT_FOUNDATION_MODEL": "claude-3-5-sonnet-v2",
+   "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
+   "CLOUD_RUN_URL": "https://agent-runtime-healthcare-langchain-pre-cla35-so-v-6ftym2xfea-uc.a.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "healthcare",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "langgraph_agent",
+   "AGENT_FOUNDATION_MODEL": "gemini-2.5-pro",
+   "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
+   "CLOUD_RUN_URL": "https://agent-runtime-healthcare-langgraph-pre-gem25-p-fa-6ftym2xfea-uc.a.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "healthcare",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "langgraph_agent",
+   "AGENT_FOUNDATION_MODEL": "gemini-2.5-flash",
+   "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
+   "CLOUD_RUN_URL": "https://agent-runtime-healthcare-langgraph-pre-gem25-f-fa-6ftym2xfea-uc.a.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "healthcare",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "langgraph_agent",
+   "AGENT_FOUNDATION_MODEL": "gemini-2.5-flash-lite",
+   "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
+   "CLOUD_RUN_URL": "https://agent-runtime-healthcare-langgraph-pre-gem25-f-l--6ftym2xfea-uc.a.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "healthcare",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "langgraph_agent",
+   "AGENT_FOUNDATION_MODEL": "gemini-2.0-flash",
+   "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
+   "CLOUD_RUN_URL": "https://agent-runtime-healthcare-langgraph-pre-gem20-f-fa-6ftym2xfea-uc.a.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "healthcare",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "langgraph_agent",
+   "AGENT_FOUNDATION_MODEL": "claude-3-7-sonnet",
+   "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
+   "CLOUD_RUN_URL": "https://agent-runtime-healthcare-langgraph-pre-cla37-so-f-6ftym2xfea-uc.a.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "healthcare",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "langgraph_agent",
+   "AGENT_FOUNDATION_MODEL": "claude-3-5-sonnet-v2",
+   "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
+   "CLOUD_RUN_URL": "https://agent-runtime-healthcare-langgraph-pre-cla35-so-v-6ftym2xfea-uc.a.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "healthcare",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "llamaindex_agent",
+   "AGENT_FOUNDATION_MODEL": "gemini-2.5-pro",
+   "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
+   "CLOUD_RUN_URL": "https://agent-runtime-healthcare-llamaindex-gem25-p-fasta-6ftym2xfea-uc.a.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "healthcare",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "llamaindex_agent",
+   "AGENT_FOUNDATION_MODEL": "gemini-2.5-flash",
+   "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
+   "CLOUD_RUN_URL": "https://agent-runtime-healthcare-llamaindex-gem25-f-fasta-6ftym2xfea-uc.a.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "healthcare",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "llamaindex_agent",
+   "AGENT_FOUNDATION_MODEL": "gemini-2.5-flash-lite",
+   "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
+   "CLOUD_RUN_URL": "https://agent-runtime-healthcare-llamaindex-gem25-f-l-fas-6ftym2xfea-uc.a.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "healthcare",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "llamaindex_agent",
+   "AGENT_FOUNDATION_MODEL": "gemini-2.0-flash",
+   "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
+   "CLOUD_RUN_URL": "https://agent-runtime-healthcare-llamaindex-gem20-f-fasta-6ftym2xfea-uc.a.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "healthcare",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "llamaindex_agent",
+   "AGENT_FOUNDATION_MODEL": "claude-3-7-sonnet",
+   "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
+   "CLOUD_RUN_URL": "https://agent-runtime-healthcare-llamaindex-cla37-so-fast-6ftym2xfea-uc.a.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "healthcare",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "llamaindex_agent",
+   "AGENT_FOUNDATION_MODEL": "claude-3-5-sonnet-v2",
+   "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
+   "CLOUD_RUN_URL": "https://agent-runtime-healthcare-llamaindex-cla35-so-v2-f-6ftym2xfea-uc.a.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "retail",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "langchain_agent",
+   "AGENT_FOUNDATION_MODEL": "gemini-2.5-pro",
+   "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
+   "CLOUD_RUN_URL": "https://agent-runtime-retail-langchain-pre-gem25-p-fastapi-599247973214.us-central1.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "retail",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "langchain_agent",
+   "AGENT_FOUNDATION_MODEL": "gemini-2.5-flash",
+   "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
+   "CLOUD_RUN_URL": "https://agent-runtime-retail-langchain-pre-gem25-f-fastapi-599247973214.us-central1.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "retail",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "langchain_agent",
+   "AGENT_FOUNDATION_MODEL": "gemini-2.5-flash-lite",
+   "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
+   "CLOUD_RUN_URL": "https://agent-runtime-retail-langchain-pre-gem25-f-l-fast-6ftym2xfea-uc.a.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "retail",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "langchain_agent",
+   "AGENT_FOUNDATION_MODEL": "gemini-2.0-flash",
+   "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
+   "CLOUD_RUN_URL": "https://agent-runtime-retail-langchain-pre-gem20-f-fastapi-599247973214.us-central1.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "retail",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "langchain_agent",
+   "AGENT_FOUNDATION_MODEL": "claude-3-7-sonnet",
+   "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
+   "CLOUD_RUN_URL": "https://agent-runtime-retail-langchain-pre-cla37-so-fasta-6ftym2xfea-uc.a.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "retail",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "langchain_agent",
+   "AGENT_FOUNDATION_MODEL": "claude-3-5-sonnet-v2",
+   "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
+   "CLOUD_RUN_URL": "https://agent-runtime-retail-langchain-pre-cla35-so-v2-fa-6ftym2xfea-uc.a.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "retail",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "langgraph_agent",
+   "AGENT_FOUNDATION_MODEL": "gemini-2.5-pro",
+   "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
+   "CLOUD_RUN_URL": "https://agent-runtime-retail-langgraph-pre-gem25-p-fastapi-599247973214.us-central1.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "retail",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "langgraph_agent",
+   "AGENT_FOUNDATION_MODEL": "gemini-2.5-flash",
+   "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
+   "CLOUD_RUN_URL": "https://agent-runtime-retail-langgraph-pre-gem25-f-fastapi-599247973214.us-central1.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "retail",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "langgraph_agent",
+   "AGENT_FOUNDATION_MODEL": "gemini-2.5-flash-lite",
+   "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
+   "CLOUD_RUN_URL": "https://agent-runtime-retail-langgraph-pre-gem25-f-l-fast-6ftym2xfea-uc.a.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "retail",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "langgraph_agent",
+   "AGENT_FOUNDATION_MODEL": "gemini-2.0-flash",
+   "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
+   "CLOUD_RUN_URL": "https://agent-runtime-retail-langgraph-pre-gem20-f-fastapi-599247973214.us-central1.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "retail",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "langgraph_agent",
+   "AGENT_FOUNDATION_MODEL": "claude-3-7-sonnet",
+   "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
+   "CLOUD_RUN_URL": "https://agent-runtime-retail-langgraph-pre-cla37-so-fasta-6ftym2xfea-uc.a.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "retail",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "langgraph_agent",
+   "AGENT_FOUNDATION_MODEL": "claude-3-5-sonnet-v2",
+   "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
+   "CLOUD_RUN_URL": "https://agent-runtime-retail-langgraph-pre-cla35-so-v2-fa-6ftym2xfea-uc.a.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "retail",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "llamaindex_agent",
+   "AGENT_FOUNDATION_MODEL": "gemini-2.5-pro",
+   "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
+   "CLOUD_RUN_URL": "https://agent-runtime-retail-llamaindex-gem25-p-fastapi-599247973214.us-central1.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "retail",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "llamaindex_agent",
+   "AGENT_FOUNDATION_MODEL": "gemini-2.5-flash",
+   "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
+   "CLOUD_RUN_URL": "https://agent-runtime-retail-llamaindex-gem25-f-fastapi-599247973214.us-central1.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "retail",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "llamaindex_agent",
+   "AGENT_FOUNDATION_MODEL": "gemini-2.5-flash-lite",
+   "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
+   "CLOUD_RUN_URL": "https://agent-runtime-retail-llamaindex-gem25-f-l-fastapi-599247973214.us-central1.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "retail",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "llamaindex_agent",
+   "AGENT_FOUNDATION_MODEL": "gemini-2.0-flash",
+   "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
+   "CLOUD_RUN_URL": "https://agent-runtime-retail-llamaindex-gem20-f-fastapi-599247973214.us-central1.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "retail",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "llamaindex_agent",
+   "AGENT_FOUNDATION_MODEL": "claude-3-7-sonnet",
+   "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
+   "CLOUD_RUN_URL": "https://agent-runtime-retail-llamaindex-cla37-so-fastapi-599247973214.us-central1.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "retail",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "llamaindex_agent",
+   "AGENT_FOUNDATION_MODEL": "claude-3-5-sonnet-v2",
+   "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
+   "CLOUD_RUN_URL": "https://agent-runtime-retail-llamaindex-cla35-so-v2-fasta-6ftym2xfea-uc.a.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "finance",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "langchain_agent",
+   "AGENT_FOUNDATION_MODEL": "gemini-2.5-pro",
+   "RUNTIME_ENV_SELECTION": "AgentEngine",
+   "CLOUD_RUN_URL": "https://agent-runtime-finance-langchain-ae-gem25-p-ae-599247973214.us-central1.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "finance",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "langchain_agent",
+   "AGENT_FOUNDATION_MODEL": "gemini-2.5-flash",
+   "RUNTIME_ENV_SELECTION": "AgentEngine",
+   "CLOUD_RUN_URL": "https://agent-runtime-finance-langchain-ae-gem25-f-ae-599247973214.us-central1.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "finance",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "langchain_agent",
+   "AGENT_FOUNDATION_MODEL": "gemini-2.5-flash-lite",
+   "RUNTIME_ENV_SELECTION": "AgentEngine",
+   "CLOUD_RUN_URL": "https://agent-runtime-finance-langchain-ae-gem25-f-l-ae-599247973214.us-central1.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "finance",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "langchain_agent",
+   "AGENT_FOUNDATION_MODEL": "gemini-2.0-flash",
+   "RUNTIME_ENV_SELECTION": "AgentEngine",
+   "CLOUD_RUN_URL": "https://agent-runtime-finance-langchain-ae-gem20-f-ae-599247973214.us-central1.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "finance",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "langgraph_agent",
+   "AGENT_FOUNDATION_MODEL": "gemini-2.5-pro",
+   "RUNTIME_ENV_SELECTION": "AgentEngine",
+   "CLOUD_RUN_URL": "https://agent-runtime-finance-langgraph-ae-gem25-p-ae-599247973214.us-central1.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "finance",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "langgraph_agent",
+   "AGENT_FOUNDATION_MODEL": "gemini-2.5-flash",
+   "RUNTIME_ENV_SELECTION": "AgentEngine",
+   "CLOUD_RUN_URL": "https://agent-runtime-finance-langgraph-ae-gem25-f-ae-599247973214.us-central1.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "finance",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "langgraph_agent",
+   "AGENT_FOUNDATION_MODEL": "gemini-2.5-flash-lite",
+   "RUNTIME_ENV_SELECTION": "AgentEngine",
+   "CLOUD_RUN_URL": "https://agent-runtime-finance-langgraph-ae-gem25-f-l-ae-599247973214.us-central1.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "finance",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "langgraph_agent",
+   "AGENT_FOUNDATION_MODEL": "gemini-2.0-flash",
+   "RUNTIME_ENV_SELECTION": "AgentEngine",
+   "CLOUD_RUN_URL": "https://agent-runtime-finance-langgraph-ae-gem20-f-ae-599247973214.us-central1.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "healthcare",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "langchain_agent",
+   "AGENT_FOUNDATION_MODEL": "gemini-2.5-pro",
+   "RUNTIME_ENV_SELECTION": "AgentEngine",
+   "CLOUD_RUN_URL": "https://agent-runtime-healthcare-langchain-ae-gem25-p-ae-599247973214.us-central1.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "healthcare",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "langchain_agent",
+   "AGENT_FOUNDATION_MODEL": "gemini-2.5-flash",
+   "RUNTIME_ENV_SELECTION": "AgentEngine",
+   "CLOUD_RUN_URL": "https://agent-runtime-healthcare-langchain-ae-gem25-f-ae-599247973214.us-central1.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "healthcare",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "langchain_agent",
+   "AGENT_FOUNDATION_MODEL": "gemini-2.5-flash-lite",
+   "RUNTIME_ENV_SELECTION": "AgentEngine",
+   "CLOUD_RUN_URL": "https://agent-runtime-healthcare-langchain-ae-gem25-f-l-ae-599247973214.us-central1.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "healthcare",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "langchain_agent",
+   "AGENT_FOUNDATION_MODEL": "gemini-2.0-flash",
+   "RUNTIME_ENV_SELECTION": "AgentEngine",
+   "CLOUD_RUN_URL": "https://agent-runtime-healthcare-langchain-ae-gem20-f-ae-599247973214.us-central1.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "healthcare",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "langgraph_agent",
+   "AGENT_FOUNDATION_MODEL": "gemini-2.5-pro",
+   "RUNTIME_ENV_SELECTION": "AgentEngine",
+   "CLOUD_RUN_URL": "https://agent-runtime-healthcare-langgraph-ae-gem25-p-ae-599247973214.us-central1.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "healthcare",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "langgraph_agent",
+   "AGENT_FOUNDATION_MODEL": "gemini-2.5-flash",
+   "RUNTIME_ENV_SELECTION": "AgentEngine",
+   "CLOUD_RUN_URL": "https://agent-runtime-healthcare-langgraph-ae-gem25-f-ae-599247973214.us-central1.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "healthcare",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "langgraph_agent",
+   "AGENT_FOUNDATION_MODEL": "gemini-2.5-flash-lite",
+   "RUNTIME_ENV_SELECTION": "AgentEngine",
+   "CLOUD_RUN_URL": "https://agent-runtime-healthcare-langgraph-ae-gem25-f-l-ae-599247973214.us-central1.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "healthcare",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "langgraph_agent",
+   "AGENT_FOUNDATION_MODEL": "gemini-2.0-flash",
+   "RUNTIME_ENV_SELECTION": "AgentEngine",
+   "CLOUD_RUN_URL": "https://agent-runtime-healthcare-langgraph-ae-gem20-f-ae-599247973214.us-central1.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "retail",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "langchain_agent",
+   "AGENT_FOUNDATION_MODEL": "gemini-2.5-pro",
+   "RUNTIME_ENV_SELECTION": "AgentEngine",
+   "CLOUD_RUN_URL": "https://agent-runtime-retail-langchain-ae-gem25-p-ae-599247973214.us-central1.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "retail",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "langchain_agent",
+   "AGENT_FOUNDATION_MODEL": "gemini-2.5-flash",
+   "RUNTIME_ENV_SELECTION": "AgentEngine",
+   "CLOUD_RUN_URL": "https://agent-runtime-retail-langchain-ae-gem25-f-ae-599247973214.us-central1.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "retail",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "langchain_agent",
+   "AGENT_FOUNDATION_MODEL": "gemini-2.5-flash-lite",
+   "RUNTIME_ENV_SELECTION": "AgentEngine",
+   "CLOUD_RUN_URL": "https://agent-runtime-retail-langchain-ae-gem25-f-l-ae-599247973214.us-central1.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "retail",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "langchain_agent",
+   "AGENT_FOUNDATION_MODEL": "gemini-2.0-flash",
+   "RUNTIME_ENV_SELECTION": "AgentEngine",
+   "CLOUD_RUN_URL": "https://agent-runtime-retail-langchain-ae-gem20-f-ae-599247973214.us-central1.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "retail",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "langgraph_agent",
+   "AGENT_FOUNDATION_MODEL": "gemini-2.5-pro",
+   "RUNTIME_ENV_SELECTION": "AgentEngine",
+   "CLOUD_RUN_URL": "https://agent-runtime-retail-langgraph-ae-gem25-p-ae-599247973214.us-central1.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "retail",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "langgraph_agent",
+   "AGENT_FOUNDATION_MODEL": "gemini-2.5-flash",
+   "RUNTIME_ENV_SELECTION": "AgentEngine",
+   "CLOUD_RUN_URL": "https://agent-runtime-retail-langgraph-ae-gem25-f-ae-599247973214.us-central1.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "retail",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "langgraph_agent",
+   "AGENT_FOUNDATION_MODEL": "gemini-2.5-flash-lite",
+   "RUNTIME_ENV_SELECTION": "AgentEngine",
+   "CLOUD_RUN_URL": "https://agent-runtime-retail-langgraph-ae-gem25-f-l-ae-599247973214.us-central1.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "retail",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "langgraph_agent",
+   "AGENT_FOUNDATION_MODEL": "gemini-2.0-flash",
+   "RUNTIME_ENV_SELECTION": "AgentEngine",
+   "CLOUD_RUN_URL": "https://agent-runtime-retail-langgraph-ae-gem20-f-ae-599247973214.us-central1.run.app"
+ }
 ]

@@ -21,7 +21,7 @@ export class ConfigureBotComponent implements OnInit, AfterViewInit {
   selectedRuntime: Runtime = 'AgentEngine';
   selectedFramework: Framework = 'langchain_agent';
   selectedIndustry: Industry = 'finance';
-  selectedModel: Model = 'gemini-1.5-pro';
+  selectedModel: Model = 'gemini-2.5-pro';
   @ViewChild('viewCode', { static: true })
   viewCode: TemplateRef<{}>;
   viewCodeDialogRef?: MatDialogRef<{}>;
@@ -305,7 +305,7 @@ export class ConfigureBotComponent implements OnInit, AfterViewInit {
           isDisabled: false,
           onClick: () => this.selectFramework('langchain_agent'), 
           subtitle: 'LangChain is a popular open-source framework offering a comprehensive "toolbox" for building sophisticated applications powered by LLMs. It provides a wide array of components and integrations to handle everything from prompts to memory.',
-          caption: 'from langchain_google_vertexai import VertexAI\nfrom langchain.agents import AgentExecutor, create_react_agent\n\n# Initialize the LLM\n\nllm = VertexAI(model_name="gemini-1.5-pro", temperature=0)\n\n# Load tools\ntools = ...\n\n# Initialize the agent\nreact_agent = create_react_agent(\n\tllm=llm,\n\ttools=tools,\n)\nagent_executor = AgentExecutor(\n\tagent=react_agent,\n\ttools=tools,\n\tverbose=True\n)\n\n# Run the agent\nresponse = agent_executor.invoke("What is the current weather in San Francisco?")\nprint(response)',
+          caption: 'from langchain_google_vertexai import VertexAI\nfrom langchain.agents import AgentExecutor, create_react_agent\n\n# Initialize the LLM\n\nllm = VertexAI(model_name="gemini-2.5-pro", temperature=0)\n\n# Load tools\ntools = ...\n\n# Initialize the agent\nreact_agent = create_react_agent(\n\tllm=llm,\n\ttools=tools,\n)\nagent_executor = AgentExecutor(\n\tagent=react_agent,\n\ttools=tools,\n\tverbose=True\n)\n\n# Run the agent\nresponse = agent_executor.invoke("What is the current weather in San Francisco?")\nprint(response)',
           metadata: {
             prosHeading: "Pros: ",
             prosSubheading: "Highly flexible and customizable for diverse LLM applications, supports a vast ecosystem of tools and models, and benefits from a large, active community.",
@@ -319,7 +319,7 @@ export class ConfigureBotComponent implements OnInit, AfterViewInit {
           isDisabled: false,
           onClick: () => this.selectFramework('langgraph_agent'), 
           subtitle: 'LangGraph, building on LangChain, is designed for creating complex, stateful applications involving multiple interacting components (called "actors") using a graph-based structure. It excels at managing intricate, multi-step workflows common in advanced AI agents and dialogue systems.',
-          caption: 'from langgraph.graph import StateGraph, END\nfrom langchain_core.runnables import chain\nfrom langchain_google_vertexai import VertexAI\nfrom langchain_core.prompts import PromptTemplate\nfrom langchain_core.tools import tool\nfrom typing import TypedDict, List, Dict\nimport json\n\n# Define state\nclass AgentState(TypedDict):\n\tmessages: List[Dict]\n\tsteps: List[Dict]\n\n# Define tools (can be more sophisticated, like database connections)\n@tool\ndef get_current_weather(location: str) -> str:\n\t"""Useful to get the current weather in a given location"""\n\t# Simplified weather retrieval (replace with real API call)\n\treturn f"The weather in {location} is sunny with 25 degrees Celsius."\n\ntools = [get_current_weather]\n\n# Define LLM agent logic\ndef agent_logic(state: AgentState):\n\tllm = VertexAI(model_name="gemini-1.5-pro", temperature=0)\n\tprompt = PromptTemplate.from_template(\n\t\t"""You are a helpful assistant. Use the available tools to answer questions.\n\t\tAvailable tools: {tool_descriptions}\n\t\tQuestion: {question}"""\n\t)\n\n\ttool_names = [tool.name for tool in tools]\n\ttool_descriptions = \"\\n\".join([f"{tool.name}: {tool.description}" for tool in tools])\n\n\tprompt = prompt.partial(tool_names=", ".join(tool_names), tool_descriptions=tool_descriptions)\n\tchain = prompt | llm.bind_tools(tools)\n\t# Parse LLM response (simplified, assumes JSON output)\n\tresponse = chain.invoke({"question": state["messages"][-1]["content"]})\n\ttry:\n\t\tparsed_response = json.loads(response) # assumes a structured result\n\texcept:\n\t\tparsed_response = {"answer": response} # assumes a plain text result\n\treturn parsed_response\n\n# Define graph nodes\ndef agent_node(state: AgentState):\n\treturn agent_logic(state)\n\ndef should_continue(state: AgentState):\n\t# Logic to decide if the agent should continue (e.g., if it has enough info)\n\tif "answer" in state["steps"][-1]: # simplest possible logic: if last step has an answer\n\t\treturn "end" # Stop iterating\n\treturn "agent" # Continue iterating\n\n# Build the graph\ngraph_builder = StateGraph(AgentState)\ngraph_builder.add_node("agent", agent_node)\ngraph_builder.add_conditional_edges(\n\t"agent",\n\tshould_continue,\n\t{\n\t\t "end": END,\n\t\t"agent": "agent",\n\t},\n)\ngraph_builder.set_entry_point("agent")\ngraph = graph_builder.compile()\n\n# Run the graph\ninitial_state = {"messages": [{"content": "What is the weather in London?"}], "steps": []}\nfor output in graph.stream(initial_state):\n\tprint(output)',
+          caption: 'from langgraph.graph import StateGraph, END\nfrom langchain_core.runnables import chain\nfrom langchain_google_vertexai import VertexAI\nfrom langchain_core.prompts import PromptTemplate\nfrom langchain_core.tools import tool\nfrom typing import TypedDict, List, Dict\nimport json\n\n# Define state\nclass AgentState(TypedDict):\n\tmessages: List[Dict]\n\tsteps: List[Dict]\n\n# Define tools (can be more sophisticated, like database connections)\n@tool\ndef get_current_weather(location: str) -> str:\n\t"""Useful to get the current weather in a given location"""\n\t# Simplified weather retrieval (replace with real API call)\n\treturn f"The weather in {location} is sunny with 25 degrees Celsius."\n\ntools = [get_current_weather]\n\n# Define LLM agent logic\ndef agent_logic(state: AgentState):\n\tllm = VertexAI(model_name="gemini-2.5-pro", temperature=0)\n\tprompt = PromptTemplate.from_template(\n\t\t"""You are a helpful assistant. Use the available tools to answer questions.\n\t\tAvailable tools: {tool_descriptions}\n\t\tQuestion: {question}"""\n\t)\n\n\ttool_names = [tool.name for tool in tools]\n\ttool_descriptions = \"\\n\".join([f"{tool.name}: {tool.description}" for tool in tools])\n\n\tprompt = prompt.partial(tool_names=", ".join(tool_names), tool_descriptions=tool_descriptions)\n\tchain = prompt | llm.bind_tools(tools)\n\t# Parse LLM response (simplified, assumes JSON output)\n\tresponse = chain.invoke({"question": state["messages"][-1]["content"]})\n\ttry:\n\t\tparsed_response = json.loads(response) # assumes a structured result\n\texcept:\n\t\tparsed_response = {"answer": response} # assumes a plain text result\n\treturn parsed_response\n\n# Define graph nodes\ndef agent_node(state: AgentState):\n\treturn agent_logic(state)\n\ndef should_continue(state: AgentState):\n\t# Logic to decide if the agent should continue (e.g., if it has enough info)\n\tif "answer" in state["steps"][-1]: # simplest possible logic: if last step has an answer\n\t\treturn "end" # Stop iterating\n\treturn "agent" # Continue iterating\n\n# Build the graph\ngraph_builder = StateGraph(AgentState)\ngraph_builder.add_node("agent", agent_node)\ngraph_builder.add_conditional_edges(\n\t"agent",\n\tshould_continue,\n\t{\n\t\t "end": END,\n\t\t"agent": "agent",\n\t},\n)\ngraph_builder.set_entry_point("agent")\ngraph = graph_builder.compile()\n\n# Run the graph\ninitial_state = {"messages": [{"content": "What is the weather in London?"}], "steps": []}\nfor output in graph.stream(initial_state):\n\tprint(output)',
           metadata: {
             prosHeading: "Pros: ",
             prosSubheading: "Provides a structured way to manage complex logic and state across multiple interactions, ideal for sophisticated agents and workflows with decision points.",
@@ -333,7 +333,7 @@ export class ConfigureBotComponent implements OnInit, AfterViewInit {
           isDisabled: false,
           onClick: () => this.selectFramework('llamaindex_agent'),
           subtitle: 'LlamaIndex is a framework specifically designed to connect LLMs to your own data sources (like documents, databases, and websites). It excels at indexing and retrieving this data so LLMs can use it effectively, making it ideal for applications requiring knowledge from specific documents or datasets.',
-          caption: 'from llama_index.agent import ReActAgent\nfrom llama_index.tools import QueryEngineTool, Tool\nfrom llama_index import VectorStoreIndex, SimpleDirectoryReader, ServiceContext\nfrom llama_index.llms import VertexAI\nfrom llama_index.embeddings import VertexAIEmbeddingModel\n\n# Load data (replace with your data loading)\ndocuments = SimpleDirectoryReader("data").load_data() # Assumes a "data" directory exists.\n\n# Configure LLM and embedding model\nllm = VertexAI(model="gemini-1.5-pro", temperature=0) # Replace with "gemini-pro" if needed\n\nembed_model = VertexAIEmbeddingModel(model_name="textembedding-gecko@003") #or a newer model if available\n\nservice_context = ServiceContext.from_defaults(llm=llm, embed_model=embed_model)\n\n# Create a VectorStoreIndex (replace with your data setup)\nindex = VectorStoreIndex.from_documents(documents, service_context=service_context)\n\n# Create a QueryEngineTool (This allows the agent to query the index you made)\nquery_engine = index.as_query_engine()\nquery_engine_tool = QueryEngineTool(\n\tquery_engine=query_engine,\n\tname="document_retriever",\n\tdescription="Useful for retrieving information from documents.",\n)\n\n# Define tools for the agent\ntools = [query_engine_tool]\n\n# Create the agent\nagent = ReActAgent.from_tools(tools=tools, llm=llm, verbose=True)\n\n# Query the agent\nquery = "What information is available on X?"  # Replace X with what you want to ask the document about\nresponse = agent.query(query)\n\nprint(response)',
+          caption: 'from llama_index.agent import ReActAgent\nfrom llama_index.tools import QueryEngineTool, Tool\nfrom llama_index import VectorStoreIndex, SimpleDirectoryReader, ServiceContext\nfrom llama_index.llms import VertexAI\nfrom llama_index.embeddings import VertexAIEmbeddingModel\n\n# Load data (replace with your data loading)\ndocuments = SimpleDirectoryReader("data").load_data() # Assumes a "data" directory exists.\n\n# Configure LLM and embedding model\nllm = VertexAI(model="gemini-2.5-pro", temperature=0) # Replace with "gemini-pro" if needed\n\nembed_model = VertexAIEmbeddingModel(model_name="textembedding-gecko@003") #or a newer model if available\n\nservice_context = ServiceContext.from_defaults(llm=llm, embed_model=embed_model)\n\n# Create a VectorStoreIndex (replace with your data setup)\nindex = VectorStoreIndex.from_documents(documents, service_context=service_context)\n\n# Create a QueryEngineTool (This allows the agent to query the index you made)\nquery_engine = index.as_query_engine()\nquery_engine_tool = QueryEngineTool(\n\tquery_engine=query_engine,\n\tname="document_retriever",\n\tdescription="Useful for retrieving information from documents.",\n)\n\n# Define tools for the agent\ntools = [query_engine_tool]\n\n# Create the agent\nagent = ReActAgent.from_tools(tools=tools, llm=llm, verbose=True)\n\n# Query the agent\nquery = "What information is available on X?"  # Replace X with what you want to ask the document about\nresponse = agent.query(query)\n\nprint(response)',
           metadata: {
             prosHeading: "Pros: ",
             prosSubheading: "Specializes in efficiently connecting LLMs to diverse data sources, offers simplified abstractions for data indexing and querying, and supports various vector databases.",
@@ -386,6 +386,48 @@ export class ConfigureBotComponent implements OnInit, AfterViewInit {
       contentType: 'model',
       subheading: 'AI models are algorithms trained on data to recognize patterns and make predictions or decisions without explicit programming.',
       options: [
+        {
+          label: 'Gemini 2.5 Pro',
+          isSelected: false,
+          isDisabled: false,
+          onClick: () => this.selectModel('gemini-2.5-pro'),
+          subtitle: 'Gemini 2.5 Pro is a powerful, multimodal AI model that brings a breakthrough long-context window. It excels at deeply understanding and reasoning over vast amounts of information, including text, images, audio, and video, up to 1 million tokens. This makes it ideal for complex tasks like analyzing large codebases, summarizing lengthy documents, and processing detailed user histories.',
+          caption: 'import os\nfrom langchain_core.prompts import ChatPromptTemplate\nfrom langchain_core.output_parsers import StrOutputParser\nfrom langchain_google_vertexai import ChatVertexAI\n\nos.environ[\'GOOGLE_CLOUD_PROJECT\'] = \'your-project-id\'\n\ngemini_pro = ChatVertexAI(\n    model_name=\'gemini-2.5-pro-latest\',\n    temperature=0.7,\n    max_output_tokens=2048, \n    location=\'us-central1\'\n)\n\nprompt = ChatPromptTemplate.from_template(\'Analyze the sentiment of the following customer review: {review}\')\nchain = prompt | gemini_pro | StrOutputParser()\n\ncustomer_review = \'This product is amazing, I love it!\'\nprint(\'Gemini 2.5 Pro Sentiment: \', chain.invoke({\'review\': customer_review}))',
+          metadata: {
+            prosHeading: 'Pros: ',
+            prosSubheading: 'Exceptional long-context understanding, strong reasoning capabilities, multimodal input support, excellent for complex analysis and summarization.',
+            consHeading: 'Cons: ',
+            consSubheading: 'Can be more resource-intensive and potentially slower for simpler tasks compared to \'Flash\' models.',
+          }
+        },
+        {
+          label: 'Gemini 2.5 Flash',
+          isSelected: false,
+          isDisabled: false,
+          onClick: () => this.selectModel('gemini-2.5-flash'),
+          subtitle: 'Gemini 2.5 Flash is a lightweight and highly efficient AI model designed for speed and cost-effectiveness. It\'s optimized for tasks requiring fast responses and high throughput, such as real-time chat, content summarization, and simple question answering. It still benefits from a large context window, making it a strong contender for many general-purpose applications.',
+          caption: 'import os\nfrom langchain_core.prompts import ChatPromptTemplate\nfrom langchain_core.output_parsers import StrOutputParser\nfrom langchain_google_vertexai import ChatVertexAI\n\nos.environ[\'GOOGLE_CLOUD_PROJECT\'] = \'your-project-id\'\n\ngemini_flash = ChatVertexAI(\n    model_name=\'gemini-2.5-flash-latest\',\n    temperature=0.2,\n    max_output_tokens=1024,\n    location=\'us-central1\'\n)\n\nprompt = ChatPromptTemplate.from_template(\'Translate the following English text to French: {text}\')\nchain = prompt | gemini_flash | StrOutputParser()\n\nenglish_text = \'Hello, how are you?\'\nprint(\'Gemini 2.5 Flash Translation: \', chain.invoke({\'text\': english_text}))',
+          metadata: {
+            prosHeading: 'Pros: ',
+            prosSubheading: 'Fast, cost-efficient, good for high-volume tasks, strong performance with a large context window for its size.',
+            consHeading: 'Cons: ',
+            consSubheading: 'May not match the depth of reasoning or complexity handling of \'Pro\' models for highly intricate tasks.',
+          }
+        },
+        {
+          label: 'Gemini 2.5 Flash Lite',
+          isSelected: false,
+          isDisabled: false,
+          onClick: () => this.selectModel('gemini-2.5-flash-lite'),
+          subtitle: 'Gemini 2.5 Flash Lite is an even more streamlined and cost-optimized version of Gemini Flash. It\'s engineered for extreme efficiency, making it perfect for embedded applications, mobile devices, or scenarios where latency and resource usage are critical. It handles core conversational tasks, simple data extraction, and quick information retrieval with remarkable speed and minimal overhead.',
+          caption: 'import os\nfrom langchain_core.prompts import ChatPromptTemplate\nfrom langchain_core.output_parsers import StrOutputParser\nfrom langchain_google_vertexai import ChatVertexAI\n\nos.environ[\'GOOGLE_CLOUD_PROJECT\'] = \'your-project-id\'\n\ngemini_flash_lite = ChatVertexAI(\n    model_name=\'gemini-2.5-flash-lite\',\n    temperature=0.1,\n    max_output_tokens=512,\n    location=\'us-central1\'\n)\n\nprompt = ChatPromptTemplate.from_template(\'Extract the main subject from this sentence: {sentence}\')\nchain = prompt | gemini_flash_lite | StrOutputParser()\n\nsentence_text = \'The quick brown fox jumps over the lazy dog.\'\nprint(\'Gemini 2.5 Flash Lite Subject: \', chain.invoke({\'sentence\': sentence_text}))',
+          metadata: {
+            prosHeading: 'Pros: ',
+            prosSubheading: 'Extremely fast and low-cost, ideal for resource-constrained environments and high-frequency interactions, efficient for basic tasks.',
+            consHeading: 'Cons: ',
+            consSubheading: 'Limited reasoning complexity and context window compared to Pro and standard Flash models, less suitable for nuanced understanding or complex analysis.',
+          }
+        },
         { 
           label: 'Gemini 2.0 Flash', 
           isSelected: false, 
@@ -400,20 +442,20 @@ export class ConfigureBotComponent implements OnInit, AfterViewInit {
             consSubheading: "Less suitable for highly complex reasoning, deep analysis, or tasks requiring the utmost accuracy on nuanced problems compared to larger, more powerful models.",
           },
         },
-        { 
-          label: 'Gemini 1.5 Pro', 
-          isSelected: false, 
-          isDisabled: false,
-          onClick: () => this.selectModel('gemini-1.5-pro'), 
-          subtitle: 'Gemini 1.5 Pro is a powerful AI model with a massive capacity for understanding long and complex information, making it excellent for deep analysis, generating detailed content, and handling multiple types of data (text, images, etc.). Its ability to process millions of pieces of information at once unlocks advanced reasoning and comprehensive understanding across large datasets.',
-          caption: 'import os\nfrom langchain_core.prompts import ChatPromptTemplate\nfrom langchain_core.output_parsers import StrOutputParser\nfrom langchain_google_vertexai import ChatVertexAI\n\nos.environ["GOOGLE_CLOUD_PROJECT"] = "your-project-id"\n\ngemini_pro = ChatVertexAI(\n\tmodel_name="gemini-1.5-pro-latest",\n\ttemperature=0.7, # Adjust for creativity\n\tmax_output_tokens=1024, # Larger limit for complex tasks\n\tlocation="us-central1"\n)\n\nprompt = ChatPromptTemplate.from_template("Summarize this article: {article}")\nchain = prompt | gemini_pro | StrOutputParser()\n\narticle_text = "A very long article about AI..." # Replace with your article\nprint("Gemini Pro Summary: ", chain.invoke({"article": article_text}))',
-          metadata: {
-            prosHeading: "Pros: ",
-            prosSubheading: "Handles huge amounts of information, strong reasoning for complex tasks, understands multiple data types, remembers past interactions.",
-            consHeading: "Cons: ",
-            consSubheading: "Likely slower and more expensive to run than \"flash\" models, potentially overkill for simple, quick tasks.",
-          },
-        },
+        // { 
+        //   label: 'Gemini 1.5 Pro', 
+        //   isSelected: false, 
+        //   isDisabled: false,
+        //   onClick: () => this.selectModel('gemini-1.5-pro'), 
+        //   subtitle: 'Gemini 1.5 Pro is a powerful AI model with a massive capacity for understanding long and complex information, making it excellent for deep analysis, generating detailed content, and handling multiple types of data (text, images, etc.). Its ability to process millions of pieces of information at once unlocks advanced reasoning and comprehensive understanding across large datasets.',
+        //   caption: 'import os\nfrom langchain_core.prompts import ChatPromptTemplate\nfrom langchain_core.output_parsers import StrOutputParser\nfrom langchain_google_vertexai import ChatVertexAI\n\nos.environ["GOOGLE_CLOUD_PROJECT"] = "your-project-id"\n\ngemini_pro = ChatVertexAI(\n\tmodel_name="gemini-1.5-pro-latest",\n\ttemperature=0.7, # Adjust for creativity\n\tmax_output_tokens=1024, # Larger limit for complex tasks\n\tlocation="us-central1"\n)\n\nprompt = ChatPromptTemplate.from_template("Summarize this article: {article}")\nchain = prompt | gemini_pro | StrOutputParser()\n\narticle_text = "A very long article about AI..." # Replace with your article\nprint("Gemini Pro Summary: ", chain.invoke({"article": article_text}))',
+        //   metadata: {
+        //     prosHeading: "Pros: ",
+        //     prosSubheading: "Handles huge amounts of information, strong reasoning for complex tasks, understands multiple data types, remembers past interactions.",
+        //     consHeading: "Cons: ",
+        //     consSubheading: "Likely slower and more expensive to run than \"flash\" models, potentially overkill for simple, quick tasks.",
+        //   },
+        // },
         { 
           label: 'Claude 3.7 Sonnet (Model Garden)', 
           isSelected: false, 
@@ -525,8 +567,8 @@ export class ConfigureBotComponent implements OnInit, AfterViewInit {
   }
   
   selectRunTime(value: string) {
-
     this.selectedRuntime = value as Runtime;
+    this.updateFrameworkOptions();
   }
 
   selectFramework(value: string) {
@@ -603,6 +645,18 @@ export class ConfigureBotComponent implements OnInit, AfterViewInit {
   openHelpModal() {
     logEvent(this.analytics, `/how_it_works`, {page: "create_bot", step: this.step});
     this.dialog.open(HowItWorksDialogComponent,{ width: '100%',maxWidth:'1200px', data: { url: this.howItWorks, content: this.howItWorksDescription }, });
+  }
+
+  updateFrameworkOptions() {
+    const frameworkStep = this.stepperConfig.find(step => step.heading === 'Orchestration Framework');
+    if (frameworkStep && frameworkStep.options) {
+      frameworkStep.options.forEach(option => {
+        if (option.label === 'LlamaIndex') {
+          // Disable LlamaIndex if Runtime is AgentEngine, otherwise enable it
+          option.isDisabled = this.selectedRuntime === 'AgentEngine';
+        }
+      });
+    }
   }
   
 }

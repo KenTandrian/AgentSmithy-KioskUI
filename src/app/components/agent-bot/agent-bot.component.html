@@ -52,9 +52,11 @@
             <div class="chat-footer-outer">
               <div [ngStyle]="{'opacity':this.isChatDisabled ? '30%' : '100%' }" class="chat-footer">
                 <div class="chat-textarea">
-                  <textarea [(ngModel)]="chatQuery" [disabled]="this.isChatDisabled"
+                  <!-- <textarea [(ngModel)]="chatQuery" [disabled]="this.isChatDisabled"
                     [placeholder]="!this.isChatDisabled ?  'Type your question here, make sure to add context' : ''"
-                    (keydown.enter)="submitMessage($event)"></textarea>
+                    (keydown.enter)="submitMessage($event)"></textarea> -->
+                  <textarea [(ngModel)]="chatQuery" [disabled]="this.isChatDisabled"
+                    [placeholder]="!this.isChatDisabled ?  'Type your question here, make sure to add context' : ''"></textarea>
                 </div>
                 <div class="micIcon">
                   <button mat-icon-button (click)="submitMessage($event)">
