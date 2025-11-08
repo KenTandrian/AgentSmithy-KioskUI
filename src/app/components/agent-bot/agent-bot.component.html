@@ -14,19 +14,24 @@
                     <div class="messageContent">
                       {{message.body}}
                     </div>
-                    <div class="user-circle"><span class="material-symbols-outlined icon">
+                    <!-- <div class="user-circle"><span class="material-symbols-outlined icon">
                       person
                       </span>
-                    </div>
+                    </div> -->
                   </div>
                 </div>
                 <div class="bot-message" *ngIf="message.type == 'bot' && (!message.suggestedQuestion?.length || 0 > 0)"
                   id="{{message.botStartTime}}">
                   <div class="bot-message-wrapping-container">
-                    <div class="bot-message-action">
+                    <!-- <div class="bot-message-action"> -->
                       <!-- <img src="../../../../../assets/images/user-logo.svg" /> -->
-                    </div>
+                    <!-- </div> -->
 
+                    <div class="bot-circle">
+                      <span class="material-symbols-outlined icon">
+                      robot_2
+                      </span>
+                    </div>
                     <div class="bot-message-content">
                       <div clipboard class="variable-binding">{{message.body}}</div>
                       
@@ -38,11 +43,12 @@
                         <div class="action-butons" *ngIf="message.chat_id">
                         </div>
                       </div>
+                      <span class="generating-text" *ngIf="message.responseTime">
+                        Generated in {{message.responseTime}}s
+                      </span>
                     </div>
 
                   </div>
-                  <span class="generating-text" *ngIf="message.responseTime">Generated in
-                    {{message.responseTime}}s</span>
                 </div>
               </ng-container>
 
@@ -55,11 +61,12 @@
                   <!-- <textarea [(ngModel)]="chatQuery" [disabled]="this.isChatDisabled"
                     [placeholder]="!this.isChatDisabled ?  'Type your question here, make sure to add context' : ''"
                     (keydown.enter)="submitMessage($event)"></textarea> -->
-                  <textarea [(ngModel)]="chatQuery" [disabled]="this.isChatDisabled"
-                    [placeholder]="!this.isChatDisabled ?  'Type your question here, make sure to add context' : ''"></textarea>
+                  <textarea #chatTextarea [(ngModel)]="chatQuery" [disabled]="this.isChatDisabled"
+                    [placeholder]="!this.isChatDisabled ?  'Type your question here, make sure to add context' : ''"
+                    (input)="onChatQueryInput()" (keydown.control.enter)="submitMessage($event)"></textarea>
                 </div>
                 <div class="micIcon">
-                  <button mat-icon-button (click)="submitMessage($event)">
+                  <button mat-icon-button [disabled]="isSendIconDisabled" (click)="submitMessage($event)">
                     <mat-icon class="send-icon">send</mat-icon>
                   </button>
                 </div>

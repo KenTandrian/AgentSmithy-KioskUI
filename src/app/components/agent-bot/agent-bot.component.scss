@@ -450,10 +450,10 @@
       display: flex;
       flex-direction: column;
       flex-direction: column-reverse;
-      padding: 20px 5px;
+      padding: 20px 16px;
       padding-bottom: 2%;
       overflow-y: auto;
-      padding-right: 2%;
+      // padding-right: 2%;
       width: 100%;
       scrollbar-width: none;
       border: 1px solid #4A5050;
@@ -466,32 +466,32 @@
         align-items: center;
         color: #767676;
         flex-direction: row;
-        // justify-content: flex-end;
-        word-break: break-word;
+        justify-content: flex-end;
+        // word-break: break-word;
+        overflow-wrap: break-word;
         margin-bottom: 10px;
         margin-top: 10px;
-        width: 60%;
-        margin-left: auto;
+        // margin-left: auto;
   
         .user-message-wrapping-container {
           background-color: #333537;
           color: #FFFFFF;
           border: 1px solid #333537;
           // box-shadow: 0px 4px 15px 0px rgba(195, 209, 226, 0.25);
-          border-radius: 20px 20px 0px 20px;
-          width: 100%;
+          border-radius: 20px;
+          max-width: 88%;
+          // width: 100%;
           display: flex;
           justify-content: space-between;
-          padding: 1.5% 3%;
+          padding: 12px 16px;
           align-items: center;
         
   
           .messageContent {
             font-size: 0.95rem;
             font-family: "Google Sans", sans-serif !important;
-            padding-left: 1%;
-            max-width: 96%;
-  
+            // padding-left: 1%;
+            // max-width: 96%;
           }
         }
       }
@@ -506,27 +506,43 @@
         // color: #FFFFFF;
         flex-direction: row;
         margin-bottom: 10px;
-        width: 60%;
+        // width: 60%;
        
         .bot-message-wrapping-container {
           
           display: flex;
-          border: 1px solid #333537;
+          // border: 1px solid #333537;
           // box-shadow: 0px 4px 16px rgba(140, 140, 156, 0.25);
-          border-radius: 20px 0px 20px 0px;
-          padding: 0.0% 1%;
-          background-color: #333537;
+          // border-radius: 12px 12px 12px 0px;
+          // padding: 0.0% 1%;
+          // background-color: #333537;
           color: #FFFFFF;
+
+          .bot-circle {
+            background-color: #4285F4;
+            display: flex;
+            align-items: center;
+            border-radius: 100%;
+            height: 32px;
+            width: 32px;
+            justify-content: center;
+            aspect-ratio: 1 / 1;
+
+            span {
+              font-size: 20px;
+            }
+          }
   
           .bot-message-content {
-            margin-left: 20px;
-            line-height: 2rem;
+            margin-left: 16px;
+            line-height: 1.75rem;
             font-size: 0.95rem;
             text-wrap: wrap;
             width: 95%;
             word-break: break-word;
             max-width: 100%;
-            margin-top: 12px;
+            // margin-top: 12px;
+            // padding: 8px 12px
           }
   
           .bot-message-action {
@@ -575,7 +591,10 @@
         display: flex;
         border: 1px solid #4A5050;
         background: var(--chat-background);
-  
+
+        &:focus-within {
+          border: 2px solid #4285F4;
+        }
         border-radius: 30px;
         width: 100%;
         // box-shadow: 0px 4px 18px 0px rgba(195, 209, 226, 0.25);
@@ -621,17 +640,14 @@
         }
   
         .micIcon {
-          flex-basis: 75px;
+          // flex-basis: 75px;
           display: flex;
           align-items: center;
           /* justify-content: center; */
-          color: #545454;
-          margin-top: 2px;
-          padding-right: 1%;
-  
-          .send-icon {
-            color: #4f5255;
-          }
+          margin-right: 4px;
+          // padding-right: 1%;
+          --mdc-icon-button-icon-color: #f5f5f5 !important;
+          --mdc-icon-button-disabled-icon-color: #444746 !important;
   
           img {
             max-width: 40%;
@@ -675,8 +691,8 @@
   }
   
   .user-circle {
-    width: 40px;
-    height: 40px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
     overflow: hidden;
     background-color: #131314;
@@ -915,8 +931,10 @@
     background: linear-gradient(92.1deg, #bdd1f3 19.16%, rgba(199, 183, 245, 0.9) 79%, rgba(235, 165, 158, 0.9) 135.24%), linear-gradient(272.04deg, rgba(158, 188, 237, 0.7) 14.93%, rgba(158, 188, 237, 0) 104.51%);
     padding: 4px;
     padding-inline: 2%;
-    border-bottom-left-radius: 13px;
-    border-bottom-right-radius: 13px;
+    // border-bottom-left-radius: 8px;
+    // border-bottom-right-radius: 8px;
+    border-radius: 10px;
+    margin-top: 4px;
     // background: linear-gradient(95.31deg, #9EBCED -1.7%, rgba(164, 136, 245, 0.9) 81.43%, rgba(234, 67, 53, 0.9) 135.5%);
   }
   

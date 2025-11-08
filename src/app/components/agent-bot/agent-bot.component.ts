@@ -1,4 +1,4 @@
-import { Component, EventEmitter, inject, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, inject, OnDestroy, OnInit, Output, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, ReplaySubject } from 'rxjs';
 import { Message, SuggestionData } from '../../models/messegeType.model';
@@ -37,9 +37,10 @@ export class AgentBotComponent implements OnInit, OnDestroy {
 
   agentConfiguration: AgentConfiguration;
   isSuggestedQuestion: string = '';
-  chatQuery: string
+  chatQuery: string;
   chatQuery$: Observable<Message>;
   showLoader: boolean = false;
+  isSendIconDisabled: boolean = true;
   startTimer: boolean = false;
   conversation: Message[] = [];
   leftContainerClass = "";
@@ -94,6 +95,7 @@ export class AgentBotComponent implements OnInit, OnDestroy {
   question1: string;
   question2: string;
   question3: string;
+  @ViewChild('chatTextarea') textarea: ElementRef;
 
   constructor(
     public dialog: MatDialog,
@@ -233,9 +235,11 @@ export class AgentBotComponent implements OnInit, OnDestroy {
 
     this.conversation.unshift(singleMessage);
     this.chatQuery = '';
+    this.isSendIconDisabled = true;
     this.showLoader = true;
     this.setTimeoutForLoaderText();
     this.setCyclicBackgroundImages();
+    this.conversation.unshift({ body: 'Thinking...', type: 'bot', shareable: false });
     this.chatService.postChat([...this.conversation], this.botUrl).subscribe({
       next: (event: HttpEvent<string>) => {
         if (event.type === HttpEventType.DownloadProgress) {
@@ -355,10 +359,14 @@ export class AgentBotComponent implements OnInit, OnDestroy {
         };
     
         this.conversation.unshift(singleMesage);
+        if (this.conversation.length > 1 && this.conversation[1].body === 'Thinking...' && this.conversation[1].type === 'bot') {
+          this.conversation.splice(1, 1);
+        }
         this.setSuggestedQuestionInChat(response, endTime);
         this.showLoader = false;
         this.clearTimeoutForLoaderText();
         this.isSuggestedQuestion = '';
+        this.textarea.nativeElement.focus();
 
     } catch (error) {
         console.error("Error parsing JSON:", error);
@@ -426,6 +434,10 @@ export class AgentBotComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.getJsonData();
+  }
+
+  onChatQueryInput() {
+    this.isSendIconDisabled = !this.chatQuery;
   }
 
   goToExport() {
