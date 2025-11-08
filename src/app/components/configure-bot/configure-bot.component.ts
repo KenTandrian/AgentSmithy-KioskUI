@@ -92,14 +92,14 @@ export class ConfigureBotComponent implements OnInit, AfterViewInit {
     } 
   }
 
-  handleStepZero() {
+  handleStepOne() {
     logEvent(this.analytics, "/create_bot/agent_properties");
     this.howItWorks = './assets/images/agent_properties_diagram.png';
     this.howItWorksDescription = "This demo will walk you through selecting and building each core element of an AI Agent. Here you are setting the Agent Name, Description, and Industry. These properties are used to populate the Instructions for the Agent Reasoning Loop. Your selection of Industry will also correspond to the different datasets and Tools you have available to you later on in this demo experience.";
     this.step = "agent_properties"
   }
 
-  handleStepOne() {
+  handleStepZero() {
     logEvent(this.analytics, "/create_bot/industry");
     this.howItWorks = './assets/images/tools_diagram.png';
     this.howItWorksDescription = "Agent Tools are functions or interfaces that allow an AI agent to interact with and perform actions in the external world, such as accessing data, running code, or calling external APIs.\nHow they work:\n\n • Agents use a language model as a reasoning engine to determine which tools to use and in what sequence. \n • Tools provide the agent with the necessary information and functionality to perform specific tasks. \n • Agents can use tools in a loop, deciding how many times to use them.";
@@ -128,22 +128,6 @@ export class ConfigureBotComponent implements OnInit, AfterViewInit {
   }
 
   stepperConfig = [
-    {
-      heading: 'Agent Properties',
-      stepHeading: 'Properties',
-      contentType: 'form',
-      fields: [
-        { label: 'Agent Name', type: 'input', controlName: 'agentName', placeholder: '', required: true },
-        { label: 'Description', type: 'text', controlName: 'description', placeholder: '', required: true },
-      ],
-      caption:'Welcome to the Agent Bar! To begin, please provide a unique name for your agent, something that reflects its purpose or personality. Then, craft a concise description outlining the agent\'s intended function and how it will assist users. This selection will help tailor the agent\'s capabilities and access relevant data, ensuring it\'s optimally configured for its intended environment.',
-      howItWorks: '',
-      hasNext: true,
-      hasPrevious: false,
-      hasHome: true,
-      hasCode: false,
-      hasBack: true
-    },
     {
       heading: 'Industry',
       stepHeading: 'Industry',
@@ -227,6 +211,22 @@ export class ConfigureBotComponent implements OnInit, AfterViewInit {
           toolSubheading: "",
         },
       },
+      hasNext: true,
+      hasPrevious: false,
+      hasHome: true,
+      hasCode: false,
+      hasBack: true
+    },
+    {
+      heading: 'Agent Properties',
+      stepHeading: 'Properties',
+      contentType: 'form',
+      fields: [
+        { label: 'Agent Name', type: 'input', controlName: 'agentName', placeholder: '', required: true },
+        { label: 'Description', type: 'text', controlName: 'description', placeholder: '', required: true },
+      ],
+      caption:'Welcome to the Agent Bar! To begin, please provide a unique name for your agent, something that reflects its purpose or personality. Then, craft a concise description outlining the agent\'s intended function and how it will assist users. This selection will help tailor the agent\'s capabilities and access relevant data, ensuring it\'s optimally configured for its intended environment.',
+      howItWorks: '',
       hasNext: true,
       hasPrevious: true,
       hasHome: true,
@@ -535,11 +535,11 @@ export class ConfigureBotComponent implements OnInit, AfterViewInit {
     this.formGroup = this._formBuilder.group({
       formArray: this._formBuilder.array([
         this._formBuilder.group({
-          agentName: ['', Validators.required],
-          description: ['', Validators.required],
+          industry: ['', Validators.required]
         }),
         this._formBuilder.group({
-          industry: ['', Validators.required]
+          agentName: ['', Validators.required],
+          description: ['', Validators.required],
         }),
         this._formBuilder.group({
           runTime: ['', Validators.required] // Add validators for radio button groups
@@ -621,11 +621,11 @@ export class ConfigureBotComponent implements OnInit, AfterViewInit {
 
   getFormValues(): AgentConfiguration {
     const formArray = this.formGroup.get('formArray') as FormArray;
-    const firstStepGroup = formArray.at(0) as FormGroup;
+    const secondStepGroup = formArray.at(1) as FormGroup;
 
     return {
-      name: firstStepGroup.get("agentName")!.value,
-      description: firstStepGroup.get("description")!.value,
+      name: secondStepGroup.get("agentName")!.value,
+      description: secondStepGroup.get("description")!.value,
       industry: this.selectedIndustry,
       runTime: this.selectedRuntime,
       framework: this.selectedFramework,

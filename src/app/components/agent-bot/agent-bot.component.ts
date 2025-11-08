@@ -454,8 +454,8 @@ export class AgentBotComponent implements OnInit, OnDestroy {
 
         let agentData = JSON.parse(localStorage.getItem('agentData') || '{}');
         this.selectedAgentData = {
-          agentName: agentData[0].agentName ? agentData[0].agentName : '-',
-          industry: agentData[1].industry ? agentData[1].industry : '-',
+          agentName: agentData[1].agentName ? agentData[1].agentName : '-',
+          industry: agentData[0].industry ? agentData[0].industry : '-',
           runTime: agentData[2].runTime ? agentData[2].runTime : '',
           frameWork: agentData[3].framework ? agentData[3].framework : '-',
           model: agentData[4].model ? agentData[4].model : '-',
