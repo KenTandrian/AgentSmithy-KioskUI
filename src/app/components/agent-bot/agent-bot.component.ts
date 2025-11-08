@@ -464,7 +464,8 @@ export class AgentBotComponent implements OnInit, OnDestroy {
         console.log(agentData);
 
         const runtime = this.selectedAgentData.runTime;
-        const framework = this.selectedAgentData.frameWork;
+        // const framework = this.selectedAgentData.frameWork;
+        const framework = 'langchain_agent';
         const model = this.selectedAgentData.model;
         const industry = this.selectedAgentData.industry;
 

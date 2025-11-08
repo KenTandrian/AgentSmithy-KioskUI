@@ -299,55 +299,55 @@ export class ConfigureBotComponent implements OnInit, AfterViewInit {
       contentType: 'framework',
       subheading: 'An AI orchestration framework manages workflows between AI models, tools, and data to build efficient AI systems.',
       options: [
-        { 
-          label: 'LangChain', 
-          isSelected: false, 
-          isDisabled: false,
-          onClick: () => this.selectFramework('langchain_agent'), 
-          subtitle: 'LangChain is a popular open-source framework offering a comprehensive "toolbox" for building sophisticated applications powered by LLMs. It provides a wide array of components and integrations to handle everything from prompts to memory.',
-          caption: 'from langchain_google_vertexai import VertexAI\nfrom langchain.agents import AgentExecutor, create_react_agent\n\n# Initialize the LLM\n\nllm = VertexAI(model_name="gemini-2.5-pro", temperature=0)\n\n# Load tools\ntools = ...\n\n# Initialize the agent\nreact_agent = create_react_agent(\n\tllm=llm,\n\ttools=tools,\n)\nagent_executor = AgentExecutor(\n\tagent=react_agent,\n\ttools=tools,\n\tverbose=True\n)\n\n# Run the agent\nresponse = agent_executor.invoke("What is the current weather in San Francisco?")\nprint(response)',
-          metadata: {
-            prosHeading: "Pros: ",
-            prosSubheading: "Highly flexible and customizable for diverse LLM applications, supports a vast ecosystem of tools and models, and benefits from a large, active community.",
-            consHeading: "Cons: ",
-            consSubheading: "Can be complex with a steeper learning curve due to its flexibility, may require more manual configuration, and its rapidly evolving nature can mean occasional API changes.",
-          },
-        },
-        { 
-          label: 'LangGraph', 
-          isSelected: false, 
-          isDisabled: false,
-          onClick: () => this.selectFramework('langgraph_agent'), 
-          subtitle: 'LangGraph, building on LangChain, is designed for creating complex, stateful applications involving multiple interacting components (called "actors") using a graph-based structure. It excels at managing intricate, multi-step workflows common in advanced AI agents and dialogue systems.',
-          caption: 'from langgraph.graph import StateGraph, END\nfrom langchain_core.runnables import chain\nfrom langchain_google_vertexai import VertexAI\nfrom langchain_core.prompts import PromptTemplate\nfrom langchain_core.tools import tool\nfrom typing import TypedDict, List, Dict\nimport json\n\n# Define state\nclass AgentState(TypedDict):\n\tmessages: List[Dict]\n\tsteps: List[Dict]\n\n# Define tools (can be more sophisticated, like database connections)\n@tool\ndef get_current_weather(location: str) -> str:\n\t"""Useful to get the current weather in a given location"""\n\t# Simplified weather retrieval (replace with real API call)\n\treturn f"The weather in {location} is sunny with 25 degrees Celsius."\n\ntools = [get_current_weather]\n\n# Define LLM agent logic\ndef agent_logic(state: AgentState):\n\tllm = VertexAI(model_name="gemini-2.5-pro", temperature=0)\n\tprompt = PromptTemplate.from_template(\n\t\t"""You are a helpful assistant. Use the available tools to answer questions.\n\t\tAvailable tools: {tool_descriptions}\n\t\tQuestion: {question}"""\n\t)\n\n\ttool_names = [tool.name for tool in tools]\n\ttool_descriptions = \"\\n\".join([f"{tool.name}: {tool.description}" for tool in tools])\n\n\tprompt = prompt.partial(tool_names=", ".join(tool_names), tool_descriptions=tool_descriptions)\n\tchain = prompt | llm.bind_tools(tools)\n\t# Parse LLM response (simplified, assumes JSON output)\n\tresponse = chain.invoke({"question": state["messages"][-1]["content"]})\n\ttry:\n\t\tparsed_response = json.loads(response) # assumes a structured result\n\texcept:\n\t\tparsed_response = {"answer": response} # assumes a plain text result\n\treturn parsed_response\n\n# Define graph nodes\ndef agent_node(state: AgentState):\n\treturn agent_logic(state)\n\ndef should_continue(state: AgentState):\n\t# Logic to decide if the agent should continue (e.g., if it has enough info)\n\tif "answer" in state["steps"][-1]: # simplest possible logic: if last step has an answer\n\t\treturn "end" # Stop iterating\n\treturn "agent" # Continue iterating\n\n# Build the graph\ngraph_builder = StateGraph(AgentState)\ngraph_builder.add_node("agent", agent_node)\ngraph_builder.add_conditional_edges(\n\t"agent",\n\tshould_continue,\n\t{\n\t\t "end": END,\n\t\t"agent": "agent",\n\t},\n)\ngraph_builder.set_entry_point("agent")\ngraph = graph_builder.compile()\n\n# Run the graph\ninitial_state = {"messages": [{"content": "What is the weather in London?"}], "steps": []}\nfor output in graph.stream(initial_state):\n\tprint(output)',
-          metadata: {
-            prosHeading: "Pros: ",
-            prosSubheading: "Provides a structured way to manage complex logic and state across multiple interactions, ideal for sophisticated agents and workflows with decision points.",
-            consHeading: "Cons: ",
-            consSubheading: "Requires more upfront design effort for the graph structure, can be overly complex for simple tasks, and its state management features add overhead if not strictly needed.",
-          },
-        },
-        { 
-          label: 'LlamaIndex', 
-          isSelected: false, 
-          isDisabled: false,
-          onClick: () => this.selectFramework('llamaindex_agent'),
-          subtitle: 'LlamaIndex is a framework specifically designed to connect LLMs to your own data sources (like documents, databases, and websites). It excels at indexing and retrieving this data so LLMs can use it effectively, making it ideal for applications requiring knowledge from specific documents or datasets.',
-          caption: 'from llama_index.agent import ReActAgent\nfrom llama_index.tools import QueryEngineTool, Tool\nfrom llama_index import VectorStoreIndex, SimpleDirectoryReader, ServiceContext\nfrom llama_index.llms import VertexAI\nfrom llama_index.embeddings import VertexAIEmbeddingModel\n\n# Load data (replace with your data loading)\ndocuments = SimpleDirectoryReader("data").load_data() # Assumes a "data" directory exists.\n\n# Configure LLM and embedding model\nllm = VertexAI(model="gemini-2.5-pro", temperature=0) # Replace with "gemini-pro" if needed\n\nembed_model = VertexAIEmbeddingModel(model_name="textembedding-gecko@003") #or a newer model if available\n\nservice_context = ServiceContext.from_defaults(llm=llm, embed_model=embed_model)\n\n# Create a VectorStoreIndex (replace with your data setup)\nindex = VectorStoreIndex.from_documents(documents, service_context=service_context)\n\n# Create a QueryEngineTool (This allows the agent to query the index you made)\nquery_engine = index.as_query_engine()\nquery_engine_tool = QueryEngineTool(\n\tquery_engine=query_engine,\n\tname="document_retriever",\n\tdescription="Useful for retrieving information from documents.",\n)\n\n# Define tools for the agent\ntools = [query_engine_tool]\n\n# Create the agent\nagent = ReActAgent.from_tools(tools=tools, llm=llm, verbose=True)\n\n# Query the agent\nquery = "What information is available on X?"  # Replace X with what you want to ask the document about\nresponse = agent.query(query)\n\nprint(response)',
-          metadata: {
-            prosHeading: "Pros: ",
-            prosSubheading: "Specializes in efficiently connecting LLMs to diverse data sources, offers simplified abstractions for data indexing and querying, and supports various vector databases.",
-            consHeading: "Cons: ",
-            consSubheading: "Primarily focused on data ingestion and retrieval, offering less comprehensive tooling for broader LLM application development (like agent creation) compared to frameworks like LangChain, and its broad vector database support might mean less specific optimization for each one.",
-          }, 
-        },
+        // { 
+        //   label: 'LangChain', 
+        //   isSelected: false, 
+        //   isDisabled: false,
+        //   onClick: () => this.selectFramework('langchain_agent'), 
+        //   subtitle: 'LangChain is a popular open-source framework offering a comprehensive "toolbox" for building sophisticated applications powered by LLMs. It provides a wide array of components and integrations to handle everything from prompts to memory.',
+        //   caption: 'from langchain_google_vertexai import VertexAI\nfrom langchain.agents import AgentExecutor, create_react_agent\n\n# Initialize the LLM\n\nllm = VertexAI(model_name="gemini-2.5-pro", temperature=0)\n\n# Load tools\ntools = ...\n\n# Initialize the agent\nreact_agent = create_react_agent(\n\tllm=llm,\n\ttools=tools,\n)\nagent_executor = AgentExecutor(\n\tagent=react_agent,\n\ttools=tools,\n\tverbose=True\n)\n\n# Run the agent\nresponse = agent_executor.invoke("What is the current weather in San Francisco?")\nprint(response)',
+        //   metadata: {
+        //     prosHeading: "Pros: ",
+        //     prosSubheading: "Highly flexible and customizable for diverse LLM applications, supports a vast ecosystem of tools and models, and benefits from a large, active community.",
+        //     consHeading: "Cons: ",
+        //     consSubheading: "Can be complex with a steeper learning curve due to its flexibility, may require more manual configuration, and its rapidly evolving nature can mean occasional API changes.",
+        //   },
+        // },
+        // { 
+        //   label: 'LangGraph', 
+        //   isSelected: false, 
+        //   isDisabled: false,
+        //   onClick: () => this.selectFramework('langgraph_agent'), 
+        //   subtitle: 'LangGraph, building on LangChain, is designed for creating complex, stateful applications involving multiple interacting components (called "actors") using a graph-based structure. It excels at managing intricate, multi-step workflows common in advanced AI agents and dialogue systems.',
+        //   caption: 'from langgraph.graph import StateGraph, END\nfrom langchain_core.runnables import chain\nfrom langchain_google_vertexai import VertexAI\nfrom langchain_core.prompts import PromptTemplate\nfrom langchain_core.tools import tool\nfrom typing import TypedDict, List, Dict\nimport json\n\n# Define state\nclass AgentState(TypedDict):\n\tmessages: List[Dict]\n\tsteps: List[Dict]\n\n# Define tools (can be more sophisticated, like database connections)\n@tool\ndef get_current_weather(location: str) -> str:\n\t"""Useful to get the current weather in a given location"""\n\t# Simplified weather retrieval (replace with real API call)\n\treturn f"The weather in {location} is sunny with 25 degrees Celsius."\n\ntools = [get_current_weather]\n\n# Define LLM agent logic\ndef agent_logic(state: AgentState):\n\tllm = VertexAI(model_name="gemini-2.5-pro", temperature=0)\n\tprompt = PromptTemplate.from_template(\n\t\t"""You are a helpful assistant. Use the available tools to answer questions.\n\t\tAvailable tools: {tool_descriptions}\n\t\tQuestion: {question}"""\n\t)\n\n\ttool_names = [tool.name for tool in tools]\n\ttool_descriptions = \"\\n\".join([f"{tool.name}: {tool.description}" for tool in tools])\n\n\tprompt = prompt.partial(tool_names=", ".join(tool_names), tool_descriptions=tool_descriptions)\n\tchain = prompt | llm.bind_tools(tools)\n\t# Parse LLM response (simplified, assumes JSON output)\n\tresponse = chain.invoke({"question": state["messages"][-1]["content"]})\n\ttry:\n\t\tparsed_response = json.loads(response) # assumes a structured result\n\texcept:\n\t\tparsed_response = {"answer": response} # assumes a plain text result\n\treturn parsed_response\n\n# Define graph nodes\ndef agent_node(state: AgentState):\n\treturn agent_logic(state)\n\ndef should_continue(state: AgentState):\n\t# Logic to decide if the agent should continue (e.g., if it has enough info)\n\tif "answer" in state["steps"][-1]: # simplest possible logic: if last step has an answer\n\t\treturn "end" # Stop iterating\n\treturn "agent" # Continue iterating\n\n# Build the graph\ngraph_builder = StateGraph(AgentState)\ngraph_builder.add_node("agent", agent_node)\ngraph_builder.add_conditional_edges(\n\t"agent",\n\tshould_continue,\n\t{\n\t\t "end": END,\n\t\t"agent": "agent",\n\t},\n)\ngraph_builder.set_entry_point("agent")\ngraph = graph_builder.compile()\n\n# Run the graph\ninitial_state = {"messages": [{"content": "What is the weather in London?"}], "steps": []}\nfor output in graph.stream(initial_state):\n\tprint(output)',
+        //   metadata: {
+        //     prosHeading: "Pros: ",
+        //     prosSubheading: "Provides a structured way to manage complex logic and state across multiple interactions, ideal for sophisticated agents and workflows with decision points.",
+        //     consHeading: "Cons: ",
+        //     consSubheading: "Requires more upfront design effort for the graph structure, can be overly complex for simple tasks, and its state management features add overhead if not strictly needed.",
+        //   },
+        // },
+        // { 
+        //   label: 'LlamaIndex', 
+        //   isSelected: false, 
+        //   isDisabled: false,
+        //   onClick: () => this.selectFramework('llamaindex_agent'),
+        //   subtitle: 'LlamaIndex is a framework specifically designed to connect LLMs to your own data sources (like documents, databases, and websites). It excels at indexing and retrieving this data so LLMs can use it effectively, making it ideal for applications requiring knowledge from specific documents or datasets.',
+        //   caption: 'from llama_index.agent import ReActAgent\nfrom llama_index.tools import QueryEngineTool, Tool\nfrom llama_index import VectorStoreIndex, SimpleDirectoryReader, ServiceContext\nfrom llama_index.llms import VertexAI\nfrom llama_index.embeddings import VertexAIEmbeddingModel\n\n# Load data (replace with your data loading)\ndocuments = SimpleDirectoryReader("data").load_data() # Assumes a "data" directory exists.\n\n# Configure LLM and embedding model\nllm = VertexAI(model="gemini-2.5-pro", temperature=0) # Replace with "gemini-pro" if needed\n\nembed_model = VertexAIEmbeddingModel(model_name="textembedding-gecko@003") #or a newer model if available\n\nservice_context = ServiceContext.from_defaults(llm=llm, embed_model=embed_model)\n\n# Create a VectorStoreIndex (replace with your data setup)\nindex = VectorStoreIndex.from_documents(documents, service_context=service_context)\n\n# Create a QueryEngineTool (This allows the agent to query the index you made)\nquery_engine = index.as_query_engine()\nquery_engine_tool = QueryEngineTool(\n\tquery_engine=query_engine,\n\tname="document_retriever",\n\tdescription="Useful for retrieving information from documents.",\n)\n\n# Define tools for the agent\ntools = [query_engine_tool]\n\n# Create the agent\nagent = ReActAgent.from_tools(tools=tools, llm=llm, verbose=True)\n\n# Query the agent\nquery = "What information is available on X?"  # Replace X with what you want to ask the document about\nresponse = agent.query(query)\n\nprint(response)',
+        //   metadata: {
+        //     prosHeading: "Pros: ",
+        //     prosSubheading: "Specializes in efficiently connecting LLMs to diverse data sources, offers simplified abstractions for data indexing and querying, and supports various vector databases.",
+        //     consHeading: "Cons: ",
+        //     consSubheading: "Primarily focused on data ingestion and retrieval, offering less comprehensive tooling for broader LLM application development (like agent creation) compared to frameworks like LangChain, and its broad vector database support might mean less specific optimization for each one.",
+        //   }, 
+        // },
         { 
           label: 'Agent Development Kit (ADK)', 
           isSelected: false,
-          isDisabled: true, 
+          isDisabled: false, 
           onClick: () => this.selectFramework('Agent Development Kit'),
           subtitle: 'Agent Development Kit (ADK) is a flexible and modular framework for developing and deploying AI agents. While optimized for Gemini and the Google ecosystem, ADK is model-agnostic, deployment-agnostic, and is built for compatibility with other frameworks.',
-          caption: 'from google.cloud import aiplatform \n\n# Initialize the Vertex AI client \naiplatform.init(project="your-project-id", location="your-region") \n\n# Create an agent \nagent = aiplatform.Agent.create( \ndisplay_name="my-agent", llm_model="text-bison@001", tools=[aiplatform.Tool.from_python_package( \ndisplay_name="wikipedia", python_package_uri="gs://my-bucket/wikipedia.tar.gz", )] )',
+          caption: 'from google.adk.agents import Agent \nfrom google.adk.tools import google_search \n\n# Create an agent \nroot_agent = Agent(\n model="gemini-2.5-flash",\n name="root_agent",\n description="Agent to answer questions using Google Search.",\n instruction="I can answer your questions by searching the internet. Just ask me anything!",\n # google_search is a pre-built tool which allows the agent to perform Google searches.\n tools=[google_search]\n)',
           metadata: {
             prosHeading: "",
             prosSubheading: "",
@@ -370,8 +370,8 @@ export class ConfigureBotComponent implements OnInit, AfterViewInit {
           langgraphSubheading: "Build complex, stateful, multi-actor LLM workflows with a structured graph approach.",
           llamaindexHeading: "LlamaIndex: ",
           llamaindexSubheading: "Connect LLMs to your private data for efficient indexing and retrieval.",
-          vertexagentframeworkHeading: "Agent Development Kit (ADK): ",
-          vertexagentframeworkSubheading: "A flexible and modular framework for developing and deploying AI agents (coming soon!)",
+          adkHeading: "Agent Development Kit (ADK): ",
+          adkSubheading: "A flexible and modular framework for developing and deploying AI agents (coming soon!)",
           footer: "Select the framework best suited to your project: LangChain for general use, LangGraph for complex workflows, and LlamaIndex for private data."
         },
       },
@@ -599,7 +599,7 @@ export class ConfigureBotComponent implements OnInit, AfterViewInit {
       caption: selectedOption.caption,
       metadata: selectedOption.metadata
     }
-    selectedOption.onClick(); 
+    selectedOption.onClick();
 
     // Update form group value for radio button selection
     const formArray = this.formGroup.get('formArray') as FormArray;
