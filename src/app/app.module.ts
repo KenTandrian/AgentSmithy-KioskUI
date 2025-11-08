@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatTooltipModule} from '@angular/material/tooltip';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MarkdownModule } from 'ngx-markdown';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
@@ -76,6 +77,7 @@ import { IdlePopupComponent } from './components/idle-popup/idle-popup.component
     MatDividerModule,
     FormsModule,
     QrCodeModule,
+    MarkdownModule.forRoot(),
   ],
   providers: [
     provideClientHydration(),

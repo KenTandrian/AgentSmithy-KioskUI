@@ -33,11 +33,11 @@
                       </span>
                     </div>
                     <div class="bot-message-content">
-                      <div clipboard class="variable-binding">{{message.body}}</div>
-                      
-                      <div *ngIf="message.botAnswer" clipboard class="variable-binding">
-                        {{getStringData(message.botAnswer)}}
-                      </div>
+                      <markdown clipboard class="variable-binding">{{message.body}}</markdown>
+                        
+                        <markdown *ngIf="message.botAnswer" clipboard class="variable-binding">
+                          {{getStringData(message.botAnswer)}}
+                        </markdown>
                       <div class="action-content" *ngIf="message.shareable">
                         <div class="action-message"></div>
                         <div class="action-butons" *ngIf="message.chat_id">

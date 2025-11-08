@@ -75,3 +75,25 @@ input, button {
   font-family: inherit;
 }
 
+.bot-message-content {
+  p {
+    margin-bottom: 12px;
+  }
+  ul {
+    padding-inline-start: 30px;
+    margin-bottom: 12px;
+
+    li {
+      list-style-type: disc;
+    }
+  }
+  table {
+    border-collapse: collapse;
+    margin-bottom: 12px;
+
+    td, th {
+      padding: 5px 15px;
+      border: 1px solid #444746;
+    }
+  }
+}
