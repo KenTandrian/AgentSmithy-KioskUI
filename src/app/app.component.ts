@@ -11,7 +11,7 @@ import { isPlatformBrowser } from '@angular/common';
   styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit, OnDestroy {
-  idleTime = 60000; // 60 seconds
+  idleTime = 180000; // 180 seconds
   popupTimeoutTime = 20000; // 20 seconds
   idleTimer: any;
   popupTimeoutTimer: any;
