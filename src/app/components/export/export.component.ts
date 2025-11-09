@@ -21,7 +21,8 @@ export class ExportComponent implements OnInit {
     this.agentConfiguration = this.agetConfigurationService.get();
     logEvent(this.analytics, "/export", {...this.getAgentConfigurationDefinitions()})
     
-    this.downloadUrl = `https://agent-smithy-kiosk.web.app//script?${this.jsonToUrlParams(this.agentConfiguration)}`;
+    // this.downloadUrl = `https://agent-smithy-kiosk.web.app//script?${this.jsonToUrlParams(this.agentConfiguration)}`;
+    this.downloadUrl = "https://github.com/google/adk-samples"
   }
 
   startAgain() {
