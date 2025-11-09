@@ -7,12 +7,12 @@
           </button>
       </div>
   </div>
-  <div mat-dialog-content>
+  <div mat-dialog-content class="code-dialog-content">
     <div *ngIf="isImage(); else textContent">
       <img [src]="data.content" style="max-width: 100%; max-height: 80vh;" />
     </div>
     <ng-template #textContent>
-      <div>{{sanitizedContent}}</div>
+      <markdown>{{sanitizedContent}}</markdown>
     </ng-template>
   </div>
 </div>
