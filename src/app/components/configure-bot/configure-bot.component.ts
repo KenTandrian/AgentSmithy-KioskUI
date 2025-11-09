@@ -134,6 +134,26 @@ export class ConfigureBotComponent implements OnInit, AfterViewInit {
       contentType: 'industry',
       subheading: 'AI tools are software applications or platforms that leverage artificial intelligence to automate tasks, analyze data, or generate outputs.',
       options: [
+        {
+          label: 'Generic (Marketing)',
+          isSelected: false,
+          isDisabled: false,
+          onClick: () => this.selectIndustry('generic'),
+          subtitle: 'This AI-powered assistant is engineered to enhance the capabilities of creative agencies when launching new websites or products.',
+          metadata: {
+            prosHeading: '',
+            prosSubheading: '',
+            consHeading: '',
+            consSubheading: '',
+            usecase: "Use case",
+            usecaseHeading: "Marketing Agency",
+            usecaseSubheading: "This AI-powered assistant is engineered to enhance the capabilities of creative agencies when launching new websites or products. The process commences with an intelligent agent that guides users in selecting an optimal DNS domain, ensuring it aligns perfectly with the website's subject matter or the product's identity. Following this foundational step, another specialized agent takes over to facilitate the comprehensive creation of the entire website. Subsequently, a dedicated agent is deployed to generate a full suite of marketing materials. The workflow culminates with an agent focused on designing distinctive logos that are thematically consistent with the project's core topic. This multi-agent system aims to streamline and augment the creative output of the agency across the entire launch lifecycle.",
+            tool: "Tool",
+            toolHeading: "Google Search & Logo Generation",
+            toolSubheading: "This agent has access to the following tools:\n\nGoogle Search: This tool allows the agent to perform real-time searches on Google. It can be used to find information on a wide variety of topics, including current events, facts, and general knowledge, which is essential for the marketing agency to find the perfect domain name, create a website, and generate marketing materials.\n\nLogo Generation: This tool generates a logo based on a prompt and saves it as an image. It uses the latest Imagen 4.0 model to create the image.",
+          },
+          caption: '```python\nfrom google.adk import Agent\nfrom google.adk.tools import ToolContext, load_artifacts\nfrom google.genai import Client, types\n\nfrom . import prompt\n\nMODEL = "gemini-2.5-pro"\nMODEL_IMAGE = "imagen-4.0-generate-001"\n\n\nasync def generate_image(img_prompt: str, tool_context: "ToolContext"):\n    """Generates an image based on the prompt."""\n    client = Client()\n    response = client.models.generate_images(\n        model=MODEL_IMAGE,\n        prompt=img_prompt,\n        config={"number_of_images": 1},\n    )\n    if not response.generated_images:\n        return {"status": "failed"}\n    image_bytes = response.generated_images[0].image.image_bytes\n    await tool_context.save_artifact(\n        "image.png",\n        types.Part.from_bytes(data=image_bytes, mime_type="image/png"),\n    )\n    return {\n        "status": "success",\n        "detail": "Image generated successfully and stored in artifacts.",\n        "filename": "image.png",\n    }\n\n\nlogo_create_agent = Agent(\n    model=MODEL,\n    name="logo_create_agent",\n    description=(\n        "An agent that generates images and answers questions about the images."\n    ),\n    instruction=prompt.LOGO_CREATE_PROMPT,\n    output_key="logo_create_output",\n    tools=[generate_image, load_artifacts],\n)\n```'
+        },
         { 
           label: 'Finance', 
           isSelected: false, 
