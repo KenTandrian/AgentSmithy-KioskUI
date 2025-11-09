@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en-US" datatype="plaintext" original="ng2.template" target-language="id">
+    <body>
+      <trans-unit id="2486984353446101969" datatype="html">
+        <source>Agent Properties</source>
+        <target>Properti Agen</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/configure-bot/configure-bot.component.ts</context>
+          <context context-type="linenumber">132</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6801403500821211024" datatype="html">
+        <source> The AI Agent Bar simplifies the process of creating and experimenting with AI agents. Users can easily select their preferred runtime, orchestration framework, industry, and model. This tool makes it easy for both experienced developers and those new to AI to explore and implement AI agent solutions. </source>
+        <target> AI Agent Bar menyederhanakan proses pembuatan dan eksperimen dengan agen AI. Pengguna dapat dengan mudah memilih runtime, kerangka orkestrasi, industri, dan model pilihan mereka. Alat ini memudahkan developer berpengalaman maupun mereka yang baru mengenal AI untuk menjelajahi dan mengimplementasikan solusi agen AI. </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/home/home.component.html</context>
+          <context context-type="linenumber">12,13</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
