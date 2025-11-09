@@ -98,6 +98,17 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n"
         },
+        "extract-i18n-merge": {
+          "builder": "ng-extract-i18n-merge:ng-extract-i18n-merge",
+          "options": {
+            "format": "xlf2",
+            "includeContext": true,
+            "outputPath": "src/locales",
+            "targetFiles": [
+              "messages.id.xlf"
+            ]
+          }
+        },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
