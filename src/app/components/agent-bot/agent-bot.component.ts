@@ -1,4 +1,5 @@
 import { Component, EventEmitter, inject, OnDestroy, OnInit, Output, ViewChild, ElementRef } from '@angular/core';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { Observable, ReplaySubject } from 'rxjs';
 import { Message, SuggestionData } from '../../models/messegeType.model';
@@ -91,6 +92,8 @@ export class AgentBotComponent implements OnInit, OnDestroy {
   botsMappingData: any;
   botsMap = new Map();
   botUrl: string;
+  isADK: boolean = false;
+  safeBotUrl: SafeResourceUrl;
   subtitle: string;
   question1: string;
   question2: string;
@@ -104,7 +107,8 @@ export class AgentBotComponent implements OnInit, OnDestroy {
     private broadcastService: BroadcastService,
     private speechToTextService: SpeechToTextService,
     private router: Router,
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private sanitizer: DomSanitizer
   ) {
     this.agentConfiguration = this.agentConfigurationService.get();
     logEvent(
@@ -477,7 +481,7 @@ export class AgentBotComponent implements OnInit, OnDestroy {
 
         const runtime = this.selectedAgentData.runTime;
         // const framework = this.selectedAgentData.frameWork;
-        const framework = 'langchain_agent';
+        const framework = this.selectedAgentData.industry === "generic" ? this.selectedAgentData.frameWork : 'langchain_agent';
         const model = this.selectedAgentData.model;
         const industry = this.selectedAgentData.industry;
 
@@ -516,6 +520,8 @@ export class AgentBotComponent implements OnInit, OnDestroy {
     console.log(key);
     console.log(this.botsMap);
     this.botUrl = bot_config.CLOUD_RUN_URL + "/streamQuery";
+    this.isADK = framework === "Agent Development Kit";
+    this.safeBotUrl = this.sanitizer.bypassSecurityTrustResourceUrl(bot_config.CLOUD_RUN_URL);
   }
 
   removeUnpairedTripleBackticks(text: string): string {

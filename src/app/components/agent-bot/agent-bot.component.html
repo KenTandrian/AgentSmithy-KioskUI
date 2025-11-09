@@ -2,7 +2,8 @@
 
   <div class="heading">{{selectedAgentData?.agentName}}</div>
   <div class="stepper-container">
-    <div class="runtime-container">
+    <iframe *ngIf="isADK" class="adk-container" [src]="safeBotUrl" width="100%" height="100%"></iframe>
+    <div *ngIf="!isADK" class="runtime-container">
       <div class="custom-outer-container">
         <div class="chat-body-outer">
           <div class="chat-container">

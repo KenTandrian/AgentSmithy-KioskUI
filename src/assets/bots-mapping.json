@@ -544,5 +544,61 @@
    "AGENT_FOUNDATION_MODEL": "gemini-2.0-flash",
    "RUNTIME_ENV_SELECTION": "AgentEngine",
    "CLOUD_RUN_URL": "https://agent-runtime-retail-langgraph-ae-gem20-f-ae-599247973214.us-central1.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "generic",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "Agent Development Kit",
+   "AGENT_FOUNDATION_MODEL": "gemini-2.5-pro",
+   "RUNTIME_ENV_SELECTION": "AgentEngine",
+   "CLOUD_RUN_URL": "https://adk-marketing-gemini-25-pro-360033087819.us-central1.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "generic",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "Agent Development Kit",
+   "AGENT_FOUNDATION_MODEL": "gemini-2.5-flash",
+   "RUNTIME_ENV_SELECTION": "AgentEngine",
+   "CLOUD_RUN_URL": "https://adk-marketing-gemini-25-flash-360033087819.us-central1.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "generic",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "Agent Development Kit",
+   "AGENT_FOUNDATION_MODEL": "gemini-2.5-flash-lite",
+   "RUNTIME_ENV_SELECTION": "AgentEngine",
+   "CLOUD_RUN_URL": "https://adk-marketing-gemini-25-flash-lite-360033087819.us-central1.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "generic",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "Agent Development Kit",
+   "AGENT_FOUNDATION_MODEL": "gemini-2.0-flash",
+   "RUNTIME_ENV_SELECTION": "AgentEngine",
+   "CLOUD_RUN_URL": "https://adk-marketing-gemini-25-flash-lite-360033087819.us-central1.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "generic",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "Agent Development Kit",
+   "AGENT_FOUNDATION_MODEL": "gemini-2.5-pro",
+   "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
+   "CLOUD_RUN_URL": "https://adk-marketing-gemini-25-pro-360033087819.us-central1.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "generic",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "Agent Development Kit",
+   "AGENT_FOUNDATION_MODEL": "gemini-2.5-flash",
+   "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
+   "CLOUD_RUN_URL": "https://adk-marketing-gemini-25-flash-360033087819.us-central1.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "generic",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "Agent Development Kit",
+   "AGENT_FOUNDATION_MODEL": "gemini-2.5-flash-lite",
+   "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
+   "CLOUD_RUN_URL": "https://adk-marketing-gemini-25-flash-lite-360033087819.us-central1.run.app"
+ },
+ {
+   "AGENT_INDUSTRY_TYPE": "generic",
+   "AGENT_ORCHESTRATION_FRAMEWORK": "Agent Development Kit",
+   "AGENT_FOUNDATION_MODEL": "gemini-2.0-flash",
+   "RUNTIME_ENV_SELECTION": "CloudRun/FastApi",
+   "CLOUD_RUN_URL": "https://adk-marketing-gemini-25-flash-lite-360033087819.us-central1.run.app"
  }
 ]
