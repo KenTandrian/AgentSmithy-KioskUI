@@ -17,7 +17,7 @@
             </div>
         </div>
         <div class="row-container">
-            <span class="heading">The AI Agent Bar</span>
+            <span class="heading" i18n>The AI Agent Bar</span>
         </div>
         <div class="second-row-container">
             <div class="left-footer">
@@ -25,7 +25,7 @@
                     <mat-icon>contrast</mat-icon>
                 </button> -->
                 <div class="logo-container">
-                    <div class="created-by">
+                    <div class="created-by" i18n>
                         Powered by
                     </div>
                     <div class="google-cont">
@@ -38,7 +38,7 @@
                 <div class="button-container">
                     <button class="spark" mat-fab extended (click)="routeToCreateBot()">
                       <mat-icon [svgIcon]="isDarkTheme ? 'spark-dark' : 'spark'"></mat-icon>
-                      Build an agent
+                      <span i18n>Build an agent</span>
                     </button>
                     <!-- <button mat-fab extended class="spark-shine" (click)="routeToPrebuiltBot()">
                       <mat-icon [svgIcon]="isDarkTheme ? 'spark-shine-dark' : 'spark-shine'"></mat-icon>

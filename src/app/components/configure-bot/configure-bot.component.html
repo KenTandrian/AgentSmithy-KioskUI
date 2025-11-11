@@ -62,7 +62,7 @@
                                     (click)="openViewCodeModal(step.selectedOptionResponse)"><span
                                         class="material-symbols-outlined">
                                         code
-                                    </span><span>View code/diagram example</span></button>
+                                    </span><span i18n>View code/diagram example</span></button>
                             </div>
                         </div>
                     </div>
@@ -99,7 +99,7 @@
                                     (click)="openViewCodeModal(step.selectedOptionResponse)"><span
                                         class="material-symbols-outlined">
                                         code
-                                    </span><span>View code/diagram example</span></button>
+                                    </span><span i18n>View code/diagram example</span></button>
                             </div>
                         </div>
                     </div>
@@ -145,7 +145,7 @@
                                     (click)="openViewCodeModal(step.selectedOptionResponse)"><span
                                         class="material-symbols-outlined">
                                         code
-                                    </span><span>View code/diagram example</span></button>
+                                    </span><span i18n>View code/diagram example</span></button>
                             </div>
                         </div>
                     </div>
@@ -197,7 +197,7 @@
                                     (click)="openViewCodeModal(step.selectedOptionResponse)"><span
                                         class="material-symbols-outlined">
                                         code
-                                    </span><span>View code/diagram example</span></button>
+                                    </span><span i18n>View code/diagram example</span></button>
                             </div>
                         </div>
                     </div>
@@ -243,7 +243,7 @@
                                     (click)="openViewCodeModal(step.selectedOptionResponse)"><span
                                         class="material-symbols-outlined">
                                         code
-                                    </span><span>View code/diagram example</span></button>
+                                    </span><span i18n>View code/diagram example</span></button>
                             </div>
                         </div>
                     </div>
@@ -258,16 +258,16 @@
                 <!-- <span class="border"></span> -->
                 <button class="backward" mat-fab extended (click)="goToHome()">
                     <mat-icon>home</mat-icon>
-                    Home
+                    <span i18n>Home</span>
                 </button>
                 <mat-divider [vertical]="true"></mat-divider>
                 <button class="help-button" mat-fab extended (click)="openHelpModal()">
                     <mat-icon>add_circle</mat-icon>
-                    How it works
+                    <span i18n>How it works</span>
                 </button>
                 <mat-divider [vertical]="true"></mat-divider>
                 <div class="logo-container">
-                    <div class="created-by">
+                    <div class="created-by" i18n>
                         Powered by
                     </div>
                     <div class="google-cont">
@@ -279,22 +279,22 @@
             <div class="button-container">
                 <button *ngIf="stepper.selectedIndex == 0" class="backward" mat-fab extended (click)="goToHome()">
                     <mat-icon>arrow_back</mat-icon>
-                    Back
+                    <span i18n>Back</span>
                 </button>
                 <button *ngIf="stepper.selectedIndex != 0" class="backward" mat-fab extended
                     (click)="stepper.previous()">
                     <mat-icon>arrow_back</mat-icon>
-                    Back
+                    <span i18n>Back</span>
                 </button>
                 <button *ngIf="stepper.selectedIndex < stepperConfig.length-1" mat-fab extended
                     (click)="stepper.next()" [disabled]="!isStepValid(stepper.selectedIndex)" [ngClass]="{'disabled-button': !isStepValid(stepper.selectedIndex), 'next': isStepValid(stepper.selectedIndex)}">
                     <mat-icon>arrow_forward</mat-icon>
-                    Next
+                    <span i18n>Next</span>
                 </button>
                 <button *ngIf="stepper.selectedIndex === stepperConfig.length-1" mat-fab extended
                     (click)="goToSpinnerComponent()" [disabled]="!isStepValid(stepper.selectedIndex)" [ngClass]="{'disabled-button': !isStepValid(stepper.selectedIndex), 'next': isStepValid(stepper.selectedIndex)}">
                     <mat-icon>arrow_forward</mat-icon>
-                    Build
+                    <span i18n>Build</span>
                 </button>
             </div>
         </div>

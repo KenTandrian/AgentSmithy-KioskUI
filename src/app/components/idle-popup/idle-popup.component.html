@@ -1,5 +1,5 @@
-<h2 mat-dialog-title>Are you there?</h2>
-<mat-dialog-content>
+<h2 mat-dialog-title i18n>Are you there?</h2>
+<mat-dialog-content i18n>
     It looks like you've been inactive for a while.
     Click 'Yes' to continue your session.
 </mat-dialog-content>
@@ -7,9 +7,9 @@
     <!-- <button mat-fab (click)="onNoClick()">No</button>
     <button mat-raised-button color="primary" (click)="onYesClick()">Yes</button> -->
     <button class="backward" mat-fab extended (click)="onNoClick()">
-        No
+        <span i18n>No</span>
     </button>
     <button class="next" mat-fab extended (click)="onYesClick()">
-        Yes
+        <span i18n>Yes</span>
     </button>
 </mat-dialog-actions>

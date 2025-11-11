@@ -85,7 +85,7 @@
         </ol>
         <div class="inner-container">
           <div class="tech-item">
-            <div class="headings">
+            <div class="headings" i18n>
               Industry
             </div>
             <div class="border"></div>
@@ -94,7 +94,7 @@
             </div>
           </div>
           <div class="tech-item">
-            <div class="headings">
+            <div class="headings" i18n>
               Runtime
             </div>
             <div class="border"></div>
@@ -103,7 +103,7 @@
             </div>
           </div>
           <div class="tech-item">
-            <div class="headings">
+            <div class="headings" i18n>
               Orchestration Framework
             </div>
             <div class="border"></div>
@@ -112,7 +112,7 @@
             </div>
           </div>
           <div class="tech-item">
-            <div class="headings">
+            <div class="headings" i18n>
               Model
             </div>
             <div class="border"></div>
@@ -135,16 +135,16 @@
           <!-- <span class="border"></span> -->
           <button class="backward" mat-fab extended (click)="goToHome()">
               <mat-icon>home</mat-icon>
-              Home
+              <span i18n>Home</span>
           </button>
           <mat-divider [vertical]="true"></mat-divider>
           <button class="help-button" mat-fab extended (click)="openHelpModal()">
               <mat-icon>add_circle</mat-icon>
-              How it works
+              <span i18n>How it works</span>
           </button>
           <mat-divider [vertical]="true"></mat-divider>
           <div class="logo-container">
-              <div class="created-by">
+              <div class="created-by" i18n>
                   Powered by
               </div>
               <div class="google-cont">
@@ -159,7 +159,7 @@
           <mat-icon>
             arrow_forward
           </mat-icon>
-          Finish
+          <span i18n>Finish</span>
         </button>
       </div>
   

@@ -48,11 +48,11 @@ export class AgentBotComponent implements OnInit, OnDestroy {
   rightContainerClass = "";
   index = 2;
   loaderTextArray: string[] = [
-    "I am a conversation bot built on Google Cloud's Vertex AI tools.",
-    "Tool Tip: You can reset the conversation anytime using the reset button next the the text input box.",
-    "Joke : Why did the robot go on a diet? Because it had too many bytes!",
-    "Joke : Why can't bicycles stand up by themselves? Because they are two-tired!",
-    "Joke : How does a computer get drunk? It takes screenshots."
+    $localize`I am a conversation bot built on Google Cloud's Vertex AI tools.`,
+    $localize`Tool Tip: You can reset the conversation anytime using the reset button next the the text input box.`,
+    $localize`Joke : Why did the robot go on a diet? Because it had too many bytes!`,
+    $localize`Joke : Why can't bicycles stand up by themselves? Because they are two-tired!`,
+    $localize`Joke : How does a computer get drunk? It takes screenshots.`
   ];
   loaderTextTimeout: undefined | ReturnType<typeof setTimeout>;
   loaderText = "";
@@ -150,7 +150,7 @@ export class AgentBotComponent implements OnInit, OnDestroy {
   getStringData(obj: any): string {
     let str = (obj as string);
     if (str === "" || str.length === 0) {
-      return "Sorry! I don't have sufficient information to answer this question at the moment.";
+      return $localize`Sorry! I don't have sufficient information to answer this question at the moment.`;
     }
     return (obj as string);
   }
@@ -243,7 +243,7 @@ export class AgentBotComponent implements OnInit, OnDestroy {
     this.showLoader = true;
     this.setTimeoutForLoaderText();
     this.setCyclicBackgroundImages();
-    this.conversation.unshift({ body: 'Thinking...', type: 'bot', shareable: false });
+    this.conversation.unshift({ body: $localize`Thinking...`, type: 'bot', shareable: false });
     this.chatService.postChat([...this.conversation], this.botUrl).subscribe({
       next: (event: HttpEvent<string>) => {
         if (event.type === HttpEventType.DownloadProgress) {
@@ -263,7 +263,7 @@ export class AgentBotComponent implements OnInit, OnDestroy {
   setErrorMessage() {
     this.clearTimeoutForLoaderText();
     this.leftContainerClass = 'left-side-container-error';
-    this.loaderText = 'Oops something went wrong , please try again.';
+    this.loaderText = $localize`Oops something went wrong , please try again.`;
     this.rightContainerClass = 'right-side-container-error';
     this.showLoaderLikeDislikeButtons = false;
   }
@@ -273,7 +273,7 @@ export class AgentBotComponent implements OnInit, OnDestroy {
     this.showLoader = true;
     this.leftContainerClass = 'answer-not-found';
     this.rightContainerClass = 'right-side-container-error';
-    this.loaderText = loaderText + " Please try asking something else";
+    this.loaderText = loaderText + $localize` Please try asking something else`;
     this.showLoaderLikeDislikeButtons = true;
   }
 
@@ -450,7 +450,7 @@ export class AgentBotComponent implements OnInit, OnDestroy {
 
   openHelpModal() {
     logEvent(this.analytics, `/how_it_works`, {page: "chat_preview"});
-    this.dialog.open(HowItWorksDialogComponent,{ width: '100%',maxWidth:'1200px', data: { url: './assets/images/agent_properties_diagram.png', content: "You can now interact with your deployed AI Agent! On your screen is a description of your selected technologies for your deployed agent, as well as a list of sample prompts to ask. Embedded within this UI is the frontend chatbot code that is interacting with your backend AI agent service." }, });
+    this.dialog.open(HowItWorksDialogComponent,{ width: '100%',maxWidth:'1200px', data: { url: './assets/images/agent_properties_diagram.png', content: $localize`You can now interact with your deployed AI Agent! On your screen is a description of your selected technologies for your deployed agent, as well as a list of sample prompts to ask. Embedded within this UI is the frontend chatbot code that is interacting with your backend AI agent service.` }, });
   }
 
   goToHome() {
@@ -490,20 +490,20 @@ export class AgentBotComponent implements OnInit, OnDestroy {
         // this.subtitle = "Use Case: \nAI-Powered Investment Research Analyst for Alphabet: Provides financial insights on Alphabet by analyzing its financial reports, strategic initiatives, and management perspectives from its historical investor documents.";
         // this.question1 = "How did Alphabet perform in their earnings reports in Q4 2024?";
         if(industry === 'finance'){
-          this.subtitle = "Use Case - AI-Powered Investment Research Analyst for Alphabet: Provides financial insights on Alphabet by analyzing its financial reports, strategic initiatives, and management perspectives from its historical investor documents.";
-          this.question1 = "1. How did Alphabet perform in their earnings reports in Q4 2024?";
-          this.question2 = "2. What were Alphabet’s key strategic priorities for the 2024?";
-          this.question3 = "3. How does each Alphabet business segment contribute to overall revenue and profit?";
+          this.subtitle = $localize`Use Case - AI-Powered Investment Research Analyst for Alphabet: Provides financial insights on Alphabet by analyzing its financial reports, strategic initiatives, and management perspectives from its historical investor documents.`;
+          this.question1 = $localize`1. How did Alphabet perform in their earnings reports in Q4 2024?`;
+          this.question2 = $localize`2. What were Alphabet’s key strategic priorities for the 2024?`;
+          this.question3 = $localize`3. How does each Alphabet business segment contribute to overall revenue and profit?`;
         } else if(industry === 'healthcare') {
-          this.subtitle = "Use Case - Symptom Checker and Triage Assistant: \nAnalyzes general medical symptoms and acts as a virtual assistant to help triage patients to the appropriate level of care during consultations.";
-          this.question1 = "1. What could be causing lower back pain that radiates down my leg?";
-          this.question2 = "2. What red flag symptoms would indicate that my sore throat is something more serious than a cold?";
-          this.question3 = "3. Based on past consultations, are there specific symptoms that were particularly helpful in narrowing down a differential diagnosis?";
+          this.subtitle = $localize`Use Case - Symptom Checker and Triage Assistant: \nAnalyzes general medical symptoms and acts as a virtual assistant to help triage patients to the appropriate level of care during consultations.`;
+          this.question1 = $localize`1. What could be causing lower back pain that radiates down my leg?`;
+          this.question2 = $localize`2. What red flag symptoms would indicate that my sore throat is something more serious than a cold?`;
+          this.question3 = $localize`3. Based on past consultations, are there specific symptoms that were particularly helpful in narrowing down a differential diagnosis?`;
         } else if(industry === 'retail'){
-          this.subtitle = "Use Case - Google Product Discovery Assistant: \nAnswers product-specific questions on Google Products available on the Google Store";
-          this.question1 = "1. What are the specs for the Pixel 6 camera?";
-          this.question2 = "2. What is the water resistance rating of the Pixel?";
-          this.question3 = "3. What kind of screen does the Google Nest Hub have?";
+          this.subtitle = $localize`Use Case - Google Product Discovery Assistant: \nAnswers product-specific questions on Google Products available on the Google Store`;
+          this.question1 = $localize`1. What are the specs for the Pixel 6 camera?`;
+          this.question2 = $localize`2. What is the water resistance rating of the Pixel?`;
+          this.question3 = $localize`3. What kind of screen does the Google Nest Hub have?`;
         }
         this.subtitle
       },

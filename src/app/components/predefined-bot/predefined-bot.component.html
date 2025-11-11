@@ -1,6 +1,6 @@
 <div class="outer-container">
     <form [formGroup]="formGroup">
-                <div class="heading">Pre-defined agents</div>
+                <div class="heading" i18n>Pre-defined agents</div>
                 <div class="stepper-container">
                     <div class="runtime-container">
                         <div class="option-selectors">
@@ -13,7 +13,7 @@
                                             'task_alt': 'radio_button_unchecked'}}
                                         </span>
                                     </span>
-                                    <span class="text">
+                                    <span class="text" i18n>
                                         Intelligent Virtual Assistant
                                     </span>
                                 </div>
@@ -25,7 +25,7 @@
                                             'task_alt': 'radio_button_unchecked'}}
                                         </span>
                                     </span>
-                                    <span class="text">
+                                    <span class="text" i18n>
                                         InfoBot
                                     </span>
                                 </div>
@@ -37,14 +37,14 @@
                                             'task_alt': 'radio_button_unchecked'}}
                                         </span>
                                     </span>
-                                    <span class="text">
+                                    <span class="text" i18n>
                                         Pre-defined agent three
                                     </span>
                                 </div>
                             </mat-radio-group>
                         </div>
                         <div *ngIf="selectedAgent===''" class="option-response">
-                            <span class="subtitle">A predefined AI agent is a pre-built, ready-to-use agent designed for a specific task or set of tasks. It comes with pre-configured tools, prompts, and workflows, eliminating the need for extensive customization. Think of it like a specialized robot designed to perform a particular job; it's not as flexible as a general-purpose agent, but it's highly efficient and easy to deploy for its intended purpose. Examples include agents designed specifically for customer service, data analysis, or social media management. They often offer a quick start and simplified setup, making them ideal for users who need a solution for a well-defined problem without the overhead of building a custom agent from scratch.</span>
+                            <span class="subtitle" i18n>A predefined AI agent is a pre-built, ready-to-use agent designed for a specific task or set of tasks. It comes with pre-configured tools, prompts, and workflows, eliminating the need for extensive customization. Think of it like a specialized robot designed to perform a particular job; it's not as flexible as a general-purpose agent, but it's highly efficient and easy to deploy for its intended purpose. Examples include agents designed specifically for customer service, data analysis, or social media management. They often offer a quick start and simplified setup, making them ideal for users who need a solution for a well-defined problem without the overhead of building a custom agent from scratch.</span>
                             <!-- <div class="inner-container">
                                 <div class="tech-item">
                                     <div class="headings">
@@ -85,10 +85,10 @@
                             </div> -->
                         </div>
                         <div *ngIf="selectedAgent==='intelligentVirtualAssistant'" class="option-response">
-                            <span class="subtitle">This agent, deployed on Vertex AI's Agent Engine, utilizes the LangChain framework to connect the Gemini large language model with various APIs. This configuration enables the agent to understand user requests, retrieve and process information from external sources, and then perform tasks or provide comprehensive answers based on the retrieved data.</span>
+                            <span class="subtitle" i18n>This agent, deployed on Vertex AI's Agent Engine, utilizes the LangChain framework to connect the Gemini large language model with various APIs. This configuration enables the agent to understand user requests, retrieve and process information from external sources, and then perform tasks or provide comprehensive answers based on the retrieved data.</span>
                             <div class="inner-container">
                                 <div class="tech-item">
-                                    <div class="headings">
+                                    <div class="headings" i18n>
                                         Runtime
                                     </div>
                                     <div class="border"></div>
@@ -97,7 +97,7 @@
                                     </div>
                                 </div>
                                 <div class="tech-item">
-                                    <div class="headings">
+                                    <div class="headings" i18n>
                                         Orchestration Framework
                                     </div>
                                     <div class="border"></div>
@@ -106,7 +106,7 @@
                                     </div>
                                 </div>
                                 <div class="tech-item">
-                                    <div class="headings">
+                                    <div class="headings" i18n>
                                         Tools
                                     </div>
                                     <div class="border"></div>
@@ -115,7 +115,7 @@
                                     </div>
                                 </div>
                                 <div class="tech-item">
-                                    <div class="headings">
+                                    <div class="headings" i18n>
                                         Model
                                     </div>
                                     <div class="border"></div>
@@ -126,10 +126,10 @@
                             </div>
                         </div>
                         <div *ngIf="selectedAgent==='infoBot'" class="option-response">
-                            <span class="subtitle">This Cloud Run-deployed agent uses LlamaIndex to connect Claude with a knowledge base and pre-built tools. This allows it to provide informed and safe answers, utilize web search, and perform other helpful tasks.</span>
+                            <span class="subtitle" i18n>This Cloud Run-deployed agent uses LlamaIndex to connect Claude with a knowledge base and pre-built tools. This allows it to provide informed and safe answers, utilize web search, and perform other helpful tasks.</span>
                             <div class="inner-container">
                                 <div class="tech-item">
-                                    <div class="headings">
+                                    <div class="headings" i18n>
                                         Runtime
                                     </div>
                                     <div class="border"></div>
@@ -138,7 +138,7 @@
                                     </div>
                                 </div>
                                 <div class="tech-item">
-                                    <div class="headings">
+                                    <div class="headings" i18n>
                                         Orchestration Framework
                                     </div>
                                     <div class="border"></div>
@@ -147,7 +147,7 @@
                                     </div>
                                 </div>
                                 <div class="tech-item">
-                                    <div class="headings">
+                                    <div class="headings" i18n>
                                         Tools
                                     </div>
                                     <div class="border"></div>
@@ -156,7 +156,7 @@
                                     </div>
                                 </div>
                                 <div class="tech-item">
-                                    <div class="headings">
+                                    <div class="headings" i18n>
                                         Model
                                     </div>
                                     <div class="border"></div>
@@ -173,17 +173,17 @@
                     <div class="button-container">
                     <button class="backward" mat-fab extended (click)="goToHome()">
                         <mat-icon>home</mat-icon>
-                        Home
+                        <span i18n>Home</span>
                     </button>
                     <mat-divider [vertical]="true"></mat-divider>
 
                     <button class="help-button" mat-fab extended (click)="openHelpModal()">
                         <mat-icon>add_circle</mat-icon>
-                        How it works
+                        <span i18n>How it works</span>
                     </button>
                     <mat-divider [vertical]="true"></mat-divider>
                     <div class="logo-container">
-                        <div class="created-by">
+                        <div class="created-by" i18n>
                             Powered by
                         </div>
                         <div class="google-cont">
@@ -197,13 +197,13 @@
                             <mat-icon>
                                 arrow_back
                             </mat-icon>
-                            Back
+                            <span i18n>Back</span>
                         </button>
                         <button class="next" mat-fab extended (click)="goToBuild()">
                             <mat-icon>
                                 arrow_forward
                             </mat-icon>
-                            Build
+                            <span i18n>Build</span>
                         </button>
                     </div>
                 </div>

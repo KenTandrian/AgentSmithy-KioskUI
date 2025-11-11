@@ -1,14 +1,1181 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-  <file source-language="en-US" datatype="plaintext" original="ng2.template">
-    <body>
-      <trans-unit id="6801403500821211024" datatype="html">
-        <source> The AI Agent Bar simplifies the process of creating and experimenting with AI agents. Users can easily select their preferred runtime, orchestration framework, industry, and model. This tool makes it easy for both experienced developers and those new to AI to explore and implement AI agent solutions. </source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/home/home.component.html</context>
-          <context context-type="linenumber">12,13</context>
-        </context-group>
-      </trans-unit>
-    </body>
+<xliff version="2.0" xmlns="urn:oasis:names:tc:xliff:document:2.0" srcLang="en-US">
+  <file id="ngi18n" original="ng.template">
+    <unit id="1021815266005498010">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:181</note>
+      </notes>
+      <segment>
+        <source>Your healthcare agent has been configured with the following use case and tools:</source>
+      </segment>
+    </unit>
+    <unit id="1068713579487293789">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:134</note>
+      </notes>
+      <segment>
+        <source>AI tools are software applications or platforms that leverage artificial intelligence to automate tasks, analyze data, or generate outputs.</source>
+      </segment>
+    </unit>
+    <unit id="1113986359791125900">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:437</note>
+      </notes>
+      <segment>
+        <source>Gemini 2.5 Flash Lite</source>
+      </segment>
+    </unit>
+    <unit id="11401398678470899">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.html:65</note>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.html:102</note>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.html:148</note>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.html:200</note>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.html:246</note>
+      </notes>
+      <segment>
+        <source>View code/diagram example</source>
+      </segment>
+    </unit>
+    <unit id="1141886420788473147">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:403</note>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:404</note>
+      </notes>
+      <segment>
+        <source>Model</source>
+      </segment>
+    </unit>
+    <unit id="1160109494704982525">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:433</note>
+      </notes>
+      <segment>
+        <source>May not match the depth of reasoning or complexity handling of &apos;Pro&apos; models for highly intricate tasks.</source>
+      </segment>
+    </unit>
+    <unit id="1212799281174841650">
+      <notes>
+        <note category="location">src/app/components/agent-bot/agent-bot.component.ts:276</note>
+      </notes>
+      <segment>
+        <source>Please try asking something else</source>
+      </segment>
+    </unit>
+    <unit id="1225933315669513791">
+      <notes>
+        <note category="location">src/app/components/agent-bot/agent-bot.component.ts:52</note>
+      </notes>
+      <segment>
+        <source>Tool Tip: You can reset the conversation anytime using the reset button next the the text input box.</source>
+      </segment>
+    </unit>
+    <unit id="1264866489359952974">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:148</note>
+      </notes>
+      <segment>
+        <source>Marketing Agency</source>
+      </segment>
+    </unit>
+    <unit id="1350896823728643197">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:270</note>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:284</note>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:418</note>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:432</note>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:446</note>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:460</note>
+      </notes>
+      <segment>
+        <source>Cons:</source>
+      </segment>
+    </unit>
+    <unit id="1414300792623910307">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:388</note>
+      </notes>
+      <segment>
+        <source>LangGraph:</source>
+      </segment>
+    </unit>
+    <unit id="1589796826385311750">
+      <notes>
+        <note category="location">src/app/components/home/home.component.html:41,42</note>
+      </notes>
+      <segment>
+        <source>Build an agent</source>
+      </segment>
+    </unit>
+    <unit id="164804834796985716">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:269</note>
+      </notes>
+      <segment>
+        <source>Enjoy simplified development, automatic scaling, built-in monitoring and evaluation, and reduced operational overhead.</source>
+      </segment>
+    </unit>
+    <unit id="1669804318589072160">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:172</note>
+      </notes>
+      <segment>
+        <source>This tool uses Vertex AI Search to perform Retrieval Augmented Generation (RAG) on a given dataset. This agent has access to the following dataset: `Alphabet Investor PDFs`: This dataset contains PDFs of quarterly earnings releases and annual reports for Alphabet for every quarter since 2004. The Annual reports include financial statements (balance sheet, income statement, cash flow statement), a letter to shareholders, management discussion and analysis (MD&amp;A), and information on corporate governance. The quarterly earnings releases also contain key financial statements like the income statement, balance sheet, and cash flow statement, along with management commentary and analysis of quarterly performance.</source>
+      </segment>
+    </unit>
+    <unit id="1675050357011276104">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:409</note>
+      </notes>
+      <segment>
+        <source>Gemini 2.5 Pro</source>
+      </segment>
+    </unit>
+    <unit id="1725120588361991119">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:285</note>
+      </notes>
+      <segment>
+        <source>Requires containerizing your agent, giving you more control but also more responsibility for the application packaging and environment compared to a fully managed platform.</source>
+      </segment>
+    </unit>
+    <unit id="1734958652651659255">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:299</note>
+      </notes>
+      <segment>
+        <source>Quick, easy solution for general reasoning tasks (QA, summarization).</source>
+      </segment>
+    </unit>
+    <unit id="1743308125980006016">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:152</note>
+      </notes>
+      <segment>
+        <source>This agent has access to the following tools: Google Search: This tool allows the agent to perform real-time searches on Google. It can be used to find information on a wide variety of topics, including current events, facts, and general knowledge, which is essential for the marketing agency to find the perfect domain name, create a website, and generate marketing materials. Logo Generation: This tool generates a logo based on a prompt and saves it as an image. It uses the latest Imagen 4.0 model to create the image.</source>
+      </segment>
+    </unit>
+    <unit id="1816167491834984488">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:445</note>
+      </notes>
+      <segment>
+        <source>Extremely fast and low-cost, ideal for resource-constrained environments and high-frequency interactions, efficient for basic tasks.</source>
+      </segment>
+    </unit>
+    <unit id="1837908098609304780">
+      <notes>
+        <note category="location">src/app/components/predefined-bot/predefined-bot.component.html:47,48</note>
+      </notes>
+      <segment>
+        <source>A predefined AI agent is a pre-built, ready-to-use agent designed for a specific task or set of tasks. It comes with pre-configured tools, prompts, and workflows, eliminating the need for extensive customization. Think of it like a specialized robot designed to perform a particular job; it&apos;s not as flexible as a general-purpose agent, but it&apos;s highly efficient and easy to deploy for its intended purpose. Examples include agents designed specifically for customer service, data analysis, or social media management. They often offer a quick start and simplified setup, making them ideal for users who need a solution for a well-defined problem without the overhead of building a custom agent from scratch.</source>
+      </segment>
+    </unit>
+    <unit id="1842535982895897006">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:125</note>
+      </notes>
+      <segment>
+        <source>AI agents leverage foundation models, to process information, reason, and interact with their environment, enabling them to perform tasks autonomously. How they work: • Reasoning and Planning: Foundation models can help AI agents reason about complex situations, plan actions, and make decisions based on their understanding of the environment. • Action Execution: AI agents can use foundation models to generate instructions or commands that control their actions. • Tool Calling: AI agents can leverage tool calling capabilities to access external tools and APIs to perform tasks that the foundation model alone cannot handle, such as accessing databases, performing calculations, or making web requests.</source>
+      </segment>
+    </unit>
+    <unit id="2053501131211733051">
+      <notes>
+        <note category="location">src/app/components/predefined-bot/predefined-bot.component.html:17</note>
+      </notes>
+      <segment>
+        <source>Intelligent Virtual Assistant</source>
+      </segment>
+    </unit>
+    <unit id="2144419986589231323">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:97</note>
+      </notes>
+      <segment>
+        <source>This demo will walk you through selecting and building each core element of an AI Agent. Here you are setting the Agent Name, Description, and Industry. These properties are used to populate the Instructions for the Agent Reasoning Loop. Your selection of Industry will also correspond to the different datasets and Tools you have available to you later on in this demo experience.</source>
+      </segment>
+    </unit>
+    <unit id="2190410481265719191">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:212</note>
+      </notes>
+      <segment>
+        <source>This tool uses Vertex AI Search to perform Retrieval Augmented Generation (RAG) on a given dataset. This agent has access to the following dataset: `Google Store`: This data is a list of html web pages from the Google Store from 2023. It represents a listing of products, details, prices, etc related to Google products.</source>
+      </segment>
+    </unit>
+    <unit id="2301771286574378080">
+      <notes>
+        <note category="location">src/app/components/agent-bot/agent-bot.component.ts:503</note>
+      </notes>
+      <segment>
+        <source>Use Case - Google Product Discovery Assistant: Answers product-specific questions on Google Products available on the Google Store</source>
+      </segment>
+    </unit>
+    <unit id="2365393808854133073">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:208</note>
+      </notes>
+      <segment>
+        <source>Google Product Discovery Assistant</source>
+      </segment>
+    </unit>
+    <unit id="2407860499554401189">
+      <notes>
+        <note category="location">src/app/components/agent-bot/agent-bot.component.html:143,144</note>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.html:266,267</note>
+        <note category="location">src/app/components/how-it-works-dialog/how-it-works-dialog.component.html:3,4</note>
+        <note category="location">src/app/components/predefined-bot/predefined-bot.component.html:182,183</note>
+      </notes>
+      <segment>
+        <source>How it works</source>
+      </segment>
+    </unit>
+    <unit id="2416028360856675477">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:247</note>
+      </notes>
+      <segment>
+        <source>Please provide a unique name for your agent, something that reflects its purpose or personality. Then, craft a concise description outlining the agent&apos;s intended function and how it will assist users. This selection will help tailor the agent&apos;s capabilities and access relevant data, ensuring it&apos;s optimally configured for its intended environment.</source>
+      </segment>
+    </unit>
+    <unit id="2422021042126185569">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:364</note>
+      </notes>
+      <segment>
+        <source>Agent Development Kit (ADK)</source>
+      </segment>
+    </unit>
+    <unit id="2486984353446101969">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:240</note>
+      </notes>
+      <segment>
+        <source>Agent Properties</source>
+      </segment>
+    </unit>
+    <unit id="2641957198056091226">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:169</note>
+      </notes>
+      <segment>
+        <source>Provides financial insights on Alphabet by analyzing its financial reports, strategic initiatives, and management perspectives from its historical investor documents. (Disclaimer: This Agent is for demonstration purposes only)</source>
+      </segment>
+    </unit>
+    <unit id="2690049396917946041">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:392</note>
+      </notes>
+      <segment>
+        <source>Agent Development Kit (ADK):</source>
+      </segment>
+    </unit>
+    <unit id="2779596500656409800">
+      <notes>
+        <note category="location">src/app/components/predefined-bot/predefined-bot.component.html:110</note>
+        <note category="location">src/app/components/predefined-bot/predefined-bot.component.html:151</note>
+      </notes>
+      <segment>
+        <source>Tools</source>
+      </segment>
+    </unit>
+    <unit id="2807800733729323332">
+      <notes>
+        <note category="location">src/app/components/idle-popup/idle-popup.component.html:13,14</note>
+      </notes>
+      <segment>
+        <source>Yes</source>
+      </segment>
+    </unit>
+    <unit id="2821179408673282599">
+      <notes>
+        <note category="location">src/app/components/agent-bot/agent-bot.component.html:138,139</note>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.html:261,262</note>
+        <note category="location">src/app/components/footer/footer.component.html:8</note>
+        <note category="location">src/app/components/predefined-bot/predefined-bot.component.html:176,177</note>
+      </notes>
+      <segment>
+        <source>Home</source>
+      </segment>
+    </unit>
+    <unit id="2882540210324808245">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:304</note>
+      </notes>
+      <segment>
+        <source>Fine-grained control and customization.</source>
+      </segment>
+    </unit>
+    <unit id="2932360890997178383">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:150</note>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:170</note>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:190</note>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:210</note>
+      </notes>
+      <segment>
+        <source>Tool</source>
+      </segment>
+    </unit>
+    <unit id="2936400067598957760">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:188</note>
+      </notes>
+      <segment>
+        <source>Symptom Checker and Triage Assistant</source>
+      </segment>
+    </unit>
+    <unit id="2986473220728639825">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:461</note>
+      </notes>
+      <segment>
+        <source>Less suitable for highly complex reasoning, deep analysis, or tasks requiring the utmost accuracy on nuanced problems compared to larger, more powerful models.</source>
+      </segment>
+    </unit>
+    <unit id="3081749851382598990">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:149</note>
+      </notes>
+      <segment>
+        <source>The process commences with an intelligent agent that guides users in selecting an optimal DNS domain, ensuring it aligns perfectly with the website&apos;s subject matter or the product&apos;s identity. Following this foundational step, another specialized agent takes over to facilitate the comprehensive creation of the entire website. Subsequently, a dedicated agent is deployed to generate a full suite of marketing materials. The workflow culminates with an agent focused on designing distinctive logos that are thematically consistent with the project&apos;s core topic. This multi-agent system aims to streamline and augment the creative output of the agency across the entire launch lifecycle.</source>
+      </segment>
+    </unit>
+    <unit id="3147472972204857818">
+      <notes>
+        <note category="location">src/app/components/agent-bot/agent-bot.component.html:148</note>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.html:271</note>
+        <note category="location">src/app/components/export/export.component.html:36</note>
+        <note category="location">src/app/components/home/home.component.html:29</note>
+        <note category="location">src/app/components/predefined-bot/predefined-bot.component.html:187</note>
+      </notes>
+      <segment>
+        <source>Powered by</source>
+      </segment>
+    </unit>
+    <unit id="3291168767769810983">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:413</note>
+      </notes>
+      <segment>
+        <source>Gemini 2.5 Pro is a powerful, multimodal AI model that brings a breakthrough long-context window. It excels at deeply understanding and reasoning over vast amounts of information, including text, images, audio, and video, up to 1 million tokens. This makes it ideal for complex tasks like analyzing large codebases, summarizing lengthy documents, and processing detailed user histories.</source>
+      </segment>
+    </unit>
+    <unit id="3302957108198080866">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:171</note>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:211</note>
+      </notes>
+      <segment>
+        <source>retrieve_info</source>
+      </segment>
+    </unit>
+    <unit id="3330140503616608204">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:441</note>
+      </notes>
+      <segment>
+        <source>Gemini 2.5 Flash Lite is an even more streamlined and cost-optimized version of Gemini Flash. It&apos;s engineered for extreme efficiency, making it perfect for embedded applications, mobile devices, or scenarios where latency and resource usage are critical. It handles core conversational tasks, simple data extraction, and quick information retrieval with remarkable speed and minimal overhead.</source>
+      </segment>
+    </unit>
+    <unit id="3379385431037959377">
+      <notes>
+        <note category="location">src/app/components/agent-bot/agent-bot.component.ts:493</note>
+      </notes>
+      <segment>
+        <source>Use Case - AI-Powered Investment Research Analyst for Alphabet: Provides financial insights on Alphabet by analyzing its financial reports, strategic initiatives, and management perspectives from its historical investor documents.</source>
+      </segment>
+    </unit>
+    <unit id="3477597726222106757">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:118</note>
+      </notes>
+      <segment>
+        <source>Here you are setting the Orchestration Framework. AI Agent Orchestration Frameworks have control loops that intelligently route user queries or tasks to the most appropriate agents or tools based on their capabilities and context. They also maintain awareness of the current context and history of interactions, ensuring that agents have the necessary information to perform their tasks effectively.</source>
+      </segment>
+    </unit>
+    <unit id="3542042671420335679">
+      <notes>
+        <note category="location">src/app/components/idle-popup/idle-popup.component.html:10,11</note>
+      </notes>
+      <segment>
+        <source>No</source>
+      </segment>
+    </unit>
+    <unit id="3550613261186986823">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:455</note>
+      </notes>
+      <segment>
+        <source>Gemini 2.0 Flash is a fast, efficient, and cost-effective AI model perfect for tasks needing quick responses and high volume. It excels at answering simple questions, providing instant information, real-time chat support, basic reasoning, and connecting your requests to other tools via APIs. Think of it for uses like a customer service chatbot handling common questions rapidly and affordably.</source>
+      </segment>
+    </unit>
+    <unit id="3589684563809066590">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:258</note>
+      </notes>
+      <segment>
+        <source>An AI runtime provides the necessary environment to deploy and run machine learning models.</source>
+      </segment>
+    </unit>
+    <unit id="360691257522085867">
+      <notes>
+        <note category="location">src/app/components/agent-bot/agent-bot.component.ts:504</note>
+      </notes>
+      <segment>
+        <source>1. What are the specs for the Pixel 6 camera?</source>
+      </segment>
+    </unit>
+    <unit id="3620348704928149709">
+      <notes>
+        <note category="location">src/app/components/agent-bot/agent-bot.component.ts:494</note>
+      </notes>
+      <segment>
+        <source>1. How did Alphabet perform in their earnings reports in Q4 2024?</source>
+      </segment>
+    </unit>
+    <unit id="3632587631831847830">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:209</note>
+      </notes>
+      <segment>
+        <source>Answers product-specific questions on Google Products available on the Google Store (Disclaimer: This Agent is for demonstration purposes only)</source>
+      </segment>
+    </unit>
+    <unit id="3677605847849987469">
+      <notes>
+        <note category="location">src/app/components/agent-bot/agent-bot.component.ts:499</note>
+      </notes>
+      <segment>
+        <source>1. What could be causing lower back pain that radiates down my leg?</source>
+      </segment>
+    </unit>
+    <unit id="3688252862668985954">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:386</note>
+      </notes>
+      <segment>
+        <source>LangChain:</source>
+      </segment>
+    </unit>
+    <unit id="3790166379876379555">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:271</note>
+      </notes>
+      <segment>
+        <source>Highly customized or very simple agents might find the platform&apos;s comprehensive features more than needed compared to basic self-hosting.</source>
+      </segment>
+    </unit>
+    <unit id="3885497195825665706">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.html:292,293</note>
+        <note category="location">src/app/components/footer/footer.component.html:14</note>
+      </notes>
+      <segment>
+        <source>Next</source>
+      </segment>
+    </unit>
+    <unit id="3984837979156608216">
+      <notes>
+        <note category="location">src/app/components/agent-bot/agent-bot.component.ts:506</note>
+      </notes>
+      <segment>
+        <source>3. What kind of screen does the Google Nest Hub have?</source>
+      </segment>
+    </unit>
+    <unit id="411740894591360541">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:255</note>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:256</note>
+      </notes>
+      <segment>
+        <source>Runtime</source>
+      </segment>
+    </unit>
+    <unit id="4127699268350975042">
+      <notes>
+        <note category="location">src/app/components/agent-bot/agent-bot.component.ts:496</note>
+      </notes>
+      <segment>
+        <source>3. How does each Alphabet business segment contribute to overall revenue and profit?</source>
+      </segment>
+    </unit>
+    <unit id="4193982909946280369">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:283</note>
+      </notes>
+      <segment>
+        <source>Highly scalable and cost-efficient (pay-per-use), seamless integration with other Google Cloud services (like Vertex AI), full flexibility to use any language or framework via containers, and simplified deployment.</source>
+      </segment>
+    </unit>
+    <unit id="4383337062860531142">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:391</note>
+      </notes>
+      <segment>
+        <source>Connect LLMs to your private data for efficient indexing and retrieval.</source>
+      </segment>
+    </unit>
+    <unit id="4401750052852481477">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:141</note>
+      </notes>
+      <segment>
+        <source>This AI-powered assistant is engineered to enhance the capabilities of creative agencies when launching new websites or products.</source>
+      </segment>
+    </unit>
+    <unit id="4463948373552665078">
+      <notes>
+        <note category="location">src/app/components/predefined-bot/predefined-bot.component.html:88,89</note>
+      </notes>
+      <segment>
+        <source>This agent, deployed on Vertex AI&apos;s Agent Engine, utilizes the LangChain framework to connect the Gemini large language model with various APIs. This configuration enables the agent to understand user requests, retrieve and process information from external sources, and then perform tasks or provide comprehensive answers based on the retrieved data.</source>
+      </segment>
+    </unit>
+    <unit id="4493218159791760549">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:168</note>
+      </notes>
+      <segment>
+        <source>AI-Powered Investment Research Analyst for Alphabet</source>
+      </segment>
+    </unit>
+    <unit id="4510575984473444396">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:161</note>
+      </notes>
+      <segment>
+        <source>Your finance agent has been configured with the following use case and tools:</source>
+      </segment>
+    </unit>
+    <unit id="4552706086693087791">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:189</note>
+      </notes>
+      <segment>
+        <source>Analyzes general medical symptoms and acts as a virtual assistant to help triage patients to the appropriate level of care during consultations. (Disclaimer: This Agent is for demonstration purposes only and is NOT a substitute for professional medical advice)</source>
+      </segment>
+    </unit>
+    <unit id="4578996905501298927">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:423</note>
+      </notes>
+      <segment>
+        <source>Gemini 2.5 Flash</source>
+      </segment>
+    </unit>
+    <unit id="4596728903156942838">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:368</note>
+      </notes>
+      <segment>
+        <source>Agent Development Kit (ADK) is a flexible and modular framework for developing and deploying AI agents. While optimized for Gemini and the Google ecosystem, ADK is model-agnostic, deployment-agnostic, and is built for compatibility with other frameworks.</source>
+      </segment>
+    </unit>
+    <unit id="4902817035128594900">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:245</note>
+      </notes>
+      <segment>
+        <source>Description</source>
+      </segment>
+    </unit>
+    <unit id="4962415141712109795">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:275</note>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:302</note>
+      </notes>
+      <segment>
+        <source>Cloud Run</source>
+      </segment>
+    </unit>
+    <unit id="5059243189085783396">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:265</note>
+      </notes>
+      <segment>
+        <source>Quickly build, deploy, and run production-ready AI agents on Google Cloud with Vertex AI Agent Engine. This fully managed service handles infrastructure, scaling, and security so you can focus on your agent&apos;s logic.</source>
+      </segment>
+    </unit>
+    <unit id="5166376333606553188">
+      <notes>
+        <note category="location">src/app/components/agent-bot/agent-bot.component.html:98</note>
+        <note category="location">src/app/components/predefined-bot/predefined-bot.component.html:92</note>
+        <note category="location">src/app/components/predefined-bot/predefined-bot.component.html:133</note>
+      </notes>
+      <segment>
+        <source>Runtime</source>
+      </segment>
+    </unit>
+    <unit id="5267150349714062388">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:191</note>
+      </notes>
+      <segment>
+        <source>medical_publications_tool</source>
+      </segment>
+    </unit>
+    <unit id="532471922114477242">
+      <notes>
+        <note category="location">src/app/components/agent-bot/agent-bot.component.ts:498</note>
+      </notes>
+      <segment>
+        <source>Use Case - Symptom Checker and Triage Assistant: Analyzes general medical symptoms and acts as a virtual assistant to help triage patients to the appropriate level of care during consultations.</source>
+      </segment>
+    </unit>
+    <unit id="5388692830516022173">
+      <notes>
+        <note category="location">src/app/components/agent-bot/agent-bot.component.html:116</note>
+        <note category="location">src/app/components/predefined-bot/predefined-bot.component.html:119</note>
+        <note category="location">src/app/components/predefined-bot/predefined-bot.component.html:160</note>
+      </notes>
+      <segment>
+        <source>Model</source>
+      </segment>
+    </unit>
+    <unit id="5552890899182432716">
+      <notes>
+        <note category="location">src/app/components/predefined-bot/predefined-bot.component.html:3,4</note>
+      </notes>
+      <segment>
+        <source>Pre-defined agents</source>
+      </segment>
+    </unit>
+    <unit id="5691366798740072571">
+      <notes>
+        <note category="location">src/app/components/agent-bot/agent-bot.component.ts:266</note>
+      </notes>
+      <segment>
+        <source>Oops something went wrong , please try again.</source>
+      </segment>
+    </unit>
+    <unit id="5737618431351197007">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:261</note>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:297</note>
+      </notes>
+      <segment>
+        <source>Vertex AI Agent Engine</source>
+      </segment>
+    </unit>
+    <unit id="5795063446422955782">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:317</note>
+      </notes>
+      <segment>
+        <source>Framework</source>
+      </segment>
+    </unit>
+    <unit id="5868014846832354729">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:192</note>
+      </notes>
+      <segment>
+        <source>Utilizes the PubMed API to pull data from the PubMed database, which is a free, searchable database developed and maintained by the National Center for Biotechnology Information (NCBI) and provides access to citations and abstracts of biomedical literature. retrieve_info: This tool uses Vertex AI Search to perform Retrieval Augmented Generation (RAG) on a given dataset. This agent has access to the following dataset: `PriMock57 Healthcare consultations`: This dataset consists of 57 mock medical primary care consultations held over 5 days by 7 clinicians and 57 fake patients, using case cards that present complaints, symptoms, medical &amp; general history etc.</source>
+      </segment>
+    </unit>
+    <unit id="5895395184868375265">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:390</note>
+      </notes>
+      <segment>
+        <source>LlamaIndex:</source>
+      </segment>
+    </unit>
+    <unit id="5942413385356164943">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:268</note>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:282</note>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:416</note>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:430</note>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:444</note>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:458</note>
+      </notes>
+      <segment>
+        <source>Pros:</source>
+      </segment>
+    </unit>
+    <unit id="6164939787371268362">
+      <notes>
+        <note category="location">src/app/components/agent-bot/agent-bot.component.html:89</note>
+      </notes>
+      <segment>
+        <source>Industry</source>
+      </segment>
+    </unit>
+    <unit id="6175878729664029917">
+      <notes>
+        <note category="location">src/app/components/agent-bot/agent-bot.component.ts:51</note>
+      </notes>
+      <segment>
+        <source>I am a conversation bot built on Google Cloud&apos;s Vertex AI tools.</source>
+      </segment>
+    </unit>
+    <unit id="6251953174604424590">
+      <notes>
+        <note category="location">src/app/components/agent-bot/agent-bot.component.ts:54</note>
+      </notes>
+      <segment>
+        <source>Joke : Why can&apos;t bicycles stand up by themselves? Because they are two-tired!</source>
+      </segment>
+    </unit>
+    <unit id="6288149397986855014">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:197</note>
+      </notes>
+      <segment>
+        <source>Retail</source>
+      </segment>
+    </unit>
+    <unit id="6334504986142316903">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:419</note>
+      </notes>
+      <segment>
+        <source>Can be more resource-intensive and potentially slower for simpler tasks compared to &apos;Flash&apos; models.</source>
+      </segment>
+    </unit>
+    <unit id="6339062720950925541">
+      <notes>
+        <note category="location">src/app/components/export/export.component.html:45</note>
+      </notes>
+      <segment>
+        <source>Start Again!</source>
+      </segment>
+    </unit>
+    <unit id="6422230166866846975">
+      <notes>
+        <note category="location">src/app/components/idle-popup/idle-popup.component.html:1,2</note>
+      </notes>
+      <segment>
+        <source>Are you there?</source>
+      </segment>
+    </unit>
+    <unit id="6456367756107645224">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:459</note>
+      </notes>
+      <segment>
+        <source>Speed, efficiency, low cost, good for quick lookups and simple reasoning.</source>
+      </segment>
+    </unit>
+    <unit id="6549155663323674945">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:406</note>
+      </notes>
+      <segment>
+        <source>AI models are algorithms trained on data to recognize patterns and make predictions or decisions without explicit programming.</source>
+      </segment>
+    </unit>
+    <unit id="6549602809990921615">
+      <notes>
+        <note category="location">src/app/components/code-dialog/code-dialog.component.html:3,4</note>
+      </notes>
+      <segment>
+        <source>Code/Diagram</source>
+      </segment>
+    </unit>
+    <unit id="6574938366553929869">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:111</note>
+      </notes>
+      <segment>
+        <source>Here you are setting the Runtime Environment. There are two primary options available to you: Cloud Run / Fast API and Vertex AI Agent Engine. Agent Engine is a fully managed runtime offering which simplifies the process of deploying agents. The Cloud Run / Fast API option is more bespoke and will allow you to get under the hood and customize the server configurations, API setup, request and response structure, etc.</source>
+      </segment>
+    </unit>
+    <unit id="65984904390749158">
+      <notes>
+        <note category="location">src/app/components/agent-bot/agent-bot.component.html:162,163</note>
+      </notes>
+      <segment>
+        <source>Finish</source>
+      </segment>
+    </unit>
+    <unit id="6801403500821211024">
+      <notes>
+        <note category="location">src/app/components/home/home.component.html:12,13</note>
+      </notes>
+      <segment>
+        <source>The AI Agent Bar simplifies the process of creating and experimenting with AI agents. Users can easily select their preferred runtime, orchestration framework, industry, and model. This tool makes it easy for both experienced developers and those new to AI to explore and implement AI agent solutions.</source>
+      </segment>
+    </unit>
+    <unit id="6924245241744002654">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.html:297,298</note>
+        <note category="location">src/app/components/predefined-bot/predefined-bot.component.html:206,207</note>
+      </notes>
+      <segment>
+        <source>Build</source>
+      </segment>
+    </unit>
+    <unit id="6945972167060636289">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:536</note>
+      </notes>
+      <segment>
+        <source>The foundation model is the core of your AI agent, interpreting information and driving its decisions and actions. Choosing the right one is crucial. Consider the tasks your agent will handle, required accuracy, budget, speed needs, and if you need customization. Also, think about the model&apos;s context window for handling complex tasks and whether a faster, cheaper &quot;flash&quot; model suits your speed and cost requirements.</source>
+      </segment>
+    </unit>
+    <unit id="6959968798127434512">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:389</note>
+      </notes>
+      <segment>
+        <source>Build complex, stateful, multi-actor LLM workflows with a structured graph approach.</source>
+      </segment>
+    </unit>
+    <unit id="6988551197363639101">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:316</note>
+      </notes>
+      <segment>
+        <source>Orchestration Framework</source>
+      </segment>
+    </unit>
+    <unit id="7004693272506296337">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:157</note>
+      </notes>
+      <segment>
+        <source>Finance</source>
+      </segment>
+    </unit>
+    <unit id="7102289932887205965">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:447</note>
+      </notes>
+      <segment>
+        <source>Limited reasoning complexity and context window compared to Pro and standard Flash models, less suitable for nuanced understanding or complex analysis.</source>
+      </segment>
+    </unit>
+    <unit id="7120056492234337894">
+      <notes>
+        <note category="location">src/app/components/agent-bot/agent-bot.component.ts:53</note>
+      </notes>
+      <segment>
+        <source>Joke : Why did the robot go on a diet? Because it had too many bytes!</source>
+      </segment>
+    </unit>
+    <unit id="7154323874932310645">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:427</note>
+      </notes>
+      <segment>
+        <source>Gemini 2.5 Flash is a lightweight and highly efficient AI model designed for speed and cost-effectiveness. It&apos;s optimized for tasks requiring fast responses and high throughput, such as real-time chat, content summarization, and simple question answering. It still benefits from a large context window, making it a strong contender for many general-purpose applications.</source>
+      </segment>
+    </unit>
+    <unit id="7159040389428294679">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:244</note>
+      </notes>
+      <segment>
+        <source>Agent Name</source>
+      </segment>
+    </unit>
+    <unit id="718344757654562248">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:319</note>
+      </notes>
+      <segment>
+        <source>An AI orchestration framework manages workflows between AI models, tools, and data to build efficient AI systems.</source>
+      </segment>
+    </unit>
+    <unit id="7194017842579795231">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:177</note>
+      </notes>
+      <segment>
+        <source>Healthcare</source>
+      </segment>
+    </unit>
+    <unit id="7232665105944922145">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:305</note>
+      </notes>
+      <segment>
+        <source>Cost optimization and portability.</source>
+      </segment>
+    </unit>
+    <unit id="7241915626015412170">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:218</note>
+      </notes>
+      <segment>
+        <source>APIs offer flexibility and customization, allowing developers to tailor LLM interactions precisely to their needs and integrate them deeply within existing systems. Pre-built tools, on the other hand, provide convenience and speed, offering ready-made solutions for common LLM use cases like chatbots, summarization, or question answering, often with user-friendly interfaces and requiring less coding. Choose APIs when fine-grained control and deep integration are paramount, and pre-built tools when rapid development and ease of use are prioritized.</source>
+      </segment>
+    </unit>
+    <unit id="7285108256676834123">
+      <notes>
+        <note category="location">src/app/components/export/export.component.html:5</note>
+      </notes>
+      <segment>
+        <source>Agent activated!</source>
+      </segment>
+    </unit>
+    <unit id="7301615041170915384">
+      <notes>
+        <note category="location">src/app/components/agent-bot/agent-bot.component.ts:501</note>
+      </notes>
+      <segment>
+        <source>3. Based on past consultations, are there specific symptoms that were particularly helpful in narrowing down a differential diagnosis?</source>
+      </segment>
+    </unit>
+    <unit id="7393851434252043883">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:417</note>
+      </notes>
+      <segment>
+        <source>Exceptional long-context understanding, strong reasoning capabilities, multimodal input support, excellent for complex analysis and summarization.</source>
+      </segment>
+    </unit>
+    <unit id="7422000112100064619">
+      <notes>
+        <note category="location">src/app/components/agent-bot/agent-bot.component.ts:505</note>
+      </notes>
+      <segment>
+        <source>2. What is the water resistance rating of the Pixel?</source>
+      </segment>
+    </unit>
+    <unit id="7460393822809064854">
+      <notes>
+        <note category="location">src/app/components/predefined-bot/predefined-bot.component.html:29</note>
+      </notes>
+      <segment>
+        <source>InfoBot</source>
+      </segment>
+    </unit>
+    <unit id="7520362565861596862">
+      <notes>
+        <note category="location">src/app/components/agent-bot/agent-bot.component.ts:55</note>
+      </notes>
+      <segment>
+        <source>Joke : How does a computer get drunk? It takes screenshots.</source>
+      </segment>
+    </unit>
+    <unit id="7545409356764651422">
+      <notes>
+        <note category="location">src/app/components/predefined-bot/predefined-bot.component.html:41</note>
+      </notes>
+      <segment>
+        <source>Pre-defined agent three</source>
+      </segment>
+    </unit>
+    <unit id="7548730265882288516">
+      <notes>
+        <note category="location">src/app/components/idle-popup/idle-popup.component.html:3,5</note>
+      </notes>
+      <segment>
+        <source>It looks like you&apos;ve been inactive for a while. Click &apos;Yes&apos; to continue your session.</source>
+      </segment>
+    </unit>
+    <unit id="758709187891097300">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:151</note>
+      </notes>
+      <segment>
+        <source>Google Search &amp; Logo Generation</source>
+      </segment>
+    </unit>
+    <unit id="7608841831734131016">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:279</note>
+      </notes>
+      <segment>
+        <source>Use Cloud Run to host your AI agents as scalable, cost-effective web services. It automatically adjusts resources to match demand and you only pay for what you use, making it efficient for fluctuating workloads.</source>
+      </segment>
+    </unit>
+    <unit id="7656500526733567594">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:431</note>
+      </notes>
+      <segment>
+        <source>Fast, cost-efficient, good for high-volume tasks, strong performance with a large context window for its size.</source>
+      </segment>
+    </unit>
+    <unit id="7741554728933288731">
+      <notes>
+        <note category="location">src/app/components/agent-bot/agent-bot.component.ts:500</note>
+      </notes>
+      <segment>
+        <source>2. What red flag symptoms would indicate that my sore throat is something more serious than a cold?</source>
+      </segment>
+    </unit>
+    <unit id="7842153191390714373">
+      <notes>
+        <note category="location">src/app/components/agent-bot/agent-bot.component.ts:153</note>
+      </notes>
+      <segment>
+        <source>Sorry! I don&apos;t have sufficient information to answer this question at the moment.</source>
+      </segment>
+    </unit>
+    <unit id="7887905759262133506">
+      <notes>
+        <note category="location">src/app/components/export/export.component.html:10</note>
+      </notes>
+      <segment>
+        <source>You&apos;ve just activated a brand new AI Agent into the world! High fives all around! Ready to unleash its potential? Scan the QR code to grab your code and take it for a spin. Feeling ambitious? Our expert squad is nearby, itching to show you how to launch this agent into orbit! Let&apos;s turn that code into a production-ready powerhouse!</source>
+      </segment>
+    </unit>
+    <unit id="7939528592949938228">
+      <notes>
+        <note category="location">src/app/components/agent-bot/agent-bot.component.ts:495</note>
+      </notes>
+      <segment>
+        <source>2. What were Alphabet’s key strategic priorities for the 2024?</source>
+      </segment>
+    </unit>
+    <unit id="8032081630287751314">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:104</note>
+      </notes>
+      <segment>
+        <source>Agent Tools are functions or interfaces that allow an AI agent to interact with and perform actions in the external world, such as accessing data, running code, or calling external APIs. How they work: • Agents use a language model as a reasoning engine to determine which tools to use and in what sequence. • Tools provide the agent with the necessary information and functionality to perform specific tasks. • Agents can use tools in a loop, deciding how many times to use them.</source>
+      </segment>
+    </unit>
+    <unit id="8051873253846033708">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:131</note>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:132</note>
+      </notes>
+      <segment>
+        <source>Industry</source>
+      </segment>
+    </unit>
+    <unit id="8135040003727945935">
+      <notes>
+        <note category="location">src/app/components/agent-bot/agent-bot.component.ts:453</note>
+      </notes>
+      <segment>
+        <source>You can now interact with your deployed AI Agent! On your screen is a description of your selected technologies for your deployed agent, as well as a list of sample prompts to ask. Embedded within this UI is the frontend chatbot code that is interacting with your backend AI agent service.</source>
+      </segment>
+    </unit>
+    <unit id="8135473813525880577">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:300</note>
+      </notes>
+      <segment>
+        <source>Managed scaling and infrastructure.</source>
+      </segment>
+    </unit>
+    <unit id="8420701120117037246">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:394</note>
+      </notes>
+      <segment>
+        <source>Select the framework best suited to your project: LangChain for general use, LangGraph for complex workflows, and LlamaIndex for private data.</source>
+      </segment>
+    </unit>
+    <unit id="8627724676854626148">
+      <notes>
+        <note category="location">src/app/components/predefined-bot/predefined-bot.component.html:129,130</note>
+      </notes>
+      <segment>
+        <source>This Cloud Run-deployed agent uses LlamaIndex to connect Claude with a knowledge base and pre-built tools. This allows it to provide informed and safe answers, utilize web search, and perform other helpful tasks.</source>
+      </segment>
+    </unit>
+    <unit id="8679105329732848333">
+      <notes>
+        <note category="location">src/app/components/home/home.component.html:20,21</note>
+      </notes>
+      <segment>
+        <source>The AI Agent Bar</source>
+      </segment>
+    </unit>
+    <unit id="8684229693445347325">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:137</note>
+      </notes>
+      <segment>
+        <source>Generic (Marketing)</source>
+      </segment>
+    </unit>
+    <unit id="871984356193055974">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:306</note>
+      </notes>
+      <segment>
+        <source>Requires container expertise and infrastructure management.deployments, and the resources to develop and maintain the infrastructure.</source>
+      </segment>
+    </unit>
+    <unit id="8721861281513890587">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:241</note>
+      </notes>
+      <segment>
+        <source>Properties</source>
+      </segment>
+    </unit>
+    <unit id="8763211465841977542">
+      <notes>
+        <note category="location">src/app/components/agent-bot/agent-bot.component.ts:246</note>
+      </notes>
+      <segment>
+        <source>Thinking...</source>
+      </segment>
+    </unit>
+    <unit id="8788802841513080001">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:451</note>
+      </notes>
+      <segment>
+        <source>Gemini 2.0 Flash</source>
+      </segment>
+    </unit>
+    <unit id="8800302891500343788">
+      <notes>
+        <note category="location">src/app/components/agent-bot/agent-bot.component.html:107</note>
+        <note category="location">src/app/components/predefined-bot/predefined-bot.component.html:101</note>
+        <note category="location">src/app/components/predefined-bot/predefined-bot.component.html:142</note>
+      </notes>
+      <segment>
+        <source>Orchestration Framework</source>
+      </segment>
+    </unit>
+    <unit id="8877473955490465643">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:393</note>
+      </notes>
+      <segment>
+        <source>A flexible and modular framework for developing and deploying AI agents</source>
+      </segment>
+    </unit>
+    <unit id="8890553633144307762">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.html:282,283</note>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.html:287,288</note>
+        <note category="location">src/app/components/footer/footer.component.html:13</note>
+        <note category="location">src/app/components/predefined-bot/predefined-bot.component.html:200,201</note>
+      </notes>
+      <segment>
+        <source>Back</source>
+      </segment>
+    </unit>
+    <unit id="8929390299303189143">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:147</note>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:167</note>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:187</note>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:207</note>
+      </notes>
+      <segment>
+        <source>Use case</source>
+      </segment>
+    </unit>
+    <unit id="8932747658084529949">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:201</note>
+      </notes>
+      <segment>
+        <source>Your retail agent has been configured with the following use case and tools:</source>
+      </segment>
+    </unit>
+    <unit id="9040091914883443018">
+      <notes>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:387</note>
+      </notes>
+      <segment>
+        <source>Versatile toolbox for building a wide range of LLM applications.</source>
+      </segment>
+    </unit>
   </file>
 </xliff>
