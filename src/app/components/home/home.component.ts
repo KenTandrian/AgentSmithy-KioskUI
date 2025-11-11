@@ -18,22 +18,22 @@ constructor(public router: Router, private domSanitizer: DomSanitizer, private m
   localStorage.removeItem("agentData");
   this.matIconRegistry.addSvgIcon(
     'spark',
-    this.domSanitizer.bypassSecurityTrustResourceUrl('/assets/images/spark.svg')
+    this.domSanitizer.bypassSecurityTrustResourceUrl('assets/images/spark.svg')
   );
 
   this.matIconRegistry.addSvgIcon(
     'spark-dark',
-    this.domSanitizer.bypassSecurityTrustResourceUrl('/assets/images/spark-dark.svg')
+    this.domSanitizer.bypassSecurityTrustResourceUrl('assets/images/spark-dark.svg')
   );
 
   this.matIconRegistry.addSvgIcon(
     'spark-shine',
-    this.domSanitizer.bypassSecurityTrustResourceUrl('/assets/images/spark-shine.svg')
+    this.domSanitizer.bypassSecurityTrustResourceUrl('assets/images/spark-shine.svg')
   );
 
   this.matIconRegistry.addSvgIcon(
     'spark-shine-dark',
-    this.domSanitizer.bypassSecurityTrustResourceUrl('/assets/images/spark-shine-dark.svg')
+    this.domSanitizer.bypassSecurityTrustResourceUrl('assets/images/spark-shine-dark.svg')
   );
 
 }

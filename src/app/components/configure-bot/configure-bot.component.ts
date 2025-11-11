@@ -128,7 +128,7 @@ export class ConfigureBotComponent implements OnInit, AfterViewInit {
 
   stepperConfig = [
     {
-      heading: 'Agent Properties',
+      heading: $localize`Agent Properties`,
       stepHeading: 'Properties',
       contentType: 'form',
       fields: [
