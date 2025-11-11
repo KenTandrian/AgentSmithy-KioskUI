@@ -32,7 +32,15 @@ export class ConfigureBotComponent implements OnInit, AfterViewInit {
   private analytics = inject(Analytics);
   selectedOption: string = "";
 
-  constructor(private _formBuilder: FormBuilder, private router: Router, private fb: FormBuilder,private themeService: ThemeService,private readonly dialog: MatDialog,private el: ElementRef, private renderer: Renderer2) {
+  constructor(
+    private _formBuilder: FormBuilder, 
+    private router: Router, 
+    private fb: FormBuilder,
+    private themeService: ThemeService,
+    private readonly dialog: MatDialog,
+    private el: ElementRef, 
+    private renderer: Renderer2
+  ) {
     logEvent(this.analytics, "/create_bot/agent_properties");
   }
 
@@ -63,15 +71,6 @@ export class ConfigureBotComponent implements OnInit, AfterViewInit {
           opt.isSelected = false;
           if(opt.label.startsWith("Claude")){
             opt.isDisabled = true;
-          }
-        });
-      } else {
-        this.stepperConfig[event].options!.forEach(opt => {
-          opt.isSelected = false;
-          if(opt.label.startsWith("Claude")){
-            if(opt.isDisabled){
-              opt.isDisabled = false;
-            }
           }
         });
       }
@@ -341,11 +340,11 @@ export class ConfigureBotComponent implements OnInit, AfterViewInit {
             consSubheading: "Primarily focused on data ingestion and retrieval, offering less comprehensive tooling for broader LLM application development (like agent creation) compared to frameworks like LangChain, and its broad vector database support might mean less specific optimization for each one.",
           }, 
         },
-        { 
-          label: 'Agent Development Kit (ADK)', 
+        {
+          label: 'Agent Development Kit (ADK)',
           isSelected: false,
-          isDisabled: true, 
-          onClick: () => this.selectFramework('Agent Development Kit'),
+          isDisabled: false, 
+          onClick: () => this.selectFramework('agent_development_kit'),
           subtitle: 'Agent Development Kit (ADK) is a flexible and modular framework for developing and deploying AI agents. While optimized for Gemini and the Google ecosystem, ADK is model-agnostic, deployment-agnostic, and is built for compatibility with other frameworks.',
           caption: 'from google.cloud import aiplatform \n\n# Initialize the Vertex AI client \naiplatform.init(project="your-project-id", location="your-region") \n\n# Create an agent \nagent = aiplatform.Agent.create( \ndisplay_name="my-agent", llm_model="text-bison@001", tools=[aiplatform.Tool.from_python_package( \ndisplay_name="wikipedia", python_package_uri="gs://my-bucket/wikipedia.tar.gz", )] )',
           metadata: {
@@ -371,7 +370,7 @@ export class ConfigureBotComponent implements OnInit, AfterViewInit {
           llamaindexHeading: "LlamaIndex: ",
           llamaindexSubheading: "Connect LLMs to your private data for efficient indexing and retrieval.",
           vertexagentframeworkHeading: "Agent Development Kit (ADK): ",
-          vertexagentframeworkSubheading: "A flexible and modular framework for developing and deploying AI agents (coming soon!)",
+          vertexagentframeworkSubheading: "A flexible and modular framework for developing and deploying AI agents",
           footer: "Select the framework best suited to your project: LangChain for general use, LangGraph for complex workflows, and LlamaIndex for private data."
         },
       },
@@ -475,7 +474,7 @@ export class ConfigureBotComponent implements OnInit, AfterViewInit {
           isSelected: false, 
           isDisabled: false,
           onClick: () => this.selectModel('claude-3-5-sonnet-v2'),
-          subtitle: 'Claude 3.5 Sonnet v2, available in the Vertex AI Model Garden, is a state-of-the-art model from Anthropic, excelling in real-world software engineering and tasks requiring intelligent agent behavior. It offers a strong combination of natural language understanding, coding abilities, and advanced reasoning, making it versatile for complex applications.',
+          subtitle: 'Claude 3.5 Sonnet V2, available in the Vertex AI Model Garden, is a state-of-the-art model from Anthropic, excelling in real-world software engineering and tasks requiring intelligent agent behavior. It offers a strong combination of natural language understanding, coding abilities, and advanced reasoning, making it versatile for complex applications.',
           caption: 'import os\nfrom langchain_core.prompts import ChatPromptTemplate\nfrom langchain_core.output_parsers import StrOutputParser\nfrom langchain_google_vertexai.model_garden import ChatAnthropicVertex\n\nos.environ["GOOGLE_CLOUD_PROJECT"] = "your-project-id"\n\n# requires permission / approving Anthropic’s T&C; must be us-east5 or europe-west1\nclaude_sonnet = ChatAnthropicVertex(\n\tmodel_name="claude-3-5-sonnet-v2",\n\ttemperature=0.5, # Adjust for creativity\n\tmax_tokens=500, # Larger limit for complex tasks\n\tlocation="us-east5"\n)\n\nprompt = ChatPromptTemplate.from_template("Write a poem about {subject}")\nchain = prompt | claude_sonnet | StrOutputParser()\n\nprint("Claude Sonnet Poem: ", chain.invoke({"subject": "rain"}))',
           metadata: {
             prosHeading: "Pros: ",
@@ -573,6 +572,7 @@ export class ConfigureBotComponent implements OnInit, AfterViewInit {
 
   selectFramework(value: string) {
     this.selectedFramework = value as Framework;
+    this.updateModelOptions();
   }
 
   selectIndustry(value: string) {
@@ -654,6 +654,27 @@ export class ConfigureBotComponent implements OnInit, AfterViewInit {
         if (option.label === 'LlamaIndex') {
           // Disable LlamaIndex if Runtime is AgentEngine, otherwise enable it
           option.isDisabled = this.selectedRuntime === 'AgentEngine';
+        }
+      });
+    }
+  }
+
+  updateModelOptions() {
+    const modelStep = this.stepperConfig.find(step => step.heading === 'Model');
+    
+    // Define the models that should be disabled when ADK is selected
+    const modelsToDisableForADK = [
+      'Gemini 2.0 Flash',
+      'Claude 3.7 Sonnet (Model Garden)',
+      'Claude 3.5 Sonnet V2 (Model Garden)'
+    ];
+
+    const shouldDisable = this.selectedFramework === 'agent_development_kit';
+
+    if (modelStep && modelStep.options) {
+      modelStep.options.forEach(option => {
+        if (modelsToDisableForADK.includes(option.label)) {
+          option.isDisabled = shouldDisable;
         }
       });
     }
