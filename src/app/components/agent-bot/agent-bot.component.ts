@@ -520,7 +520,7 @@ export class AgentBotComponent implements OnInit, OnDestroy {
     console.log(key);
     console.log(this.botsMap);
     this.botUrl = bot_config.CLOUD_RUN_URL + "/streamQuery";
-    this.isADK = framework === "Agent Development Kit";
+    this.isADK = framework === "agent_development_kit";
     this.safeBotUrl = this.sanitizer.bypassSecurityTrustResourceUrl(bot_config.CLOUD_RUN_URL);
   }
 
