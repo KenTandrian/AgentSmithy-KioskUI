@@ -79,6 +79,9 @@
               "sourceMap": true,
               "ssr": false,
               "prerender": false 
+            },
+            "id": {
+              "localize": ["id"]
             }
           },
           "defaultConfiguration": "production"
@@ -91,6 +94,9 @@
             },
             "development": {
               "buildTarget": "agent-smithy-kioskui:build:development"
+            },
+            "development-id": {
+              "buildTarget": "agent-smithy-kioskui:build:development,id"
             }
           },
           "defaultConfiguration": "development"
