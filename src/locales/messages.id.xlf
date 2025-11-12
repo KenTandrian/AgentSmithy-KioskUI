@@ -874,7 +874,7 @@
       </notes>
       <segment state="initial">
         <source>Build</source>
-        <target>Build</target>
+        <target>Buat Agent</target>
       </segment>
     </unit>
     <unit id="6945972167060636289">
@@ -991,7 +991,7 @@
       </notes>
       <segment state="initial">
         <source>Agent activated!</source>
-        <target>Agen diaktifkan!</target>
+        <target>Agen AI berhasil diaktifkan!</target>
       </segment>
     </unit>
     <unit id="7301615041170915384">
@@ -1090,7 +1090,7 @@
       </notes>
       <segment state="initial">
         <source>2. What red flag symptoms would indicate that my sore throat is something more serious than a cold?</source>
-        <target>2. Gejala bendera merah apa yang menunjukkan bahwa sakit tenggorokan saya adalah sesuatu yang lebih serius daripada pilek?</target>
+        <target>2. Gejala red flag apa yang menunjukkan bahwa sakit tenggorokan saya adalah sesuatu yang lebih serius daripada pilek?</target>
       </segment>
     </unit>
     <unit id="7842153191390714373">
@@ -1108,7 +1108,7 @@
       </notes>
       <segment state="initial">
         <source>You&apos;ve just activated a brand new AI Agent into the world! High fives all around! Ready to unleash its potential? Scan the QR code to grab your code and take it for a spin. Feeling ambitious? Our expert squad is nearby, itching to show you how to launch this agent into orbit! Let&apos;s turn that code into a production-ready powerhouse!</source>
-        <target>Anda baru saja mengaktifkan Agen AI baru ke dunia! Selamat untuk semuanya! Siap memaksimalkan potensinya? Pindai kode QR untuk mendapatkan kode Anda dan mencobanya. Merasa ambisius? Tim ahli kami sudah dekat, ingin menunjukkan cara meluncurkan agen ini ke orbit! Mari kita ubah kode itu menjadi pembangkit tenaga listrik yang siap produksi!</target>
+        <target>Selamat, Anda baru saja mengaktifkan Agen AI baru ke dunia! Siap memaksimalkan potensinya? Pindai kode QR untuk mendapatkan kode Anda dan mencobanya. Merasa ambisius? Tim ahli AI kami ada di sekitar Anda, bersedia untuk menunjukkan cara meluncurkan agen ini ke orbit! Mari kita ubah kode itu menjadi agen yang production-ready!</target>
       </segment>
     </unit>
     <unit id="7939528592949938228">

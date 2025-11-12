@@ -92,7 +92,7 @@ export class AgentBotComponent implements OnInit, OnDestroy {
   botsMappingData: any;
   botsMap = new Map();
   botUrl: string;
-  isADK: boolean = false;
+  isGeneric: boolean = false;
   safeBotUrl: SafeResourceUrl;
   subtitle: string;
   question1: string;
@@ -363,7 +363,7 @@ export class AgentBotComponent implements OnInit, OnDestroy {
         };
     
         this.conversation.unshift(singleMesage);
-        if (this.conversation.length > 1 && this.conversation[1].body === 'Thinking...' && this.conversation[1].type === 'bot') {
+        if (this.conversation.length > 1 && this.conversation[1].body === $localize`Thinking...` && this.conversation[1].type === 'bot') {
           this.conversation.splice(1, 1);
         }
         this.setSuggestedQuestionInChat(response, endTime);
@@ -480,8 +480,7 @@ export class AgentBotComponent implements OnInit, OnDestroy {
         console.log(agentData);
 
         const runtime = this.selectedAgentData.runTime;
-        // const framework = this.selectedAgentData.frameWork;
-        const framework = this.selectedAgentData.industry === "generic" ? this.selectedAgentData.frameWork : 'langchain_agent';
+        const framework = this.selectedAgentData.frameWork;
         const model = this.selectedAgentData.model;
         const industry = this.selectedAgentData.industry;
 
@@ -520,7 +519,7 @@ export class AgentBotComponent implements OnInit, OnDestroy {
     console.log(key);
     console.log(this.botsMap);
     this.botUrl = bot_config.CLOUD_RUN_URL + "/streamQuery";
-    this.isADK = framework === "agent_development_kit";
+    this.isGeneric = industry === "generic";
     this.safeBotUrl = this.sanitizer.bypassSecurityTrustResourceUrl(bot_config.CLOUD_RUN_URL);
   }
 
