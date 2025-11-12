@@ -21,10 +21,10 @@
       "sourceRoot": "src",
       "prefix": "app",
       "i18n": {
-        "sourceLocale": "en-US",
         "locales": {
           "id": "src/locales/messages.id.xlf"
-        }
+        },
+        "sourceLocale": "en-US"
       },
       "architect": {
         "build": {

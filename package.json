@@ -7,8 +7,8 @@
     "start:id": "ng serve --configuration development-id",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
     "extract-i18n": "ng run agent-smithy-kioskui:extract-i18n-merge",
+    "test": "ng test",
     "serve:ssr:agent-smithy-kioskui": "node dist/agent-smithy-kioskui/server/server.mjs"
   },
   "private": true,
