@@ -351,15 +351,6 @@
         <target>Pemeriksa Gejala dan Asisten Triase</target>
       </segment>
     </unit>
-    <unit id="2986473220728639825">
-      <notes>
-        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:461</note>
-      </notes>
-      <segment state="initial">
-        <source>Less suitable for highly complex reasoning, deep analysis, or tasks requiring the utmost accuracy on nuanced problems compared to larger, more powerful models.</source>
-        <target>Kurang cocok untuk penalaran yang sangat rumit, analisis mendalam, atau tugas yang memerlukan akurasi tertinggi pada masalah yang bernuansa dibandingkan dengan model yang lebih besar dan lebih canggih.</target>
-      </segment>
-    </unit>
     <unit id="3081749851382598990">
       <notes>
         <note category="location">src/app/components/configure-bot/configure-bot.component.ts:149</note>
@@ -430,15 +421,6 @@
       <segment state="initial">
         <source>No</source>
         <target>Tidak</target>
-      </segment>
-    </unit>
-    <unit id="3550613261186986823">
-      <notes>
-        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:455</note>
-      </notes>
-      <segment state="initial">
-        <source>Gemini 2.0 Flash is a fast, efficient, and cost-effective AI model perfect for tasks needing quick responses and high volume. It excels at answering simple questions, providing instant information, real-time chat support, basic reasoning, and connecting your requests to other tools via APIs. Think of it for uses like a customer service chatbot handling common questions rapidly and affordably.</source>
-        <target>Gemini 2.0 Flash adalah model AI yang cepat, efisien, dan hemat biaya, sempurna untuk tugas-tugas yang membutuhkan respons cepat dan volume tinggi. Keunggulannya antara lain menjawab pertanyaan sederhana, menyediakan informasi instan, dukungan obrolan real-time, penalaran dasar, dan menghubungkan permintaan Anda ke alat lain melalui API. Bayangkan saja, model ini dapat digunakan sebagai chatbot layanan pelanggan yang menangani pertanyaan umum dengan cepat dan terjangkau.</target>
       </segment>
     </unit>
     <unit id="3589684563809066590">
@@ -755,10 +737,7 @@
       <notes>
         <note category="location">src/app/components/agent-bot/agent-bot.component.html:89</note>
       </notes>
-      <segment state="initial">
-        <source>Industry</source>∂
-        <target>Industri</target>
-      </segment>
+      <segment state="initial"> <source>Industry</source>∂ <target>Industri</target> </segment>
     </unit>
     <unit id="6175878729664029917">
       <notes>
@@ -812,15 +791,6 @@
       <segment state="initial">
         <source>Are you there?</source>
         <target>Apakah Anda di sana?</target>
-      </segment>
-    </unit>
-    <unit id="6456367756107645224">
-      <notes>
-        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:459</note>
-      </notes>
-      <segment state="initial">
-        <source>Speed, efficiency, low cost, good for quick lookups and simple reasoning.</source>
-        <target>Kecepatan, efisiensi, biaya rendah, bagus untuk pencarian cepat dan penalaran sederhana.</target>
       </segment>
     </unit>
     <unit id="6549155663323674945">
@@ -1217,15 +1187,6 @@
       <segment state="initial">
         <source>Thinking...</source>
         <target>Berpikir...</target>
-      </segment>
-    </unit>
-    <unit id="8788802841513080001">
-      <notes>
-        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:451</note>
-      </notes>
-      <segment state="initial">
-        <source>Gemini 2.0 Flash</source>
-        <target>Gemini 2.0 Flash</target>
       </segment>
     </unit>
     <unit id="8800302891500343788">

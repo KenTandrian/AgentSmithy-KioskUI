@@ -447,20 +447,20 @@ export class ConfigureBotComponent implements OnInit, AfterViewInit {
             consSubheading: $localize`Limited reasoning complexity and context window compared to Pro and standard Flash models, less suitable for nuanced understanding or complex analysis.`,
           }
         },
-        {
-          label: $localize`Gemini 2.0 Flash`,
-          isSelected: false,
-          isDisabled: false,
-          onClick: () => this.selectModel('gemini-2.0-flash'),
-          subtitle: $localize`Gemini 2.0 Flash is a fast, efficient, and cost-effective AI model perfect for tasks needing quick responses and high volume. It excels at answering simple questions, providing instant information, real-time chat support, basic reasoning, and connecting your requests to other tools via APIs. Think of it for uses like a customer service chatbot handling common questions rapidly and affordably.`,
-          caption: '```python\nimport os\nfrom langchain_core.prompts import ChatPromptTemplate\nfrom langchain_core.output_parsers import StrOutputParser\nfrom langchain_google_vertexai import ChatVertexAI\n\nos.environ["GOOGLE_CLOUD_PROJECT"] = "your-project-id"\n\ngemini_flash = ChatVertexAI(\n\tmodel_name="gemini-2.0-flash",\n\ttemperature=0.2, # Adjust for creativity\n\tmax_output_tokens=256, # Larger limit for complex tasks\n\tlocation="us-central1"\n)\n\nprompt = ChatPromptTemplate.from_template("tell me a joke about {topic}")\nchain = prompt | gemini_flash | StrOutputParser()\nprint("Gemini Flash Joke: ", chain.invoke({"topic": "cats"}))\n```',
-          metadata: {
-            prosHeading: $localize`Pros: `,
-            prosSubheading: $localize`Speed, efficiency, low cost, good for quick lookups and simple reasoning.`,
-            consHeading: $localize`Cons: `,
-            consSubheading: $localize`Less suitable for highly complex reasoning, deep analysis, or tasks requiring the utmost accuracy on nuanced problems compared to larger, more powerful models.`,
-          },
-        },
+        // {
+        //   label: $localize`Gemini 2.0 Flash`,
+        //   isSelected: false,
+        //   isDisabled: false,
+        //   onClick: () => this.selectModel('gemini-2.0-flash'),
+        //   subtitle: $localize`Gemini 2.0 Flash is a fast, efficient, and cost-effective AI model perfect for tasks needing quick responses and high volume. It excels at answering simple questions, providing instant information, real-time chat support, basic reasoning, and connecting your requests to other tools via APIs. Think of it for uses like a customer service chatbot handling common questions rapidly and affordably.`,
+        //   caption: '```python\nimport os\nfrom langchain_core.prompts import ChatPromptTemplate\nfrom langchain_core.output_parsers import StrOutputParser\nfrom langchain_google_vertexai import ChatVertexAI\n\nos.environ["GOOGLE_CLOUD_PROJECT"] = "your-project-id"\n\ngemini_flash = ChatVertexAI(\n\tmodel_name="gemini-2.0-flash",\n\ttemperature=0.2, # Adjust for creativity\n\tmax_output_tokens=256, # Larger limit for complex tasks\n\tlocation="us-central1"\n)\n\nprompt = ChatPromptTemplate.from_template("tell me a joke about {topic}")\nchain = prompt | gemini_flash | StrOutputParser()\nprint("Gemini Flash Joke: ", chain.invoke({"topic": "cats"}))\n```',
+        //   metadata: {
+        //     prosHeading: $localize`Pros: `,
+        //     prosSubheading: $localize`Speed, efficiency, low cost, good for quick lookups and simple reasoning.`,
+        //     consHeading: $localize`Cons: `,
+        //     consSubheading: $localize`Less suitable for highly complex reasoning, deep analysis, or tasks requiring the utmost accuracy on nuanced problems compared to larger, more powerful models.`,
+        //   },
+        // },
         // {
         //   label: 'Gemini 1.5 Pro',
         //   isSelected: false,

@@ -3,7 +3,7 @@
   <file id="ngi18n" original="ng.template">
     <unit id="1021815266005498010">
       <notes>
-        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:181</note>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:161</note>
       </notes>
       <segment>
         <source>Your healthcare agent has been configured with the following use case and tools:</source>
@@ -72,7 +72,7 @@
     </unit>
     <unit id="1264866489359952974">
       <notes>
-        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:148</note>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:208</note>
       </notes>
       <segment>
         <source>Marketing Agency</source>
@@ -85,7 +85,6 @@
         <note category="location">src/app/components/configure-bot/configure-bot.component.ts:418</note>
         <note category="location">src/app/components/configure-bot/configure-bot.component.ts:432</note>
         <note category="location">src/app/components/configure-bot/configure-bot.component.ts:446</note>
-        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:460</note>
       </notes>
       <segment>
         <source>Cons:</source>
@@ -117,7 +116,7 @@
     </unit>
     <unit id="1669804318589072160">
       <notes>
-        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:172</note>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:152</note>
       </notes>
       <segment>
         <source>This tool uses Vertex AI Search to perform Retrieval Augmented Generation (RAG) on a given dataset. This agent has access to the following dataset: `Alphabet Investor PDFs`: This dataset contains PDFs of quarterly earnings releases and annual reports for Alphabet for every quarter since 2004. The Annual reports include financial statements (balance sheet, income statement, cash flow statement), a letter to shareholders, management discussion and analysis (MD&amp;A), and information on corporate governance. The quarterly earnings releases also contain key financial statements like the income statement, balance sheet, and cash flow statement, along with management commentary and analysis of quarterly performance.</source>
@@ -149,7 +148,7 @@
     </unit>
     <unit id="1743308125980006016">
       <notes>
-        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:152</note>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:212</note>
       </notes>
       <segment>
         <source>This agent has access to the following tools: Google Search: This tool allows the agent to perform real-time searches on Google. It can be used to find information on a wide variety of topics, including current events, facts, and general knowledge, which is essential for the marketing agency to find the perfect domain name, create a website, and generate marketing materials. Logo Generation: This tool generates a logo based on a prompt and saves it as an image. It uses the latest Imagen 4.0 model to create the image.</source>
@@ -197,7 +196,7 @@
     </unit>
     <unit id="2190410481265719191">
       <notes>
-        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:212</note>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:192</note>
       </notes>
       <segment>
         <source>This tool uses Vertex AI Search to perform Retrieval Augmented Generation (RAG) on a given dataset. This agent has access to the following dataset: `Google Store`: This data is a list of html web pages from the Google Store from 2023. It represents a listing of products, details, prices, etc related to Google products.</source>
@@ -205,7 +204,7 @@
     </unit>
     <unit id="2301771286574378080">
       <notes>
-        <note category="location">src/app/components/agent-bot/agent-bot.component.ts:503</note>
+        <note category="location">src/app/components/agent-bot/agent-bot.component.ts:502</note>
       </notes>
       <segment>
         <source>Use Case - Google Product Discovery Assistant: Answers product-specific questions on Google Products available on the Google Store</source>
@@ -213,7 +212,7 @@
     </unit>
     <unit id="2365393808854133073">
       <notes>
-        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:208</note>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:188</note>
       </notes>
       <segment>
         <source>Google Product Discovery Assistant</source>
@@ -256,7 +255,7 @@
     </unit>
     <unit id="2641957198056091226">
       <notes>
-        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:169</note>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:149</note>
       </notes>
       <segment>
         <source>Provides financial insights on Alphabet by analyzing its financial reports, strategic initiatives, and management perspectives from its historical investor documents. (Disclaimer: This Agent is for demonstration purposes only)</source>
@@ -319,23 +318,15 @@
     </unit>
     <unit id="2936400067598957760">
       <notes>
-        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:188</note>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:168</note>
       </notes>
       <segment>
         <source>Symptom Checker and Triage Assistant</source>
       </segment>
     </unit>
-    <unit id="2986473220728639825">
-      <notes>
-        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:461</note>
-      </notes>
-      <segment>
-        <source>Less suitable for highly complex reasoning, deep analysis, or tasks requiring the utmost accuracy on nuanced problems compared to larger, more powerful models.</source>
-      </segment>
-    </unit>
     <unit id="3081749851382598990">
       <notes>
-        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:149</note>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:209</note>
       </notes>
       <segment>
         <source>The process commences with an intelligent agent that guides users in selecting an optimal DNS domain, ensuring it aligns perfectly with the website&apos;s subject matter or the product&apos;s identity. Following this foundational step, another specialized agent takes over to facilitate the comprehensive creation of the entire website. Subsequently, a dedicated agent is deployed to generate a full suite of marketing materials. The workflow culminates with an agent focused on designing distinctive logos that are thematically consistent with the project&apos;s core topic. This multi-agent system aims to streamline and augment the creative output of the agency across the entire launch lifecycle.</source>
@@ -363,8 +354,8 @@
     </unit>
     <unit id="3302957108198080866">
       <notes>
-        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:171</note>
-        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:211</note>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:151</note>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:191</note>
       </notes>
       <segment>
         <source>retrieve_info</source>
@@ -380,7 +371,7 @@
     </unit>
     <unit id="3379385431037959377">
       <notes>
-        <note category="location">src/app/components/agent-bot/agent-bot.component.ts:493</note>
+        <note category="location">src/app/components/agent-bot/agent-bot.component.ts:492</note>
       </notes>
       <segment>
         <source>Use Case - AI-Powered Investment Research Analyst for Alphabet: Provides financial insights on Alphabet by analyzing its financial reports, strategic initiatives, and management perspectives from its historical investor documents.</source>
@@ -402,14 +393,6 @@
         <source>No</source>
       </segment>
     </unit>
-    <unit id="3550613261186986823">
-      <notes>
-        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:455</note>
-      </notes>
-      <segment>
-        <source>Gemini 2.0 Flash is a fast, efficient, and cost-effective AI model perfect for tasks needing quick responses and high volume. It excels at answering simple questions, providing instant information, real-time chat support, basic reasoning, and connecting your requests to other tools via APIs. Think of it for uses like a customer service chatbot handling common questions rapidly and affordably.</source>
-      </segment>
-    </unit>
     <unit id="3589684563809066590">
       <notes>
         <note category="location">src/app/components/configure-bot/configure-bot.component.ts:258</note>
@@ -420,7 +403,7 @@
     </unit>
     <unit id="360691257522085867">
       <notes>
-        <note category="location">src/app/components/agent-bot/agent-bot.component.ts:504</note>
+        <note category="location">src/app/components/agent-bot/agent-bot.component.ts:503</note>
       </notes>
       <segment>
         <source>1. What are the specs for the Pixel 6 camera?</source>
@@ -428,7 +411,7 @@
     </unit>
     <unit id="3620348704928149709">
       <notes>
-        <note category="location">src/app/components/agent-bot/agent-bot.component.ts:494</note>
+        <note category="location">src/app/components/agent-bot/agent-bot.component.ts:493</note>
       </notes>
       <segment>
         <source>1. How did Alphabet perform in their earnings reports in Q4 2024?</source>
@@ -436,7 +419,7 @@
     </unit>
     <unit id="3632587631831847830">
       <notes>
-        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:209</note>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:189</note>
       </notes>
       <segment>
         <source>Answers product-specific questions on Google Products available on the Google Store (Disclaimer: This Agent is for demonstration purposes only)</source>
@@ -444,7 +427,7 @@
     </unit>
     <unit id="3677605847849987469">
       <notes>
-        <note category="location">src/app/components/agent-bot/agent-bot.component.ts:499</note>
+        <note category="location">src/app/components/agent-bot/agent-bot.component.ts:498</note>
       </notes>
       <segment>
         <source>1. What could be causing lower back pain that radiates down my leg?</source>
@@ -477,7 +460,7 @@
     </unit>
     <unit id="3984837979156608216">
       <notes>
-        <note category="location">src/app/components/agent-bot/agent-bot.component.ts:506</note>
+        <note category="location">src/app/components/agent-bot/agent-bot.component.ts:505</note>
       </notes>
       <segment>
         <source>3. What kind of screen does the Google Nest Hub have?</source>
@@ -494,7 +477,7 @@
     </unit>
     <unit id="4127699268350975042">
       <notes>
-        <note category="location">src/app/components/agent-bot/agent-bot.component.ts:496</note>
+        <note category="location">src/app/components/agent-bot/agent-bot.component.ts:495</note>
       </notes>
       <segment>
         <source>3. How does each Alphabet business segment contribute to overall revenue and profit?</source>
@@ -518,7 +501,7 @@
     </unit>
     <unit id="4401750052852481477">
       <notes>
-        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:141</note>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:201</note>
       </notes>
       <segment>
         <source>This AI-powered assistant is engineered to enhance the capabilities of creative agencies when launching new websites or products.</source>
@@ -534,7 +517,7 @@
     </unit>
     <unit id="4493218159791760549">
       <notes>
-        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:168</note>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:148</note>
       </notes>
       <segment>
         <source>AI-Powered Investment Research Analyst for Alphabet</source>
@@ -542,7 +525,7 @@
     </unit>
     <unit id="4510575984473444396">
       <notes>
-        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:161</note>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:141</note>
       </notes>
       <segment>
         <source>Your finance agent has been configured with the following use case and tools:</source>
@@ -550,7 +533,7 @@
     </unit>
     <unit id="4552706086693087791">
       <notes>
-        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:189</note>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:169</note>
       </notes>
       <segment>
         <source>Analyzes general medical symptoms and acts as a virtual assistant to help triage patients to the appropriate level of care during consultations. (Disclaimer: This Agent is for demonstration purposes only and is NOT a substitute for professional medical advice)</source>
@@ -609,7 +592,7 @@
     </unit>
     <unit id="5267150349714062388">
       <notes>
-        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:191</note>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:171</note>
       </notes>
       <segment>
         <source>medical_publications_tool</source>
@@ -617,7 +600,7 @@
     </unit>
     <unit id="532471922114477242">
       <notes>
-        <note category="location">src/app/components/agent-bot/agent-bot.component.ts:498</note>
+        <note category="location">src/app/components/agent-bot/agent-bot.component.ts:497</note>
       </notes>
       <segment>
         <source>Use Case - Symptom Checker and Triage Assistant: Analyzes general medical symptoms and acts as a virtual assistant to help triage patients to the appropriate level of care during consultations.</source>
@@ -668,7 +651,7 @@
     </unit>
     <unit id="5868014846832354729">
       <notes>
-        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:192</note>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:172</note>
       </notes>
       <segment>
         <source>Utilizes the PubMed API to pull data from the PubMed database, which is a free, searchable database developed and maintained by the National Center for Biotechnology Information (NCBI) and provides access to citations and abstracts of biomedical literature. retrieve_info: This tool uses Vertex AI Search to perform Retrieval Augmented Generation (RAG) on a given dataset. This agent has access to the following dataset: `PriMock57 Healthcare consultations`: This dataset consists of 57 mock medical primary care consultations held over 5 days by 7 clinicians and 57 fake patients, using case cards that present complaints, symptoms, medical &amp; general history etc.</source>
@@ -689,7 +672,6 @@
         <note category="location">src/app/components/configure-bot/configure-bot.component.ts:416</note>
         <note category="location">src/app/components/configure-bot/configure-bot.component.ts:430</note>
         <note category="location">src/app/components/configure-bot/configure-bot.component.ts:444</note>
-        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:458</note>
       </notes>
       <segment>
         <source>Pros:</source>
@@ -721,7 +703,7 @@
     </unit>
     <unit id="6288149397986855014">
       <notes>
-        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:197</note>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:177</note>
       </notes>
       <segment>
         <source>Retail</source>
@@ -749,14 +731,6 @@
       </notes>
       <segment>
         <source>Are you there?</source>
-      </segment>
-    </unit>
-    <unit id="6456367756107645224">
-      <notes>
-        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:459</note>
-      </notes>
-      <segment>
-        <source>Speed, efficiency, low cost, good for quick lookups and simple reasoning.</source>
       </segment>
     </unit>
     <unit id="6549155663323674945">
@@ -834,7 +808,7 @@
     </unit>
     <unit id="7004693272506296337">
       <notes>
-        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:157</note>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:137</note>
       </notes>
       <segment>
         <source>Finance</source>
@@ -882,7 +856,7 @@
     </unit>
     <unit id="7194017842579795231">
       <notes>
-        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:177</note>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:157</note>
       </notes>
       <segment>
         <source>Healthcare</source>
@@ -914,7 +888,7 @@
     </unit>
     <unit id="7301615041170915384">
       <notes>
-        <note category="location">src/app/components/agent-bot/agent-bot.component.ts:501</note>
+        <note category="location">src/app/components/agent-bot/agent-bot.component.ts:500</note>
       </notes>
       <segment>
         <source>3. Based on past consultations, are there specific symptoms that were particularly helpful in narrowing down a differential diagnosis?</source>
@@ -930,7 +904,7 @@
     </unit>
     <unit id="7422000112100064619">
       <notes>
-        <note category="location">src/app/components/agent-bot/agent-bot.component.ts:505</note>
+        <note category="location">src/app/components/agent-bot/agent-bot.component.ts:504</note>
       </notes>
       <segment>
         <source>2. What is the water resistance rating of the Pixel?</source>
@@ -970,7 +944,7 @@
     </unit>
     <unit id="758709187891097300">
       <notes>
-        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:151</note>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:211</note>
       </notes>
       <segment>
         <source>Google Search &amp; Logo Generation</source>
@@ -994,7 +968,7 @@
     </unit>
     <unit id="7741554728933288731">
       <notes>
-        <note category="location">src/app/components/agent-bot/agent-bot.component.ts:500</note>
+        <note category="location">src/app/components/agent-bot/agent-bot.component.ts:499</note>
       </notes>
       <segment>
         <source>2. What red flag symptoms would indicate that my sore throat is something more serious than a cold?</source>
@@ -1018,7 +992,7 @@
     </unit>
     <unit id="7939528592949938228">
       <notes>
-        <note category="location">src/app/components/agent-bot/agent-bot.component.ts:495</note>
+        <note category="location">src/app/components/agent-bot/agent-bot.component.ts:494</note>
       </notes>
       <segment>
         <source>2. What were Alphabet’s key strategic priorities for the 2024?</source>
@@ -1083,7 +1057,7 @@
     </unit>
     <unit id="8684229693445347325">
       <notes>
-        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:137</note>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:197</note>
       </notes>
       <segment>
         <source>Generic (Marketing)</source>
@@ -1108,17 +1082,10 @@
     <unit id="8763211465841977542">
       <notes>
         <note category="location">src/app/components/agent-bot/agent-bot.component.ts:246</note>
+        <note category="location">src/app/components/agent-bot/agent-bot.component.ts:366</note>
       </notes>
       <segment>
         <source>Thinking...</source>
-      </segment>
-    </unit>
-    <unit id="8788802841513080001">
-      <notes>
-        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:451</note>
-      </notes>
-      <segment>
-        <source>Gemini 2.0 Flash</source>
       </segment>
     </unit>
     <unit id="8800302891500343788">
@@ -1163,7 +1130,7 @@
     </unit>
     <unit id="8932747658084529949">
       <notes>
-        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:201</note>
+        <note category="location">src/app/components/configure-bot/configure-bot.component.ts:181</note>
       </notes>
       <segment>
         <source>Your retail agent has been configured with the following use case and tools:</source>
